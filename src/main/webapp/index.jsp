@@ -591,7 +591,7 @@
 							</div>
 						<div>
 							<span style="font-weight: bold;">낭만서점 세계문학읽기</span>
-							<br/><span>누가 버지니아 울프를 두려워하는가?</span>
+							<br/><span>누가 버지니아 울프를 두려워?</span>
 						</div>
 					</div>
 				</div>
