@@ -198,7 +198,7 @@
 								<ul>
 									<li><a href="#">장바구니</a></li>
 									<li><a href="#">고객센터</a></li>
-									<li><a href="#">회원가입</a></li>
+									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 									<li><a href="#">로그인</a></li>
 								</ul>
 							</div>
