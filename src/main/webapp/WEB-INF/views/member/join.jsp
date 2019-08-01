@@ -10,7 +10,7 @@
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script type="text/javascript" src="${root}/resources/jquery/jquery-ui.js"></script>
 <link rel="stylesheet" type = "text/css" href="${root}/resources/jquery/jquery-ui.css">
-<link rel="stylesheet" type = "text/css" href="${root}/resources/css/join.css">
+<link rel="stylesheet" type = "text/css" href="${root}/resources/css/member/join.css">
 <script type="text/javascript">
 	$(function() {
 	    $("#birthdaypicker").datepicker({				  
