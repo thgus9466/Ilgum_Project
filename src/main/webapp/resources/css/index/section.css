@@ -1,0 +1,301 @@
+@charset "UTF-8";
+.best{
+	width: 950px;
+	height: 430px;
+	border: 0px solid #dfdfdf;
+	margin: 0px auto;
+	overflow: hidden;
+	margin-top: 50px;
+}
+
+.best > div:nth-child(1){
+	margin-top:20px;
+	width: 100%;
+	height: 30px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.plus{
+	float: right;
+	font-size: 10px;
+	font-weight: bold;
+	line-height: 30px;
+	color: #edac2b;
+}
+
+.plus a { text-decoration: none;}
+.plus a:visited { text-decoration: none; }
+.plus a:hover { text-decoration: none; }
+.plus a:focus { text-decoration: none; }
+
+.best > div:nth-child(2){
+	margin-top:10px;
+	width: 100%;
+	height: 245px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+}
+
+.bestImg >img{
+	width:100%;
+	height:100%;
+}
+
+.best > div:nth-child(3){
+	margin-top:10px;
+	width: 100%;
+	height: 100px;
+	border: 0px solid black;
+	overflow: hidden;
+}
+
+.bestImg{
+	width: 160px;
+	height: 230px;
+	margin-right: 32px; 
+	border: 2px solid #dfdfdf;
+	float: left;
+	overflow: hidden;
+}
+
+.bestContent{
+	width: 162px;
+	height: 95px;
+	margin-right: 32px; 
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+}
+
+.bookName{
+	width: 100%;
+	height: 20px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	font-size: 14px;
+	font-weight: 700;
+}
+
+.bookWriter{
+	width: 100%;
+	height: 20px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	color:  #9a9898;
+	font-size: 12px;
+}
+
+.bookPrice{
+	width: 100%;
+	height: 20px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	font-size: 11px;
+}
+
+.new{
+	width: 100%;
+	height: 700px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+	background-color: #dfdfdf;
+	margin-top: 50px;
+}
+
+.new > div{
+	width: 950px;
+	height: 650px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+	margin-top: 50px;
+}
+
+.new > div > div{
+	width: 300px;
+	height: 650px;
+	margin-right:22px;
+	float: left;
+	border: 0px solid black;
+	overflow: hidden;
+}
+
+.top{
+	width: 100%;
+	height: 40px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.btn2{
+	width:60px;
+    background-color: #edac2b;
+    border: none;
+    color:#fff;
+    padding: 5px 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+	border-radius:15px;
+	float:right;
+	line-height:20px;
+}
+
+.btn3{
+	width:60px;
+    border: 2px solid #edac2b;
+    color:#edac2b;
+    padding: 5px 0;
+    text-align: center;
+    text-decoration: none;
+    font-size: 13px;
+    cursor: pointer;
+	border-radius:15px;
+	float:right;
+	line-height:18px;
+	margin-right: 10px;
+	background-color: #FFFFFF;
+}
+
+.bottom{
+	width: 100%;
+	height: 560px;
+	border: 1px solid #dfdfdf;
+	float: left;
+	overflow: hidden;
+	font-size: 20px;
+	font-weight: bold;
+	background-color: #FFFFFF;
+}
+
+.bottom > div{
+	width: 100%;
+	height: 100px;
+	margin-bottom:10px;
+	border: 0px solid #dfdfdf;
+	overflow: hidden;
+}
+
+.bunho{
+	width: 23px;
+	height: 100px;
+	float: left;
+	border: 0px solid black;
+	text-align: right;
+	font-size: 15px;
+}
+
+.img{
+	width: 80px;
+	height: 100px;
+	float: left;
+	border: 1px solid #dfdfdf;
+	margin-left: 10px;
+}
+
+.img > img{
+	width:100%;
+	height:100%;
+}
+
+.content{
+	width: 160px;
+	height: 100px;
+	float: left;
+	border: 0px solid black;
+	margin-left: 10px;
+	font-size: 12px;
+}
+
+.book{
+	height: 50px;
+	border: 0px solid black;
+	line-height: 20px;
+	color: #9a9898;
+}
+
+.price{
+	height: 50px;
+	border: 0px solid black;
+	line-height: 50px;
+	font-size: 12px;
+	color: #9a9898;
+}
+
+.writer{
+	width: 950px;
+	height: 630px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+	margin-top: 60px;
+}
+
+.writer > div:first-child{
+	width: 100%;
+	height: 30px;
+	border: 0px solid black;
+	float: left;
+	overflow: hidden;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.writerContent{
+	width: 100%;
+	height: 300px;
+	border: 0px solid black;
+	overflow: hidden;
+}
+
+.circle{
+	width: 200px;
+	height: 262px;
+	border: 0px solid #dfdfdf;
+	float: left;
+	margin: 17px;
+	overflow: hidden;
+}
+
+.circle div:first-child{
+	width: 195px;
+	height: 195px;
+	border: 1px solid #dfdfdf;
+	overflow: hidden;
+	border-radius: 50%;
+	margin: 0px auto;
+}
+
+.circle div:first-child > img{
+	position: absolute;
+	width: 195px;
+	height: 195px;
+}
+
+.circle div:last-child{
+	width: 195px;
+	height: 65px;
+	border: 0px solid #dfdfdf;
+	margin: 0px auto;
+}
+
+.circle div:last-child > span{
+	margin-top: 10px;
+	display:inline-block;
+	width: 100%;
+	font-size: 13px;
+	text-align: center;
+}
