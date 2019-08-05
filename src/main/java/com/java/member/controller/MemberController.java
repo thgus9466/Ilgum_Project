@@ -59,5 +59,14 @@ public class MemberController {
 		return new ModelAndView("member/login.tiles");
 	}
 	
-	
+	@RequestMapping(value="member/memberLoginOk.do", method = RequestMethod.POST)
+	public ModelAndView memberLoginOk(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		
+		
+		return mav;
+	}
 }
