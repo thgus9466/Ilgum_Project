@@ -21,8 +21,8 @@
 	<div class = "fixedtop">
 		<div class="fixedtopbar"> 
 			<div id="logo">
-				<a href="#" >
-					<img alt="읽움" src="${root}/resources/img/logo.png">
+				<a href="${root}/index.jsp" >
+					<img alt="읽움" src="${root}/resources/img/index/logo2.png">
 				</a>
 			</div>
 			<div id="menubar">		
@@ -53,10 +53,10 @@
 			<div id="infobar">
 				<ul id="" >				
 					<li>
-						<a href="#">회원가입</a>
+						<a href="${root}/member/memberJoin.do">회원가입</a>
 					</li>
 					<li>
-						<a href="#">로그인</a>
+						<a href="${root}/member/memberLogin.do">로그인</a>
 					</li>
 					<li>
 						<a href="#">로그아웃</a>

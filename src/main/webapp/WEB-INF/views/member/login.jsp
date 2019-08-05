@@ -97,7 +97,7 @@
 								<div class="check"><button type="button">확인</button></div>
 						</div>
 						</form>
-						<div class="set"><a href="#">회원가입</a></div>
+						<div class="set"><a href="${root}/member/memberJoin.do">회원가입</a></div>
 					</div>
 				</div>
 			</div>

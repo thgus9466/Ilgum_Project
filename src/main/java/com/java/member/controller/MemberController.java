@@ -23,7 +23,7 @@ public class MemberController {
 	@RequestMapping(value="/member/memberJoin.do", method=RequestMethod.GET)
 	public ModelAndView memberJoin(HttpServletRequest request, HttpServletResponse response) {
 		
-		return new ModelAndView("member/join");
+		return new ModelAndView("member/join.tiles");
 	}
 	
 	@RequestMapping(value = "/member/idCheck.do", method = RequestMethod.GET)
@@ -56,7 +56,7 @@ public class MemberController {
 	@RequestMapping(value="/member/memberLogin.do", method=RequestMethod.GET)
 	public ModelAndView memberLogin(HttpServletRequest request, HttpServletResponse response) {
 		
-		return new ModelAndView("member/login");
+		return new ModelAndView("member/login.tiles");
 	}
 	
 	

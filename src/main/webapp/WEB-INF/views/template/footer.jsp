@@ -75,7 +75,7 @@
 			
 			<div class="introduce">
 				<div>
-					<div><img src="${root}/resources/img/logo.png" style=" height:40px; width:150px; margin-top: 20px;"></div>
+					<div><img src="${root}/resources/img/index/logo2.png" style=" height:40px; width:150px; margin-top: 20px;"></div>
 					<div style="font-size: 12px;">
 						<div>(주)읽움 서울시 구로구 구로3동 대표이사 : 박민주 </div>
 						<div>사업자등록번호 : 102-11-56946</div>

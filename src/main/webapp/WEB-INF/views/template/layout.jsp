@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<t:insertAttribute name="template"/>
+	<t:insertAttribute name="header"/>
 	
 	<t:insertAttribute name="content"/>
 	
