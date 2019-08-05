@@ -53,5 +53,11 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value="/member/memberLogin.do", method=RequestMethod.GET)
+	public ModelAndView memberLogin(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("member/login");
+	}
+	
 	
 }
