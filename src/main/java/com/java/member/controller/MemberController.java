@@ -21,4 +21,10 @@ public class MemberController {
 		
 		return new ModelAndView("member/join");
 	}
+	
+	@RequestMapping(value="/member/memberLogin.do", method=RequestMethod.GET)
+	public ModelAndView memberLogin(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("member/login");
+	}
 }
