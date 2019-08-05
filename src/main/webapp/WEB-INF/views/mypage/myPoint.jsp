@@ -9,11 +9,9 @@
 <link rel="stylesheet" href="${root}/resources/css/mypage_point.css"/>
 <title>Insert title here</title>
 </head>
-<body>
-	<jsp:include page="../../../template.jsp"/>
-	
+<body>	
 	<div class="container">
-	<jsp:include page="../../../myMenu.jsp"/>
+	<jsp:include page="../template/myMenu.jsp"/>
 		<div class="pts_title">
 			<div>
 				<h3>읽움 포인트</h3>
