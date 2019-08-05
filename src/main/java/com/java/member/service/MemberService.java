@@ -1,5 +1,9 @@
 package com.java.member.service;
 
-public interface MemberService {
+import org.springframework.web.servlet.ModelAndView;
 
+public interface MemberService {
+	public void idCheck(ModelAndView mav);
+
+	public void memberJoinOk(ModelAndView mav);
 }

@@ -1,7 +1,5 @@
 package com.java.member.dto;
 
-import java.util.Date;
-
 public class MemberDto {
 	String member_id;			// 아이디
 	String member_password;		// 비밀번호
@@ -14,7 +12,7 @@ public class MemberDto {
 	String member_phone2;		// 자택번호
 	String member_interest;		// 관심분야
 	String member_job;			// 직업
-	Date member_birth;			// 생년월일
+	String member_birth;		// 생년월일
 	String member_email;		// 이메일
 	int member_point;			// 포인트
 	String member_level;		// 회원등급
@@ -23,7 +21,7 @@ public class MemberDto {
 
 	public MemberDto(String member_id, String member_password, String member_name, String member_zipcode,
 			String member_address1, String member_address2, String member_gender, String member_phone1,
-			String member_phone2, String member_interest, String member_job, Date member_birth, String member_email,
+			String member_phone2, String member_interest, String member_job, String member_birth, String member_email,
 			int member_point, String member_level) {
 
 		this.member_id = member_id;
@@ -131,11 +129,11 @@ public class MemberDto {
 		this.member_job = member_job;
 	}
 
-	public Date getMember_birth() {
+	public String getMember_birth() {
 		return member_birth;
 	}
 
-	public void setMember_birth(Date member_birth) {
+	public void setMember_birth(String member_birth) {
 		this.member_birth = member_birth;
 	}
 

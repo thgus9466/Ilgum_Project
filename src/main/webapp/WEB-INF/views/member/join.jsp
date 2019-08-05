@@ -10,6 +10,7 @@
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script type="text/javascript" src="${root}/resources/jquery/jquery-ui.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" type = "text/css" href="${root}/resources/jquery/jquery-ui.css">
 <link rel="stylesheet" type = "text/css" href="${root}/resources/css/member/join.css">
 <script type="text/javascript">
@@ -38,6 +39,14 @@
 	    		
 	    	}
 	    });
+	   
+	    /*$(function(){
+	    	if($('#disagree').checked){
+				alert("체크");
+	    		$('#member_job').attr('disabled', true);
+	    		$('input[name="member_interest"]').attr('disabled', true);
+	    	}
+	    })*/;
 	});
 </script>
 </head>
@@ -46,7 +55,7 @@
 		<p>읽움 회원가입</p>
 		<p>읽움에 오신것을 환영합니다.</p>		
 	</div>
-	<form name="memberForm" action="#" method="get" onsubmit="return registerForm(this)">
+	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="get" onsubmit="return registerForm(this)">
 	<div class="vital_info">
 		<div class="header">
 			<span>필수 정보 입력</span>
@@ -58,13 +67,10 @@
 					<span>아이디</span>
 				</div>
 				<div  class="infos_detail">
-					<input class = "infos_input" type="text" name="member_id"/>
-					<span style="font-size: 12px; display: block; height: 15px;">공백없는 6~20자의 영문/숫자조합</span>
-				</div>
-				<div style="float: left;">
-					<input class = "infos_button" type="button" value="중복확인" id="idBtn">
-				</div>
-									
+					<input class = "infos_input" type="text" name="member_id" id="member_id" oninput="idChk()"/>
+					<span style="font-size: 12px; display: block; height: 15px;" id="idResult">
+					공백없는 6~20자의 영문/숫자조합</span>
+				</div>									
 			</div>
 			
 			<div class="infos">
@@ -85,7 +91,7 @@
 					<span>비밀번호 확인</span>
 				</div>
 				<div  class="infos_detail"> 
-					<input class = "infos_input" type="password" id="pwChk" oninput="pwCheck2()"/>
+					<input class = "infos_input" type="password" name="member_passwordChk" id="pwChk" oninput="pwCheck2()"/>
 					<span style="font-size: 12px; display: block; height: 15px;" id="pwResult2" >
 					비밀번호를 한번더 입력해 주세요.</span>
 				</div>
@@ -107,8 +113,8 @@
 					<span>성별</span>
 				</div>
 				<div class="infos_detail">
-					<input type="radio" name="member_gender" value="male">남성
-					<input type="radio" name="member_gender" value="female">여성
+					<input type="radio" name="member_gender" value="m">남성
+					<input type="radio" name="member_gender" value="w">여성
 				</div>
 			</div>
 			
@@ -118,7 +124,7 @@
 					<span>생년월일</span>
 				</div>
 				<div class="infos_detail">
-					<input id="birthdaypicker" value="" name="member_birth">
+					<input id="birthdaypicker" value="" type="date" name="member_birth">
 				</div>				
 			</div>
 			
@@ -128,9 +134,15 @@
 					<span>이메일 주소</span>
 				</div>
 				<div class="infos_detail">
-					<input class = "infos_input" type="text" name="member_email1"/>
-					<span>@</span>
-					<input style="width:100px;" class = "infos_input" type="text" name="member_email2">
+					<input style="float: left;" class = "infos_input" type="text" name="member_email1"/>
+					<span style="float: left;">@</span>
+					<select style="width:100px;" name="member_email2">
+						<option>naver.com</option>
+						<option>daum.net</option>
+						<option>gmail.com</option>
+						<option>nate.com</option>
+						<option>yahoo.com</option>
+					</select>
 				</div>	
 			</div>				
 		</div>
@@ -146,15 +158,15 @@
 					<span>주소</span>
 				</div>
 				<div  class="infos_detail">
-					<input style="width: 100px; float: left;" class = "infos_input" type="text" name="member_zipcode"/>
+					<input style="width: 100px; float: left;" class = "infos_input" type="text" name="member_zipcode" id="member_zipcode" readOnly/>
 					<div style="float:left;">
-						<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn">
+						<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn" onclick="execPostCode()">
 					</div>
 					<div>
-						<input class = "infos_input" type="text" name="member_address1"/>
+						<input class = "infos_input" type="text" name="member_address1" id="member_address1" readOnly/>
 					</div>
 					<div>
-						<input class = "infos_input" type="text" name="member_address2"/>
+						<input class = "infos_input" type="text" name="member_address2" id="member_address2"/>
 					</div>
 				
 				</div>									
@@ -224,21 +236,22 @@
 			<span style="display:block; margin: 0px auto; height:35px; line-height: 35px">추가정보입력</span>
 			<div style="width:430px; margin: 5px auto; float:initial" class="infos_detail">
 				개인정보수집 및 이용에 대한 안내(선택)
-				<input type="radio" name="infoplus" value="true">동의
-				<input type="radio" name="infoplus" value="false">미동의
+				<input type="radio" name="infoplus" value="true" onclick="agree()">동의
+				<input type="radio" name="infoplus" value="false" onclick="disagree()">미동의
 			</div>
 		</div>
+		<div id="option" style="display: none;">
 			<div class="infos">
 				<div class = "infos_sub">
 					<span style="color: red; width: 20%; margin: 0px;"></span>
 					<span style="padding-left:17px">직업</span>
 				</div>
 				<div>
-					<select style="width: 100px;" name="member_job">
-						<option value="" selected disabled>직업선택</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
+					<select style="width: 100px;" name="member_job" id="member_job">
+						<option value="not" id="job">직업선택</option>
+						<option value="none">무직</option>
+						<option value="programmer">개발자</option>
+						<option value="teacher">강사</option>
 						<option value="student">학생</option>
 						<option value="student">학생</option>
 						<option value="student">학생</option>
@@ -255,83 +268,86 @@
 			<div class="infos" style="height:150px;">
 				<div class = "infos_sub" style="height:150px;">
 					<span style="color: red; width: 20%; margin: 0px;"></span>
-					<span style="padding-left:17px">관심분야</span>
+					<span style="padding-left: 17px; margin-bottom: 20px;">관심분야</span><br/>
+					<span>(3개까지 선택가능)</span>
 				</div>
 				<div class="infos_detail_interest">
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" id="interest" value="not" style="display:none;"/>
+					<input type="checkbox" name="member_interest" value="소설"/>
 					<span>소설</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="문학"/>
 					<span>문학</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="학습"/>
 					<span>학습</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="아동"/>
 					<span>아동</span>
 					</div>				
 				</div>
 				
 				<div class="infos_detail_interest">
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="취미/실용"/>
 					<span>취미/실용</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="종교"/>
 					<span>종교</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="잡지"/>
 					<span>잡지</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="정치법률"/>
 					<span>정치법률</span>
 					</div>					
 				</div>
 				
 				<div class="infos_detail_interest">
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="경제,경영"/>
 					<span>경제,경영</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="인문"/>
 					<span>인문</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox"/>
+					<input type="checkbox" name="member_interest" value="외국어"/>
 					<span>외국어</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="공학"/>
 					<span>공학</span>
 					</div>
 				</div>
 				
 				<div class="infos_detail_interest">
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="의학"/>
 					<span>의학</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="컴퓨터"/>
 					<span>컴퓨터</span>
 					</div>
 					<div class = "infos_interest">
-					<input type="checkbox" name="member_interest"/>
+					<input type="checkbox" name="member_interest" value="수험서"/>
 					<span>수험서</span>
 					</div>
 				</div>
+			</div>
 			</div>		
 		</div>
 		
-	<div class = "buttons">
+	<div class = "buttons" id="buttons">
 		<div class = "button">
 			<input type="submit" value="가입완료">
 		</div>	

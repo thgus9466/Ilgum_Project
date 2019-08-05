@@ -1,5 +1,9 @@
 package com.java.member.dao;
 
-public interface MemberDao {
+import com.java.member.dto.MemberDto;
 
+public interface MemberDao {
+	public String idCheck(String id);
+
+	public int memberInsert(MemberDto memberDto);
 }
