@@ -52,7 +52,7 @@
 				</ul>
 				<div class="left">
 					<div>
-						<form action="">
+						<form action="${root}/member/memberLoginOk.do">
 							<div class="left_inner">
 								<div class="id"><input type="text" name="id" placeholder="아이디"/></div>
 								<div class="pwd"><input type="password" name="pwd"  placeholder="비밀번호"/></div>
