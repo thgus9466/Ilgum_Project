@@ -138,7 +138,7 @@ function registerForm(obj) {
 }
 
 function idChk() {
-	var re = /^[a-z0-9]{6,20}$/ // 아이디가 적합한지 검사할 정규식
+	var re = /^[a-z0-9]+{6,20}/g // 아이디가 적합한지 검사할 정규식
 	var userid = $("#member_id").val();
 
 	$.ajax({
@@ -174,7 +174,7 @@ function idChk() {
 }
 
 function pwCheck1() {
-	var re = /^[a-z0-9]{10,15}$/ // 패스워드가 적합한지 검사할 정규식
+	var re = /^[a-z0-9]+{10,15}/g; // 패스워드가 적합한지 검사할 정규식
 
 	if (re.test($('#pw').val())) {
 		$('#pwResult1').css("color", "blue");
