@@ -15,5 +15,7 @@
  		)
  	</insert>
  	
- 	<select id=""></select>
+ 	<select id="memberLoginOk" parameterType="java.util.HashMap" resultType="String">
+ 		select member_level from member where member_id = #{member_id} and member_password = #{member_password}
+ 	</select>
 </mapper>

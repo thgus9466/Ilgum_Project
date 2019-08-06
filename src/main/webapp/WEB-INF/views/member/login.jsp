@@ -52,17 +52,17 @@
 				</ul>
 				<div class="left">
 					<div>
-						<form action="${root}/member/memberLoginOk.do">
+						<form action="${root}/member/memberLoginOk.do" method="post">
 							<div class="left_inner">
-								<div class="id"><input type="text" name="id" placeholder="아이디"/></div>
-								<div class="pwd"><input type="password" name="pwd"  placeholder="비밀번호"/></div>
+								<div class="id"><input type="text" name="member_id" placeholder="아이디"/></div>
+								<div class="pwd"><input type="password" name="member_password"  placeholder="비밀번호"/></div>
 								<div class="idsave">
 									<span>
 										<input type="checkbox"/>
 										<label>아이디저장</label>
 									</span>
 								</div>
-								<div class="check"><button type="button">로그인</button></div>
+								<div class="check"><button type="submit">로그인</button></div>
 									<div class="find">
 										<span><a href="#">비밀번호 찾기</a></span>
 										<span style="color:#cccccc;">｜</span>

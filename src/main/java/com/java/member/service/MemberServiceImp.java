@@ -1,5 +1,6 @@
 package com.java.member.service;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,5 +54,25 @@ public class MemberServiceImp implements MemberService {
 		
 		mav.addObject("check", check);
 		mav.setViewName("member/joinOk");
+	}
+	
+	@Override
+	public void memberLoginOk(ModelAndView mav) {
+		
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("member_id"));
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("member_id", request.getParameter("member_id"));
+		hMap.put("member_password", request.getParameter("member_password"));
+		
+		String member_level = memberDao.memberLoginOk(hMap);
+		
+		mav.addObject("member_level", member_level);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + member_level);
+		
+		mav.setViewName("member/loginOk.empty");
 	}
 }
