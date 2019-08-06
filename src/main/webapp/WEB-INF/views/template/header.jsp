@@ -50,7 +50,7 @@
 			<div class="searchbar">
 				<div>
 					<form>
-						<input class="search_input" type="text">
+						<input class="search_input" type="text" placeholder="검색어를 입력하세요">
 						<div style="padding-top: 10px; padding-left: 10px;float : right;">
 							<input class="search_button" type="image" src="${root}/resources/img/header/search.png" alt="검색">
 						</div>

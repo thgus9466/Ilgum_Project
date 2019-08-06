@@ -137,7 +137,7 @@ function registerForm(obj) {
 	}
 }
 
-function idChk() {
+function idChk(root) {
 	var re = /^[a-z0-9]{6,20}$/ // 아이디가 적합한지 검사할 정규식
 	var userid = $("#member_id").val();
 
@@ -147,7 +147,7 @@ function idChk() {
 		data : {
 			userid : userid
 		},
-		url : "/sample/member/idCheck.do",
+		url : root+"/member/idCheck.do",
 		dataType : "json",
 		contentType : "application/json; charset=UTF-8",
 		success : function(data) {
@@ -167,9 +167,6 @@ function idChk() {
 				$('#idResult').focus();
 			}
 		},
-		error : function(error) {
-			alert("error : " + error);
-		}
 	});
 }
 

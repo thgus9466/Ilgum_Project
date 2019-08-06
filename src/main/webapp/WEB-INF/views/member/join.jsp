@@ -67,7 +67,7 @@
 					<span>아이디</span>
 				</div>
 				<div  class="infos_detail">
-					<input class = "infos_input" type="text" name="member_id" id="member_id" oninput="idChk()"/>
+					<input class = "infos_input" type="text" name="member_id" id="member_id" oninput="idChk('${root}')"/>
 					<span style="font-size: 12px; display: block; height: 15px;" id="idResult">
 					공백없는 6~20자의 영문/숫자조합</span>
 				</div>									
