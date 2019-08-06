@@ -6,4 +6,6 @@ public interface MemberService {
 	public void idCheck(ModelAndView mav);
 
 	public void memberJoinOk(ModelAndView mav);
+	
+	public void memberLoginOk(ModelAndView mav);
 }

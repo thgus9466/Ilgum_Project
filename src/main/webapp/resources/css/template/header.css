@@ -97,21 +97,22 @@
 	
 	.searchbar{
 		margin-left : 10px;
-		width: 250px;
+		width: 600px;
 		height: 100%;
 		line-height: 60px;
-		display: none;		
+		display: none;
+		position: absolute;
+		margin-left: 200px;		
 	}
 	.search_input{
-		width: 200px;
-		height: 20px;
+		width: 500px;
+    	height: 30px;
+   	 	border: 2px solid #10488D;
+    	background-color: #e6e6e6;
+    	padding: 3px 3px 3px 8px;
+    	font-size : 20px;
 	}
 	.search_button{
-		margin-top:5px;
-		width: 16px;
-		height: 16px;
+		width: 32px;
+		height: 32px;
 	}
-	
-	
-	
-	

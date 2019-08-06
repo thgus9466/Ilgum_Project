@@ -14,6 +14,12 @@
 		$(".search a").click(function() {
 			$(".searchbar").fadeIn();
 		});
+		$(".search_input").focusin(function() {
+			$(this).css('background-color','#f2f2f2')
+		});
+		$(".search_input").focusout(function() {
+			$(this).css('background-color','#e6e6e6')
+		});
 	});
 </script>
 </head>
@@ -22,13 +28,13 @@
 		<div class="fixedtopbar"> 
 			<div id="logo">
 				<a href="${root}/index.jsp" >
-					<img alt="읽움" src="${root}/resources/img/index/logo2.png">
+					<img alt="읽움" src="${root}/resources/img/header/logo.png">
 				</a>
 			</div>
 			<div id="menubar">		
 				<ul>
 					<li>
-						<a href="#">도서</a>
+						<a href="#">국내도서</a>
 					</li>
 					<li>
 						<a href="#">베스트 셀러</a>
@@ -44,8 +50,10 @@
 			<div class="searchbar">
 				<div>
 					<form>
-						<input class="search_input" type="text">
-						<input class="search_button" type="image" src="${root}/resources/img/template/search.png" alt="검색">
+						<input class="search_input" type="text" placeholder="검색어를 입력하세요">
+						<div style="padding-top: 10px; padding-left: 10px;float : right;">
+							<input class="search_button" type="image" src="${root}/resources/img/header/search.png" alt="검색">
+						</div>
 					</form>
 				</div>
 			</div>	
@@ -53,16 +61,19 @@
 			<div id="infobar">
 				<ul id="" >				
 					<li>
-						<a href="${root}/member/memberJoin.do">회원가입</a>
+						<a href="#">회원가입</a>
 					</li>
 					<li>
-						<a href="${root}/member/memberLogin.do">로그인</a>
+						<a href="#">로그인</a>
 					</li>
 					<li>
 						<a href="#">로그아웃</a>
 					</li>
 					<li>
 						<a href="#">장바구니</a>
+					</li>
+					<li>
+						<a href="#">주문배송조회</a>
 					</li>
 				</ul>				
 			</div>
