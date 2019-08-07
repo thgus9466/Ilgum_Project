@@ -138,7 +138,7 @@ function registerForm(obj) {
 }
 
 function idChk(root) {
-	var re = /^[a-z0-9]{6,20}$/ // 아이디가 적합한지 검사할 정규식
+	var re = /^[0-9a-z]{6,20}$/; // 아이디가 적합한지 검사할 정규식
 	var userid = $("#member_id").val();
 
 	$.ajax({
@@ -147,31 +147,57 @@ function idChk(root) {
 		data : {
 			userid : userid
 		},
-		url : root+"/member/idCheck.do",
+		url : root+ "/member/idCheck.do",
 		dataType : "json",
 		contentType : "application/json; charset=UTF-8",
 		success : function(data) {
+			var checkNumber = userid.search(/[0-9]/g);
+			var checkEnglish = userid.search(/[a-z]/ig);
+			
 			if (re.test(userid)) {
 				if (data > 0) {
 					$('#idResult').css("color", "red");
 					$('#idResult').text("아이디가 존재합니다.");
-
-				} else {
+				}
+				else if(checkNumber < 0){
+					$('#idResult').css("color", "red");
+					$('#idResult').text("숫자를 포함해야합니다.");
+					$('#idResult').focus();
+				}
+				
+				else if(checkEnglish < 0){
+					$('#idResult').css("color", "red");
+					$('#idResult').text("영문자를 포함해야합니다.");
+					$('#idResult').focus();
+				}				
+				else {
 					$('#idResult').css("color", "blue");
 					$('#idResult').text("사용가능한 아이디입니다.");
 				}
-
-			} else {
+			}else if(checkNumber < 0){
+				$('#idResult').css("color", "red");
+				$('#idResult').text("숫자를 포함해야합니다.");
+				$('#idResult').focus();
+			}
+			
+			else if(checkEnglish < 0){
+				$('#idResult').css("color", "red");
+				$('#idResult').text("영문자를 포함해야합니다.");
+				$('#idResult').focus();
+			}
+			
+			
+			else {
 				$('#idResult').css("color", "red");
 				$('#idResult').text("아이디는 공백없는 6~20자의 영문/숫자조합 입니다.");
 				$('#idResult').focus();
 			}
-		},
+		}
 	});
 }
 
 function pwCheck1() {
-	var re = /^[a-z0-9]{10,15}$/ // 패스워드가 적합한지 검사할 정규식
+	var re = /^[a-z0-9]{10,15}$/; // 패스워드가 적합한지 검사할 정규식
 
 	if (re.test($('#pw').val())) {
 		$('#pwResult1').css("color", "blue");

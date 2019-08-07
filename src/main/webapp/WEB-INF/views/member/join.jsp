@@ -134,16 +134,19 @@
 					<span>이메일 주소</span>
 				</div>
 				<div class="infos_detail">
-					<input style="float: left;" class = "infos_input" type="text" name="member_email1"/>
+					<input style="float: left; width: 150px;" class = "infos_input" type="text" name="member_email1"/>
 					<span style="float: left;">@</span>
-					<select style="width:100px;" name="member_email2">
+					<select style="width:110px;font-size: 15px;" name="member_email2">
 						<option>naver.com</option>
 						<option>daum.net</option>
 						<option>gmail.com</option>
 						<option>nate.com</option>
 						<option>yahoo.com</option>
 					</select>
-				</div>	
+				</div>
+				<div style="float: left;">
+					<input class = "infos_button" type="button" value="이메일 인증">
+				</div>					
 			</div>				
 		</div>
 		
