@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -15,9 +15,9 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/section.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/footer.css"/>
 <script type="text/javascript">
-	/* show, hide, toggle : ³ªÅ¸³², »ç¶óÁü
-	   fadeIn, fadeOut, fadeToggle : ºÒÅõ¸íµµ·Î Á¡Á¡ °¨¼Ò, ³ªÅ¸³²
-	   slideUp, slideDown, slideToogle : ³ôÀÌ°¡ 0¿¡ °¡±õ°Ô ¼­¼­È÷ ³ªÅ¸³², »ç¶óÁü
+	/* show, hide, toggle : ë‚˜íƒ€ë‚¨, ì‚¬ë¼ì§
+	   fadeIn, fadeOut, fadeToggle : ë¶ˆíˆ¬ëª…ë„ë¡œ ì ì  ê°ì†Œ, ë‚˜íƒ€ë‚¨
+	   slideUp, slideDown, slideToogle : ë†’ì´ê°€ 0ì— ê°€ê¹ê²Œ ì„œì„œížˆ ë‚˜íƒ€ë‚¨, ì‚¬ë¼ì§
 	*/
 	
 	var zoomx = 100;
@@ -32,7 +32,7 @@
 		});
 		
 		$("#tec").focusout(function(){
-			$(this).attr("placeholder","°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä");
+			$(this).attr("placeholder","ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”");
 		});
 		
 		$("#btn2").click(function(){
@@ -173,33 +173,35 @@
 			<div class="first">
 				<div class="logo">
 					<a href="#"><img src="${root}/resources/img/index/logo2.png"/></a>
-				</div>  <!-- ·Î°í -->
+				</div>  <!-- ë¡œê³  -->
 				<div class="search">
 					<div class="searchDiv">
-						<input class="tec" id="tec" type="text" placeholder="°Ë»ö¾î¸¦ ÀÔ·ÂÇÏ¼¼¿ä">
-						<button class="btn" id="btn">°Ë»ö</button> <!-- ¹öÆ° -->
+						<form action="${root}/book/search_list.do" method="get">
+							<input class="tec" id="tec" type="text" placeholder="ê²€ìƒ‰ì–´ë¥¼ ìž…ë ¥í•˜ì„¸ìš”" name="book_name">
+							<input type="submit" class="btn" id="btn" value="ê²€ìƒ‰"> <!-- ë²„íŠ¼ -->
+						</form>
 					</div>
-				</div>  <!-- °Ë»ö -->
+				</div>  <!-- ê²€ìƒ‰ -->
 			</div>
-				<div class="second"> <!-- ¸Þ´º -->
+				<div class="second"> <!-- ë©”ë‰´ -->
 					<nav>
 						<div class="nav">
 							<div>
 								<ul>
 									<li  id="gnb" style="width:50px; margin-left:0px;"><a href="#"><img src="${root}/resources/img/index/dropdown.png"/></a></li>
-									<li><a href="#">µµ¼­</a></li>
-									<li><a href="#">º£½ºÆ®¼¿·¯</a></li> <!-- ±¸¸Å¼ø  -->
-									<li><a href="#">½Å°£µµ¼­</a></li> <!-- ³¯Â¥¼ø -->
-									<li><a href="#">ÀÌ´ÞÀÇµµ¼­</a></li> <!-- ÆòÁ¡&¸®ºä¼ø -->
-									<li><a href="#">ÀÌº¥Æ®</a></li>
+									<li><a href="#">ë„ì„œ</a></li>
+									<li><a href="#">ë² ìŠ¤íŠ¸ì…€ëŸ¬</a></li> <!-- êµ¬ë§¤ìˆœ  -->
+									<li><a href="#">ì‹ ê°„ë„ì„œ</a></li> <!-- ë‚ ì§œìˆœ -->
+									<li><a href="#">ì´ë‹¬ì˜ë„ì„œ</a></li> <!-- í‰ì &ë¦¬ë·°ìˆœ -->
+									<li><a href="#">ì´ë²¤íŠ¸</a></li>
 								</ul>
 							</div>
 							<div>
 								<ul>
-									<li><a href="#">Àå¹Ù±¸´Ï</a></li>
-									<li><a href="#">°í°´¼¾ÅÍ</a></li>
-									<li><a href="${root}/member/memberJoin.do">È¸¿ø°¡ÀÔ</a></li>
-									<li><a href="${root}/member/memberLogin.do">·Î±×ÀÎ</a></li>
+									<li><a href="#">ìž¥ë°”êµ¬ë‹ˆ</a></li>
+									<li><a href="#">ê³ ê°ì„¼í„°</a></li>
+									<li><a href="${root}/member/memberJoin.do">íšŒì›ê°€ìž…</a></li>
+									<li><a href="${root}/member/memberLogin.do">ë¡œê·¸ì¸</a></li>
 								</ul>
 							</div>
 						</div>
@@ -207,34 +209,34 @@
 					<div id="snb" class="snb">
 						<div class="snb_s">
 							<div style="margin-left: 30px;">
-								<span><a href="#">¼Ò¼³/½Ã/Èñ°î</a></span>
-								<span><a href="#">°æÁ¦°æ¿µ</a></span>
-								<span><a href="#">ÀÚ±â°è¹ß</a></span>
+								<span><a href="#">ì†Œì„¤/ì‹œ/í¬ê³¡</a></span>
+								<span><a href="#">ê²½ì œê²½ì˜</a></span>
+								<span><a href="#">ìžê¸°ê³„ë°œ</a></span>
 							</div>
 							<div>
-								<span><a href="#">ÀÎ¹°</a></span>
-								<span><a href="#">ÀÎ¹®</a></span>
-								<span><a href="#">±¹¾î/¿Ü±¹¾î/»çÀü</a></span>
+								<span><a href="#">ì¸ë¬¼</a></span>
+								<span><a href="#">ì¸ë¬¸</a></span>
+								<span><a href="#">êµ­ì–´/ì™¸êµ­ì–´/ì‚¬ì „</a></span>
 							</div>
 							<div>
-								<span><a href="#">¿ª»ç</a></span>
-								<span><a href="#">»çÈ¸/Á¤Ä¡</a></span>
-								<span><a href="#">°¡Á¤»ì¸²</a></span>
+								<span><a href="#">ì—­ì‚¬</a></span>
+								<span><a href="#">ì‚¬íšŒ/ì •ì¹˜</a></span>
+								<span><a href="#">ê°€ì •ì‚´ë¦¼</a></span>
 							</div>
 							<div>
-								<span><a href="#">°Ç°­/Ãë¹Ì</a></span>
-								<span><a href="#">¿©Çà</a></span>
-								<span><a href="#">Á¾±³</a></span>
+								<span><a href="#">ê±´ê°•/ì·¨ë¯¸</a></span>
+								<span><a href="#">ì—¬í–‰</a></span>
+								<span><a href="#">ì¢…êµ</a></span>
 							</div>
 							<div>
-								<span><a href="#">À¯¾Æ</a></span>
-								<span><a href="#">¾î¸°ÀÌ</a></span>
-								<span><a href="#">Ã»¼Ò³â</a></span>
+								<span><a href="#">ìœ ì•„</a></span>
+								<span><a href="#">ì–´ë¦°ì´</a></span>
+								<span><a href="#">ì²­ì†Œë…„</a></span>
 							</div>
 							<div>
-								<span><a href="#">ÀÚ¿¬°úÇÐ</a></span>
-								<span><a href="#">IT¸ð¹ÙÀÏ</a></span>
-								<span><a href="#">ÀâÁö</a></span>
+								<span><a href="#">ìžì—°ê³¼í•™</a></span>
+								<span><a href="#">ITëª¨ë°”ì¼</a></span>
+								<span><a href="#">ìž¡ì§€</a></span>
 							</div>
 						</div>
 					</div>
@@ -249,67 +251,67 @@
     <li><div style="width:950px; height:325px; margin:0px auto;"><img src="${root}/resources/img/index/slide3.png" style="width:950px; height:325px;"></div></li>
   </ul>
   <ul class="dot">
-    <li class="on">½½¶óÀÌµå ¹öÆ°1¹ø</li>
-    <li>½½¶óÀÌµå ¹öÆ°2¹ø</li>
-    <li>½½¶óÀÌµå ¹öÆ°3¹ø</li>
+    <li class="on">ìŠ¬ë¼ì´ë“œ ë²„íŠ¼1ë²ˆ</li>
+    <li>ìŠ¬ë¼ì´ë“œ ë²„íŠ¼2ë²ˆ</li>
+    <li>ìŠ¬ë¼ì´ë“œ ë²„íŠ¼3ë²ˆ</li>
   </ul>
   <div class="prev"><img src="${root}/resources/img/index/left.png" id="prev"/></div>
   <div class="next"><img src="${root}/resources/img/index/right.png" id="next"/></div>
 </div>
-			</div> <!-- ½½¶óÀÌµå -->
+			</div> <!-- ìŠ¬ë¼ì´ë“œ -->
 			<div class="best">
 			<div>
-				<span>ÀÌ´ÞÀÇ µµ¼­</span>
-				<span class="plus"><a href="#" style="color:#edac2b;">+´õº¸±â</a></span>
+				<span>ì´ë‹¬ì˜ ë„ì„œ</span>
+				<span class="plus"><a href="#" style="color:#edac2b;">+ë”ë³´ê¸°</a></span>
 			</div>
-			<div> <!-- ÀÌ´ÞÀÇ µµ¼­ ÀÌ¹ÌÁö -->
+			<div> <!-- ì´ë‹¬ì˜ ë„ì„œ ì´ë¯¸ì§€ -->
 				<div class="bestImg"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"></div>
 				<div class="bestImg"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"></div>
 				<div class="bestImg"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"></div>
 				<div class="bestImg"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"></div>
 				<div class="bestImg"style="margin-right: 0px;"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"></div>
 			</div>
-			<div> <!-- ÀÌ´ÞÀÇ µµ¼­ ³»¿ë -->
+			<div> <!-- ì´ë‹¬ì˜ ë„ì„œ ë‚´ìš© -->
 				<div class="bestContent">
-					<div class="bookName">´ëµµ½ÃÀÇ »ç¶û¹ý</div>  <!-- Ã¥Á¦¸ñ -->
-					<div class="bookWriter">¹Ú»ó¿µ</div>  <!-- ÀÛ°¡ -->
-					<div class="bookPrice">°¡°Ý 8,820¿ø</div>  <!-- °¡°Ý -->
+					<div class="bookName">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</div>  <!-- ì±…ì œëª© -->
+					<div class="bookWriter">ë°•ìƒì˜</div>  <!-- ìž‘ê°€ -->
+					<div class="bookPrice">ê°€ê²© 8,820ì›</div>  <!-- ê°€ê²© -->
 				</div>
 				
 				<div class="bestContent">
-					<div class="bookName">´ëµµ½ÃÀÇ »ç¶û¹ý</div>  <!-- Ã¥Á¦¸ñ -->
-					<div class="bookWriter">¹Ú»ó¿µ</div>  <!-- ÀÛ°¡ -->
-					<div class="bookPrice">°¡°Ý 8,820¿ø</div>  <!-- °¡°Ý -->
+					<div class="bookName">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</div>  <!-- ì±…ì œëª© -->
+					<div class="bookWriter">ë°•ìƒì˜</div>  <!-- ìž‘ê°€ -->
+					<div class="bookPrice">ê°€ê²© 8,820ì›</div>  <!-- ê°€ê²© -->
 				</div>
 				
 				<div class="bestContent">
-					<div class="bookName">´ëµµ½ÃÀÇ »ç¶û¹ý</div>  <!-- Ã¥Á¦¸ñ -->
-					<div class="bookWriter">¹Ú»ó¿µ</div>  <!-- ÀÛ°¡ -->
-					<div class="bookPrice">°¡°Ý 8,820¿ø</div>  <!-- °¡°Ý -->
+					<div class="bookName">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</div>  <!-- ì±…ì œëª© -->
+					<div class="bookWriter">ë°•ìƒì˜</div>  <!-- ìž‘ê°€ -->
+					<div class="bookPrice">ê°€ê²© 8,820ì›</div>  <!-- ê°€ê²© -->
 				</div>
 				
 				<div class="bestContent">
-					<div class="bookName">´ëµµ½ÃÀÇ »ç¶û¹ý</div>  <!-- Ã¥Á¦¸ñ -->
-					<div class="bookWriter">¹Ú»ó¿µ</div>  <!-- ÀÛ°¡ -->
-					<div class="bookPrice">°¡°Ý 8,820¿ø</div>  <!-- °¡°Ý -->
+					<div class="bookName">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</div>  <!-- ì±…ì œëª© -->
+					<div class="bookWriter">ë°•ìƒì˜</div>  <!-- ìž‘ê°€ -->
+					<div class="bookPrice">ê°€ê²© 8,820ì›</div>  <!-- ê°€ê²© -->
 				</div>
 				
 				<div class="bestContent" style="margin-right: 0px;">
-					<div class="bookName">´ëµµ½ÃÀÇ »ç¶û¹ý</div>  <!-- Ã¥Á¦¸ñ -->
-					<div class="bookWriter">¹Ú»ó¿µ</div>  <!-- ÀÛ°¡ -->
-					<div class="bookPrice">°¡°Ý 8,820¿ø</div>  <!-- °¡°Ý -->
+					<div class="bookName">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</div>  <!-- ì±…ì œëª© -->
+					<div class="bookWriter">ë°•ìƒì˜</div>  <!-- ìž‘ê°€ -->
+					<div class="bookPrice">ê°€ê²© 8,820ì›</div>  <!-- ê°€ê²© -->
 				</div>
 	
 			</div>
-			</div> <!-- º£½ºÆ®¼¿·¯ -->
+			</div> <!-- ë² ìŠ¤íŠ¸ì…€ëŸ¬ -->
 			<div class="new">
 				<div>
 					<div>
 						<div class="top">
-							<span>¼Ò¼³</span>
+							<span>ì†Œì„¤</span>
 							<span>
-								<input type="button" value="6À§-10À§" id="btn2" class="btn2"/>
-								<input type="button" value="1À§-5À§" id="btn3" class="btn3"/>
+								<input type="button" value="6ìœ„-10ìœ„" id="btn2" class="btn2"/>
+								<input type="button" value="1ìœ„-5ìœ„" id="btn3" class="btn3"/>
 							</span>
 						</div>
 						<div class="bottom">
@@ -318,10 +320,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							
@@ -330,10 +332,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							
@@ -342,10 +344,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							
@@ -354,10 +356,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							
@@ -366,10 +368,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							
@@ -377,10 +379,10 @@
 					</div>
 					<div>
 						<div class="top">
-							<span>µ¿È­</span>
+							<span>ë™í™”</span>
 							<span>
-								<input type="button" value="6À§-10À§" class="btn2" id="btn4"/>
-								<input type="button" value="1À§-5À§" class="btn3" id="btn5"/>
+								<input type="button" value="6ìœ„-10ìœ„" class="btn2" id="btn4"/>
+								<input type="button" value="1ìœ„-5ìœ„" class="btn3" id="btn5"/>
 							</span>
 						</div>
 						<div class="bottom">
@@ -389,10 +391,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -400,10 +402,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -411,10 +413,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -422,10 +424,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -433,20 +435,20 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 						</div>
 					</div>
 					<div style="margin-right: 0px;">
 						<div class="top">
-							<span>¼öÇè¼­</span>
+							<span>ìˆ˜í—˜ì„œ</span>
 							<span>
-								<input type="button" value="6À§-10À§" class="btn2" id="btn6"/>
-								<input type="button" value="1À§-5À§" class="btn3" id="btn7"/>
+								<input type="button" value="6ìœ„-10ìœ„" class="btn2" id="btn6"/>
+								<input type="button" value="1ìœ„-5ìœ„" class="btn3" id="btn7"/>
 							</span>
 						</div>
 						<div class="bottom">
@@ -455,10 +457,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -466,10 +468,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -477,10 +479,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -488,10 +490,10 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 							<div>
@@ -499,103 +501,103 @@
 								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">´ëµµ½ÃÀÇ »ç¶û¹ý</span>
-										</br><span>¹Ú»ó¿µ</span>
+										<span style="color:black; font-size: 14px;">ëŒ€ë„ì‹œì˜ ì‚¬ëž‘ë²•</span>
+										</br><span>ë°•ìƒì˜</span>
 									</div>
-									<div class="price">°¡°Ý 8,820¿ø</div>
+									<div class="price">ê°€ê²© 8,820ì›</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div> <!--½Å°£ µµ¼­ -->
+			</div> <!--ì‹ ê°„ ë„ì„œ -->
 			<div class="writer">
-				<div>½ºÅä¸® : ÀÐ¿ò</div>
+				<div>ìŠ¤í† ë¦¬ : ì½ì›€</div>
 				<div class="writerContent">
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_23.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_23.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">±×µéÀÌ ¿­±¤ÇÑ ÇÑ ÀåÀÇ ±×¸²</span>
-							<br/><span>ºñÁî´Ï½º ¸ðµ¨, ÇÑÀåÀ¸·Î ³¡³ÂÁö</span>
+							<span style="font-weight: bold;">ê·¸ë“¤ì´ ì—´ê´‘í•œ í•œ ìž¥ì˜ ê·¸ë¦¼</span>
+							<br/><span>ë¹„ì¦ˆë‹ˆìŠ¤ ëª¨ë¸, í•œìž¥ìœ¼ë¡œ ëëƒˆì§€</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_22.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_22.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">´Ùµé ¿ô´Âµ¥ ³ª¸¸ ¸ø ¿ô¾î</span>
-							<br/><span>»ï±¹Áö, ³ª¸¸ ¸ô¶ó?</span>
+							<span style="font-weight: bold;">ë‹¤ë“¤ ì›ƒëŠ”ë° ë‚˜ë§Œ ëª» ì›ƒì–´</span>
+							<br/><span>ì‚¼êµ­ì§€, ë‚˜ë§Œ ëª°ë¼?</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_25.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_25.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">¾Ë¶óµòÀº Áß±¹ÀÎÀÌ¾ú´Ù?</span>
-							<br/><span><¾Ë¶óµò>¿øÀÛÀÇ ¼û°ÜÁø ºñ¹Ð3</span>
+							<span style="font-weight: bold;">ì•Œë¼ë”˜ì€ ì¤‘êµ­ì¸ì´ì—ˆë‹¤?</span>
+							<br/><span><ì•Œë¼ë”˜>ì›ìž‘ì˜ ìˆ¨ê²¨ì§„ ë¹„ë°€3</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_24.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/ink/images/prom/2019/bookcast/07/bn_24.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">Å½½ºÅ¸ÀÇ ÀÌÈ¥¼Ò½Äº¸´Ù ³î¶ú´ø</span>
-							<br/><span>¿¹»ó ¿ÜÀÇ ¾ÇÇÊ</span>
+							<span style="font-weight: bold;">íƒìŠ¤íƒ€ì˜ ì´í˜¼ì†Œì‹ë³´ë‹¤ ë†€ëžë˜</span>
+							<br/><span>ì˜ˆìƒ ì™¸ì˜ ì•…í•„</span>
 						</div>
 					</div>
 				</div>
 				<div class="writerContent">
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/201907/CA6455467DAB4010A665C9974A8C867A.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/201907/CA6455467DAB4010A665C9974A8C867A.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">ÀÛ°¡¿ÍÀÇ ¸¸³²</span>
-							<br/><span>¡¸´ëµµ½Ã »ç¶û¹ý¡¹¹Ú»ó¿µ</span>
+							<span style="font-weight: bold;">ìž‘ê°€ì™€ì˜ ë§Œë‚¨</span>
+							<br/><span>ã€ŒëŒ€ë„ì‹œ ì‚¬ëž‘ë²•ã€ë°•ìƒì˜</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/201907/24E7EA32852B4011A0C4AE4CE2692882.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/201907/24E7EA32852B4011A0C4AE4CE2692882.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">ÀÛ°¡¿ÍÀÇ ¸¸³²</span>
-							<br/><span>¡¸¿ÀºêÁ¦ ¹®È­»ç¡¹ÀÌÁöÀº</span>
+							<span style="font-weight: bold;">ìž‘ê°€ì™€ì˜ ë§Œë‚¨</span>
+							<br/><span>ã€Œì˜¤ë¸Œì œ ë¬¸í™”ì‚¬ã€ì´ì§€ì€</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/thum/005/th_large_EA8CCCDEC17E45B0A682FC6F77500728.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/thum/005/th_large_EA8CCCDEC17E45B0A682FC6F77500728.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">ÇãÈñ Çã³²¿õÀÇ ³¶¸¸¼­Á¡</span>
-							<br/><span>´çÇÑ¸¸Å­ °±¾ÆÁØ´Ù</span>
+							<span style="font-weight: bold;">í—ˆí¬ í—ˆë‚¨ì›…ì˜ ë‚­ë§Œì„œì </span>
+							<br/><span>ë‹¹í•œë§Œí¼ ê°šì•„ì¤€ë‹¤</span>
 						</div>
 					</div>
 					<div class="circle">
 						<div>
-							<img alt="ÀÌ¹ÌÁöÁØºñÁß" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/thum/177/th_large_EDB7E01E70E849D8B68873943EBD2CD2.jpg">
+							<img alt="ì´ë¯¸ì§€ì¤€ë¹„ì¤‘" src="http://image.kyobobook.co.kr/new_ink/booknews/upload/thum/177/th_large_EDB7E01E70E849D8B68873943EBD2CD2.jpg">
 							<img src="http://image.kyobobook.co.kr/ink/images/welcome/mask_story.png"/>
 							</div>
 						<div>
-							<span style="font-weight: bold;">³¶¸¸¼­Á¡ ¼¼°è¹®ÇÐÀÐ±â</span>
-							<br/><span>´©°¡ ¹öÁö´Ï¾Æ ¿ïÇÁ¸¦ µÎ·Á¿ö?</span>
+							<span style="font-weight: bold;">ë‚­ë§Œì„œì  ì„¸ê³„ë¬¸í•™ì½ê¸°</span>
+							<br/><span>ëˆ„ê°€ ë²„ì§€ë‹ˆì•„ ìš¸í”„ë¥¼ ë‘ë ¤ì›Œ?</span>
 						</div>
 					</div>
 				</div>
-			</div> <!-- ÀÛ°¡ÀÇ¸» -->
+			</div> <!-- ìž‘ê°€ì˜ë§ -->
 		</section>
 	
 		<footer>
@@ -604,43 +606,43 @@
 					<div>
 						<ul>
 				          <li>COMPANY</li>
-				          <br/><li>ÇÑ´«¿¡ º¸±â</li>
-				          <li>ÀÐ¿òÀÇ »ç¸í</li>
-				          <li>ÀÐ¿ò ¼Ò°³</li>
+				          <br/><li>í•œëˆˆì— ë³´ê¸°</li>
+				          <li>ì½ì›€ì˜ ì‚¬ëª…</li>
+				          <li>ì½ì›€ ì†Œê°œ</li>
 				        </ul>
 					</div>
 					
 					<div>
 						 <ul>
 					       <li>CORPORATE SALES</li>
-					       <br/><li>´ë·® ±¸¸Å ¾È³»</li>
+					       <br/><li>ëŒ€ëŸ‰ êµ¬ë§¤ ì•ˆë‚´</li>
 					      </ul>
 					</div>
 					
 					<div>
 						 <ul>
 				          <li>PARTNERSHIP</li>
-				          <br/><li>½Å±Ô ÀÔÁ¡ Á¦ÀÇ</li>
-				          <li>Çù·Â °í°´»ç µî·Ï½ÅÃ»</li>
+				          <br/><li>ì‹ ê·œ ìž…ì  ì œì˜</li>
+				          <li>í˜‘ë ¥ ê³ ê°ì‚¬ ë“±ë¡ì‹ ì²­</li>
 				        </ul>
 					</div>
 					
 					<div>
 						 <ul>
 				          <li>ONLINE COMMUNITY</li>
-				         <br/><li>ÆäÀÌ½ººÏ</li>
-				          <li>Æ®À§ÅÍ</li>
-				          <li>À¯Æ©ºê</li>
-				          <li>ºí·Î±×</li>
-				          <li>ÀÎ½ºÅ¸±×·¥</li>
+				         <br/><li>íŽ˜ì´ìŠ¤ë¶</li>
+				          <li>íŠ¸ìœ„í„°</li>
+				          <li>ìœ íŠœë¸Œ</li>
+				          <li>ë¸”ë¡œê·¸</li>
+				          <li>ì¸ìŠ¤íƒ€ê·¸ëž¨</li>
 				        </ul>
 					</div>
 					
 					<div style="margin-right:0px;">
 						<ul>
 				   		  <li>RECRUIT</li>
-				          <br/><li>Ã¤¿ë ¼Ò°³</li>
-				          <li>Ã¤¿ë Áö¿øÇÏ±â</li>
+				          <br/><li>ì±„ìš© ì†Œê°œ</li>
+				          <li>ì±„ìš© ì§€ì›í•˜ê¸°</li>
 				        </ul>
 	     			 </div>
 	   
@@ -650,13 +652,13 @@
 			<div class="href">
 				<div>
 					<ul>
-						<li>È¸»ç ¼Ò°³</li>
-						<li>ÀÌ¿ë¾à°ü</li>
-						<li>°³ÀÎÁ¤º¸Ã³¸®¹æÄ§</li>
-						<li>°í°´¼¾ÅÍ</li>
-						<li>Çù·Â»ç¿©·¯ºÐ</li>
-						<li>Á¦ÈÞÁ¦¾È</li>
-						<li>Ã¤¿ëÁ¤º¸</li>
+						<li>íšŒì‚¬ ì†Œê°œ</li>
+						<li>ì´ìš©ì•½ê´€</li>
+						<li>ê°œì¸ì •ë³´ì²˜ë¦¬ë°©ì¹¨</li>
+						<li>ê³ ê°ì„¼í„°</li>
+						<li>í˜‘ë ¥ì‚¬ì—¬ëŸ¬ë¶„</li>
+						<li>ì œíœ´ì œì•ˆ</li>
+						<li>ì±„ìš©ì •ë³´</li>
 					</ul>
 				</div>
 			</div>
@@ -665,10 +667,10 @@
 				<div>
 					<div><img src="${root}/resources/img/index/logo2.png" style=" height:40px; width:150px; margin-top: 20px;"></div>
 					<div style="font-size: 12px;">
-						<div>(ÁÖ)ÀÐ¿ò ¼­¿ï½Ã ±¸·Î±¸ ±¸·Î3µ¿ ´ëÇ¥ÀÌ»ç : ¹Ú¹ÎÁÖ </div>
-						<div>»ç¾÷ÀÚµî·Ï¹øÈ£ : 102-11-56946</div>
-						<div>´ëÇ¥ÀüÈ­ : 1544-1900 (¹ß½ÅÀÚºÎ´ã)  ÆÑ½º : 0502-569-1235 (Áö¿ª¹øÈ£°øÅë)</div>
-						<div>¼­¿ïÆ¯º¯½Ã Åë½Å¸Å¾÷½Å°í¹øÈ£ : Á¦ 653È£  ¢º»ç¾÷ÀÚÁ¤º¸È®ÀÎ</div>
+						<div>(ì£¼)ì½ì›€ ì„œìš¸ì‹œ êµ¬ë¡œêµ¬ êµ¬ë¡œ3ë™ ëŒ€í‘œì´ì‚¬ : ë°•ë¯¼ì£¼ </div>
+						<div>ì‚¬ì—…ìžë“±ë¡ë²ˆí˜¸ : 102-11-56946</div>
+						<div>ëŒ€í‘œì „í™” : 1544-1900 (ë°œì‹ ìžë¶€ë‹´)  íŒ©ìŠ¤ : 0502-569-1235 (ì§€ì—­ë²ˆí˜¸ê³µí†µ)</div>
+						<div>ì„œìš¸íŠ¹ë³€ì‹œ í†µì‹ ë§¤ì—…ì‹ ê³ ë²ˆí˜¸ : ì œ 653í˜¸  â–¶ì‚¬ì—…ìžì •ë³´í™•ì¸</div>
 						<br/>
 						<div>COPYRIGHT(C) ILGUM BOOK CENTRE ALL RIGHTS RESERVED.</div>
 					</div>
@@ -676,9 +678,9 @@
 				<div>
 					<div></div>
 					<div style="font-size: 12px;">
-						<div>LG U+ ±¸¸Å¾ÈÀü¼­ºñ½º  ¢º¼­ºñ½º °¡ÀÔ È®ÀÎ</div>
-						<div>°í°´´ÔÀº ¾ÈÀü°Å·¡¸¦ À§ÇØ Çö±Ý µîÀ¸·Î °áÁ¦½Ã ÀúÈñ ¼îÇÎ¸ô¿¡¼­ °¡ÀÔÇÑ LGÀ¯ÇÃ·¯½ºÀÇ ±¸¸Å¾È</div>
-						<div>Àü¼­ºñ½º¸¦ ÀÌ¿ëÇÏ½Ç ¼ö ÀÖ½À´Ï´Ù.</div>
+						<div>LG U+ êµ¬ë§¤ì•ˆì „ì„œë¹„ìŠ¤  â–¶ì„œë¹„ìŠ¤ ê°€ìž… í™•ì¸</div>
+						<div>ê³ ê°ë‹˜ì€ ì•ˆì „ê±°ëž˜ë¥¼ ìœ„í•´ í˜„ê¸ˆ ë“±ìœ¼ë¡œ ê²°ì œì‹œ ì €í¬ ì‡¼í•‘ëª°ì—ì„œ ê°€ìž…í•œ LGìœ í”ŒëŸ¬ìŠ¤ì˜ êµ¬ë§¤ì•ˆ</div>
+						<div>ì „ì„œë¹„ìŠ¤ë¥¼ ì´ìš©í•˜ì‹¤ ìˆ˜ ìžˆìŠµë‹ˆë‹¤.</div>
 						<div><img src="http://image.kyobobook.co.kr/ink/images/common/mark_isms.png" style="margin-top: 10px;"></div>
 					</div>
 				</div>

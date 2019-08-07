@@ -1,0 +1,113 @@
+@charset "UTF-8";
+
+a{
+	text-decoration: none;
+	color: black;
+}
+
+#result {
+	margin: 40px 20px;
+	height: 40px;
+	border-bottom: 1px solid black;
+}
+
+#content1 {
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+#book1 {
+	width: 100px;
+	height: 150px;
+}
+
+#sub1 {
+	width: 150px;
+}
+
+#best {
+	border: 2px solid red;
+	color: red;
+	padding: 3px;
+	font-weight: bold;
+}
+
+#info {
+	list-style-type: none;
+	padding-left: 0px;
+	margin-top: 15px;
+}
+
+#info li {
+	float: left;
+	border-right: 1px solid black;
+	padding-right: 10px;
+	padding-left: 10px;
+	font-size: 0.8em;
+}
+
+#desc {
+	height: 50px;
+	overflow: hidden;
+	font-size: 0.8em;
+	margin: 7px 0px;
+}
+
+#oprice {
+	text-decoration: line-through;
+	font-size: 0.7em;
+	color: gray;
+	margin-right: 15px;
+}
+
+#nprice {
+	color: red;
+	margin-right: 15px;
+}
+
+#sale {
+	background-color: red;
+	color: white;
+	font-size: 0.9em;
+	padding: 1.5px;
+}
+
+#sub2 {
+	width: 65%;
+	margin: 5px 20px;
+}
+
+#sub3 {
+	width: 15%;
+}
+
+#sub3 ul {
+	list-style-type: none;
+}
+
+#num {
+	margin-left: 10px;
+	width: 35px;
+}
+
+input[type=button] {
+	width: 100px;
+	height: 40px;
+	margin-top: 15px;
+}
+
+#sub1-1, #sub1-2, #sub2, #sub3 {
+	float: left;
+}
+
+#sub1-1 {
+	margin-top: 70px;
+}
+
+#btn {
+	background-color: #CDCABD;
+}
+
+#buy {
+	background-color: #B3D06E;
+}

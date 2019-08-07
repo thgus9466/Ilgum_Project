@@ -44,7 +44,17 @@ public class BookController {
 			return mav;
 		}
 		
-		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/book/search_list.do", method = RequestMethod.GET)
+	public ModelAndView boardList(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		bookService.bookList(mav);
+
 		return mav;
 	}
 }
