@@ -34,11 +34,14 @@
 	           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 	     });
-	    $("input[name='infoplus']").change(function(){
-	    	if($("input:eq(0)").val() == 'true'){
-	    		
-	    	}
-	    });
+	    
+	    $(".infos_input").focus(function() {
+			$(this).css('background','#f2f2f2')
+		})
+		
+		$(".infos_input").focusout(function() {
+			$(this).css('background','#d9d9d9')
+		})
 	   
 	    /*$(function(){
 	    	if($('#disagree').checked){
