@@ -53,7 +53,7 @@
     <!-- Interceptor 설정 -->
     <interceptors>
         <interceptor>
-            <mapping path="/member/memberJoin.*"/> <!-- 로그인이 안되면 안되는 것들 -->
+            <mapping path="/mypage/*"/> <!-- 로그인이 안되면 안되는 것들 -->
             <beans:ref bean="authenticationInterceptor"/>
         </interceptor>
     </interceptors>
