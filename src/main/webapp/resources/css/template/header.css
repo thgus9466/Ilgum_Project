@@ -22,7 +22,8 @@
 		background-color: #fff;
 		top: 0px;
 		left: 0px;	
-		border-bottom: 2px solid #dfdfdf;	
+		border-bottom: 2px solid #dfdfdf;
+		z-index: 1;	
 	}	
 	.fixedtopbar{
 		max-width : 1200px;
@@ -115,4 +116,10 @@
 	.search_button{
 		width: 32px;
 		height: 32px;
+	}
+	
+	.title{
+		margin-left : 30px;
+		font-size: 20px;
+		font-weight: bold;
 	}

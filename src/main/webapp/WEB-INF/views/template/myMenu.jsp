@@ -8,6 +8,31 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/template/myMenu.css">
+<script type="text/javascript" src = "${root}/resources/jquery/jquery.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$(".menu1 a").mouseover(function() {
+			$(this).css('text-decoration','underline')
+		});
+		$(".menu1 a").mouseout(function() {
+			$(this).css('text-decoration','none')
+		});
+		
+		$(".menu2 a").mouseover(function() {
+			$(this).css('color','#179D24')
+		});
+		$(".menu2 a").mouseout(function() {
+			$(this).css('color','black')
+		});
+		
+		$(".menu3 a").mouseover(function() {
+			$(this).css('color','#179D24')
+		});
+		$(".menu3 a").mouseout(function() {
+			$(this).css('color','black')
+		});		
+	});
+</script>
 </head>
 <body>
 	<div class="myMenu">
@@ -15,16 +40,16 @@
 		
 		<div class="menu1">
 			<ul>
-				<li><span id="member_name">홍길동</span> 회원님</li>
+				<li><span id="member_name">홍길동 </span>회원님</li>
 				<li>등급 : <span>일반 회원</span></li>
-				<li>적립금 : <span id="member_point">0</span>원</li>
-				<li>교환권/쿠폰 : <span>0</span>장</li>
+				<li>적립금 : <a href ="#" >0원</a></li>
+				<li>교환권/쿠폰 : <a href ="#" >0장</a></li>
 			</ul>
 		</div>
 		
 		<div class="menu2">
 			<ul>
-				<li><a href="#">내 정보 수정</a></li>
+				<li><a href="${root}/mypage/update.do">내 정보 수정</a></li>
 				<li><a href="#">내 관심분야</a></li>
 				<li><a href="#">주문/배송 조회</a></li>
 				<li><a href="#">장바구니</a></li>
@@ -37,18 +62,18 @@
 		<div class="menu3">
 			<ul>
 				<li>쇼핑 도우미</li>
-				<li><a href="#">- 적립금 사용안내</a></li>
-				<li><a href="#"> - 주문/결제</a></li>
-				<li><a href="#">- 교환 및 환불</a></li>
-				<li><a href="#">- 주문/배송 조회</a></li>
+				<li>- <a href="#">적립금 사용안내</a></li>
+				<li>- <a href="#">주문/결제</a></li>
+				<li>- <a href="#">교환 및 환불</a></li>
+				<li>- <a href="#">주문/배송 조회</a></li>
 			</ul>
 			<br/>
 			<ul>
 				<li>1:1 고객상담</li>
-				<li><a href="#">- 주문 확인 및 배송</a></li>
-				<li><a href="#">- 환불 처리</a></li>
-				<li><a href="#">- 주문 취소</a></li>
-				<li><a href="#">- 매장 재고 문의</a></li>
+				<li>- <a href="${root}/member/deliver.do">주문 확인 및 배송</a></li>
+				<li>- <a href="#">환불 처리</a></li>
+				<li>- <a href="#">주문 취소</a></li>
+				<li>- <a href="#">매장 재고 문의</a></li>
 			</ul>
 		</div>
 		

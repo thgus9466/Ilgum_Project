@@ -1,0 +1,27 @@
+@charset "UTF-8";
+	.content{
+		border: 1px solid #cccccc;
+		float : left;
+		width : 900px;
+		margin: 110px 0px 100px 50px;
+	}
+	.info{
+		width: 700px;
+		height: 300px;
+		border: 1px solid black;
+		margin-bottom: 100px;
+	}
+	.info_detail{
+		height : 35px;
+		line-height : 35px;
+		border-bottom: 1px solid black;
+	}
+	
+	.subject{
+		margin: 0px 5px 0px 20px;
+	}
+	
+	.info_input{
+		height: 28px;
+    	font-size: 15px;
+	}
