@@ -207,7 +207,7 @@
 								</ul>
 							</div>
 							<div>
-								<ul>
+								<ul id="logout">
 									<li><a href="#">장바구니</a></li>
 									<li><a href="#">고객센터</a></li>
 									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
