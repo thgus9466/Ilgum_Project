@@ -39,6 +39,14 @@
 	    		
 	    	}
 	    });
+	    
+	    $(".infos_input").focus(function() {
+			$(this).css('background','#f2f2f2')
+		})
+		
+		$(".infos_input").focusout(function() {
+			$(this).css('background','#d9d9d9')
+		})
 	   
 	    /*$(function(){
 	    	if($('#disagree').checked){

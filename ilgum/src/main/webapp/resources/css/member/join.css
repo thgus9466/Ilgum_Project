@@ -9,6 +9,7 @@ p{
 .head {
 	text-align: center;
 	margin-bottom: 20px;
+	margin-top: 90px;
 }	
 .head p:first-child{
 	font-size: 50px;
@@ -80,13 +81,14 @@ select{
 .infos_input{
 	width: 250px;
 	height: 25px;
-	background: #f2f2f2;
+	background: #d9d9d9;;
+	padding-left: 5px;
 	
 }	
 .infos_button{
 	width: 100px;
-	height :25px;
-	line-height : 25px;
+	height :30px;
+	line-height : 28px;
 	background-color: #10488D;
 	color: #f2f2f2;		
 }
