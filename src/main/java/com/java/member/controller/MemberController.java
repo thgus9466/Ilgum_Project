@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -54,18 +55,31 @@ public class MemberController {
 	}
 	
 	@RequestMapping(value="/member/memberLogin.do", method=RequestMethod.GET)
-	public ModelAndView memberLogin(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView memberLogin(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		return new ModelAndView("member/login.tiles");
 	}
 	
 	@RequestMapping(value="/member/memberLoginOk.do", method = RequestMethod.POST)
-	public ModelAndView memberLoginOk(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView memberLoginOk(HttpServletRequest request, HttpServletResponse response
+			,HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("session",session);
+		
+		memberService.memberLoginOk(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/index.do", method=RequestMethod.GET)
+	public ModelAndView memberLogout(HttpServletRequest request, HttpServletResponse response) {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
 		
-		memberService.memberLoginOk(mav);
+		memberService.memberLogout(mav);
 		
 		return mav;
 	}

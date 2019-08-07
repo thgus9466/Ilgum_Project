@@ -14,6 +14,16 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/slide.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/section.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/footer.css"/>
+<script>
+	var login = ${login};
+	alert(login);
+	if(login != null){
+		$(function(){
+			$("#logout > li:nth-child(3)").replaceWith("<li><a href='#'>마이페이지</a></li>");
+			$("#logout > li:nth-child(4)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");
+		});
+	}
+</script>
 <script type="text/javascript">
 	/* show, hide, toggle : 나타남, 사라짐
 	   fadeIn, fadeOut, fadeToggle : 불투명도로 점점 감소, 나타남

@@ -47,4 +47,14 @@
 	<beans:bean id="tilesViewResolver" class="org.springframework.web.servlet.view.tiles2.TilesViewResolver">
 		<beans:property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
 	</beans:bean>
+	
+	<beans:bean id="authenticationInterceptor" class="com.java.member.interceptor.AuthenticationInterceptor">
+    </beans:bean>
+    <!-- Interceptor 설정 -->
+    <interceptors>
+        <interceptor>
+            <mapping path="/member/memberJoin.*"/> <!-- 로그인이 안되면 안되는 것들 -->
+            <beans:ref bean="authenticationInterceptor"/>
+        </interceptor>
+    </interceptors>
 </beans:beans>

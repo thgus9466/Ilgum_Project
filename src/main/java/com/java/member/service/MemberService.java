@@ -8,4 +8,6 @@ public interface MemberService {
 	public void memberJoinOk(ModelAndView mav);
 	
 	public void memberLoginOk(ModelAndView mav);
+	
+	public void memberLogout(ModelAndView mav);
 }
