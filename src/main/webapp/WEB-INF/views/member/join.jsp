@@ -42,6 +42,16 @@
 		$(".infos_input").focusout(function() {
 			$(this).css('background','#d9d9d9')
 		})
+		
+		$(".button input").mouseover(function() {
+			$(this).css('background-color','#10488D')
+			.css('color','white')
+		});
+		
+		$(".button input").mouseout(function() {
+			$(this).css('background-color','white')
+			.css('color','#10488D')
+		});
 	   
 	    /*$(function(){
 	    	if($('#disagree').checked){
