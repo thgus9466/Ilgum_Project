@@ -1,5 +1,7 @@
 package com.java.book.service;
 
-public interface BookService {
+import org.springframework.web.servlet.ModelAndView;
 
+public interface BookService {
+	public void bookDetail(ModelAndView mav);
 }
