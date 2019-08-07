@@ -21,7 +21,6 @@
 		$(".search_input").focusout(function() {
 			$(this).css('background-color','#e6e6e6')
 		});
-		
 	});
 </script>
 </head>
@@ -51,10 +50,10 @@
 			</div>
 			<div class="searchbar">
 				<div>
-					<form>
+					<form action="${root}/book/search_list.do" method="get">
 						<input class="search_input" type="text" placeholder="검색어를 입력하세요" name="book_name">
 						<div style="padding-top: 10px; padding-left: 10px;float : right;">
-							<input class="search_button" type="image" src="${root}/resources/img/header/search.png" alt="검색" onclick="header_search('${root}', '${book_name}')">
+							<input class="search_button" type="image" src="${root}/resources/img/header/search.png" alt="검색">
 						</div>
 					</form>
 				</div>
