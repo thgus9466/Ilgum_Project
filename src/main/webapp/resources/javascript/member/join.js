@@ -154,7 +154,7 @@ function idChk(root) {
 			var checkNumber = userid.search(/[0-9]/g);
 			var checkEnglish = userid.search(/[a-z]/ig);
 			
-			if (re.test(userid)) {
+			if (re.test(userid)) {				
 				if (data > 0) {
 					$('#idResult').css("color", "red");
 					$('#idResult').text("아이디가 존재합니다.");
@@ -174,7 +174,12 @@ function idChk(root) {
 					$('#idResult').css("color", "blue");
 					$('#idResult').text("사용가능한 아이디입니다.");
 				}
-			}else if(checkNumber < 0){
+			}
+			else if(userid.trim().length==0){
+				$('#idResult').css("color", "red");
+				$('#idResult').text("아이디를 입력하세요.");
+			}			
+			else if(checkNumber < 0){
 				$('#idResult').css("color", "red");
 				$('#idResult').text("숫자를 포함해야합니다.");
 				$('#idResult').focus();
@@ -184,9 +189,7 @@ function idChk(root) {
 				$('#idResult').css("color", "red");
 				$('#idResult').text("영문자를 포함해야합니다.");
 				$('#idResult').focus();
-			}
-			
-			
+			}			
 			else {
 				$('#idResult').css("color", "red");
 				$('#idResult').text("아이디는 공백없는 6~20자의 영문/숫자조합 입니다.");
@@ -225,6 +228,22 @@ function pwCheck2() {
 	} else {
 		$('#pwResult2').css("color", "red");
 		$('#pwResult2').text("비밀번호는 공백없는 10~15자의 영문/숫자조합 입니다.");
+	}
+}
+
+function namechk() {
+	var name = $("#name").val();
+	var checkNumber = name.search(/[0-9]/g);
+	
+	if (name.trim().length == 0) {
+		$('#nameresult').css("color", "red");
+		$('#nameresult').text("이름을 입력해주세요");
+	}else if (checkNumber == 0 ){
+		$('#nameresult').css("color", "red");
+		$('#nameresult').text("정확한 이름을 입력해주세요");
+	}else{
+		$('#nameresult').css("color", "blue");
+		$('#nameresult').text("");
 	}
 }
 

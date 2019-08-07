@@ -106,7 +106,8 @@
 					<span>이름</span>
 				</div>
 				<div class="infos_detail">
-					<input class = "infos_input" type="text" name="member_name"/>
+					<input class = "infos_input" type="text" name="member_name" id="name" oninput="namechk()"/>
+					<span style="font-size: 12px; display: block; height: 15px;" id="nameresult" ></span>
 				</div>
 			</div>
 			
