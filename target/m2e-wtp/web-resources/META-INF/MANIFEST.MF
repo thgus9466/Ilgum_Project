@@ -1,10 +1,5 @@
 Manifest-Version: 1.0
-<<<<<<< HEAD
 Built-By: kitri
 Build-Jdk: 1.8.0_201
-=======
-Built-By: KITRI
-Build-Jdk: 1.8.0_211
->>>>>>> f0b8073d42c0af3a57fe1c49a56889c184780f77
 Created-By: Maven Integration for Eclipse
 
