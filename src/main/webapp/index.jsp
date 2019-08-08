@@ -501,6 +501,10 @@
 				   		  <li>RECRUIT</li>
 				          <br/><li>채용 소개</li>
 				          <li>채용 지원하기</li>
+							<li><a href="${root}/admin/AdminBook.do">관리자임시페이지</a></li>
+							<c:if test='${member_level== "Admin"}'>
+							<li><a href="${root}/admin/AdminBook.do">관리자</a></li>
+							</c:if>
 				        </ul>
 	     			 </div>
 	   

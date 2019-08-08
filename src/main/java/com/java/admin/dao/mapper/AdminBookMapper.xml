@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper: 도서 -->
+<mapper namespace="dao.AdminBookMapper">
+   		<resultMap type="com.java.admin.dto.AdminBookDto" id="bookDto">
+		<result column="book_isbn" property="book_isbn"/>
+		<result column="book_name" property="book_name"/>
+		<result column="book_category" property="book_category"/>		
+		<result column="book_writer" property="book_writer"/>
+		<result column="book_publisher" property="book_publisher"/>
+		<result column="book_publish_date" property="book_publish_date"/>
+		<result column="book_cost" property="book_cost"/>
+		<result column="book_price" property="book_price"/>
+		<result column="book_index" property="book_index"/>
+		<result column="book_intro" property="book_intro"/>
+		<result column="book_img_url" property="book_img_url"/>
+		<result column="book_imgxl_url" property="book_imgxl_url"/>
+		<result column="book_star" property="book_star"/>
+		<result column="book_buy_accept" property="book_buy_accept"/>
+		<result column="book_amount" property="book_amount"/>
+		
+	</resultMap>
+	<!-- 도서 목록 불러오기 -->
+	<select id="bookList" resultMap="bookDto" parameterType="java.util.HashMap">
+		<![CDATA[
+	 	 		select * from 
+		 			(select rownum rnum, a.* from 
+	 	 				(select * from book order by book_isbn asc)a) 
+	 	 		where rnum>=#{startRow} and rnum <=#{endRow}
+ 	 	]]> 
+	</select>
+	
+	<select id="bookSearchList" resultMap="bookDto" parameterType="java.util.HashMap">
+
+	<if test='searchType=="book_name"'>
+		<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+		(select * from book order by book_name asc) a) b
+		where book_name like '%'||#{keyword}||'%')c
+		where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+	</if>
+	
+	<if test='searchType=="book_isbn"'>
+		<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+		(select * from book order by book_name asc) a) b
+		where book_isbn like '%'||#{keyword}||'%')c
+		where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+	</if>
+	
+	<if test='searchType=="book_writer"'>
+		<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+		(select * from book order by book_name asc) a) b
+		where book_writer like '%'||#{keyword}||'%')c
+		where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+	</if>
+	
+	<if test='searchType=="book_publisher"'>
+		<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+		(select * from book order by book_name asc) a) b
+		where book_publisher like '%'||#{keyword}||'%')c
+		where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+	</if>
+	
+	<if test='searchType==""'>
+		<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+		(select * from book order by book_name asc) a) b
+		where book_name like '%'||#{keyword}||'%')c
+		where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+	</if>
+
+	</select>
+		
+	<!--  도서추가 -->
+	<insert id="bookInsert" parameterType="com.java.admin.dto.AdminBookDto">
+		<![CDATA[
+		insert into book(book_isbn,
+						book_name,
+						book_writer,
+						book_category,
+						book_publisher,
+						book_publish_date,
+						book_cost,
+						book_price,
+						book_img_url,
+						book_imgxl_url,
+						book_intro,
+						book_index)
+					values(#{book_isbn},
+							#{book_name},
+							#{book_writer},
+							#{book_category},
+							#{book_publisher},
+							#{book_publish_date},
+							#{book_cost},
+							#{book_price},
+							#{book_img_url},
+							#{book_imgxl_url},
+							#{book_intro},
+							#{book_index})
+ 	 	]]> 
+	</insert>
+	<!-- 도서수량 -->
+	<select id="adminBookCount" resultType="int">
+		<![CDATA[select count(*) from book]]>
+	</select>
+	
+	
+	<!-- 도서수량 -->
+	<select id="bookSearchCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*)
+		from book
+		<if test='searchType=="book_name"'>
+			where book_name like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'book_isbn'">
+            where book_isbn like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'book_writer'">
+            where book_writer like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'book_publisher'">
+            where book_publisher like '%'||#{keyword}||'%'
+        </if>
+	</select>
+
+	<!-- 도서번호 중복값 검색 -->	
+	<select id="bookSelect" resultType="int">
+		<![CDATA[
+	 	select count(*) from book where book_isbn = #{book_isbn}
+ 	 	]]>
+	</select>
+	
+	<!-- 업데이트 할 데이터검색 -->
+	<select id="updatebookSelect" parameterType="String" resultType="com.java.admin.dto.AdminBookDto">
+		<![CDATA[
+		select * from book where book_isbn = #{book_isbn}
+ 	 	]]>
+	</select>
+	
+	<!--  도서정보 업데이트 -->
+	<update id="bookUpdate" parameterType="com.java.admin.dto.AdminBookDto">
+	<![CDATA[
+		update book set book_name=#{book_name},
+						book_writer=#{book_writer},
+						book_category=#{book_category},
+						book_publisher=#{book_publisher},
+						book_publish_date=#{book_publish_date},
+						book_cost=#{book_cost},
+				  		book_price=#{book_price},
+				  		book_img_url=#{book_img_url},
+				  		book_imgxl_url=#{book_imgxl_url},
+				  		book_intro=#{book_intro},
+				  		book_index=#{book_index}
+				  where book_isbn=#{book_isbn}
+	]]> 
+	</update>
+	
+	<!-- 도서상세페이지 불러오기-->
+	<select id="bookReadNumber" parameterType="String" resultMap="bookDto">
+		<![CDATA[
+			select * from book where book_isbn = #{book_isbn}
+		]]>
+	</select>
+	
+</mapper>

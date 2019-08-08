@@ -28,6 +28,7 @@
 			<list>
 				<value>classpath:com/java/member/dao/mapper/MemberMapper.xml</value>
 				<value>classpath:com/java/book/dao/mapper/BookMapper.xml</value>
+				<value>classpath:com/java/admin/dao/mapper/AdminBookMapper.xml</value>
 			</list>
 		</property>
 	</bean>

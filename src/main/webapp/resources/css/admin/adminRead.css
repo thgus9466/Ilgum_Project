@@ -1,0 +1,69 @@
+@charset "UTF-8";
+
+@import url("http://fonts.googleapis.com/earlyaccess/nanumgothic.css");
+
+html {
+	height: 100%;
+	width: 100%;
+}
+
+body {
+	width: 100%;
+	height: 100%;
+	margin: 0 auto;
+	font-family: "Nanum Gothic", arial, helvetica, sans-serif;
+	background-repeat: no-repeat;
+	background: linear-gradient(to bottom right, #EFEEE5, #EFEEE5);
+}
+
+.main {
+/* 	border: 1px solid #40404A;
+ */	
+	width: 600px;
+	margin: 0px auto;
+}
+.board_div{
+	margin:auto;
+}
+#borderMain{
+/* 	border: 1px solid #40404A; */
+	margin: 0px auto;
+	width: 598px;
+	height: 700px;
+}
+
+#border {
+	/* border: 1px solid #40404A;  */margin-bottom: 20px;
+}
+#border1{
+	/* border: 1px solid #40404A;  */margin-bottom: 10px;
+}
+#label{
+	width: 100px; text-align: center;
+	float: left; line-height: 30px; font-size: 1.5em;
+	margin-right: 10px; 
+}
+#label1{
+	line-height: 30px; font-size: 1.5em;
+	margin-left: 250px; 
+}
+#book_textFront{
+	width: 150px;
+	float: left; 
+	margin-right: 10px;
+}
+#book_textback{
+	width: 200px;
+}
+
+#message1{
+	margin: 0px auto;
+	width: 550px;
+	height: 120px;
+}
+
+#message2{
+	margin: 0px;
+	width: 550px;
+	height: 150px;
+}
