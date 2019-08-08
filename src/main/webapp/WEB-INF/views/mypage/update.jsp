@@ -70,9 +70,9 @@
 	<div class="content">
 		<div class="head">
 			<p>읽움 회원 수정하기</p>
-			<p>현재 회원 수정 화면 입니다.</p>		
+			<p>현재 회원 수정 화면 입니다. 탈퇴를 원하시면 맨 밑 버튼이 있습니다.</p>		
 		</div>
-		<form name="memberForm" action="${root}/member/memberJoinOk.do" method="get" onsubmit="return registerForm(this)">
+		<form name="memberForm" action="${root}/mypage/updateOk.do" method="post" onsubmit="return registerForm(this)">
 		<div class="vital_info">
 			<div class="header">
 				<span>기본 정보 수정</span>
@@ -145,6 +145,9 @@
 							<option>nate.com</option>
 							<option>yahoo.com</option>
 						</select>
+					</div>
+					<div style="float: left;">
+						<input class = "infos_button" type="button" value="이메일 인증">
 					</div>	
 				</div>				
 			</div>

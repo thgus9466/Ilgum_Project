@@ -22,11 +22,11 @@
 			<div class = "info_detail" style="text-align: center;height: 45px; line-height: 45px;">
 				<span>
 					<span class = "subject">이름</span>
-					<input class = "info_input" type="text" value = "홍길동" disabled>
+					<input class = "info_input" type="text" value = "${memberDto.member_name}" disabled>
 				</span>
 				<span>
 					<span class = "subject">이메일</span>
-					<input class = "info_input" type="text" value = "jds9285@naver.com" disabled>
+					<input class = "info_input" type="text" value = "${memberDto.member_email}" disabled>
 				</span>
 			</div>
 			
@@ -36,7 +36,7 @@
 				</div>
 				<div>
 					<span style="margin-left: 30px;border: 1px solid #cccccc;display: block;height: 40px;
-    line-height: 40px;width: 500px;padding-left: 10px;">서울특별시 장문로6길 76 103동 1303호(용산푸르지오파크타운)</span>					
+    line-height: 40px;width: 500px;padding-left: 10px;">${memberDto.member_address2}</span>					
 				</div>
 			</div>
 		</div>

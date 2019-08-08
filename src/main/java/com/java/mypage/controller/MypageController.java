@@ -17,8 +17,12 @@ public class MypageController {
 	private MypageService mypageService;
 	
 	@RequestMapping(value="/mypage/main.do", method = RequestMethod.GET)
-	public ModelAndView mypage(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("mypage/main.tiles");
+	public ModelAndView readMypage(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		mypageService.readMypage(mav);
+		return mav;
 	}
 	
 	@RequestMapping(value="/mypage/update.do", method = RequestMethod.GET)
