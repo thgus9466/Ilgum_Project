@@ -40,9 +40,9 @@
 		
 		<div class="menu1">
 			<ul>
-				<li><span id="member_name">홍길동 </span>회원님</li>
-				<li>등급 : <span>일반 회원</span></li>
-				<li>적립금 : <a href ="#" >0원</a></li>
+				<li><span id="member_name">${memberDto.member_name} </span>회원님</li>
+				<li>등급 : <span>${memberDto.member_level}</span></li>
+				<li>적립금 : <a href ="#" >${memberDto.member_point}원</a></li>
 				<li>교환권/쿠폰 : <a href ="#" >0장</a></li>
 			</ul>
 		</div>
