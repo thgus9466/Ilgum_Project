@@ -57,19 +57,11 @@
 							</div>
 							<div>
 								<ul>
-									<c:if test="${count!=1}">
 										<li><a href="#">장바구니</a></li>
 										<li><a href="#">고객센터</a></li>
 										<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 										<li><a href="${root}/member/memberLogin.do">로그인</a></li>
-									</c:if>
 									
-									<c:if test="${count==1}">
-										<li><a href="#">장바구니</a></li>
-										<li><a href="#">고객센터</a></li>
-										<li><a href="${root}/member/memberJoin.do">마이페이지</a></li>
-										<li><a href="${root}/member/memberLogin.do">로그아웃</a></li>
-									</c:if>
 								</ul>
 							</div>
 						</div>

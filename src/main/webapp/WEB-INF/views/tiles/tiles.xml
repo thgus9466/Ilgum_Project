@@ -33,6 +33,10 @@
 		<put-attribute name="content" value="/WEB-INF/views/{1}/{2}.jsp"/>
 	</definition>
 	
+	<definition name="/*.empty" extends="empty">
+		<put-attribute name="content" value="/WEB-INF/views/{1}.jsp"/>
+	</definition>
+	
 	<definition name="*.main" extends="empty">
 		<put-attribute name="content" value="/{1}.jsp"/>
 	</definition>
