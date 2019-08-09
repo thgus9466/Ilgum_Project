@@ -18,7 +18,7 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 		 Object obj = request.getSession().getAttribute("login");
 		 
 		 if(obj == null) {
-		 		response.sendRedirect("memberLogin.do");
+			 response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");
 		 		return false;
 		 	}
 				return true;
