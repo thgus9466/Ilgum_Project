@@ -34,6 +34,14 @@
 			.css('color','red')
 		});
 		
+		$(".infos_input").focus(function() {
+			$(this).css('background-color','#f2f2f2')
+		});
+		
+		$(".infos_input").focusout(function() {
+			$(this).css('background-color','#e6e6e6')
+		});
+		
 		
 // 	    $("#birthdaypicker").datepicker({				  
 // 	           showOn: "both", // 버튼과 텍스트 필드 모두 캘린더를 보여준다.
@@ -67,7 +75,7 @@
 </head>
 <body>
 	<jsp:include page="../template/myMenu.jsp"/>
-	<div class="content">
+	<div class="content">	
 		<div class="head">
 			<p>읽움 회원 수정하기</p>
 			<p>현재 회원 수정 화면 입니다. 탈퇴를 원하시면 맨 밑 버튼이 있습니다.</p>		
@@ -136,7 +144,7 @@
 						<span style="padding-left:17px;">이메일 주소</span>
 					</div>
 					<div class="infos_detail">
-						<input style="float: left;" class = "infos_input" type="text" name="member_email1"/>
+						<input style="float: left;width: 150px;" class = "infos_input" type="text" name="member_email1"/>
 						<span style="float: left;">@</span>
 						<select style="width:100px;" name="member_email2">
 							<option>naver.com</option>
@@ -192,10 +200,10 @@
 							<option value="019">019</option>
 						</select>
 						<div style="float:left;">
-							<input style="width: 80px;height: 21px;" type="text" name="phone1_2"/>
+							<input class = "infos_input" style="width: 80px;height: 21px;" type="text" name="phone1_2"/>
 						</div>
-						<div style="float:left;">
-							<input style="width: 80px; height: 21px;" type="text" name="phone1_3"/>
+						<div style="float:left;" class = "info_input">
+							<input class = "infos_input" style="width: 80px; height: 21px;" type="text" name="phone1_3"/>
 						</div>
 					</div>
 					
