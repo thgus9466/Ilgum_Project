@@ -1,4 +1,10 @@
 @charset "UTF-8";
+.content{
+		border: 1px solid #cccccc;
+		float : left;
+		width : 900px;
+		margin: 110px 0px 100px 50px;
+	}
 span{
 	padding-left: 5px;
 }
@@ -7,10 +13,16 @@ p{
 	margin: 10px 0px;
 }
 .head {
-	text-align: center;
+	text-align : center;
 	margin-bottom: 20px;
-	margin-top: 90px;
-}	
+}
+.head p{
+	width: 
+	
+}
+
+
+	
 .head p:first-child{
 	font-size: 50px;
 	font-weight: bold;
@@ -81,7 +93,7 @@ select{
 .infos_input{
 	width: 250px;
 	height: 25px;
-	background: #d9d9d9;;
+	background: #e6e6e6;;
 	padding-left: 5px;
 	
 }	
