@@ -82,7 +82,7 @@ public class MemberServiceImp implements MemberService {
 		if(member_id != null) {
 			session.setAttribute("login", member_id);
 			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login"));
-			mav.setViewName("index.main");
+			mav.setViewName("/index.empty");
 		}else {
 			mav.setViewName("member/login");
 		}
@@ -102,7 +102,7 @@ public class MemberServiceImp implements MemberService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
 		
-		mav.setViewName("index.main");
+		mav.setViewName("/index.empty");
 	}
 		
 }
