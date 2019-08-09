@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.HomeMapper">
+	<select id="bookCount" resultType="int">
+		select count(*) from book
+	</select>
+	
+	<select id="monthBook" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+			select * from (select * from book) where rownum <= 5
+		]]>
+	</select>
+	
+	<select id="novelCount" resultType="int">
+		select count(*) from book where book_category like <![CDATA['%${'소설'}%']]>
+	</select>
+	
+	<select id="novelList" resultType="com.java.book.dto.BookDto">
+		select * from (select * from book) where book_category like <![CDATA['%${'소설'}%' and rownum <= 5]]>
+	</select>
+	
+	<select id="economyCount" resultType="int">
+		select count(*) from book where book_category like <![CDATA['%${'경제'}%']]>
+	</select>
+	
+	<select id="economyList" resultType="com.java.book.dto.BookDto">
+		select * from (select * from book) where book_category like <![CDATA['%${'경제'}%' and rownum <= 5]]>
+	</select>
+</mapper>
