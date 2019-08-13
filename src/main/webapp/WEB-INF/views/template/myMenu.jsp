@@ -53,7 +53,7 @@
 				<li><a href="#">내 관심분야</a></li>
 				<li><a href="#">주문/배송 조회</a></li>
 				<li><a href="#">장바구니</a></li>
-				<li><a href="#">1:1 상담내역</a></li>
+				<li><a href="${root}/mypage/question.do">1:1 상담내역</a></li>
 			</ul>
 		</div>
 		
