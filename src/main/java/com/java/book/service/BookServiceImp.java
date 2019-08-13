@@ -1,10 +1,12 @@
 package com.java.book.service;
 
+import java.text.DecimalFormat;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -14,6 +16,7 @@ import com.java.aop.IlgumAspect;
 import com.java.book.dao.BookDao;
 import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
+import com.java.member.dto.MemberDto;
 
 @Component
 public class BookServiceImp implements BookService {
@@ -32,6 +35,34 @@ public class BookServiceImp implements BookService {
 		
 		mav.addObject("bookDto", bookDto);
 		mav.setViewName("/book/bookDetail.tiles");
+	}
+	
+	@Override
+	public void bookPay(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session = (HttpSession) map.get("session");
+		MemberDto memberDto = (MemberDto) map.get("memberDto");
+		
+		String member_id = (String) session.getAttribute("login");
+		String book_isbn = request.getParameter("book_isbn");
+		List<BookDto> payList = bookDao.payList(book_isbn);
+		
+		if (member_id != null) {
+			memberDto = bookDao.payMember(member_id);
+			int bookPrice = payList.get(0).getBook_price();
+			double bookPoint = (int) bookPrice*0.05;
+			String bookPointInt = format(bookPoint);
+			
+			mav.addObject("book_point", bookPointInt);
+			mav.addObject("payList", payList);
+			mav.addObject("memberDto", memberDto);
+			mav.setViewName("book/bookPay.tiles");
+		} else {
+			mav.addObject("book_isbn", book_isbn);
+			mav.setViewName("order/orderLogin.tiles");
+		}
+		
 	}
 
 	@Override
@@ -144,6 +175,12 @@ public class BookServiceImp implements BookService {
 		mav.addObject("count", bookDto.size());
 		mav.setViewName("book/newBook.tiles");
 		
+	}
+	
+	public String format(double number) {
+		DecimalFormat df = new DecimalFormat();
+		
+		return df.format(number);
 	}
 
 }

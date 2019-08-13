@@ -19,30 +19,49 @@
 		]]>
 	</select>
 	
+	<select id="bookPay" parameterType="String" resultType="com.java.book.dto.BookDto">
+		select * from book where book_isbn = #{book_isbn}
+	</select>
+	
+	<select id="payMember" parameterType="String" resultType="com.java.member.dto.MemberDto">
+		select * from member where member_id = #{member_id}
+	</select>
+	
 	<select id="bestSeller" resultType="com.java.book.dto.BestSellerDto">
 		select * from bestseller
 	</select>
 	
 	<select id="bookFirstList" resultType="com.java.book.dto.BookDto">
-	 	select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url
+	 	<![CDATA[
+		select rownum num, data.*
+		from
+	 	(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url
 	 	from book 
-	 	where book_isbn = 9788970873268 or book_isbn = 9788965135586 or book_isbn = 9791188874385
+	 	where book_isbn = 9788970873268 or book_isbn = 9788965135586 or book_isbn = 9791188874385)data
+	 	]]>
 	</select>
 	
 	<select id="bookLastList" resultType="com.java.book.dto.BookDto">
-		select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro
+		<![CDATA[
+		select rownum num, data.*
+		from
+		(select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro
 	 	from book 
 	 	where book_amount >= 110
-	 	order by book_amount DESC
+	 	order by book_amount DESC)data
+	 	]]>
 	</select>
 	
 	<select id="monthBook" resultType="com.java.book.dto.BookDto">
 		<![CDATA[
-		select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price
+		select rownum num, data.*
+		from
+		(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price
 		, book_imgxl_url, book_intro
 	 	from book 
 	 	WHERE book_publish_date >= TO_DATE('20190701','YYYYMMDD')
-   		AND  book_publish_date <  TO_DATE('20190731','YYYYMMDD') and ROWNUM <= 10
+   		AND  book_publish_date <  TO_DATE('20190731','YYYYMMDD'))data
+   		where rownum <= 10
    		]]>
 	</select>
 	

@@ -4,11 +4,16 @@ import java.util.List;
 
 import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
+import com.java.member.dto.MemberDto;
 
 public interface BookDao {
 	public BookDto bookDetail(String book_isbn);
 	
 	public int bookCount(String book_name);
+	
+	public List<BookDto> payList(String book_isbn);
+	
+	public MemberDto payMember(String member_id);
 
 	public List<BookDto> bookList(String book_name, int startRow, int endRow);
 	

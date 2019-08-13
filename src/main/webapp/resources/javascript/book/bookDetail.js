@@ -6,8 +6,12 @@ function goBookDetail(root, book_isbn) {
 	location.href=root+"/book/bookDetail.do?book_isbn="+book_isbn;
 }
 
-function bookPay(root, book_isbn) {
-	location.href=root+"/book/bookPay.do?book_isbn="+book_isbn;
+function bookPay(root, book_isbn, getSessionId) {
+	if (getSessionId != null) {
+		location.href=root+"/book/bookPay.do?book_isbn="+book_isbn;
+	} else {
+		location.href=root+"/order/orderLogin.do?book_isbn="+book_isbn;
+	}
 }
 
 function header_search(root, book_name){
