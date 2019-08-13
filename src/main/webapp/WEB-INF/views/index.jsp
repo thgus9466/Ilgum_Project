@@ -49,9 +49,9 @@
 								<ul>
 									<li  id="gnb" style="width:50px; margin-left:0px;"><a href="#"><img src="${root}/resources/img/index/dropdown.png"/></a></li>
 									<li><a href="#">도서</a></li>
-									<li><a href="#">베스트셀러</a></li> <!-- 구매순  -->
-									<li><a href="#">신간도서</a></li> <!-- 날짜순 -->
-									<li><a href="#">이달의도서</a></li> <!-- 평점&리뷰순 -->
+									<li><a href="${root}/book/bestSeller.do">베스트셀러</a></li> <!-- 구매순  -->
+									<li><a href="${root}/book/newBook.do">신간도서</a></li> <!-- 날짜순 -->
+									<li><a href="${root}/book/monthBook.do">이달의도서</a></li> <!-- 평점&리뷰순 -->
 									<li><a href="#">이벤트</a></li>
 								</ul>
 							</div>
