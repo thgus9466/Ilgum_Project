@@ -30,7 +30,6 @@ $(function(){
 });
 
 function registerForm(obj) {
-
 	if (obj.member_id.value == "") {
 		alert("아이디는 필수입력사항입니다.");
 		obj.member_id.focus();
