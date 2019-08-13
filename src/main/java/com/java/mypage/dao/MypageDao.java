@@ -7,7 +7,7 @@ import com.java.order.dto.OrderDto;
 import com.java.mypage.dto.QuestionDto;
 
 
-public interface MyPageDao {
+public interface MypageDao {
 
 	public MemberDto readMypage(String id);
 	public int update(MemberDto memberDto);

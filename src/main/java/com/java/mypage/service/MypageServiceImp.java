@@ -17,7 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.aop.IlgumAspect;
 import com.java.member.dto.MemberDto;
 
-import com.java.mypage.dao.MyPageDao;
+import com.java.mypage.dao.MypageDao;
 import com.java.order.dto.OrderDto;
 import com.java.mypage.dto.QuestionDto;
 
@@ -25,7 +25,7 @@ import com.java.mypage.dto.QuestionDto;
 @Component
 public class MypageServiceImp implements MypageService {
 	@Autowired
-	private MyPageDao mypageDao;
+	private MypageDao mypageDao;
 
 	@Override
 	public void readMypage(ModelAndView mav) {

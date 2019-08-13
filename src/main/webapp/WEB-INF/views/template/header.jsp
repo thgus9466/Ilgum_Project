@@ -28,7 +28,7 @@
 	<div class = "fixedtop">
 		<div class="fixedtopbar"> 
 			<div id="logo">
-				<a href="${root}/index.jsp" >
+				<a href="${root}/index" >
 					<img alt="읽움" src="${root}/resources/img/header/logo.png">
 				</a>
 			</div>

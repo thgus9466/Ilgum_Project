@@ -14,7 +14,7 @@ import com.java.order.dto.OrderDto;
 import com.java.mypage.dto.QuestionDto;
 
 @Component
-public class MyPageDaoImp implements MyPageDao {
+public class MyPageDaoImp implements MypageDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
 
@@ -40,12 +40,12 @@ public class MyPageDaoImp implements MyPageDao {
 
 	@Override
 	public int update(MemberDto memberDto) {
-		return sqlSessionTemplate.update("dao.MyPageMapper.update",memberDto);
+		return sqlSessionTemplate.update("dao.MypageMapper.update",memberDto);
 	}
 
 	@Override
 	public List<OrderDto> DeliverList(String member_id) {
-		return sqlSessionTemplate.selectList("dao.MyPageMapper.readDeliver",member_id);
+		return sqlSessionTemplate.selectList("dao.MypageMapper.deliverList",member_id);
 	}
 	
 	public List<QuestionDto> qList(String member_id, int startRow, int endRow) {
