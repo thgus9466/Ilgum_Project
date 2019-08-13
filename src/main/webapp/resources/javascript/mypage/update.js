@@ -28,14 +28,13 @@ $(function(){
 			$("input[name=member_interest]:checkbox").prop("disabled",false);
 	});
 	$("select[name=phone2_1]").click(function(){
-		if($(this).val()!= ""){
+		if($(this).val() != ""){
 			phone2Check($(this).val());			
 		}
 		else{
 			$("input[name=phone2_2").val(null);
 			$("input[name=phone2_3").val(null);
-		}
-		
+		}		
 	});
 });
 
@@ -72,7 +71,6 @@ function phone2Check(phone){
 }
 
 function registerForm(obj) {
-
 	if (obj.member_id.value == "") {
 		alert("아이디는 필수입력사항입니다.");
 		obj.member_id.focus();

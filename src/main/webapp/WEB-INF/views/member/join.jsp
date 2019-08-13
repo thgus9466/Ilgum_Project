@@ -34,19 +34,22 @@
 	           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 	     });
-	    $("input[name='infoplus']").change(function(){
-	    	if($("input:eq(0)").val() == 'true'){
-	    		
-	    	}
-	    });
-	   
-	    /*$(function(){
-	    	if($('#disagree').checked){
-				alert("체크");
-	    		$('#member_job').attr('disabled', true);
-	    		$('input[name="member_interest"]').attr('disabled', true);
-	    	}
-	    })*/;
+	    $(".button input").mouseover(function() {
+			$(this).css('background-color','#10488D')
+			.css('color','white')
+		});
+		
+		$(".button input").mouseout(function() {
+			$(this).css('background-color','white')
+			.css('color','#10488D')
+		});
+		$(".infos_input, #birthdaypicker").focus(function() {
+			$(this).css('background-color','#f2f2f2')
+		});
+		
+		$(".infos_input, #birthdaypicker").focusout(function() {
+			$(this).css('background-color','#e6e6e6')
+		});
 	});
 </script>
 </head>
@@ -55,7 +58,7 @@
 		<p><img style="vertical-align: middle;" src = "${root}/resources/img/index/logo2.png">읽움 회원가입</p>	
 		<p>읽움에 오신것을 환영합니다.</p>		
 	</div>
-	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="post">
+	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="post" onsubmit="return registerForm(this)">
 	<div class="vital_info">
 		<div class="header">
 			<span>필수 정보 입력</span>
@@ -124,7 +127,7 @@
 					<span>생년월일</span>
 				</div>
 				<div class="infos_detail">
-					<input id="birthdaypicker" value="" type="text" name="member_birth">
+					<input id="birthdaypicker" value="" type="text" name="member_birth" readonly="readonly">
 				</div>				
 			</div>
 			
@@ -203,7 +206,7 @@
 				</div>
 				<div>
 					<select name="phone2_1">
-						<option value="" selected disabled>선택</option>
+						<option value>선택안함</option>
 						<option value="02">02</option>
 						<option value="031">031</option>
 						<option value="032">032</option>
