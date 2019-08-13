@@ -5,6 +5,10 @@ a{
 	color: black;
 }
 
+.container{
+	border:0px;
+}
+
 #result {
 	margin: 40px 20px;
 	height: 40px;
