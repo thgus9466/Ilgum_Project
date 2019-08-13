@@ -96,7 +96,30 @@
 			</div>
 
 			<div class="book_reply">
-				<h3>도서 리뷰</h3>
+				<div class="review">
+				<form action="">
+					<div class="reviewTop">
+					<span style="font-size:15px; margin-left: 30px;">아이디 : </span>
+					<span><input type="text" value="${login}" style="text-align:center; width:150px; height:20px; font-size:15px;"></span>
+					<span style="margin-left: 20px;">
+					<label><input type="radio" name="a"/>★</label>
+					<label><input type="radio" name="b"/>★★</label>
+					<label><input type="radio" name="c"/>★★★</label>
+					<label><input type="radio" name="d"/>★★★★</label>
+					<label><input type="radio" name="e"/>★★★★★★</label>
+					</span>
+					</div>
+					<div class="reviewBottom">
+					<textarea style="font-size:15px; margin-left: 30px; width:90%; height:95%;"></textarea>
+					</div>	
+					<div class="reviewButton">
+						<span><input type="reset" value="취소" style=" float: right; margin-right:20px;"/></span>
+						<span><input type="submit" value="확인" style=" float: right; margin-right:30px;"/></span>
+					</div>	
+				</form>
+				</div>
+				<div>
+				</div>
 			</div>
 		</div>
 
