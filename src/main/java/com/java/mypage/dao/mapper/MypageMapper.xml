@@ -2,8 +2,45 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="dao.MyPageMapper">
+<mapper namespace="dao.MypageMapper">
 	<select id = "readMypage" parameterType="String" resultType="com.java.member.dto.MemberDto">
 		select * from member where member_id = #{id}
 	</select>
+	
+	<select id="boardGroupNumberMax" resultType="int">
+		select nvl(max(group_number),0) from qna
+	</select>
+	
+	<insert id="boardInsert" parameterType="com.java.mypage.dto.QuestionDto">
+		insert into qna
+		values(seq_q_number.nextval, #{member_id}, #{q_title}, #{q_content}, #{q_theme}, #{q_state}, #{q_date},
+				#{group_number}, #{sequence_number}, #{sequence_level})
+	</insert>
+	
+	<select id="qCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from qna where member_id = #{member_id}]]>
+	</select>
+	
+	<select id="qList" parameterType="java.util.HashMap" resultType="com.java.mypage.dto.QuestionDto">
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna) a) b
+				where member_id = #{member_id}) c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="qRead" parameterType="int" resultType="com.java.mypage.dto.QuestionDto">
+		<![CDATA[
+			select * from qna where q_number = #{q_number}
+		]]>
+	</select>
+	
+	<select id="getName" parameterType="String" resultType="String">
+		select member_name from member where member_id = #{member_id}
+	</select>
+	
+	<delete id="qDelete" parameterType="int">
+		delete from qna where q_number = #{q_number}
+	</delete>
 </mapper>

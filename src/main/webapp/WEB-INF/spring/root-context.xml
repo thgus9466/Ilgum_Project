@@ -29,7 +29,7 @@
 				<value>classpath:com/java/member/dao/mapper/MemberMapper.xml</value>
 				<value>classpath:com/java/book/dao/mapper/BookMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/AdminBookMapper.xml</value>
-				<value>classpath:com/java/mypage/dao/mapper/MyPageMapper.xml</value>
+				<value>classpath:com/java/mypage/dao/mapper/MypageMapper.xml</value>
 				<value>classpath:com/java/ilgum/dao/mapper/HomeMapper.xml</value>
 			</list>
 		</property>
