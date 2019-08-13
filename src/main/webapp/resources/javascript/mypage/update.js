@@ -17,7 +17,7 @@ function disagree() {
 	});
 	$('#interest').prop('checked', true);
 	$('#job').prop("disabled", false);
-	$('#member_job option:eq(0)').prop("selected", true);
+	$('#member_job option:eq(0)'). prop("selected", true);
 }
 
 $(function(){
@@ -27,7 +27,49 @@ $(function(){
 		else
 			$("input[name=member_interest]:checkbox").prop("disabled",false);
 	});
+	$("select[name=phone2_1]").click(function(){
+		if($(this).val()!= ""){
+			phone2Check($(this).val());			
+		}
+		else{
+			$("input[name=phone2_2").val(null);
+			$("input[name=phone2_3").val(null);
+		}
+		
+	});
 });
+
+function phone2Check(phone){
+	var re = /^[0-9]{4}$/;
+	var re2 = /^[0-9]{3}$/;
+	if(phone == "02"){
+		$("input[name=phone2_2], input[name=phone2_3] ").change(function() {			
+			if(re.test($('input[name=phone2_2').val()) && re.test($('input[name=phone2_3').val())){
+				$("#phoneResult").css('display','block');
+				$("#phoneResult").css('color','blue');
+				$("#phoneResult").text('전화번호가 확인되었습니다.');
+			}
+			else{
+				$("#phoneResult").css('display','block');
+				$("#phoneResult").css('color','red');
+				$("#phoneResult").text('올바른 전화번호를 입력하세요');
+			}
+		});
+	}else{
+		$("input[name=phone2_2], input[name=phone2_3] ").change(function() {			
+			if(re2.test($('input[name=phone2_2').val()) && re.test($('input[name=phone2_3').val())){
+				$("#phoneResult").css('display','block');
+				$("#phoneResult").css('color','blue');
+				$("#phoneResult").text('전화번호가 확인되었습니다.');
+			}
+			else{
+				$("#phoneResult").css('display','block');
+				$("#phoneResult").css('color','red');
+				$("#phoneResult").text('올바른 전화번호를 입력하세요');
+			}
+		});
+	}
+}
 
 function registerForm(obj) {
 
@@ -227,6 +269,7 @@ function pwCheck2() {
 		$('#pwResult2').text("비밀번호는 공백없는 10~15자의 영문/숫자조합 입니다.");
 	}
 }
+
 
 function execPostCode() {
 	new daum.Postcode({
