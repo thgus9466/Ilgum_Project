@@ -64,7 +64,7 @@
 					</div>
 
 					<div class="book_buy_btn">
-						<a href="javascript:void(0);" onclick="bookPay('${root}', ${bookDto.book_isbn}, ${getSessionId})" style="margin-right: 5px; background: #179D24; color: white;">구매하기</a>
+						<a href="javascript:void(0);" onclick="bookPay('${root}', ${bookDto.book_isbn}, ${getSessionId})" style="margin-right: 10px; background: #14488d; color: white;">구매하기</a>
 						<a href="" style="margin-right: 10px;background: #fff; color: #14488d; border: 1px solid #14488d;">장바구니 담기</a>
 						<a href="" style="background: #F2F2F2; border: solid 1px #D9D9D9;">내 서재 담기</a>
 					</div>
