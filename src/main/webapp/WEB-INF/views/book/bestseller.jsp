@@ -54,8 +54,8 @@ google.charts.setOnLoadCallback(drawChart);
 					<div class="first_level_1">
 						<div class="imgB1" style="background-image:url('${bookDto.book_imgxl_url}') "><div class="Bbunho">${bookDto.num}</div></div>
 						<div class="contentB1">
-							<span><a href="">${bookDto.book_name}</a></span> <!-- 책제목 -->
-							<input type="hidden" value="">
+							<span><a href="${root}/book/bookDetail.do">${bookDto.num}</a></span> <!-- 책제목 -->
+							<input type="hidden" value="${bookDto.}">
 							<span>저자:${bookDto.book_writer} ｜출판사:${bookDto.book_publisher}｜${bookDto.book_publish_date}</span> <!-- 출판사/지은이/출간일 -->
 							<span>판매가: ${bookDto.book_cost} → <label>${bookDto.book_price}</label></span>	<!-- 가격 -->
 							<c:set var="amount" value="${bookDto.book_cost*0.05}"></c:set>
