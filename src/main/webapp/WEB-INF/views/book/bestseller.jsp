@@ -52,7 +52,7 @@ google.charts.setOnLoadCallback(drawChart);
 				<div class="first_level">
 				<c:forEach var="bookDto" items="${bookFirstList}">
 					<div class="first_level_1">
-						<div class="imgB1" style="background-image:url('${bookDto.book_imgxl_url}') "><div class="Bbunho">1</div></div>
+						<div class="imgB1" style="background-image:url('${bookDto.book_imgxl_url}') "><div class="Bbunho">${bookDto.num}</div></div>
 						<div class="contentB1">
 							<span>${bookDto.book_name}</span> <!-- 책제목 -->
 							<span>저자:${bookDto.book_writer} ｜출판사:${bookDto.book_publisher}｜${bookDto.book_publish_date}</span> <!-- 출판사/지은이/출간일 -->
@@ -74,7 +74,7 @@ google.charts.setOnLoadCallback(drawChart);
 						<div><input type="checkbox" name=" " style="width:20px;height:20px;"></div> <!-- 체크박스 -->
 						<div>
 							<div style="background-image:url('${bookDto2.book_imgxl_url}')">
-							<c:set var="amount2" value="${count2}"></c:set>
+							<c:set var="amount2" value="${bookDto2.num+3}"></c:set>
 								<div class="Bbunho">${amount2}</div>
 							</div>
 						</div> <!-- 이미지 -->

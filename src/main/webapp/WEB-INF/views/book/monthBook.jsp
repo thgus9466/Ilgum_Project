@@ -59,7 +59,7 @@ $(function(){
 						<div>
 							<div style="background-image:url('${bookDto2.book_imgxl_url}')">
 							<c:set var="amount2" value="${count2}"></c:set>
-								<div class="Bbunho" id="Bbunho"></div>
+								<div class="Bbunho" id="Bbunho">${bookDto2.num}</div>
 							</div>
 						</div> <!-- 이미지 -->
 					</div>
