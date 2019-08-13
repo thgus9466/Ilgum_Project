@@ -130,14 +130,14 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + member_id);
 		
 		if(member_id == null) {
-			mav.addObject("talk","아이디가 존재하지 않습니다.");
-			mav.setViewName("member/idSearch.tiles");
+			mav.addObject("talk",0);
+			mav.setViewName("member/IdUpdateOk.tiles");
 		}else {
-		
+		mav.addObject("talk",1);
 		mav.addObject("member_id", member_id);
 		mav.addObject("member_name", request.getParameter("member_name"));
 		
-		mav.setViewName("member/findId.tiles");
+		mav.setViewName("member/IdUpdateOk.tiles");
 		}
 	}
 
@@ -191,8 +191,8 @@ public class MemberServiceImp implements MemberService {
 			    		} catch (Exception e) {
 			    			System.out.println(e);
 			    		}
-			    		mav.addObject("talk","임시비밀번호가 이메일로 발송되었습니다.");
-			    		mav.setViewName("redirect:/index.empty");
+			    		mav.addObject("talk","ok");
+			    		mav.setViewName("member/emailUpdateOk.tiles");
 			    	}
 			        
 			      
