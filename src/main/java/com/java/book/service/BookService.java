@@ -5,6 +5,8 @@ import org.springframework.web.servlet.ModelAndView;
 public interface BookService {
 	public void bookDetail(ModelAndView mav);
 	
+	public void bookPay(ModelAndView mav);
+	
 	public void bookList(ModelAndView mav);
 	
 	public void bestSeller(ModelAndView mav);

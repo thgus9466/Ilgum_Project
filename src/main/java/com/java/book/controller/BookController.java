@@ -12,6 +12,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.IlgumAspect;
 import com.java.book.service.BookService;
+import com.java.member.dto.MemberDto;
 
 @Controller
 public class BookController {
@@ -29,20 +30,14 @@ public class BookController {
 	}
 	
 	@RequestMapping(value = "/book/bookPay.do", method = RequestMethod.GET)
-	public ModelAndView bookPay(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView bookPay(HttpServletRequest request, HttpServletResponse response, HttpSession session, MemberDto memberDto) {
 		ModelAndView mav = new ModelAndView();
-		HttpSession session = request.getSession(false);
-		String id = (String) session.getAttribute("id");
 		
-		if (id != null) {
-			IlgumAspect.logger.info(IlgumAspect.logMsg + session.isNew() + ", id:" + id);
-			
-		} else {
-			IlgumAspect.logger.info(IlgumAspect.logMsg + session.isNew() + ", id:" + id);
-			mav.setViewName("redirect:/member/memberLogin.do");
-			
-			return mav;
-		}
+		mav.addObject("request", request);
+		mav.addObject("session", session);
+		mav.addObject("memberDto", memberDto);
+		
+		bookService.bookPay(mav);
 		
 		return mav;
 	}
