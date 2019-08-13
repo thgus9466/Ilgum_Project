@@ -82,4 +82,23 @@ public class BookDaoImp implements BookDao {
 		return sqlSessionTemplate.selectList("dao.BookMapper.newBook");
 	}
 
+	@Override
+	public int bookCountCategory(String book_category) {
+		
+		return sqlSessionTemplate.selectOne("dao.BookMapper.bookCountCategory", book_category);
+	}
+
+	@Override
+	public List<BookDto> bookcategory(String book_category, int startRow, int endRow) {
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+
+		hMap.put("book_category", book_category);
+		hMap.put("startRow", startRow);
+		hMap.put("endRow", endRow);
+
+		return sqlSessionTemplate.selectList("dao.BookMapper.bookListCategory", hMap);
+	}
+
+	
+
 }

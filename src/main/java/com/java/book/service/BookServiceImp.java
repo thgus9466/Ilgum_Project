@@ -183,4 +183,45 @@ public class BookServiceImp implements BookService {
 		return df.format(number);
 	}
 
+	@Override
+	public void category1(ModelAndView mav) {
+		
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String book_category = request.getParameter("book_category");
+		String pageNumber = request.getParameter("pageNumber");
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + book_category);
+		
+		if (pageNumber == null)
+			pageNumber = "1";
+
+		int boardSize = 10;
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow = (currentPage - 1) * boardSize + 1;
+		int endRow = currentPage * boardSize;
+
+		int count = bookDao.bookCountCategory(book_category);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
+		
+		List<BookDto> bookList = null;
+		
+		if (count > 0)
+			bookList = bookDao.bookcategory(book_category, startRow, endRow);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + bookList);
+		
+		mav.addObject("book_name", book_category);
+		mav.addObject("text",book_category);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+		mav.addObject("count", count);
+		mav.addObject("bookList", bookList);
+
+		mav.setViewName("/book/search_list.tiles");
+		
+	}
+
 }

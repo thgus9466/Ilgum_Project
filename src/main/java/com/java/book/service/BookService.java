@@ -14,4 +14,6 @@ public interface BookService {
 	public void monthBook(ModelAndView mav);
 
 	public void newBook(ModelAndView mav);
+
+	public void category1(ModelAndView mav);
 }
