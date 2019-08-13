@@ -1,15 +1,12 @@
 package com.java.mypage.service;
 
-<<<<<<< HEAD
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-=======
+
 import java.util.Date;
 import java.util.List;
->>>>>>> c6d15fbf38847c663bb33a70d819241a8642e19c
 import java.util.Map;
-import java.util.Date;
-import java.util.List;
+
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -19,18 +16,16 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.IlgumAspect;
 import com.java.member.dto.MemberDto;
-<<<<<<< HEAD
+
 import com.java.mypage.dao.MyPageDao;
 import com.java.order.dto.OrderDto;
-=======
-import com.java.mypage.dao.MypageDao;
 import com.java.mypage.dto.QuestionDto;
->>>>>>> c6d15fbf38847c663bb33a70d819241a8642e19c
+
 
 @Component
 public class MypageServiceImp implements MypageService {
 	@Autowired
-	private MypageDao mypageDao;
+	private MyPageDao mypageDao;
 
 	@Override
 	public void readMypage(ModelAndView mav) {
@@ -48,7 +43,6 @@ public class MypageServiceImp implements MypageService {
 	}
 
 	@Override
-<<<<<<< HEAD
 	public void readUpdate(ModelAndView mav) {
 		Map<String,Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
@@ -153,7 +147,8 @@ public class MypageServiceImp implements MypageService {
 		
 		mav.addObject("orderDto",orderDto);
 		mav.setViewName("mypage/deliver.tiles");
-=======
+	}
+
 	public void boardWrite(ModelAndView mav) {
 		int q_number = 0;
 		int group_number = 1;
@@ -282,6 +277,5 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("pageNumber",pageNumber);
 		
 		mav.setViewName("mypage/deleteOk.empty");
->>>>>>> c6d15fbf38847c663bb33a70d819241a8642e19c
 	}
 }
