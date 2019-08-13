@@ -31,9 +31,8 @@
 					<div class="book_title">
 						<ul>
 							<li>${bookDto.book_name}</li>
-							<li>${bookDto.book_writer}</li>
-							<li>김고명 옮김</li>
-							<li>${bookDto.book_publisher}</li>
+							<li style="margin-left:2px;">${bookDto.book_writer}｜</li>
+							<li>${bookDto.book_publisher}｜</li>
 							<li>${bookDto.book_publish_date}</li>
 						</ul>
 					</div>
