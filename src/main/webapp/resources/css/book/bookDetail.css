@@ -26,27 +26,30 @@ a {
 }
 
 .book_index li {
-  font-size: 14px;
+  font-size: 15px;
   float: left;
+  font-weight: bold;
 }
 
 .book_info1 {
   border: solid 0px black;
   width: 1000px;
   height: 500px;
-  margin-top: 20px;
+  margin-top: 50px;
 }
 
 .book_img {
   border: solid 0px black;
-  width: 280px;
-  height: 360px;
-  float: left;
+  margin-left: 50px;
+  width: 250px;
+    height: 330px;
+    float: left;
+}
 }
 
 .book_img > img {
-  width: 280px;
-  height: 360px;
+  width: 100%;
+  height: 100%;
 }
 
 .dt_desc {

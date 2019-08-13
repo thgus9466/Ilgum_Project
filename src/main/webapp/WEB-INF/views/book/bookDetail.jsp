@@ -17,7 +17,7 @@
 		<div class="dt_content">
 			<div class="book_index">
 				<ul>
-					<li>홈</li>
+					<li style="font-weight: 50;">홈</li>
 					<li>> 자기계발</li>
 				</ul>
 			</div>
