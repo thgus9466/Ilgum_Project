@@ -34,7 +34,7 @@ $(function(){
 						<form action="${root}/member/idSearchOk.do" method="post">
 							<div class="left_inner">
 								<div class="id"><input type="text" name="member_name" placeholder="이름"/></div>
-								<div class="pwd"><input type="password" name="member_email"  placeholder="이메일"/></div>
+								<div class="pwd"><input type="text" name="member_email"  placeholder="이메일"/></div>
 								<div class="idsave">
 									<span>
 										<input type="submit" value="확인" class="next">
