@@ -76,6 +76,8 @@ public class MypageServiceImp implements MypageService {
 		String member_phone2 = memberDto.getMember_phone2();
 		String phone2_1,phone2_2,phone2_3;
 		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + member_phone2);
+		
 		if(member_phone2 != null) {	
 			if(member_phone2.substring(0,2).equals("02")) {
 				phone2_1 = "02";

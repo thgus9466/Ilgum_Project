@@ -75,4 +75,18 @@
 	    where rownum <= 10
    		]]>
 	</select>
+	
+	<select id="bookCountCategory" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book where book_category = #{book_category}]]>
+	</select>
+	
+	<select id="bookListCategory" parameterType="java.util.HashMap" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from book order by book_category asc) a) b
+				where book_category like '%'||#{book_category}||'%') c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
 </mapper>

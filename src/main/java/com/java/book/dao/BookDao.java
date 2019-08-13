@@ -26,4 +26,9 @@ public interface BookDao {
 	public List<BookDto> monthBook();
 
 	public List<BookDto> newBook();
+
+	public int bookCountCategory(String book_category);
+	
+	public List<BookDto> bookcategory(String book_category, int startRow, int endRow);
+
 }

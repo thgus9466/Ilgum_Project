@@ -90,4 +90,16 @@ public class BookController {
 		
 		return mav;
 	}
+		
+	@RequestMapping(value="/book/category1.do", method= RequestMethod.GET)
+	public ModelAndView category1(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.category1(mav);
+		
+		return mav;
+	}
 }
