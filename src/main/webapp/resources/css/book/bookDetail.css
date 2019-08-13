@@ -11,7 +11,7 @@ a {
 }
 
 .dt_content {
-  border: solid 1px black;
+  border: solid 0px black;
   width: 1000px;
   height: 2500px;
   margin: 80px auto;
@@ -55,7 +55,7 @@ a {
   border: solid 0px black;
   width: 600px;
   height: 400px;
-  margin-left: 50px;
+  margin-left: 90px;
   float: left;
 }
 
