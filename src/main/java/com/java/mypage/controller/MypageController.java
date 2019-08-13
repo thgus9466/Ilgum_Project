@@ -9,11 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-<<<<<<< HEAD
 import com.java.member.dto.MemberDto;
-=======
 import com.java.mypage.dto.QuestionDto;
->>>>>>> c6d15fbf38847c663bb33a70d819241a8642e19c
 import com.java.mypage.service.MypageService;
 
 @Controller
