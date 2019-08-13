@@ -39,6 +39,8 @@
 	border: 0px solid black;
 	float: left;
 	overflow: hidden;
+	margin-right: 23px;
+    margin-left: 15px;
 }
 
 .bestImg >img{
@@ -66,7 +68,8 @@
 .bestContent{
 	width: 162px;
 	height: 95px;
-	margin-right: 32px; 
+	margin-right: 23px;
+    margin-left: 13px; 
 	border: 0px solid black;
 	float: left;
 	overflow: hidden;
