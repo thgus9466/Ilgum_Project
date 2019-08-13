@@ -42,7 +42,7 @@ public class MemberController {
 		return String.valueOf(check);
 	}
 
-	@RequestMapping(value = "/member/memberJoinOk.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/member/memberJoinOk.do", method = RequestMethod.POST)
 	public ModelAndView memberJoinOk(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
 
 		ModelAndView mav = new ModelAndView();

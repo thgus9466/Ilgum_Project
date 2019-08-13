@@ -34,24 +34,11 @@
 	           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 	     });
-	    
-	    $(".infos_input").focus(function() {
-			$(this).css('background','#f2f2f2')
-		})
-		
-		$(".infos_input").focusout(function() {
-			$(this).css('background','#d9d9d9')
-		})
-		
-		$(".button input").mouseover(function() {
-			$(this).css('background-color','#10488D')
-			.css('color','white')
-		});
-		
-		$(".button input").mouseout(function() {
-			$(this).css('background-color','white')
-			.css('color','#10488D')
-		});
+	    $("input[name='infoplus']").change(function(){
+	    	if($("input:eq(0)").val() == 'true'){
+	    		
+	    	}
+	    });
 	   
 	    /*$(function(){
 	    	if($('#disagree').checked){
@@ -65,10 +52,10 @@
 </head>
 <body>
 	<div class="head">
-		<p>읽움 회원가입</p>
+		<p><img style="vertical-align: middle;" src = "${root}/resources/img/index/logo2.png">읽움 회원가입</p>	
 		<p>읽움에 오신것을 환영합니다.</p>		
 	</div>
-	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="get" onsubmit="return registerForm(this)">
+	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="post">
 	<div class="vital_info">
 		<div class="header">
 			<span>필수 정보 입력</span>
@@ -116,8 +103,7 @@
 					<span>이름</span>
 				</div>
 				<div class="infos_detail">
-					<input class = "infos_input" type="text" name="member_name" id="name" oninput="namechk()"/>
-					<span style="font-size: 12px; display: block; height: 15px;" id="nameresult" ></span>
+					<input class = "infos_input" type="text" name="member_name"/>
 				</div>
 			</div>
 			
@@ -138,7 +124,7 @@
 					<span>생년월일</span>
 				</div>
 				<div class="infos_detail">
-					<input id="birthdaypicker" value="" type="date" name="member_birth">
+					<input id="birthdaypicker" value="" type="text" name="member_birth">
 				</div>				
 			</div>
 			
@@ -148,19 +134,16 @@
 					<span>이메일 주소</span>
 				</div>
 				<div class="infos_detail">
-					<input style="float: left; width: 150px;" class = "infos_input" type="text" name="member_email1"/>
+					<input style="float: left;" class = "infos_input" type="text" name="member_email1"/>
 					<span style="float: left;">@</span>
-					<select style="width:110px;font-size: 15px;" name="member_email2">
+					<select style="width:100px;" name="member_email2">
 						<option>naver.com</option>
 						<option>daum.net</option>
 						<option>gmail.com</option>
 						<option>nate.com</option>
 						<option>yahoo.com</option>
 					</select>
-				</div>
-				<div style="float: left;">
-					<input class = "infos_button" type="button" value="이메일 인증">
-				</div>					
+				</div>	
 			</div>				
 		</div>
 		
@@ -219,7 +202,7 @@
 					<span style="padding-left:17px;">자택번호(선택사항)</span>
 				</div>
 				<div>
-					<select name="phone2-1">
+					<select name="phone2_1">
 						<option value="" selected disabled>선택</option>
 						<option value="02">02</option>
 						<option value="031">031</option>
@@ -239,10 +222,10 @@
 						<option value="064">064</option>
 					</select>
 					<div style="float:left;">
-						<input style="width: 80px; height: 21px;" type="text" name="phone2-2"/>
+						<input style="width: 80px; height: 21px;" type="text" name="phone2_2"/>
 					</div>
 					<div style="float:left;">
-						<input style="width: 80px; height: 21px;" type="text" name="phone2-3"/>
+						<input style="width: 80px; height: 21px;" type="text" name="phone2_3"/>
 					</div>
 				</div>
 			</div>

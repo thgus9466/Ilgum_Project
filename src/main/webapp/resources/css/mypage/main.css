@@ -1,13 +1,21 @@
 @charset "UTF-8";
+	span{
+		padding-left: 5px;
+	}
+
+	.wrap{
+		width: 800px;
+		margin:0px auto;
+	}
 	.content{
 		border: 1px solid #cccccc;
-		float : left;
-		width : 900px;
-		margin: 110px 0px 100px 50px;
+	    width: 850px;
+	    float: left;
+	    margin: 90px 0px 100px 30px;
 	}
 	.info{
 		width: 700px;
-		height: 300px;
+		height: 250px;
 		border: 1px solid black;
 		margin-bottom: 100px;
 	}
