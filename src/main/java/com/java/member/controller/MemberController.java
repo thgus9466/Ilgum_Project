@@ -124,5 +124,11 @@ public class MemberController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/member/storeInfo.do", method = RequestMethod.GET)
+	public ModelAndView storeInfo(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("store/storeInfo.tiles");
+		
+	}
 	
 }

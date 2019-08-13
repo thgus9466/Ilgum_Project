@@ -67,7 +67,7 @@
 							<div>
 								<ul id="logout">
 									<li><a href="#">장바구니</a></li>
-									<li><a href="#">고객센터</a></li>
+									<li><a href="${root}/member/storeInfo.do">지점안내</a></li>
 									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 									<li><a href="${root}/member/memberLogin.do">로그인</a></li>
 								</ul>

@@ -1,0 +1,74 @@
+@charset "UTF-8";
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.view{
+	min-width: 1080px;
+	overflow: hidden;
+	margin: 0px auto;
+	border: 0px solid black;
+}
+
+.view > div{
+	width: 950px;
+	overflow: hidden;
+	margin: 0px auto;
+	border: 0px solid black;
+	margin-top: 100px;
+}
+
+.topname{
+	font-size: 20px;
+	font-weight: bold;
+}
+
+.store{
+	width: 250px;
+	height: 300px;
+	border: 0px solid black;
+	float: left;
+	margin-right: 46px;
+}
+
+.store >ul{
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+.store >ul >li{
+	border-bottom: 1px solid #dfdfdf;
+	margin-bottom: 20px;
+	padding-bottom: 10px;
+}
+
+.store >ul >li:first-child{
+	border-bottom: 2px solid #111;
+	font-size: 22px;
+	font-weight: bold;
+}
+
+.storeInfo{
+	width: 650px;
+	height: 400px;
+	border: 0px solid black;	
+	float: left;
+	overflow: hidden;
+}
+
+.storeInfo > div:first-child{
+	border-bottom: 2px solid #111;
+	font-size: 18px;
+	font-weight: bold;
+	margin-top: 5px;
+	padding-bottom: 10px;
+	margin-bottom: 20px;
+}
+
+.map{
+	border: 1px solid #dfdfdf;
+	width: 640px;
+	height: 300px;
+}
