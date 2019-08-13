@@ -51,10 +51,14 @@ public class MemberServiceImp implements MemberService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		MemberDto memberDto = (MemberDto) map.get("memberDto");
 
-		memberDto.setMember_email(request.getParameter("member_email1")+request.getParameter("member_email2"));
+		memberDto.setMember_email(request.getParameter("member_email1")+"@"+request.getParameter("member_email2"));
 		memberDto.setMember_phone1(request.getParameter("phone1_1")+request.getParameter("phone1_2")+request.getParameter("phone1_3"));
-		memberDto.setMember_phone2(request.getParameter("phone2_1")+request.getParameter("phone2_2")+request.getParameter("phone2_3"));
-
+		
+		if(request.getParameter("phone2_1") == null) {
+		memberDto.setMember_phone2(null +request.getParameter("phone2_2")+request.getParameter("phone2_3"));
+		}else {
+			memberDto.setMember_phone2(request.getParameter("phone2_1")+request.getParameter("phone2_2")+request.getParameter("phone2_3"));
+		}
 		memberDto.setMember_point(0);
 		memberDto.setMember_level("AA");
 		
@@ -62,7 +66,7 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
 		
 		mav.addObject("check", check);
-		mav.setViewName("member/joinOk");
+		mav.setViewName("member/joinOk.tiles");
 	}
 	
 	@Override
@@ -110,7 +114,7 @@ public class MemberServiceImp implements MemberService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
 		
-		mav.setViewName("/index.empty");
+		mav.setViewName("redirect:/index.empty");
 	}
 	
 	@Override

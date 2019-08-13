@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -12,7 +12,7 @@
 	<c:if test="${check>0}">
 		<script type="text/javascript">
 			alert("회원가입이 되었습니다.");
-			location.href="${root}/member/memberJoin.do";
+			location.href="${root}/index";
 		</script>
 	</c:if>
 	

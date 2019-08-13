@@ -76,7 +76,7 @@ public class MypageServiceImp implements MypageService {
 		String member_phone2 = memberDto.getMember_phone2();
 		String phone2_1,phone2_2,phone2_3;
 		
-		if(member_phone2 !=null) {	
+		if(member_phone2 != null) {	
 			if(member_phone2.substring(0,2).equals("02")) {
 				phone2_1 = "02";
 				phone2_2 = member_phone2.substring(2,6);
@@ -91,7 +91,8 @@ public class MypageServiceImp implements MypageService {
 			mav.addObject("phone2_2",phone2_2);
 			mav.addObject("phone2_3",phone2_3);
 			
-		}		
+		}
+		
 		mav.addObject("memberDto", memberDto);
 
 		mav.addObject("email",email);
