@@ -34,7 +34,7 @@ a {
 .book_info1 {
   border: solid 0px black;
   width: 1000px;
-  height: 500px;
+  height: 480px;
   margin-top: 50px;
 }
 
@@ -67,7 +67,7 @@ a {
 
 .book_title li:nth-child(1) {
   font-size: 25px;
-  color: #55ACEE;
+  color: black;
   font-weight: bold;
 }
 
@@ -78,9 +78,11 @@ a {
 }
 
 .book_price {
-  border: solid 0px black;
-  border-bottom: solid 1px #D9D9D9;
-  height: 130px;
+ border: solid 0px black;
+    border-bottom: solid 1px #D9D9D9;
+    margin-top: 25px;
+    padding-bottom: 20px;
+    height: 130px;
 }
 
 .price_title {
@@ -113,9 +115,11 @@ a {
 }
 
 .book_quantity {
-  border: solid 0px black;
-  height: 50px;
-  line-height: 50px;
+ border: solid 0px black;
+    height: 50px;
+    line-height: 50px;
+    margin-top: 20px;
+    margin-bottom: 10px;
 }
 
 .book_buy_btn {
@@ -126,24 +130,24 @@ a {
 
 .book_buy_btn > a {
   border: solid 0px black;
-  width: 130px;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  color: #10488D;
-  font-weight: bold;
-  float: left;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #10488D;
+    font-weight: bold;
+    float: left;
 }
 
 .book_buy_btn > a:last-child {
-  border: solid 0px black;
-  width: 130px;
-  height: 49px;
-  text-align: center;
-  line-height: 49px;
-  color: #10488D;
-  font-weight: bold;
-  float: left;
+ border: solid 0px black;
+    width: 120px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    color: #10488D;
+    font-weight: bold;
+    float: left;
 }
 
 .info_bar1 {
@@ -196,23 +200,23 @@ a {
 }
 
 .prod_info {
-  border: solid 0px black;
-  width: 100%;
-  height: 500px;
-  margin-top: 10px;
+ border: solid 0px black;
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
+    border-bottom: 1px solid #ccc;
 }
 
 .prod_contents {
-  border: solid 0px black;
-  width: 100%;
-  height: 500px;
-  margin-top: 10px;
+ border: solid 0px black;
+    width: 100%;
+    height: 300px;
+    margin-top: 40px;
 }
 
 .info_bar2 {
   width: 100%;
   height: 40px;
-  margin-top: 10px;
 }
 
 .info_bar2 > a:first-child {
