@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${root}/resources/css/book/bookPay.css"/>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
 <script type="text/javascript">
     $(function() {
