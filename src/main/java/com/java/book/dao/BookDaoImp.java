@@ -7,6 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
 
 @Component
@@ -37,4 +38,35 @@ public class BookDaoImp implements BookDao {
 
 		return sqlSessionTemplate.selectList("dao.BookMapper.bookList", hMap);
 	}
+	
+	@Override
+	public List<BestSellerDto> bestSeller() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("dao.BookMapper.bestSeller");
+	}
+
+	@Override
+	public List<BookDto> bookFirstList() {
+		
+		return sqlSessionTemplate.selectList("dao.BookMapper.bookFirstList");
+	}
+
+	@Override
+	public List<BookDto> bookLastList() {
+		
+		return sqlSessionTemplate.selectList("dao.BookMapper.bookLastList");
+	}
+
+	@Override
+	public List<BookDto> monthBook() {
+		
+		return sqlSessionTemplate.selectList("dao.BookMapper.monthBook");
+	}
+
+	@Override
+	public List<BookDto> newBook() {
+		
+		return sqlSessionTemplate.selectList("dao.BookMapper.newBook");
+	}
+
 }

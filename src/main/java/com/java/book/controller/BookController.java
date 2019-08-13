@@ -57,4 +57,42 @@ public class BookController {
 
 		return mav;
 	}
+	
+	@RequestMapping(value="/book/bestSeller.do", method= RequestMethod.GET)
+	public ModelAndView bestSeller(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.bestSeller(mav);
+		
+		return mav;
+		
+	}
+	
+	@RequestMapping(value="/book/monthBook.do", method= RequestMethod.GET)
+	public ModelAndView monthBook(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.monthBook(mav);
+		
+		return mav;
+
+	}
+	
+	@RequestMapping(value="/book/newBook.do", method= RequestMethod.GET)
+	public ModelAndView newBook(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.newBook(mav);
+		
+		return mav;
+	}
 }

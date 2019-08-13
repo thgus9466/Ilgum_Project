@@ -18,4 +18,42 @@
                 	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
 		]]>
 	</select>
+	
+	<select id="bestSeller" resultType="com.java.book.dto.BestSellerDto">
+		select * from bestseller
+	</select>
+	
+	<select id="bookFirstList" resultType="com.java.book.dto.BookDto">
+	 	select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url
+	 	from book 
+	 	where book_isbn = 9788970873268 or book_isbn = 9788965135586 or book_isbn = 9791188874385
+	</select>
+	
+	<select id="bookLastList" resultType="com.java.book.dto.BookDto">
+		select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro
+	 	from book 
+	 	where book_amount >= 110
+	 	order by book_amount DESC
+	</select>
+	
+	<select id="monthBook" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price
+		, book_imgxl_url, book_intro
+	 	from book 
+	 	WHERE book_publish_date >= TO_DATE('20190701','YYYYMMDD')
+   		AND  book_publish_date <  TO_DATE('20190731','YYYYMMDD') and ROWNUM <= 10
+   		]]>
+	</select>
+	
+	<select id="newBook" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select rownum num, data.* 
+		from (select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro 
+		      from book 
+		      WHERE book_publish_date >= TO_DATE('20190801','YYYYMMDD') AND book_publish_date <  TO_DATE('20190813','YYYYMMDD') 
+		      order by book_publish_date desc)data
+	    where rownum <= 10
+   		]]>
+	</select>
 </mapper>
