@@ -1,0 +1,190 @@
+@charset "UTF-8";
+
+li{
+	list-style: none;
+}
+
+a{
+	text-decoration: none;
+}
+
+section{
+	margin-top: 147px;
+    padding-top: 50px;
+    border-top: 1px solid #e5e5e5;;
+    background-color: #ffffff;
+}
+
+.inner{
+	width: 1140px;
+	overflow: hidden;
+    margin: 0px auto;
+    position: relative;
+    border: 0px solid green;
+}
+
+.inner > .top2 {
+	 border: 0px solid green;
+}
+
+.inner > .top2 > h2{
+	font-family: 'Noto Sans KR', sans-serif, malgun gothic;
+    font-size: 22px;
+    font-weight: 700;
+    color: #111111;
+    letter-spacing: 1px;
+    margin-top: -8px;
+    margin-bottom: 30px;
+    padding-bottom: 36px;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.inner > .login{
+	margin: 70px 170px 0px;
+    padding-bottom: 35px;
+    border: 0px solid green;
+}
+
+.inner > .login > ul{
+	width: 300px;
+	 border: 0px solid red;
+     margin: 0px auto;
+	 overflow: hidden;
+}
+
+.inner > .login > ul > li{
+	float: left;
+    width: 300px;
+    margin: 0px auto;
+}
+
+.inner > .login > ul > li > a{
+	width: 100%;
+	display: block;
+    font-size: 15px;
+    font-weight: bold;
+    line-height: 74px;
+    color: #999;
+    border-bottom: 1px solid #e5e5e5;
+    text-align: center;
+     margin: 0px auto;
+}
+
+.inner > .login > ul > li:nth-child(1) > a{
+	color: #111111;
+    border-color: #111111;
+    margin-bottom: 20px;
+}
+
+.inner > .login > .left{
+	float: left;
+    width: 100%;
+    margin-top: 40px;
+    border: 0px solid pink;
+     margin: 0px auto;
+}
+
+.inner > .login > .left > div > form{
+	margin-top: 8px;
+}
+
+.left_inner{
+	width: 300px;
+	height: 300px;
+	position: relative;
+	margin-top: 20px;
+    margin: 0px auto;
+    border: 0px solid yellow;
+}
+
+.left .left_inner > .id{
+	padding: 7px 10px;
+    border: 1px solid #cccccc;
+     margin-top: 20px;
+    margin: 0px auto;
+    
+}
+
+.left_inner > div > input{
+    padding: 0px;
+    border: 0px;
+    font-size: 12px;
+    width: 100%;
+    height: 20px;
+    vertical-align: top;
+    margin: 0px auto;
+}
+
+.left .left_inner > .pwd{
+	padding: 7px 10px;
+    border: 1px solid #cccccc;
+    margin-right: 88px;
+    margin: 0px auto;
+     margin-top: 15px;
+     margin-bottom: 15px;
+}
+
+.left .left_inner > .idsave > span{
+    display: inline-block;
+    position: relative;
+    margin-top: 8px;
+    margin: 0px auto;
+}
+
+
+.left .left_inner > .idsave > span > input{
+	margin-top: 8px;
+    margin: 0px auto;
+}
+
+.idsave{
+	width: 100px;
+	height: 50px;
+	margin-top: 50px;
+	margin: 0px auto;
+	border: 0px solid black;
+}
+
+.next{
+	width:100px;
+
+	height: 50px;
+    background-color: #10448d;
+
+    border: none;
+
+    color:#fff;
+
+    padding: 15px 0;
+
+    text-align: center;
+
+    text-decoration: none;
+
+    display: inline-block;
+
+    font-size: 15px;
+
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+
+.left .form_bottom{
+	margin: 30px 60px 0 0;
+    padding: 30px 0 0 140px;
+    border-top: 1px solid #e5e5e5;
+    position: relative;
+    text-align: right;
+}
+
+.left .form_bottom > span:nth-child(1){
+    position: absolute;
+    left: 0;
+    top: 30px;
+    font-size: 13px;
+    color: #666;
+    line-height: 28px;
+}
+
+    

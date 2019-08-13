@@ -10,4 +10,10 @@ public interface MemberDao {
 	public int memberInsert(MemberDto memberDto);
 	
 	public String memberLoginOk(HashMap<String, Object> hMap);
+	
+	public String memberIdSearchOk(HashMap<String, Object> hMap);
+
+	public String memberPasswordSearchOk(HashMap<String, Object> hMap);
+
+	public int memberPasswordNew(HashMap<String, Object> hMap);
 }

@@ -10,4 +10,8 @@ public interface MemberService {
 	public void memberLoginOk(ModelAndView mav);
 	
 	public void memberLogout(ModelAndView mav);
+	
+	public void memberIdSearchOk(ModelAndView mav);
+
+	public void memberPasswordSearchOk(ModelAndView mav);
 }

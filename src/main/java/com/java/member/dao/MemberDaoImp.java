@@ -28,4 +28,22 @@ public class MemberDaoImp implements MemberDao {
 		
 		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberLoginOk", hMap);
 	}
+	
+	@Override
+	public String memberIdSearchOk(HashMap<String, Object> hMap) {
+		
+		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberIdSearchOk", hMap);
+	}
+
+	@Override
+	public String memberPasswordSearchOk(HashMap<String, Object> hMap) {
+		
+		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberPasswordSearchOk", hMap);
+	}
+
+	@Override
+	public int memberPasswordNew(HashMap<String, Object> hMap) {
+
+		return sqlSessionTemplate.update("dao.MemberMapper.memberPasswordNew", hMap);
+	}
 }

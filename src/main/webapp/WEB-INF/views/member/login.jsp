@@ -64,9 +64,9 @@
 								</div>
 								<div class="check"><button type="submit">로그인</button></div>
 									<div class="find">
-										<span><a href="#">비밀번호 찾기</a></span>
+										<span><a href="${root}/member/passwordSearch.do">비밀번호 찾기</a></span>
 										<span style="color:#cccccc;">｜</span>
-										<span><a href="#">아이디 찾기 </a></span>
+										<span><a href="${root}/member/idSearch.do">아이디 찾기 </a></span>
 									</div>
 							</div>
 						</form>

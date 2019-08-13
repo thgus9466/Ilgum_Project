@@ -18,4 +18,16 @@
  	<select id="memberLoginOk" parameterType="java.util.HashMap" resultType="String">
  		select member_id from member where member_id = #{member_id} and member_password = #{member_password}
  	</select>
+ 	
+ 	<select id="memberIdSearchOk" parameterType="java.util.HashMap" resultType="String">
+ 		select member_id from member where member_name = #{member_name} and member_email = #{member_email}
+ 	</select>
+ 	
+ 	<select id="memberPasswordSearchOk" parameterType="java.util.HashMap" resultType="String">
+ 		select member_password from member where member_id = #{member_id} and member_name = #{member_name} and member_email = #{member_email}
+ 	</select>
+ 
+ 	<update id="memberPasswordNew" parameterType="java.util.HashMap">
+ 		update member set member_password=#{member_password} where member_id = #{member_id}
+ 	</update>
 </mapper>

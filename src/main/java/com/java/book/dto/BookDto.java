@@ -3,6 +3,7 @@ package com.java.book.dto;
 import java.sql.Date;
 
 public class BookDto {
+	private int num;
 	private String book_isbn;
 	private String book_index;
 	private String book_intro;
@@ -19,6 +20,14 @@ public class BookDto {
 	private String book_buy_accept;
 	private int book_amount;
 	
+	
+	
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
+	}
 	public String getBook_isbn() {
 		return book_isbn;
 	}

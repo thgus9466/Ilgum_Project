@@ -83,4 +83,46 @@ public class MemberController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/memberLoginNaver.do", method=RequestMethod.GET)
+	public ModelAndView memberLoginNaver(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("member/naverLogin.tiles");
+	}
+	
+	@RequestMapping(value="/member/idSearch.do", method=RequestMethod.GET)
+	public ModelAndView memberIdSearch(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("member/idSearch.tiles");
+	}
+	
+	@RequestMapping(value="/member/idSearchOk.do", method=RequestMethod.POST)
+	public ModelAndView memberIdSearchOk(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		memberService.memberIdSearchOk(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/member/passwordSearch.do", method=RequestMethod.GET)
+	public ModelAndView memberPasswordSearch(HttpServletRequest request, HttpServletResponse response) {
+		
+		return new ModelAndView("member/passwordSearch.tiles");
+	}
+
+	@RequestMapping(value="/member/passwordSearchOk.do", method=RequestMethod.POST)
+	public ModelAndView memberPasswordSearchOk(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		memberService.memberPasswordSearchOk(mav);
+		
+		return mav;
+	}
+	
+	
 }
