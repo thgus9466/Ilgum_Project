@@ -6,10 +6,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${root}/resources/css/book/bookPay.css"/>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
+<link rel="stylesheet" href="${root}/resources/css/book/bookPay.css"/>
 <script type="text/javascript">
     $(function() {
       $(".pay_option > input:eq(0)").click(function() {
@@ -22,7 +22,20 @@
         $(".payment_phone").css("display", "block");
       });
     });
-  </script> 
+
+	function DaumPostcode(){
+		  new daum.Postcode({
+		        oncomplete: function(data) {
+		            // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분입니다.
+		            // 예제를 참고하여 다양한 활용법을 확인해 보세요.
+		            var roadAddr = data.readAddress;
+		            
+		            document.getElementById('postCode').value = data.zonecode;
+		            document.getElementById('postAddress').value = data.address;
+		        }
+		    }).open();
+	}
+</script>
 <title>Insert title here</title>
 </head>
 <body>
@@ -66,7 +79,7 @@
 			<div class="address">
 				<div class="addr_title">
 					<ul>
-						<li>받으실 분</li>
+						<li>받으실 분<input type="button" value="검색" onclick="DaumPostcode()"/></li>
 						<li>연락처1</li>
 						<li>연락처2</li>
 						<li>배송지</li>
@@ -116,7 +129,9 @@
 					</div>
 					<div>
 						<input type="text" name="member_address1"><a href="javascript:void(0);" onclick="execPostCode()"><span>배송지 조회</span>
+					
 						</a>
+						<input type="button" value="검색" onclick="DaumPostcode()"/>
 					</div>
 					<div>
 						<input type="text" name="requests">

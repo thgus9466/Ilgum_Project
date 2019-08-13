@@ -35,7 +35,7 @@
 	 	<![CDATA[
 		select rownum num, data.*
 		from
-	 	(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url
+	 	(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url, book_isbn
 	 	from book 
 	 	where book_isbn = 9788970873268 or book_isbn = 9788965135586 or book_isbn = 9791188874385)data
 	 	]]>
@@ -45,7 +45,7 @@
 		<![CDATA[
 		select rownum num, data.*
 		from
-		(select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro
+		(select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro, book_isbn
 	 	from book 
 	 	where book_amount >= 110
 	 	order by book_amount DESC)data
@@ -56,7 +56,7 @@
 		<![CDATA[
 		select rownum num, data.*
 		from
-		(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price
+		(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_isbn
 		, book_imgxl_url, book_intro
 	 	from book 
 	 	WHERE book_publish_date >= TO_DATE('20190701','YYYYMMDD')
@@ -68,7 +68,7 @@
 	<select id="newBook" resultType="com.java.book.dto.BookDto">
 		<![CDATA[
 		select rownum num, data.* 
-		from (select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro 
+		from (select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro, book_isbn
 		      from book 
 		      WHERE book_publish_date >= TO_DATE('20190801','YYYYMMDD') AND book_publish_date <  TO_DATE('20190813','YYYYMMDD') 
 		      order by book_publish_date desc)data

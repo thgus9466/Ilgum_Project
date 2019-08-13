@@ -64,7 +64,7 @@ $(function(){
 						</div> <!-- 이미지 -->
 					</div>
 					<div class="contentB2">
-						<span><a href="#">${bookDto2.book_name}</a></span> <!-- 책 제목 -->
+						<span><a href="${root}/book/bookDetail.do?book_isbn=${bookDto2.book_isbn}">${bookDto2.book_name}</a></span> <!-- 책 제목 -->
 						<span>${bookDto2.book_writer}｜${bookDto2.book_publisher}｜${bookDto2.book_publish_date}</span> <!-- 작가/출판사 -->
 						<span>
 							${bookDto2.book_intro}
