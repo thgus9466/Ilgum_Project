@@ -49,7 +49,7 @@
 		<p>읽움 회원가입</p>
 		<p>읽움에 오신것을 환영합니다.</p>		
 	</div>
-	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="get" onsubmit="return registerForm(this)">
+	<form name="memberForm" action="${root}/member/memberJoinOk.do" method="POST">
 	<div class="vital_info">
 		<div class="header">
 			<span>필수 정보 입력</span>

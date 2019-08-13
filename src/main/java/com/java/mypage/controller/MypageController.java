@@ -9,6 +9,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+<<<<<<< HEAD
+import com.java.member.dto.MemberDto;
+=======
+import com.java.mypage.dto.QuestionDto;
+>>>>>>> c6d15fbf38847c663bb33a70d819241a8642e19c
 import com.java.mypage.service.MypageService;
 
 @Controller
@@ -26,12 +31,84 @@ public class MypageController {
 	}
 	
 	@RequestMapping(value="/mypage/update.do", method = RequestMethod.GET)
-	public ModelAndView update(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("mypage/update.tiles");
+	public ModelAndView readUpdate(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		mypageService.readUpdate(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value="/mypage/updateOk.do", method = RequestMethod.POST)
+	public ModelAndView update(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("memberDto", memberDto);
+		mypageService.update(mav);
+		
+		return mav;
 	}
 	
 	@RequestMapping(value="/mypage/deliver.do", method = RequestMethod.GET)
 	public ModelAndView deliver(HttpServletRequest request, HttpServletResponse response) {
-		return new ModelAndView("mypage/main.tiles");
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mypageService.DeliverList(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/mypage/write.do", method = RequestMethod.GET)
+	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.boardWrite(mav);
+		return mav;
+	}
+
+	@RequestMapping(value = "/mypage/writeOk.do", method = RequestMethod.GET)
+	public ModelAndView writeOk(HttpServletRequest request, HttpServletResponse response, QuestionDto questionDto) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("questionDto", questionDto);
+
+		mypageService.boardWriteOk(mav);
+		return mav;
+	}
+	
+	@RequestMapping(value = "/mypage/question.do", method = RequestMethod.GET)
+	public ModelAndView qList(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.qList(mav);
+
+		return mav;
+	}
+		
+	@RequestMapping(value = "/mypage/read.do", method = RequestMethod.GET)
+	public ModelAndView qRead(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.qRead(mav);
+
+		return mav;
+	}
+		
+	@RequestMapping(value = "/mypage/delete.do", method = RequestMethod.GET)
+	public ModelAndView qDelete(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.qDelete(mav);
+
+		return mav;
 	}
 }

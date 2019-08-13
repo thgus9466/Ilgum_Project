@@ -163,7 +163,6 @@
 		$('#snb').mouseleave(function() { 
 		     $(this).animate({opacity: 'hide'}, 'fast'); 
 		    }); 
-		
 	});
 </script>
 </head>

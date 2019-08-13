@@ -14,7 +14,7 @@
 	<div class="container">
 		<c:if test="${count==0 || bookList.size()==0}">
 			<div id="result">
-				해당 책이 존재하지 않습니다.
+				'<span style="color: red;">${book_name}</span>' 관련 책이 존재하지 않습니다.
 			</div>
 		</c:if>
 

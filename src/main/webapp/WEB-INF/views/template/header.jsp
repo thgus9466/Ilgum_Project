@@ -60,7 +60,7 @@
 			</div>	
 			
 			<div id="infobar">
-				<ul id="" >				
+				<ul id="" >			
 					<li>
 						<a href="#">회원가입</a>
 					</li>
