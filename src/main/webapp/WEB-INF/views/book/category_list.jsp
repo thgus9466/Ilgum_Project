@@ -80,15 +80,15 @@
 	            <c:set var="endPage" value="${pageCount}"/>
 	         </c:if>
 	         <c:if test="${startPage > pageBlock}">
-	            <a href="${root}/book/search_list.do?pageNumber=${startPage-pageBlock}&book_name=${book_name}">[이전]</a>
+	            <a href="${root}/book/category1.do?pageNumber=${startPage-pageBlock}&book_category=${book_name}">[이전]</a>
 	         </c:if>
 	         
 	         <c:forEach var="i" begin="${startPage}" end="${endPage}">
-	            <a href = "${root}/book/search_list.do?pageNumber=${i}&book_name=${book_name}">[${i}]</a>
+	            <a href = "${root}/book/category1.do?pageNumber=${i}&book_category=${book_name}">[${i}]</a>
 	         </c:forEach>
 	         
 	         <c:if test="${endPage < pageCount}">
-	            <a href="${root}/book/search_list.do?pageNumber=${startPage+pageBlock}&book_name=${book_name}">[다음]</a>
+	            <a href="${root}/book/category1.do?pageNumber=${startPage+pageBlock}&book_category=${book_name}">[다음]</a>
 	         </c:if>
 	      </c:if>
    		</div>

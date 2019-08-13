@@ -84,7 +84,7 @@
 		<![CDATA[
 		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
 			(select * from book order by book_category asc) a) b
-				where book_category like '%'||#{book_category}||'%') c
+				where book_category = #{book_category}) c
                 	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
 		]]>
 	</select>

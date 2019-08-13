@@ -87,6 +87,7 @@ public class BookServiceImp implements BookService {
 			bookList = bookDao.bookList(book_name, startRow, endRow);
 		
 		mav.addObject("book_name", book_name);
+		mav.addObject("text",book_name);
 		mav.addObject("boardSize", boardSize);
 		mav.addObject("currentPage", currentPage);
 		mav.addObject("count", count);
@@ -220,7 +221,7 @@ public class BookServiceImp implements BookService {
 		mav.addObject("count", count);
 		mav.addObject("bookList", bookList);
 
-		mav.setViewName("/book/search_list.tiles");
+		mav.setViewName("/book/category_list.tiles");
 		
 	}
 
