@@ -192,7 +192,7 @@ public class MemberServiceImp implements MemberService {
 			    			System.out.println(e);
 			    		}
 			    		mav.addObject("talk","임시비밀번호가 이메일로 발송되었습니다.");
-			    		mav.setViewName("index.main");
+			    		mav.setViewName("redirect:/index.empty");
 			    	}
 			        
 			      

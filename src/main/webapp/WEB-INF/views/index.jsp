@@ -19,6 +19,13 @@
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/section.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/footer.css"/>
 <script type="text/javascript">
+	$(function(){
+		var talk = "${talk}";
+		if(talk != ""){
+			alert("임시 비밀번호가 이메일로 발송되었습니다.");
+		}
+	});
+
 	var login = "${login}";
 	if(login != ""){
 		$(function(){
