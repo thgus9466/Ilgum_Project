@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.IlgumAspect;
+import com.java.book.dto.UserBookStar;
 import com.java.book.service.BookService;
 import com.java.member.dto.MemberDto;
 
@@ -20,10 +21,13 @@ public class BookController {
 	private BookService bookService;
 	
 	@RequestMapping(value = "/book/bookDetail.do", method = RequestMethod.GET)
-	public ModelAndView bookDetail(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView bookDetail(HttpServletRequest request, HttpServletResponse response,
+			UserBookStar userBookStar) {
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("request", request);
+		mav.addObject("userBookStar", userBookStar);
+		
 		bookService.bookDetail(mav);
 		
 		return mav;
@@ -99,6 +103,30 @@ public class BookController {
 		mav.addObject("request", request);
 		
 		bookService.category1(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/member/writeOk.do", method= RequestMethod.POST)
+	public ModelAndView memberWrite(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.memberWriteOk(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
+	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		mav.addObject("session", session);
+		bookService.memberDelete(mav);
 		
 		return mav;
 	}

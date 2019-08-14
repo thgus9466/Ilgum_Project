@@ -16,4 +16,10 @@ public interface BookService {
 	public void newBook(ModelAndView mav);
 
 	public void category1(ModelAndView mav);
+
+	public void memberWrite(ModelAndView mav);
+
+	public void memberWriteOk(ModelAndView mav);
+
+	public void memberDelete(ModelAndView mav);
 }

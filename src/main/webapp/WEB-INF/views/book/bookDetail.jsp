@@ -1,14 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="${root}/resources/javascript/book/bookDetail.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/book/script.js"></script>
 <link rel="stylesheet" href="${root}/resources/css/book/bookDetail.css"/>
 <title>Insert title here</title>
+<script type="text/javascript">
+	var session = "${login}";
+
+		if(session != null){
+			$(function(){
+			$(".noreview").css("display","none");
+			$(".review").css("display","block");
+		});
+	}
+</script>
 </head>
 <body>
 	<div class="dt_wrapper">
@@ -95,34 +107,132 @@
 				<div></div>
 			</div>
 
+			<input type="hidden" value="${bookDto.book_isbn}" name="book_num"/>
+			<c:if test="${count==0 || currentPage==1}"> 
 			<div class="book_reply">
-				<div class="review">
-				<form action="">
-					<div class="reviewTop">
-					<span style="font-size:15px; margin-left: 30px;">아이디 : </span>
-					<span><input type="text" value="${login}" style="text-align:center; width:150px; height:20px; font-size:15px;"></span>
-					<span style="margin-left: 20px;">
-					<label><input type="radio" name="a"/>★</label>
-					<label><input type="radio" name="b"/>★★</label>
-					<label><input type="radio" name="c"/>★★★</label>
-					<label><input type="radio" name="d"/>★★★★</label>
-					<label><input type="radio" name="e"/>★★★★★★</label>
-					</span>
-					</div>
-					<div class="reviewBottom">
-					<textarea style="font-size:15px; margin-left: 30px; width:90%; height:95%;"></textarea>
-					</div>	
-					<div class="reviewButton">
-						<span><input type="reset" value="취소" style=" float: right; margin-right:20px;"/></span>
-						<span><input type="submit" value="확인" style=" float: right; margin-right:30px;"/></span>
-					</div>	
-				</form>
-				</div>
-				<div>
+				<div class="noreview" style="display:block;">로그인을 해주세요</div>
+				<div class="review" id="review" style="display:none;">
+					<form action="${root}/member/writeOk.do" method="post">
+					<input type="hidden" value="${bookDto.book_isbn}" name="book_num"/>
+						<div class="reviewTop">
+							<span style="font-size:15px; margin-left: 30px;">아이디 : </span>
+							
+							<span><input type="text" value="${login}" readonly="readonly" name="member_id" style="text-align:center; width:150px; height:20px; font-size:15px;"/></span>
+							
+							<span style="margin-left: 20px;">
+								<label><input type="radio" name="userbookstar_star" value="1"/>★</label>
+								<label><input type="radio" name="userbookstar_star" value="2"/>★★</label>
+								<label><input type="radio" name="userbookstar_star" value="3"/>★★★</label>
+								<label><input type="radio" name="userbookstar_star" value="4"/>★★★★</label>
+								<label><input type="radio" name="userbookstar_star" value="5"/>★★★★★</label>
+							</span>
+						</div>
+						
+						<div class="reviewBottom">
+							<textarea name="book_review" style="font-size:15px; margin-left: 30px; width:90%; height:95%;"></textarea>
+						</div>	
+						
+						<div class="reviewButton">
+							<span><input type="reset" value="취소" style=" float: right; margin-right:20px;"/></span>
+							<span><input type="submit" value="확인" style=" float: right; margin-right:30px;"/></span>
+						</div>	
+							
+					</form>
 				</div>
 			</div>
+			</c:if>
+			 
+			 <br/>
+	      	 <br/>
+			<!-- 방명록 목록의 내용 보여주기 -->
+			<c:if test="${count>0}">
+				<c:forEach var="userBookStar" items="${reviewList}"> <!-- 반복문을 돌면서 저장된 데이터 값들을 뿌려줌 -->
+				<div class="book_reply">
+				<div class="review" id="review">
+					
+						<div class="reviewTop">
+							<span style="font-size:15px; margin-left: 30px;">아이디 : </span>
+							
+							<span><input type="text" value="${userBookStar.member_id}" readonly="readonly" name="member_id" style="text-align:center; width:150px; height:20px; font-size:15px;"/></span>
+							
+							<span style="margin-left: 20px;">
+							<c:set var="data" value="${userBookStar.userbookstar_star}" />
+ 
+							<c:choose>
+							 
+							    <c:when test="${data==1}">
+							  		    ★
+							    </c:when>
+							 
+							    <c:when test="${data==2}">
+							        ★★
+							    </c:when>
+							 
+							 	 <c:when test="${data==3}">
+							        	★★★
+							    </c:when>
+							     <c:when test="${data==4}">
+							       ★★★★
+							    </c:when>
+							    <c:otherwise>
+							        ★★★★★
+							    </c:otherwise>
+							 
+							</c:choose>
+							</span>
+						</div>
+						
+						<div class="reviewBottom">
+							<textarea name="book_review" readonly="readonly" style="font-size:15px; margin-left: 30px; width:90%; height:95%;">${userBookStar.book_review}</textarea>
+						</div>	
+						
+						<div class="reviewButton">
+							<a href="javascript:updateCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
+							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">삭제</a>
+						</div>	
+				</div>
+			</div>	
+			<br/>
+			<br/>	
+			</c:forEach>
+			</c:if>
+			
+			
+			  <br/>
+	      <br/>
+	      
+	<!-- 페이지블록 -->
+	<div align="center">
+		<c:if test="${count>0}">                                  
+			<fmt:parseNumber var="pageCount" value="${count/boardSize+(count%boardSize==0? 0:1)}" integerOnly="true"/>
+			<!-- integerOnly="true"는 형변환(이 경우 소수가 나오지 않게 함) -->
+			<c:set var="pageBlock" value="${3}"/>
+				 
+			<fmt:parseNumber var="rs" value="${(currentPage-1)/pageBlock}" integerOnly="true"/>
+			
+			<c:set var="startPage" value="${rs*pageBlock+1}"/>
+			
+			<c:set var="endPage" value="${startPage+pageBlock-1}"/>
+			<c:if test="${endPage>pageCount}">
+				<c:set var="endPage" value="${pageCount}"/>
+			</c:if>
+			
+			<c:if test="${startPage > pageBlock}">
+				<a href="${root}/book/bookDetail.do?pageNumber=${startPage-pageBlock}&book_isbn=${bookDto.book_isbn}">[이전]</a>
+			</c:if>
+			
+			<c:forEach var="i" begin="${startPage}" end="${endPage}">
+				<a href="${root}/book/bookDetail.do?pageNumber=${i}&book_isbn=${bookDto.book_isbn}">[${i}]</a>
+			</c:forEach>
+			
+			<c:if test = "${endPage<pageCount}">
+				<a href="${root}/book/bookDetail.do?pageNumber=${startPage+pageBlock}&book_isbn=${bookDto.book_isbn}">[다음]</a>
+			</c:if>
+		</c:if>
+	</div>
+	
+		
 		</div>
-
 	</div>
 </body>
 </html>

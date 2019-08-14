@@ -1,6 +1,7 @@
 package com.java.book.service;
 
 import java.text.DecimalFormat;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import com.java.aop.IlgumAspect;
 import com.java.book.dao.BookDao;
 import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
+import com.java.book.dto.UserBookStar;
 import com.java.member.dto.MemberDto;
 
 @Component
@@ -32,6 +34,9 @@ public class BookServiceImp implements BookService {
 		
 		BookDto bookDto = bookDao.bookDetail(book_isbn);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + bookDto.toString());
+		
+		memberWrite(mav);
+		
 		
 		mav.addObject("bookDto", bookDto);
 		mav.setViewName("/book/bookDetail.tiles");
@@ -223,6 +228,148 @@ public class BookServiceImp implements BookService {
 
 		mav.setViewName("/book/category_list.tiles");
 		
+	}
+
+	@Override
+	public void memberWrite(ModelAndView mav) {
+		
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		UserBookStar userBookStar = (UserBookStar) map.get("userBookStar");
+		
+		String pageNumber = request.getParameter("pageNumber");
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "pageNumber: " +pageNumber);
+		
+		String book_num = request.getParameter("book_isbn");
+		if(pageNumber == null) pageNumber = "1";
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "pageNumber: " +pageNumber);
+		
+		int currentPage = Integer.parseInt(pageNumber);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + currentPage);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + book_num);
+		
+		int boardSize = 3;
+		int startRow = (currentPage-1)*boardSize+1;
+		int endRow = currentPage*boardSize;
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "startRow:"+ startRow + "endRow" +endRow);
+		
+		int count = bookDao.reviewCount(book_num);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
+		
+		List<UserBookStar> reviewList = null;
+		
+		if(count > 0) {
+			HashMap<String, Object> hMap = new HashMap<String, Object>();
+			hMap.put("startRow", startRow);
+			hMap.put("endRow", endRow);
+			hMap.put("book_num", book_num);
+			
+			reviewList = bookDao.reviewList(hMap);
+			IlgumAspect.logger.info(IlgumAspect.logMsg + reviewList);
+		}
+		
+		mav.addObject("reviewList",reviewList);
+		mav.addObject("count", count);
+		mav.addObject("boardSize", boardSize);
+		mav.addObject("currentPage", currentPage);
+		
+	}
+
+	@Override
+	public void memberWriteOk(ModelAndView mav) {
+		
+		Map<String, Object>map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		if(request.getParameter("userbookstar_star")==null) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_num"));
+			mav.setViewName("book/writeOk.empty");
+		}
+		
+		UserBookStar userBookStar = new UserBookStar();
+		userBookStar.setMember_id(request.getParameter("member_id"));
+		userBookStar.setBook_num(request.getParameter("book_num"));
+		userBookStar.setBook_review(request.getParameter("book_review"));
+		int star = Integer.parseInt(request.getParameter("userbookstar_star"));
+		userBookStar.setUserbookstar_star(star);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + star);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + userBookStar.toString());
+		
+		if(userBookStar.getBook_review().equals("")){
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_num"));
+			mav.setViewName("book/writeOk.empty");
+		}else {
+		
+		int check = bookDao.memberWriteOk(userBookStar);
+		
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+		
+		mav.addObject("check",check);
+		mav.addObject("book_isbn",request.getParameter("book_num"));
+		
+		mav.setViewName("book/writeOk.empty");
+		}
+	}
+
+	@Override
+	public void memberDelete(ModelAndView mav) {
+		
+		Map<String, Object>map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session = (HttpSession) map.get("session");
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("book_isbn"));
+		
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		
+		if(session.getAttribute("login")==null) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+			
+		}else if(!request.getParameter("member_id").equals(session.getAttribute("login"))) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+		}else {
+		
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("order_bunho", request.getParameter("order_bunho"));
+		hMap.put("book_num", request.getParameter("book_isbn"));
+		
+		String id = bookDao.deleteCheck(hMap);
+		
+		if(id.equals(request.getParameter("member_id"))) {
+			hMap.put("member_id", id);
+			
+			int check = bookDao.deleteReview(hMap);
+			
+			IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+			
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+		}
+		}
 	}
 
 }
