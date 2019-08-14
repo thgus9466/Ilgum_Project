@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <script type="text/javascript" src="${root}/resources/javascript/book/bookDetail.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/book/script.js"></script>
 <link rel="stylesheet" href="${root}/resources/css/book/bookDetail.css"/>
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -186,13 +187,13 @@
 						</div>	
 						
 						<div class="reviewButton">
-							<a href="javascript:updateCheck('${root}','${currentPage}','${guestDto.num}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
-							<a href="javascript:deleteCheck('${root}','${currentPage}','${guestDto.num}')" style="font-size:18px;">삭제</a>
+							<a href="javascript:updateCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
+							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}')" style="font-size:18px;">삭제</a>
 						</div>	
 				</div>
 			</div>	
 			<br/>
-			</br>	
+			<br/>	
 			</c:forEach>
 			</c:if>
 			

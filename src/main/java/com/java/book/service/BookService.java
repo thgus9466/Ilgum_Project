@@ -20,4 +20,6 @@ public interface BookService {
 	public void memberWrite(ModelAndView mav);
 
 	public void memberWriteOk(ModelAndView mav);
+
+	public void memberDelete(ModelAndView mav);
 }

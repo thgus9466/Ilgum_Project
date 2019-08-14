@@ -39,4 +39,8 @@ public interface BookDao {
 
 	public int memberWriteOk(UserBookStar userBookStar);
 
+	public String deleteCheck(HashMap<String, Object> hMap);
+
+	public int deleteReview(HashMap<String, Object> hMap);
+
 }

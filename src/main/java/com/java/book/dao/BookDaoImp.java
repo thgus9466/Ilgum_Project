@@ -118,6 +118,18 @@ public class BookDaoImp implements BookDao {
 		return sqlSessionTemplate.insert("dao.BookMapper.writeOk", userBookStar);
 	}
 
+	@Override
+	public String deleteCheck(HashMap<String, Object> hMap) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("dao.BookMapper.deleteCheck", hMap);
+	}
+
+	@Override
+	public int deleteReview(HashMap<String, Object> hMap) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.delete("dao.BookMapper.deleteReview", hMap);
+	}
+
 	
 
 }

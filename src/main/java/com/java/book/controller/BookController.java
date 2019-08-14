@@ -118,4 +118,16 @@ public class BookController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
+	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		
+		bookService.memberDelete(mav);
+		
+		return mav;
+	}
 }

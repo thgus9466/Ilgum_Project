@@ -321,4 +321,33 @@ public class BookServiceImp implements BookService {
 		}
 	}
 
+	@Override
+	public void memberDelete(ModelAndView mav) {
+		
+		Map<String, Object>map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("order_bunho", request.getParameter("order_bunho"));
+		hMap.put("book_num", request.getParameter("book_isbn"));
+		
+		String id = bookDao.deleteCheck(hMap);
+		
+		if(id.equals(request.getParameter("member_id"))) {
+			hMap.put("member_id", id);
+			
+			int check = bookDao.deleteReview(hMap);
+			
+			IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+			
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+		}
+	}
+
 }
