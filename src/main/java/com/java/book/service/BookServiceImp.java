@@ -327,7 +327,7 @@ public class BookServiceImp implements BookService {
 		Map<String, Object>map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("book_num"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("book_isbn"));
 		
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		

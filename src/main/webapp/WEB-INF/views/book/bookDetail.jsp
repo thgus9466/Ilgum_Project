@@ -188,7 +188,7 @@
 						
 						<div class="reviewButton">
 							<a href="javascript:updateCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
-							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}')" style="font-size:18px;">삭제</a>
+							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">삭제</a>
 						</div>	
 				</div>
 			</div>	
