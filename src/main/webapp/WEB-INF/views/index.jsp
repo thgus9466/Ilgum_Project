@@ -130,7 +130,7 @@
 			<div class="best">
 			<div>
 				<span>이달의 도서</span>
-				<span class="plus"><a href="#" style="color:#edac2b;">+더보기</a></span>
+				<span class="plus"><a href="${root}/book/monthBook.do" style="color:#edac2b;">+더보기</a></span>
 			</div>
 			<!-- 이달의 도서 이미지 -->
 			
