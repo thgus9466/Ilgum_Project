@@ -402,9 +402,13 @@
 					
 					<div style="margin-right:0px;">
 						<ul>
-				   		  <li>RECRUIT</li>
-				          <br/><li>채용 소개</li>
-				          <li>채용 지원하기</li>
+							<li>RECRUIT</li>
+							<br/><li>채용 소개</li>
+							<li>채용 지원하기</li>
+							<c:if test='${login=="admin"}'>
+								<li><a href="${root}/admin/AdminBook.do">관리자</a></li>
+							</c:if>
+						
 				        </ul>
 	     			 </div>
 	   

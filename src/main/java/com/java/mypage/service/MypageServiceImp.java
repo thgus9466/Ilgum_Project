@@ -151,31 +151,16 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("orderDto",orderDto);
 		mav.setViewName("mypage/deliver.tiles");
 	}
-
+	
+	//상담문의 글 서비스
 	public void boardWrite(ModelAndView mav) {
-		int q_number = 0;
-		int group_number = 1;
-		int sequence_level = 0;
-		int sequence_number = 0;
 
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String member_id = (String) request.getSession().getAttribute("login");
 		String member_name = mypageDao.getName(member_id);
 
-		if (request.getParameter("q_number") != null) {
-			q_number = Integer.parseInt(request.getParameter("q_number"));
-			group_number = Integer.parseInt(request.getParameter("group_number"));
-			sequence_number = Integer.parseInt(request.getParameter("sequence_number"));
-			sequence_level = Integer.parseInt(request.getParameter("sequence_level"));
-		}
-
 		mav.addObject("member_name", member_name);
-		mav.addObject("q_number", q_number);
-		mav.addObject("group_number", group_number);
-		mav.addObject("sequence_number", sequence_number);
-		mav.addObject("sequence_level", sequence_level);
-
 		mav.setViewName("mypage/write.tiles");
 	}
 
@@ -183,8 +168,6 @@ public class MypageServiceImp implements MypageService {
 	public void boardWriteOk(ModelAndView mav) {
 		Map<String, Object> map = mav.getModel();
 		QuestionDto questionDto = (QuestionDto) map.get("questionDto");
-
-		boardWriteNumber(questionDto);
 
 		questionDto.setQ_date(new Date());
 		questionDto.setQ_state("답변대기");
@@ -194,21 +177,6 @@ public class MypageServiceImp implements MypageService {
 
 		mav.addObject("check", check);
 		mav.setViewName("mypage/writeOk.empty");
-	}
-
-	public void boardWriteNumber(QuestionDto questionDto) {
-		int q_number = questionDto.getQ_number();
-		int groupNumber = questionDto.getGroup_number();
-		int sequenceNumber = questionDto.getSequence_number();
-		int sequenceLevel = questionDto.getSequence_level();
-
-		if (q_number == 0) {
-			int max = mypageDao.boardGroupNumberMax();
-			IlgumAspect.logger.info(IlgumAspect.logMsg + max);
-
-			if (max != 0)
-				questionDto.setGroup_number(max + 1);
-		}
 	}
 
 	@Override
@@ -280,5 +248,23 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("pageNumber",pageNumber);
 		
 		mav.setViewName("mypage/deleteOk.empty");
+	}
+
+	@Override
+	public void qReadReply(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		int q_number = Integer.parseInt(request.getParameter("q_number"));
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+
+		QuestionDto questionDto = mypageDao.qRead(q_number);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + questionDto.toString());
+		questionDto.setA_content(questionDto.getA_content().replace("<br/>","\r\n"));
+		mav.addObject("questionDto", questionDto);
+		mav.addObject("pageNumber", pageNumber);
+
+		mav.setViewName("mypage/readReply.tiles");
+		
 	}
 }

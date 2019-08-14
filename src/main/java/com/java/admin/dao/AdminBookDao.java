@@ -21,23 +21,18 @@ public interface AdminBookDao {
 	public int insert(AdminBookDto bookDto);
 	
 	//도서 카운터
-	public int bookSearchCount(String searchType, String keyword);
-	
-	//도서 카운터
+	public int bookSearchCount(String searchType, String keyword);	
 	public int adminBookCount();
 	
 	//도서목록
 	public List<AdminBookDto> bookList(int startRow, int endRow);
 	public List<AdminBookDto> bookSearchList(String searchType, String keyword, int startRow, int endRow);
 	
-	
-	
-	
 	//도서 읽기
-	AdminBookDto bookRead(String book_isbn);
+	public AdminBookDto bookRead(String book_isbn);
 	
-
-	int bookUpdate(AdminBookDto bookDto);
+	//도서상세정보 수정
+	public int bookUpdate(AdminBookDto bookDto);
 
 
 

@@ -22,9 +22,21 @@
 	</select>
 	
 	<insert id="boardInsert" parameterType="com.java.mypage.dto.QuestionDto">
-		insert into qna
-		values(seq_q_number.nextval, #{member_id}, #{q_title}, #{q_content}, #{q_theme}, #{q_state}, #{q_date},
-				#{group_number}, #{sequence_number}, #{sequence_level})
+	<![CDATA[insert 
+		into qna (q_number,
+				member_id,
+				q_title,
+				q_content,
+				q_theme,
+				q_state,
+				q_date)
+		values(seq_q_number.nextval,
+				#{member_id},
+				#{q_title},
+				#{q_content},
+				#{q_theme}, 
+				#{q_state}, 
+				#{q_date})]]>
 	</insert>
 	
 	<select id="qCount" parameterType="String" resultType="int">

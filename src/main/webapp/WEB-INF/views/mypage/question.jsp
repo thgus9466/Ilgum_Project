@@ -51,6 +51,20 @@
 						            <td align="center"width="150">${questionDto.q_theme}</td>
 						            <td align="center"width="70">${questionDto.q_state}</td>
 						        </tr>
+								<c:if test="${questionDto.a_member_id =='관리자'}">
+							    	<tr>
+							            <td align="center"width="170">
+							            <fmt:formatDate value="${questionDto.a_date}" pattern="yyyy.MM.dd"/></td>
+							            <td align="center"width="300">
+							            <a href="${root}/mypage/readReply.do?q_number=${questionDto.q_number}&pageNumber=${currentPage}">${questionDto.a_title}</a>
+							            </td>
+							            <td align="center"width="150">${questionDto.q_theme}</td>
+							            <td align="center"width="70">${questionDto.q_state}</td>
+							        </tr>
+									<tr>
+									</tr>
+							        
+								</c:if>
 						    </c:forEach>
 				         </c:if>
 			         </tbody>

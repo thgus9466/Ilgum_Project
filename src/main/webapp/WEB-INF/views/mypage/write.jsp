@@ -28,11 +28,6 @@
 			  method="get" onsubmit="return boardForm(this)">
 			  
 		<input type="hidden" name="member_id" value="${login}"/>	  
-		<input type="hidden" name="q_number" value="${q_number}"/>
-		<input type="hidden" name="group_number" value="${group_number}"/>
-		<input type="hidden" name="sequence_number" value="${sequence_number}"/>
-		<input type="hidden" name="sequence_level" value="${sequence_level}"/>
-		
 		<table>
 	         <tr>
 	            <td width="444px" align="right" bgcolor="76CE53">

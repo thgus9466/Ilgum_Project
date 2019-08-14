@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper: 상담관리 -->
+<mapper namespace="dao.AdminQuestionMapper">
+   		<resultMap type="com.java.admin.dto.AdminQuestionDto" id="QuestionDto">
+		<result column="q_number" property="q_number"/>
+		<result column="member_id" property="member_id"/>
+		<result column="q_title" property="q_title"/>
+		<result column="q_content" property="q_content"/>		
+		<result column="q_theme" property="q_theme"/>
+		<result column="q_state" property="q_state"/>
+		<result column="q_date" property="q_date"/>
+		<result column="board_number" property="board_number"/>
+		<result column="group_number" property="group_number"/>
+		<result column="sequence_number" property="sequence_number"/>
+		<result column="sequence_level" property="sequence_level"/>
+		<result column="a_member_id" property="a_member_id"/>
+		<result column="a_title" property="a_title"/>
+		<result column="a_content" property="a_content"/>
+		<result column="a_date" property="a_date"/>
+	</resultMap>
+
+	<!-- 전체조회 -->
+	<select id="QuestionList" resultMap="QuestionDto" parameterType="java.util.HashMap">
+		<![CDATA[
+	 	 		select * from 
+		 			(select rownum rnum, a.* from 
+	 	 				(select * from qna order by q_number asc)a) 
+	 	 		where rnum>=#{startRow} and rnum <=#{endRow}
+ 	 	]]> 
+	</select>
+	
+	<!-- 상세조회 -->
+	<select id="QuestionSearchList" resultMap="QuestionDto" parameterType="java.util.HashMap">
+		<if test='searchType=="q_number"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna order by q_number asc) a) b
+			where q_number like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="member_id"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna order by q_number asc) a) b
+			where member_id like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="q_theme"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna order by q_number asc) a) b
+			where q_theme like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="q_date"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna order by q_number asc) a) b
+			where q_date like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType==""'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from qna order by q_number asc) a) b
+			where q_number like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+	</select>
+
+	<!-- 상담문의글 전체 조회수 -->
+	<select id="QuestionCount" resultType="int">
+		<![CDATA[select count(*) from qna]]>
+	</select>
+	
+	
+	<!-- 상담문의글 상세조회수-->
+	<select id="QuestionSearchCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*)
+		from qna
+		<if test='searchType=="q_number"'>
+			where q_number like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'member_id'">
+            where member_id like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'q_theme'">
+            where q_theme like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'q_date'">
+            where q_date like '%'||#{keyword}||'%'
+        </if>
+	</select>
+	
+	<!-- 상담글 상세내용 불러오기-->
+	<select id="QuestionRead" parameterType="int" resultMap="QuestionDto">
+		<![CDATA[
+			select * from qna where q_number = #{q_number}
+		]]>
+	</select>
+	
+	
+	<!-- 상담글 답변수정 -->
+	<update id="QuestionUpdate" parameterType="com.java.admin.dto.AdminQuestionDto">
+		<![CDATA[
+			UPDATE qna SET q_state=#{q_state}, a_member_id=#{a_member_id}, a_title=#{a_title}, a_content=#{a_content},a_date=#{a_date} WHERE q_number=#{q_number}	
+		]]>
+	</update>
+	
+	
+	<!-- 상담글 답변달기 -->
+	<select id="QuestionSelect" resultMap="QuestionDto" parameterType="java.util.HashMap">
+		select *
+		from qna where q_number = #{q_number} and member_id =#{member_id}
+	</select>
+
+</mapper>
