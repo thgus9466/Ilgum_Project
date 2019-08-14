@@ -40,7 +40,7 @@
 		<header>
 			<div class="first">
 				<div class="logo">
-					<a href="#"><img src="${root}/resources/img/index/logo2.png"/></a>
+					<a href="${root}/index"><img src="${root}/resources/img/index/logo2.png"/></a>
 				</div>  <!-- 로고 -->
 				<div class="search">
 					<div class="searchDiv">
