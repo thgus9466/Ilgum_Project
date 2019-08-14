@@ -29,7 +29,7 @@ function updateToServer(root1,currentPage,bunho,id,book,login){
 		var newButton2 = document.createElement("BUTTON");
 		newButton2.innerHTML = "취소";   
 		newButton2.id="cancel";
-		
+		newButton2.onClick="myFunction('root')";
 		
 		var newDiv = document.createElement("div");
 		newDiv.appendChild(newButton);
