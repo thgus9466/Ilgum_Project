@@ -20,6 +20,7 @@ import com.java.member.dto.MemberDto;
 import com.java.mypage.dao.MypageDao;
 import com.java.order.dto.OrderDto;
 import com.java.order.dto.UserOrderDto;
+import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
 
 
@@ -315,5 +316,68 @@ public class MypageServiceImp implements MypageService {
 		}
 		
 		mav.setViewName("redirect:/index.empty");
+	}
+	
+	@Override
+	public void cartList(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String member_id = (String) request.getSession().getAttribute("login");
+
+		int count = mypageDao.cartCount(member_id);
+
+		List<CartDto> cartList = null;
+		if (count > 0)
+			cartList = mypageDao.cartList(member_id);
+
+		mav.addObject("count", count);
+		mav.addObject("cartList", cartList);
+
+		mav.setViewName("mypage/cart.tiles");
+	}
+
+	@Override
+	public void cartInsert(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		CartDto cartDto = (CartDto) map.get("cartDto");
+
+		String member_id = (String) request.getSession().getAttribute("login");
+		String book_isbn = request.getParameter("book_isbn");
+		int cart_quantity = Integer.parseInt(request.getParameter("cart_quantity"));
+		System.out.println("id: " + member_id + "\t isbn: " + book_isbn + "\t quantity: " + cart_quantity);
+
+		cartDto.setMember_id(member_id);
+		cartDto.setBook_isbn(book_isbn);
+		cartDto.setCart_quantity(cart_quantity);
+
+		// 장바구니에 기존 상품이 있는지 검사
+		int count = mypageDao.alreadyCount(member_id, book_isbn);
+		int check;
+		if (count == 0)
+			check = mypageDao.cartInsert(cartDto);
+		else
+			check = mypageDao.cartUpdate(cartDto);
+
+		mav.addObject("check", check);
+
+		mav.setViewName("mypage/cartInsertOk.empty");
+	}
+
+	@Override
+	public void cartDel(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		String delList[] = request.getParameter("delList").split(",");
+
+		int check = 0;
+		for (int i = 0; i < delList.length; i++)
+			check = mypageDao.cartDel(delList[i]);
+
+		mav.addObject("check", check);
+
+		mav.setViewName("mypage/cartDelOk.empty");
 	}
 }

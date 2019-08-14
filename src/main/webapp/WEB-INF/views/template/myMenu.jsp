@@ -52,7 +52,7 @@
 				<li><a href="${root}/mypage/update.do">내 정보 수정</a></li>
 				<li><a href="${root}/mypage/interest.do">내 관심분야</a></li>
 				<li><a href="${root}/mypage/deliver.do">주문/배송 조회</a></li>
-				<li><a href="#">장바구니</a></li>
+				<li><a href="${root}/mypage/cartList.do">장바구니</a></li>
 				<li><a href="${root}/mypage/question.do">1:1 상담내역</a></li>
 			</ul>
 		</div>

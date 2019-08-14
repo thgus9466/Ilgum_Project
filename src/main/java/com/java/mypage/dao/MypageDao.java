@@ -5,6 +5,7 @@ import java.util.List;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
 import com.java.order.dto.UserOrderDto;
+import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
 
 
@@ -33,4 +34,16 @@ public interface MypageDao {
 	public int delivercount(String member_id);
 
 	public int updateLevel(String member_id);
+	
+	public int alreadyCount(String member_id, String book_isbn);
+	
+	public int cartInsert(CartDto cartDto);
+	
+	public int cartUpdate(CartDto cartDto);
+	
+	public int cartCount(String member_id);
+	
+	public List<CartDto> cartList(String member_id);
+	
+	public int cartDel(String delList);
 }

@@ -27,5 +27,10 @@ public interface MypageService {
 	public void interest(ModelAndView mav);
 
 	public void withdrawal(ModelAndView mav);
-
+	
+	public void cartInsert(ModelAndView mav);
+	
+	public void cartDel(ModelAndView mav);
+	
+	public void cartList(ModelAndView mav);
 }

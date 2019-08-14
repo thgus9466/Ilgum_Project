@@ -20,12 +20,14 @@
 
 		<c:if test="${count >0}">
 			<div id="result">
-				V <span id="book_name"><b>${text}</b></span>에 대한 결과 총 
+				V <span id="book_name"><b>${text}</b></span>에 대한 <span style="color:red">text</span> 결과 총 
 				<span style="color:green" id="book_quantity">${count}</span>권의 도서가 검색되었습니다.
 			</div>
 		
 			<c:forEach var="bookDto" items="${bookList}">
+			<form name="form" method="get">
 			<div id="content1">
+			<input type="hidden" name="book_isbn" value="${bookDto.book_isbn}">
 				<div id="sub1-1"><input type="checkbox" id="check"/></div>
 				
 				<div id="sub1-2">
@@ -35,7 +37,7 @@
 				<div id="sub2">
 					<div>
 						<span id="best">베스트셀러</span>&nbsp;
-						<a href="#"><span id="book_name"><b>${bookDto.book_name}</b></span></a>
+						<a href="javascript:void(0);" onclick="goBookDetail('${root}', '${bookDto.book_isbn}')"><span id="book_name"><b>${bookDto.book_name}</b></span></a>
 					</div>
 					<ul id="info">
 						<li style="padding-left: 0px;">${bookDto.book_writer}</li>
@@ -53,12 +55,13 @@
 				
 				<div id="sub3">
 					<ul>
-						<li><span style="font-size:0.7em;">수량</span><input type="number" min="0" value="1" id="num"></li>
-						<li><input type="button" value="장바구니" id="btn"></li>
-						<li><input type="button" value="바로구매" id="buy"></li>
+						<li><span style="font-size:0.7em;">수량</span><input type="number" min="0" value="1" id="num" name="cart_quantity"></li>
+						<li><input type="submit" value="장바구니" id="btn" onclick="insert('${root}', '${bookDto.book_isbn}')"></li>
+						<li><input type="submit" value="바로구매" id="buy"></li>
 					</ul>
 				</div>
 			</div>
+			</form>
 			</c:forEach>
 		</c:if>
 		
@@ -67,11 +70,6 @@
 	         <c:set var="pageBlock" value="${10}"/>
 	         <fmt:parseNumber var="pageCount" value="${count/boardSize + (count%boardSize==0? 0:1)}" integerOnly="true"/>
 	         
-	         <%--
-	            int startPage = (int) ( (currentPage - 1) / pageBlock ) * pageBlock + 1;
-	            int endPage = (int) startPage + pageBlock - 1;
-	          --%>
-	          
 	         <fmt:parseNumber var="result" value="${(currentPage - 1) / pageBlock}" integerOnly="true"/>
 	         <c:set var="startPage" value="${result * pageBlock + 1}"/>
 	         <c:set var="endPage" value ="${startPage + pageBlock - 1}"/>
