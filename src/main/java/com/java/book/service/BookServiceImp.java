@@ -326,12 +326,21 @@ public class BookServiceImp implements BookService {
 		
 		Map<String, Object>map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		HttpSession session = (HttpSession) map.get("session");
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("book_isbn"));
 		
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		
-		if(request.getParameter("member_id")==null) {
+		if(session.getAttribute("login")==null) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+			
+		}else if(!request.getParameter("member_id").equals(session.getAttribute("login"))) {
 			int check = 0;
 			mav.addObject("check",check);
 			mav.addObject("book_isbn",request.getParameter("book_isbn"));

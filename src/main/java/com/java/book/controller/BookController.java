@@ -120,12 +120,12 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="/member/delete.do", method= RequestMethod.GET)
-	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response) {
+	public ModelAndView memberDelete(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		
 		ModelAndView mav = new ModelAndView();
 		
 		mav.addObject("request", request);
-		
+		mav.addObject("session", session);
 		bookService.memberDelete(mav);
 		
 		return mav;
