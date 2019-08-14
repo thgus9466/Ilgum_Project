@@ -43,13 +43,14 @@
 			<div id="menubar">		
 				<ul>
 					<li>
-						<a href="#">국내도서</a>
+						<a href="${root}/book/bestSeller.do">베스트셀러</a>
+						
 					</li>
 					<li>
-						<a href="#">베스트 셀러</a>
+						<a href="${root}/book/newBook.do">신간도서</a>
 					</li>					
 					<li>
-						<a href="#">신간 도서</a>
+						<a href="${root}/book/monthBook.do">이달의 도서</a>						
 					</li>
 					<li class = "search">
 						<a href="#">찾기</a>				 

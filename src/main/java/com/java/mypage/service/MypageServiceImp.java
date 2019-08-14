@@ -166,10 +166,17 @@ public class MypageServiceImp implements MypageService {
 
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		
+		
 		String member_id = (String) request.getSession().getAttribute("login");
 		String member_name = mypageDao.getName(member_id);
-
+		MemberDto memberDto = mypageDao.readMypage(member_id);
+		
 		mav.addObject("member_name", member_name);
+		mav.addObject("pageNumber",pageNumber);
+		mav.addObject("memberDto",memberDto);
+		
 		mav.setViewName("mypage/write.tiles");
 	}
 
@@ -212,7 +219,9 @@ public class MypageServiceImp implements MypageService {
 			qList = mypageDao.qList(member_id, startRow, endRow);
 			member_name = mypageDao.getName(member_id);
 		}
-
+		
+		MemberDto memberDto = mypageDao.readMypage(member_id);
+		mav.addObject("memberDto",memberDto);
 		mav.addObject("member_name", member_name);
 		mav.addObject("boardSize", boardSize);
 		mav.addObject("currentPage", currentPage);
@@ -235,6 +244,8 @@ public class MypageServiceImp implements MypageService {
 		QuestionDto questionDto = mypageDao.qRead(q_number);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + questionDto.toString());
 
+		MemberDto memberDto = mypageDao.readMypage(member_id);
+		mav.addObject("memberDto",memberDto);
 		mav.addObject("member_name", member_name);
 		mav.addObject("questionDto", questionDto);
 		mav.addObject("pageNumber", pageNumber);
@@ -272,7 +283,7 @@ public class MypageServiceImp implements MypageService {
 		questionDto.setA_content(questionDto.getA_content().replace("<br/>","\r\n"));
 		mav.addObject("questionDto", questionDto);
 		mav.addObject("pageNumber", pageNumber);
-
+		
 		mav.setViewName("mypage/readReply.tiles");
 		
 	}

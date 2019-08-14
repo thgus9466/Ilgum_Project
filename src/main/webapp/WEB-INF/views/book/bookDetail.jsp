@@ -31,8 +31,8 @@
 		<div class="dt_content">
 			<div class="book_index">
 				<ul>
-					<li style="font-weight: 50;">홈</li>
-					<li>> 자기계발</li>
+					<li style="font-weight: 50;">홈 </li>
+					<li> > <a href="${root}/book/category1.do?book_category=${bookDto.book_category}">${bookDto.book_category}</a></li>
 				</ul>
 			</div>
 
