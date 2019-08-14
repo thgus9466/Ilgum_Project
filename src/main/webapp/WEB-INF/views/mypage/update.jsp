@@ -236,11 +236,10 @@
 				</div>	
 					
 				<div class = "button">
-					<input type="button" value="수정취소">
-				</div>
-				
+					<input type="button" value="수정취소" onclick ="cancel('${root}')"/>
+				</div>				
 				<div class = "button">
-					<input type="button" value="회원탈퇴">
+					<input type="button" value="회원탈퇴" onclick ="withdrawal('${root}')"/>
 				</div>
 			</div>
 			</form>

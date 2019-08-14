@@ -20,6 +20,20 @@ function disagree() {
 	$('#member_job option:eq(0)'). prop("selected", true);
 }
 
+function cancel(root){
+	if(confirm("수정을 취소 하시겠습니까?")){
+		location.href= root+"/mypage/main.do";
+	}
+}
+
+function withdrawal(root){
+	if(confirm("회원을 탈퇴 하시겠습니까?\n탈퇴를 하실 경우 3개월 동안 재가입이 불가능 합니다.")){
+		alert("탈퇴되었습니다.")
+		location.href= root+"/mypage/withdrawal.do";
+	}
+}
+
+
 $(function(){
 	$("input[name=member_interest]:checkbox").change(function(){
 		if(3 == $("input[name=member_interest]:checkbox:checked").length)
@@ -28,13 +42,14 @@ $(function(){
 			$("input[name=member_interest]:checkbox").prop("disabled",false);
 	});
 	$("select[name=phone2_1]").click(function(){
-		if($(this).val() != ""){
+		if($(this).val()!= ""){
 			phone2Check($(this).val());			
 		}
 		else{
 			$("input[name=phone2_2").val(null);
 			$("input[name=phone2_3").val(null);
-		}		
+		}
+		
 	});
 });
 
@@ -71,6 +86,7 @@ function phone2Check(phone){
 }
 
 function registerForm(obj) {
+
 	if (obj.member_id.value == "") {
 		alert("아이디는 필수입력사항입니다.");
 		obj.member_id.focus();

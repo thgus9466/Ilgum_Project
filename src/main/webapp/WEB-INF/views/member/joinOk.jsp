@@ -11,8 +11,8 @@
 <body>
 	<c:if test="${check>0}">
 		<script type="text/javascript">
-			alert("회원가입이 되었습니다.");
-			location.href="${root}/index";
+			alert("회원가입이 되었습니다.가입한 아이디로 로그인 가능합니다.");
+			location.href="${root}/member/memberLogin.do";
 		</script>
 	</c:if>
 	

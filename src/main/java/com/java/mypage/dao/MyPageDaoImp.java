@@ -11,6 +11,7 @@ import org.springframework.stereotype.Component;
 
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
+import com.java.order.dto.UserOrderDto;
 import com.java.mypage.dto.QuestionDto;
 
 @Component
@@ -44,8 +45,13 @@ public class MyPageDaoImp implements MypageDao {
 	}
 
 	@Override
-	public List<OrderDto> DeliverList(String member_id) {
-		return sqlSessionTemplate.selectList("dao.MypageMapper.deliverList",member_id);
+	public List<UserOrderDto> DeliverList(String member_id,int startRow, int endRow) {
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("startRow", startRow);
+		hMap.put("endRow", endRow);
+		hMap.put("member_id", member_id);
+		
+		return sqlSessionTemplate.selectList("dao.MypageMapper.deliverList",hMap);
 	}
 	
 	public List<QuestionDto> qList(String member_id, int startRow, int endRow) {
@@ -71,5 +77,15 @@ public class MyPageDaoImp implements MypageDao {
 	@Override
 	public int qDelete(int q_number) {
 		return sqlSessionTemplate.delete("dao.MypageMapper.qDelete", q_number);
+	}
+	
+	@Override
+	public int delivercount(String member_id) {
+		return sqlSessionTemplate.selectOne("dao.MypageMapper.delivercount",member_id);
+	}
+
+	@Override
+	public int updateLevel(String member_id) {
+		return sqlSessionTemplate.update("dao.MypageMapper.updateLevel",member_id);
 	}
 }

@@ -34,6 +34,7 @@
 	           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
 	           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 	     });
+	    
 	    $(".button input").mouseover(function() {
 			$(this).css('background-color','#10488D')
 			.css('color','white')
@@ -42,14 +43,7 @@
 		$(".button input").mouseout(function() {
 			$(this).css('background-color','white')
 			.css('color','#10488D')
-		});
-		$(".infos_input, #birthdaypicker").focus(function() {
-			$(this).css('background-color','#f2f2f2')
-		});
-		
-		$(".infos_input, #birthdaypicker").focusout(function() {
-			$(this).css('background-color','#e6e6e6')
-		});
+		});	    
 	});
 </script>
 </head>
@@ -127,7 +121,7 @@
 					<span>생년월일</span>
 				</div>
 				<div class="infos_detail">
-					<input id="birthdaypicker" value="" type="text" name="member_birth" readonly="readonly">
+					<input id="birthdaypicker" value="" type="text" name="member_birth" readOnly>
 				</div>				
 			</div>
 			
@@ -155,84 +149,84 @@
 			<span>배송 정보 입력</span>
 			<span>*는 필수입력사항입니다.</span>
 		</div>
-			<div style="height: 150px;" class="infos">
-				<div class = "infos_sub">
-					<span style="color: red; width: 20%; margin: 0px;">*</span>
-					<span>주소</span>
-				</div>
-				<div  class="infos_detail">
-					<input style="width: 100px; float: left;" class = "infos_input" type="text" name="member_zipcode" id="member_zipcode" readOnly/>
-					<div style="float:left;">
-						<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn" onclick="execPostCode()">
-					</div>
-					<div>
-						<input class = "infos_input" type="text" name="member_address1" id="member_address1" readOnly/>
-					</div>
-					<div>
-						<input class = "infos_input" type="text" name="member_address2" id="member_address2"/>
-					</div>
-				
-				</div>									
+		<div style="height: 150px;" class="infos">
+			<div class = "infos_sub">
+				<span style="color: red; width: 20%; margin: 0px;">*</span>
+				<span>주소</span>
 			</div>
-			
-			<div class="infos">
-				<div class = "infos_sub">
-					<span style="color: red; width: 20%; margin: 0px;">*</span>
-					<span>휴대폰 번호</span>
+			<div  class="infos_detail">
+				<input style="width: 100px; float: left;" class = "infos_input" type="text" name="member_zipcode" id="member_zipcode" readOnly/>
+				<div style="float:left;">
+					<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn" onclick="execPostCode()">
 				</div>
 				<div>
-					<select name="phone1_1">
-						<option value="" selected disabled>선택</option>
-						<option value="010">010</option>
-						<option value="011">011</option>
-						<option value="016">016</option>
-						<option value="017">017</option>
-						<option value="019">019</option>
-					</select>
-					<div style="float:left;">
-						<input style="width: 80px;height: 21px;" type="text" name="phone1_2"/>
-					</div>
-					<div style="float:left;">
-						<input style="width: 80px; height: 21px;" type="text" name="phone1_3"/>
-					</div>
-				</div>
-				
-			</div>
-			
-			<div class="infos">
-				<div class = "infos_sub">
-					<span style="color: red; width: 20%; margin: 0px;"> </span>
-					<span style="padding-left:17px;">자택번호(선택사항)</span>
+					<input class = "infos_input" type="text" name="member_address1" id="member_address1" readOnly/>
 				</div>
 				<div>
-					<select name="phone2_1">
-						<option value>선택안함</option>
-						<option value="02">02</option>
-						<option value="031">031</option>
-						<option value="032">032</option>
-						<option value="033">033</option>
-						<option value="041">041</option>
-						<option value="042">042</option>
-						<option value="043">043</option>
-						<option value="051">051</option>
-						<option value="052">052</option>
-						<option value="053">053</option>
-						<option value="054">054</option>
-						<option value="055">055</option>
-						<option value="061">061</option>
-						<option value="062">062</option>
-						<option value="063">063</option>
-						<option value="064">064</option>
-					</select>
-					<div style="float:left;">
-						<input style="width: 80px; height: 21px;" type="text" name="phone2_2"/>
-					</div>
-					<div style="float:left;">
-						<input style="width: 80px; height: 21px;" type="text" name="phone2_3"/>
-					</div>
+					<input class = "infos_input" type="text" name="member_address2" id="member_address2"/>
+					<span style="font-size: 12px; display: block; height: 15px;display: none;color : red;" id="zipcode">우편번호 찾기로 주소를 입력해 주세요.</span>
+				</div>				
+			</div>									
+		</div>
+			
+		<div class="infos">
+			<div class = "infos_sub">
+				<span style="color: red; width: 20%; margin: 0px;">*</span>
+				<span>휴대폰 번호</span>
+			</div>
+			<div>
+				<select name="phone1_1">
+					<option value="" selected disabled>선택</option>
+					<option value="010">010</option>
+					<option value="011">011</option>
+					<option value="016">016</option>
+					<option value="017">017</option>
+					<option value="019">019</option>
+				</select>
+				<div style="float:left;">
+					<input class = "infos_input" style="width: 80px;height: 26px;" type="text" name="phone1_2"/>
+				</div>
+				<div style="float:left;" class = "info_input">
+					<input class = "infos_input" style="width: 80px; height: 26px;" type="text" name="phone1_3"/>
 				</div>
 			</div>
-		</div>	
+		</div>
+					
+		<div class="infos">
+			<div class = "infos_sub">
+				<span style="color: red; width: 20%; margin: 0px;"> </span>
+				<span style="padding-left:17px;">자택번호(선택사항)</span>
+			</div>
+			<div style="float:left;">
+				<select name="phone2_1">
+					<option value>선택안함</option>
+					<option value="02">02</option>
+					<option value="031">031</option>
+					<option value="032">032</option>
+					<option value="033">033</option>
+					<option value="041">041</option>
+					<option value="042">042</option>
+					<option value="043">043</option>
+					<option value="051">051</option>
+					<option value="052">052</option>
+					<option value="053">053</option>
+					<option value="054">054</option>
+					<option value="055">055</option>
+					<option value="061">061</option>
+					<option value="062">062</option>
+					<option value="063">063</option>
+					<option value="064">064</option>
+				</select>
+				<div style="float:left;">
+					<input class = "infos_input" style="width: 80px; height: 26px;" type="text" name="phone2_2"/>
+				</div>
+				<div style="float:left;">
+					<input class = "infos_input" style="width: 80px; height: 26px;" type="text" name="phone2_3"/>
+				</div>
+				<span style="font-size: 12px; display: none; height: 15px; width: 290px;" id="phoneResult">올바른 전화 번호가 아닙니다.</span>							
+			</div>						
+		</div>
+	</div>	
 	
 	<div class="choice_info">
 		<div style="text-align: center" class="header">
@@ -251,19 +245,14 @@
 				</div>
 				<div>
 					<select style="width: 100px;" name="member_job" id="member_job">
-						<option value="not" id="job">직업선택</option>
+						<option id="job">선택안함</option>
 						<option value="none">무직</option>
 						<option value="programmer">개발자</option>
 						<option value="teacher">강사</option>
 						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
-						<option value="student">학생</option>
+						<option value="official">공무원</option>
+						<option value="office workers">직장인</option>
+						<option value="etc">기타</option>
 					</select>
 				</div>									
 			</div>

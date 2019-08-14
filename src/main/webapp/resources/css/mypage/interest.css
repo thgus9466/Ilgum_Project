@@ -1,0 +1,148 @@
+@charset "UTF-8";
+	body {
+	  margin-left: 0px;
+	  margin-top: 0px;
+	  margin-right: 0px;
+	}
+	
+	ul {
+	  list-style: none;
+	  margin: 0px;
+	  padding: 0px;
+	}	
+	a {
+	  text-decoration: none;
+	}
+	
+	input{
+		border-width: 1px;
+		margin: 0px 5px 5px 5px;		
+	}
+	
+	select{
+		width: 50px;
+		height: 25px;
+		margin: 0px 5px 5px 5px;
+		display: block;
+		float: left;
+	}
+	
+	.wrap{
+		width: 1080px;
+		margin:0px auto;
+	}
+
+	.content{
+		/* 		border: 1px solid #cccccc; */
+		width: 750px;
+		float: left;
+		margin: 90px 0px 100px 30px;
+		min-height: 1080px;
+	}
+	span{
+		padding-left: 5px;
+	}
+	
+	p{
+		margin: 10px 0px;
+	}	
+	.head {
+		text-align : left;
+		margin-bottom: 20px;
+	}
+		
+	.head p:first-child{
+		font-size: 35px;
+		font-weight: bold;
+		border-bottom: 2px solid #10488D;
+		padding-bottom: 8px;
+	}
+	
+	/*입력 타이틀,입력 란*/
+	.infos{
+		margin-top: 10px;
+		margin-left: 30px;
+		height: 60px;
+		width: 770px;		
+	}	
+	.infos_sub{
+		min-width: 160px;		
+		margin-left: 15px;
+		margin-right: 100px;
+		float: left;
+	}	
+	.infos_input{
+		width: 250px;
+		height: 25px;
+		background: #d9d9d9;;
+		padding-left: 5px;
+		
+	}	
+	.infos_button{
+		width: 100px;
+		height :30px;
+		line-height : 28px;
+		background-color: #10488D;
+		color: #f2f2f2;		
+	}
+	.infos_detail{
+		float: left;
+		margin-right: 10px;
+	}
+
+	/*선택 정보 사항*/
+	.choice_info {
+		margin:0px auto;
+		width:800px;
+		border-top: 0px; 		
+	}	
+	.choice_info .header{
+		width: 100%;
+		border: 3px solid #10488D;
+	}
+	.choice_info .header span{
+		height:50px;
+		display: inline-block;
+		line-height: 50px;		
+	}
+	
+	.choice_info .header span:first-child{
+		width : 108px;
+		margin-left: 346px;
+		font-weight: bold;		
+	}	
+	.choice_info .header span:last-child{
+		font-size : 14px;
+		margin-right : 5px;
+		color : #10488D;
+		float: right;		
+	}
+	
+	.choice_info > #option{
+		width: 100%;
+		padding-top: 40px;
+		border: 1px solid #cccccc;
+		border-top: 0px;
+	}
+	
+	.infos_interest{
+		width: 100px;
+		height: 20px;
+		float: left;
+		line-height: 20px;
+	}
+	.infos_interest input{
+		margin-right: 0px;
+	}
+	
+	.infos_interest span{
+		font-size : 15px;
+		padding: 0px;
+	}
+	
+	.infos_detail_interest{
+	    width: 450px;
+	   	height: 20px;
+	   	float: left;
+	   	margin-bottom: 10px;
+	}

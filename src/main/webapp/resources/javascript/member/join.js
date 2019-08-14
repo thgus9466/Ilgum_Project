@@ -27,6 +27,13 @@ $(function(){
 		else
 			$("input[name=member_interest]:checkbox").prop("disabled",false);
 	});
+	
+	$("#member_zipcode").click(function() {
+		$("#zipcode").css("display","block");
+	});
+	
+	
+	
 });
 
 function registerForm(obj) {
@@ -183,9 +190,7 @@ function idChk(root) {
 				$('#idResult').css("color", "red");
 				$('#idResult').text("영문자를 포함해야합니다.");
 				$('#idResult').focus();
-			}
-			
-			
+			}			
 			else {
 				$('#idResult').css("color", "red");
 				$('#idResult').text("아이디는 공백없는 6~20자의 영문/숫자조합 입니다.");
@@ -258,6 +263,7 @@ function execPostCode() {
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('member_zipcode').value = data.zonecode; // 5자리
 			document.getElementById('member_address1').value = fullRoadAddr;
+			document.getElementById('zipcode').style.display = "none";
 		}
 	}).open();
 }

@@ -23,5 +23,9 @@ public interface MypageService {
 	public void qReadReply(ModelAndView mav);
 
 	public void qDelete(ModelAndView mav);
+	
+	public void interest(ModelAndView mav);
+
+	public void withdrawal(ModelAndView mav);
 
 }

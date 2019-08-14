@@ -46,4 +46,9 @@ public class MemberDaoImp implements MemberDao {
 
 		return sqlSessionTemplate.update("dao.MemberMapper.memberPasswordNew", hMap);
 	}
+	
+	@Override
+	public String memberLevel(String member_id) {
+		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberLevel",member_id);
+	}
 }

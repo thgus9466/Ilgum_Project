@@ -19,6 +19,7 @@ import com.java.member.dto.MemberDto;
 
 import com.java.mypage.dao.MypageDao;
 import com.java.order.dto.OrderDto;
+import com.java.order.dto.UserOrderDto;
 import com.java.mypage.dto.QuestionDto;
 
 
@@ -134,6 +135,7 @@ public class MypageServiceImp implements MypageService {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		String pageNumber = request.getParameter("pageNumber");
 		String member_id = (String) request.getSession().getAttribute("login");
+		MemberDto memberDto = mypageDao.readMypage(member_id);
 		
 		if(pageNumber==null || pageNumber.trim().length() == 0 ) pageNumber = "1";
 		
@@ -141,14 +143,21 @@ public class MypageServiceImp implements MypageService {
 		int currentPage = Integer.parseInt(pageNumber);
 		int startRow=(currentPage-1)*boardSize + 1;
 		int endRow = currentPage*boardSize;
+		int count = mypageDao.delivercount(member_id);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
+
+		List<UserOrderDto> userOrderDtoList = null;
 		
-		List<OrderDto> orderDto = mypageDao.DeliverList(member_id);		 
+		if(count > 0)userOrderDtoList = mypageDao.DeliverList(member_id,startRow,endRow);			
+//		IlgumAspect.logger.info(IlgumAspect.logMsg + userOrderDtoList.toString());
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg+ orderDto.size());
+		mav.addObject("userOrderDtoList",userOrderDtoList);
+		mav.addObject("memberDto",memberDto);
 		
-		int count = orderDto.size();	
+		mav.addObject("boardSize",boardSize);
+		mav.addObject("count", count);
+		mav.addObject("currentPage", currentPage);
 		
-		mav.addObject("orderDto",orderDto);
 		mav.setViewName("mypage/deliver.tiles");
 	}
 	
@@ -266,5 +275,34 @@ public class MypageServiceImp implements MypageService {
 
 		mav.setViewName("mypage/readReply.tiles");
 		
+	}
+	
+	@Override
+	public void interest(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("login");
+		
+		MemberDto memberDto = mypageDao.readMypage(member_id);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ memberDto.toString());
+		
+		mav.addObject("memberDto", memberDto);
+		mav.setViewName("mypage/interest.tiles");	
+	}
+
+	@Override
+	public void withdrawal(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("login");
+		
+		int check = mypageDao.updateLevel(member_id);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ check);
+		
+		if(member_id != null) {
+			request.getSession().removeAttribute("login");
+		}
+		
+		mav.setViewName("redirect:/index.empty");
 	}
 }

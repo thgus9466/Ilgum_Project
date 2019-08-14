@@ -16,4 +16,6 @@ public interface MemberDao {
 	public String memberPasswordSearchOk(HashMap<String, Object> hMap);
 
 	public int memberPasswordNew(HashMap<String, Object> hMap);
+	
+	public String memberLevel(String member_id);
 }

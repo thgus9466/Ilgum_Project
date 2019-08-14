@@ -120,4 +120,24 @@ public class MypageController {
 
 		return mav;
 	}
+	
+	@RequestMapping(value = "/mypage/interest.do", method = RequestMethod.GET)
+	public ModelAndView interest(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.interest(mav);
+
+		return mav;
+	}
+	
+	@RequestMapping(value = "/mypage/withdrawal.do", method = RequestMethod.GET)
+	public ModelAndView withdrawal(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.withdrawal(mav);
+
+		return mav;
+	}
 }

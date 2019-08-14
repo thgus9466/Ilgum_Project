@@ -11,9 +11,12 @@
 		member_address1=#{member_address1},member_address2=#{member_address2}, member_phone1 = #{member_phone1}, member_phone2=#{member_phone2} where member_id = #{member_id}
 	</update>
 	
-	<select id="deliverList" parameterType="String" resultType="com.java.order.dto.UserOrderDto">
+	<select id="deliverList" parameterType="java.util.HashMap" resultType="com.java.order.dto.UserOrderDto">
 		<![CDATA[
-		select userorder.*,book.book_name from userorder join book on userorder.book_isbn = book.book_isbn where member_id = #{member_id}
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select userorder.*,book.book_name from userorder join book on userorder.book_isbn = book.book_isbn order by order_date desc) a) b
+				where member_id = #{member_id}) c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
 		]]>
 	</select>
 	
@@ -65,4 +68,14 @@
 	<delete id="qDelete" parameterType="int">
 		delete from qna where q_number = #{q_number}
 	</delete>
+	
+	<select id="delivercount" resultType="int" parameterType="String">
+		<![CDATA[
+			select count(*) from userorder where member_id = #{member_id}
+		]]>
+	</select>
+	
+	<update id="updateLevel" parameterType="String" >
+		update member set member_level = 'withdrawal' where member_id = #{member_id}
+	</update>
 </mapper>
