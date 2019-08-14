@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
+import com.java.book.dto.UserBookStar;
 import com.java.member.dto.MemberDto;
 
 @Component
@@ -97,6 +98,24 @@ public class BookDaoImp implements BookDao {
 		hMap.put("endRow", endRow);
 
 		return sqlSessionTemplate.selectList("dao.BookMapper.bookListCategory", hMap);
+	}
+
+	@Override
+	public int reviewCount(String book_num) {
+		
+		return sqlSessionTemplate.selectOne("dao.BookMapper.reviewCount", book_num);
+	}
+
+	@Override
+	public List<UserBookStar> reviewList(HashMap<String, Object> hMap) {
+		
+		return sqlSessionTemplate.selectList("dao.BookMapper.reviewList", hMap);
+	}
+
+	@Override
+	public int memberWriteOk(UserBookStar userBookStar) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.insert("dao.BookMapper.writeOk", userBookStar);
 	}
 
 	

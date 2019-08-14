@@ -1,9 +1,11 @@
 package com.java.book.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.java.book.dto.BestSellerDto;
 import com.java.book.dto.BookDto;
+import com.java.book.dto.UserBookStar;
 import com.java.member.dto.MemberDto;
 
 public interface BookDao {
@@ -30,5 +32,11 @@ public interface BookDao {
 	public int bookCountCategory(String book_category);
 	
 	public List<BookDto> bookcategory(String book_category, int startRow, int endRow);
+
+	public int reviewCount(String book_num);
+
+	public List<UserBookStar> reviewList(HashMap<String, Object> hMap);
+
+	public int memberWriteOk(UserBookStar userBookStar);
 
 }
