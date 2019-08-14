@@ -72,10 +72,9 @@
 						<div id=border>
 							<label id="label">이미지1</label>
 							<img id="book_textFront" src="${bookDto.book_img_url}">
-
+							
 							<label id="label">이미지2</label>
 							<img id="book_textback" src="${bookDto.book_imgxl_url}">
-
 						</div>
 						
 						<div id=border1 style="margin:0px auto; width: 550px;">

@@ -29,7 +29,7 @@
 
 			<!--  BookInsert -->
 			<div>
-				<form name="bookInsert"  action="${root}/admin/writeOk.do" method="get" onsubmit="return booktCheck(this)">
+				<form name="bookInsert"  action="${root}/admin/writeOk.do" method="POST" onsubmit="return booktCheck(this)">
 					<div id="borderMain">
 						<div id=border>
 							<label id="label">도서번호</label><!-- 도서번호(book_isbn) -->

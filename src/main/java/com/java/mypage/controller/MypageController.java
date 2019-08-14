@@ -54,7 +54,8 @@ public class MypageController {
 		
 		return mav;
 	}
-	
+
+	//상담문의 글 작성
 	@RequestMapping(value = "/mypage/write.do", method = RequestMethod.GET)
 	public ModelAndView write(HttpServletRequest request, HttpServletResponse response) {
 
@@ -64,7 +65,7 @@ public class MypageController {
 		mypageService.boardWrite(mav);
 		return mav;
 	}
-
+	//상담문의 글 작성 확인
 	@RequestMapping(value = "/mypage/writeOk.do", method = RequestMethod.GET)
 	public ModelAndView writeOk(HttpServletRequest request, HttpServletResponse response, QuestionDto questionDto) {
 
@@ -97,7 +98,18 @@ public class MypageController {
 
 		return mav;
 	}
-		
+	//관리자 답변글 보기
+	@RequestMapping(value = "/mypage/readReply.do", method = RequestMethod.GET)
+	public ModelAndView qReadReply(HttpServletRequest request, HttpServletResponse response) {
+
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		mypageService.qReadReply(mav);
+
+		return mav;
+	}
+	
 	@RequestMapping(value = "/mypage/delete.do", method = RequestMethod.GET)
 	public ModelAndView qDelete(HttpServletRequest request, HttpServletResponse response) {
 

@@ -13,7 +13,7 @@ body {
 	margin: 0 auto;
 	font-family: "Nanum Gothic", arial, helvetica, sans-serif;
 	background-repeat: no-repeat;
-	background: linear-gradient(to bottom right, #EFEEE5, #EFEEE5);
+	background: linear-gradient(to bottom right, #fff, #fff);
 }
 
 .main {

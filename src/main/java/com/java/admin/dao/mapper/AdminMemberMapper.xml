@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper: 회원 -->
+<mapper namespace="dao.AdminMemberMapper">
+   		<resultMap type="com.java.admin.dto.AdminMemberDto" id="MemberDto">
+		<result column="member_id" property="member_id"/>
+		<result column="member_password" property="member_password"/>
+		<result column="member_name" property="member_name"/>		
+		<result column="member_gender" property="member_gender"/>
+		<result column="member_zipcode" property="member_zipcode"/>
+		<result column="member_address1" property="member_address1"/>
+		<result column="member_address2" property="member_address2"/>
+		<result column="member_phone1" property="member_phone1"/>
+		<result column="member_phone2" property="member_phone2"/>
+		<result column="member_interest" property="member_interest"/>
+		<result column="member_job" property="member_job"/>
+		<result column="member_birth" property="member_birth"/>
+		<result column="member_email" property="member_email"/>
+		<result column="member_point" property="member_point"/>
+		<result column="member_level" property="member_level"/>		
+	</resultMap>
+
+	<!-- 전체조회 -->
+	<select id="MemberList" resultMap="MemberDto" parameterType="java.util.HashMap">
+		<![CDATA[
+	 	 		select * from 
+		 			(select rownum rnum, a.* from 
+	 	 				(select * from member order by member_name asc)a) 
+	 	 		where rnum>=#{startRow} and rnum <=#{endRow}
+ 	 	]]> 
+	</select>
+	
+	<!-- 상세조회 -->
+	<select id="MemberSearchList" resultMap="MemberDto" parameterType="java.util.HashMap">
+		<if test='searchType=="member_name"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from member order by member_name asc) a) b
+			where member_name like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="member_id"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from member order by member_name asc) a) b
+			where member_id like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="member_address1"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from member order by member_name asc) a) b
+			where member_address1 like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType=="member_phone1"'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from member order by member_name asc) a) b
+			where member_phone1 like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+		
+		<if test='searchType==""'>
+			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from member order by member_name asc) a) b
+			where member_name like '%'||#{keyword}||'%')c
+			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
+		</if>
+	</select>
+
+	<!-- 회원전체조회인원수 -->
+	<select id="MemberCount" resultType="int">
+		<![CDATA[select count(*) from member]]>
+	</select>
+	
+	
+	<!-- 회원상세인원조회수-->
+	<select id="MemberSearchCount" resultType="int" parameterType="java.util.HashMap">
+		select count(*)
+		from member
+		<if test='searchType=="member_name"'>
+			where member_name like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'member_id'">
+            where member_id like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'member_address1'">
+            where member_address1 like '%'||#{keyword}||'%'
+        </if>
+		<if test="searchType == 'member_phone1'">
+            where member_phone1 like '%'||#{keyword}||'%'
+        </if>
+	</select>
+	
+	<!-- 도서상세페이지 불러오기-->
+	<select id="MemberRead" parameterType="String" resultMap="MemberDto">
+		<![CDATA[
+			select * from member where member_id = #{member_id}
+		]]>
+	</select>
+</mapper>

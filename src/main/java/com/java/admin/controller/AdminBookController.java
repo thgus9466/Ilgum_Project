@@ -51,7 +51,7 @@ public class AdminBookController {
 	}
 	
 	//도서추가확인	
-	@RequestMapping(value="/admin/writeOk.do", method=RequestMethod.GET)
+	@RequestMapping(value="/admin/writeOk.do", method=RequestMethod.POST)
 	public ModelAndView  bookWriterOk(HttpServletRequest request, 
 				HttpServletResponse response, AdminBookDto bookDto) {
 		ModelAndView mav=new ModelAndView();
@@ -109,7 +109,4 @@ public class AdminBookController {
 		
 		return mav;
 	}
-	
-	
-
 }

@@ -20,6 +20,8 @@ public interface MypageService {
 
 	public void qRead(ModelAndView mav);
 
+	public void qReadReply(ModelAndView mav);
+
 	public void qDelete(ModelAndView mav);
 
 }

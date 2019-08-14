@@ -28,7 +28,9 @@ pageEncoding="UTF-8"%>
 			<li class="sidebar-brand"><a href="#">사이트관리시스템</a></li>
 			<li><a href="${root}/admin/AdminInsert2.do">관리자</a></li>
 			<li><a href="${root}/admin/AdminBook.do">도서관리</a></li>
-			<li><a href="#">회원관리</a></li>
+			<li><a href="${root}/admin/AdminMemberList.do">회원관리</a></li>
+			<li><a href="${root}/admin/AdminQuestionList.do">상담문의관리</a></li>
+			<li><a href="${root}/index.do">메인페이지</a></li>
 		</ul>
 		</nav>
 		<!-- /#sidebar-wrapper -->

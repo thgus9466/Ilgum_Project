@@ -101,8 +101,8 @@ public class AdminBookServiceImp implements AdminBookService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
-		String book_isbn = request.getParameter("book_isbn").trim();
-		int pageNumber = Integer.parseInt(request.getParameter("pageNumber").trim());
+		String book_isbn = request.getParameter("book_isbn");
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		
 		AdminBookDto bookDto = bookDao.bookRead(book_isbn);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + bookDto.toString());
@@ -173,7 +173,7 @@ public class AdminBookServiceImp implements AdminBookService {
 		
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("check",check);
-		mav.setViewName("/admin/AdminBookUpdateOk.empty");
+		mav.setViewName("admin/AdminBookUpdateOk.empty");
 	}
 	
 }
