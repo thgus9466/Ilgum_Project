@@ -327,7 +327,19 @@ public class BookServiceImp implements BookService {
 		Map<String, Object>map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("book_num"));
+		
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		
+		if(request.getParameter("member_id")==null) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_isbn"));
+			mav.addObject("pageNumber",pageNumber);
+			
+			mav.setViewName("book/delete.empty");
+		}else {
+		
 		
 		HashMap<String, Object> hMap = new HashMap<String, Object>();
 		hMap.put("order_bunho", request.getParameter("order_bunho"));
@@ -347,6 +359,7 @@ public class BookServiceImp implements BookService {
 			mav.addObject("pageNumber",pageNumber);
 			
 			mav.setViewName("book/delete.empty");
+		}
 		}
 	}
 
