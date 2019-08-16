@@ -168,14 +168,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-<<<<<<< HEAD
-		String member_id = (String) request.getSession().getAttribute("login");
-		String member_name = mypageDao.getName(member_id);
 
-		
-		mav.addObject("member_name", member_name);
-		mav.addObject("pageNumber", pageNumber);
-=======
 		
 		
 		String member_id = (String) request.getSession().getAttribute("login");
@@ -186,7 +179,6 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("pageNumber",pageNumber);
 		mav.addObject("memberDto",memberDto);
 		
->>>>>>> 06c43d09dc232a10447020f494d9813896976667
 		mav.setViewName("mypage/write.tiles");
 	}
 
