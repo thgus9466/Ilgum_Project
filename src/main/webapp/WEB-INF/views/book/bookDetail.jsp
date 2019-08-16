@@ -9,6 +9,8 @@
 <meta charset="UTF-8">
 <script type="text/javascript" src="${root}/resources/javascript/book/bookDetail.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/book/script.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/book/replyUpdate.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/book/xhr.js"></script>
 <link rel="stylesheet" href="${root}/resources/css/book/bookDetail.css"/>
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -29,8 +31,8 @@
 		<div class="dt_content">
 			<div class="book_index">
 				<ul>
-					<li style="font-weight: 50;">홈</li>
-					<li>> 자기계발</li>
+					<li style="font-weight: 50;">홈 </li>
+					<li> > <a href="${root}/book/category1.do?book_category=${bookDto.book_category}">${bookDto.book_category}</a></li>
 				</ul>
 			</div>
 
@@ -147,7 +149,7 @@
 			<!-- 방명록 목록의 내용 보여주기 -->
 			<c:if test="${count>0}">
 				<c:forEach var="userBookStar" items="${reviewList}"> <!-- 반복문을 돌면서 저장된 데이터 값들을 뿌려줌 -->
-				<div class="book_reply">
+				<div class="book_reply" id="${userBookStar.order_bunho}">
 				<div class="review" id="review">
 					
 						<div class="reviewTop">
@@ -186,8 +188,8 @@
 							<textarea name="book_review" readonly="readonly" style="font-size:15px; margin-left: 30px; width:90%; height:95%;">${userBookStar.book_review}</textarea>
 						</div>	
 						
-						<div class="reviewButton">
-							<a href="javascript:updateCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
+						<div class="reviewButton" id="reviewButton">
+							<a href="javascript:updateToServer('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}','${login}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
 							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">삭제</a>
 						</div>	
 				</div>

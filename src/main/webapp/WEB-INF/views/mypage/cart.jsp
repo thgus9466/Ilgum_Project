@@ -1,72 +1,70 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/myPage/basket.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/mypage/cart.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
-<script type="text/javascript">
-function checkAll(){
-    if( $("#td_checkAll").is(':checked') ){
-      $("input[name=checkRow]").prop("checked", true);
-    }else{
-      $("input[name=checkRow]").prop("checked", false);
-    }
-}
-</script>
+<script type="text/javascript" src="${root}/resources/javascript/mypage/cart.js"></script>
 </head>
 <body>
 	<div class="container">
 	<jsp:include page="../template/myMenu.jsp"/>
 		<div class="basket">
 			<div class="ttitle">장바구니</div>
-			
 			<div align="center" class="blist">
-		      	<input type="button" value="선택삭제" id="btnDel"/>
+				<form name="form" method="get">
+		      	<input type="button" value="선택삭제" id="btnDel" onclick="cartDel('${root}')"/>
 		      
-		      	<table class="tfirst">
+		      	<table class="tfirst" >
 		      	<thead>
 		         <tr>
 		         	<td align="center"width="50">
-		         		<input type="checkbox" name="checkAll" id="td_checkAll" onclick="checkAll();"/>
+		         		<input type="checkbox" name="checkAll" id="td_checkAll" onclick="checkThings()"/>
 		         	</td>
 		         	<td align="center"width="170">책
 		         	</td>
-		            <td align="center"width="230">도서명</td>
-		            <td align="center"width="130">가격</td>
-		            <td align="center"width="100">수량</td>
+		            <td align="center"width="250">도서명</td>
+		            <td align="center"width="110">가격</td>
+		            <td align="center"width="90">수량</td>
 		            <td align="center"width="150">적립금</td>
 		         </tr>
-		         </thead>
-		         
-		         <tbody>
+		        </thead>
+				</table>
+				
+		        <c:if test="${count==0 || cartList.size()==0}">
+					<div id="result" style="margin: 50px;">
+						<b>장바구니가 비어있습니다.</b>
+					</div>
+				</c:if>
+				
+				<c:if test="${count > 0}">
+				<div style="height:500px; overflow:auto; margin: 10px;">
+				
+				<table>
+		         <c:forEach var="cartDto" items="${cartList}">
 		         <tr id="tcontent">
-		         	<td align="center"width="50"><input type="checkbox" name="checkRow" id="1"></td>
-		            <td align="center"width="170">
-		         		<img alt="이미지 준비중" src="${root}/resources/img/book.PNG" height="90">
+		         	<td align="center"width="30"><input type="checkbox" name="checkRow" id="${cartDto.book_isbn}" value="${cartDto.cart_num}"
+		         		onclick="checkSum('${cartDto.book_isbn}', '${cartDto.book_price*cartDto.cart_quantity}', '${cartDto.cart_quantity}', '${cartDto.book_price*0.05}')"></td>
+		            <td align="center"width="190">
+		         		<img alt="이미지 준비중" src="${cartDto.book_img_url}" height="90">
 		         	</td>
-		            <td align="center"width="230">화차</td>
-		            <td align="center"width="130">12,420원</td>
-		            <td align="center"width="100">2</td>
-		            <td align="center"width="150">2,480원</td>
+		            <td align="center"width="270" style="margin-right: 20px;">${cartDto.book_name}</td>
+		            <td align="center"width="130">
+		            	<fmt:formatNumber value="${cartDto.book_price*cartDto.cart_quantity}"/>원</td>
+		            <td align="center"width="100">${cartDto.cart_quantity}</td>
+		            <td align="center"width="150">
+		            	<fmt:formatNumber value="${cartDto.book_price*0.05}" maxFractionDigits="0"/>원</td>
 		         </tr>
-		         
-		         <tr id="tcontent">
-		         	<td align="center"width="50"><input type="checkbox" name="checkRow" id="2"></td>
-		         	<td align="center"width="170">
-		         		<img alt="이미지 준비중" src="${root}/resources/img/book.PNG" height="90">
-		         	</td>
-		            <td align="center"width="230">화차</td>
-		            <td align="center"width="130">12,420원</td>
-		            <td align="center"width="100">2</td>
-		            <td align="center"width="150">2,480원</td>
-		         </tr>
-		         </tbody>
+		         </c:forEach>
 		      	</table>
+		      	</div>
+		      	</c:if>
 		      	
 		      	<table class="tsecond">
 		         <thead>
@@ -77,16 +75,19 @@ function checkAll(){
 		            <td align="center"width="190">총 예상 적립금</td>
 		         </tr>
 		         </thead>
-		         
 		         <tbody>
-		         	
+		         	<tr>
+		            <td align="center"width="250" id="priceTotal">0원</td>
+		            <td align="center"width="150" id="quantityTotal">0권</td>
+		            <td align="center"width="190" style="color: blue;">무료배송</td>
+		            <td align="center"width="190" id="pointTotal">0원</td>
+		         </tr>
 		         </tbody>
 		      	</table>
-		      	
 		      	<input type="button" value="구매하기" id="btnBuy"/>
+		      	</form>
    			</div>
    			
-   			<div>◎ 10000원 이상 주문하시면 배송비가 무료입니다</div>
    			<div style="border: 1.5px solid black; font-size:0.9em; margin-top: 50px; padding:2px;">
    			<b>일반배송상품(택배수령) 안내사항</b><br/>
 			재고 여부에 따라 품절/지연될 수 있으며, 이 경우 문자로 안내드립니다.<br/><br/>

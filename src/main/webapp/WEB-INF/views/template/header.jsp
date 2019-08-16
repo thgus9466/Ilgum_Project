@@ -12,6 +12,7 @@
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script type="text/javascript">
 	$(function() {
+		
 		$(".search a").click(function() {
 			$(".searchbar").fadeIn();
 		});
@@ -20,8 +21,15 @@
 		});
 		$(".search_input").focusout(function() {
 			$(this).css('background-color','#e6e6e6')
-		});
+		});		
 	});
+	var login = "${login}";
+	if(login != ""){
+		$(function(){
+			$("#logout > li:nth-child(1)").replaceWith("<li><a href='${root}/mypage/main.do'>마이페이지</a></li>");
+			$("#logout > li:nth-child(2)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");
+		});
+	};
 </script>
 </head>
 <body>
@@ -35,13 +43,14 @@
 			<div id="menubar">		
 				<ul>
 					<li>
-						<a href="#">국내도서</a>
+						<a href="${root}/book/bestSeller.do">베스트셀러</a>
+						
 					</li>
 					<li>
-						<a href="#">베스트 셀러</a>
+						<a href="${root}/book/newBook.do">신간도서</a>
 					</li>					
 					<li>
-						<a href="#">신간 도서</a>
+						<a href="${root}/book/monthBook.do">이달의 도서</a>						
 					</li>
 					<li class = "search">
 						<a href="#">찾기</a>				 
@@ -60,21 +69,18 @@
 			</div>	
 			
 			<div id="infobar">
-				<ul id="" >			
+				<ul id="logout" >			
 					<li>
-						<a href="#">회원가입</a>
+						<a href="${root}/member/memberJoin.do">회원가입</a>
 					</li>
 					<li>
-						<a href="#">로그인</a>
-					</li>
-					<li>
-						<a href="#">로그아웃</a>
+						<a href="${root}/member/memberLogin.do">로그인</a>
 					</li>
 					<li>
 						<a href="#">장바구니</a>
 					</li>
 					<li>
-						<a href="#">주문배송조회</a>
+						<a href="${root}/mypage/deliver.do">주문배송조회</a>
 					</li>
 				</ul>				
 			</div>

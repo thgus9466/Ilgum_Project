@@ -50,9 +50,9 @@
 		<div class="menu2">
 			<ul>
 				<li><a href="${root}/mypage/update.do">내 정보 수정</a></li>
-				<li><a href="#">내 관심분야</a></li>
-				<li><a href="#">주문/배송 조회</a></li>
-				<li><a href="#">장바구니</a></li>
+				<li><a href="${root}/mypage/interest.do">내 관심분야</a></li>
+				<li><a href="${root}/mypage/deliver.do">주문/배송 조회</a></li>
+				<li><a href="${root}/mypage/cartList.do">장바구니</a></li>
 				<li><a href="${root}/mypage/question.do">1:1 상담내역</a></li>
 			</ul>
 		</div>
@@ -70,7 +70,7 @@
 			<br/>
 			<ul>
 				<li>1:1 고객상담</li>
-				<li>- <a href="${root}/member/deliver.do">주문 확인 및 배송</a></li>
+				<li>- <a href="${root}/member/deliver.do">주문 확인 및 배송 안내</a></li>
 				<li>- <a href="#">환불 처리</a></li>
 				<li>- <a href="#">주문 취소</a></li>
 				<li>- <a href="#">매장 재고 문의</a></li>

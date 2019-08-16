@@ -11,15 +11,15 @@
 <body>
 	<c:if test="${check>0}">
 		<script type="text/javascript">
-			alert("회원가입이 되었습니다.가입한 아이디로 로그인 가능합니다.");
-			location.href="${root}/member/memberLogin.do";
+			alert("장바구니에 담겼습니다.");
+			location.href=history.back(-2);
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0}">
 		<script type="text/javascript">
-			alert("회원가입이 되지 않았습니다.");
-			location.href="${root}/member/memberJoin.do";
+			alert("장바구니 담기 실패하였습니다.");
+			location.href=history.back(-2);
 		</script>
 	</c:if>
 </body>

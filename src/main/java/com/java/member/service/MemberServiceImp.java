@@ -81,23 +81,32 @@ public class MemberServiceImp implements MemberService {
 		
 		if(session.getAttribute("login") != null) {
 			session.removeAttribute("login");
-		}
-		
+		}		
 		
 		HashMap<String, Object> hMap = new HashMap<String, Object>();
 		hMap.put("member_id", request.getParameter("member_id"));
 		hMap.put("member_password", request.getParameter("member_password"));
 		
 		String member_id = memberDao.memberLoginOk(hMap);
+		String member_level = memberDao.memberLevel(member_id);
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + member_id);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + member_id + member_level);
 		
-		if(member_id != null) {
+		if(member_id != null && !member_level.equals("withdrawal")) {
 			session.setAttribute("login", member_id);
-			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login"));
+			session.setAttribute("member_level", member_level);
+			
+			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login") + "member_level : "+ session.getAttribute("member_level"));
 			mav.setViewName("redirect:/index.empty");
-		}else {
-			mav.setViewName("member/login");
+			
+		}else if(member_id == null) {
+			session.removeAttribute("login");
+			IlgumAspect.logger.info(IlgumAspect.logMsg + "비회원일때"+member_id +member_level);
+			mav.setViewName("member/notlogin.tiles");
+		}else if(member_level.equals("withdrawal")) {
+			session.removeAttribute("login");
+			IlgumAspect.logger.info(IlgumAspect.logMsg + "탈퇴한 회원일때"+member_id +member_level);
+			mav.setViewName("member/withdrawal.tiles");
 		}
 		
 	}

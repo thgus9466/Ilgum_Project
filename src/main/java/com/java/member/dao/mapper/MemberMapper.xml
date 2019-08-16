@@ -30,4 +30,8 @@
  	<update id="memberPasswordNew" parameterType="java.util.HashMap">
  		update member set member_password=#{member_password} where member_id = #{member_id}
  	</update>
+ 	
+ 	<select id="memberLevel" parameterType="String" resultType="String">
+ 		select member_level from member where member_id = #{member_id}
+ 	</select>
 </mapper>

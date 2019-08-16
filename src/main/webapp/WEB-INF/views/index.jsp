@@ -40,7 +40,7 @@
 		<header>
 			<div class="first">
 				<div class="logo">
-					<a href="#"><img src="${root}/resources/img/index/logo2.png"/></a>
+					<a href="${root}/index"><img src="${root}/resources/img/index/logo2.png"/></a>
 				</div>  <!-- 로고 -->
 				<div class="search">
 					<div class="searchDiv">
@@ -66,7 +66,7 @@
 							</div>
 							<div>
 								<ul id="logout">
-									<li><a href="#">장바구니</a></li>
+									<li><a href="${root}/mypage/cartList.do">장바구니</a></li>
 									<li><a href="${root}/member/storeInfo.do">지점안내</a></li>
 									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 									<li><a href="${root}/member/memberLogin.do">로그인</a></li>
@@ -130,7 +130,7 @@
 			<div class="best">
 			<div>
 				<span>이달의 도서</span>
-				<span class="plus"><a href="#" style="color:#edac2b;">+더보기</a></span>
+				<span class="plus"><a href="${root}/book/monthBook.do" style="color:#edac2b;">+더보기</a></span>
 			</div>
 			<!-- 이달의 도서 이미지 -->
 			
