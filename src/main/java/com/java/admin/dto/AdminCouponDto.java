@@ -15,7 +15,7 @@ public class AdminCouponDto {
 	private String 	admin_couponeUseday;			//관리자쿠폰사용기간
 	private String 	admin_content;					//관리자쿠폰내용
 
-	private double 	admin_sale;						//관리자쿠폰한인율
+	private double 	admin_sale;						//관리자쿠폰 할인율
 
 	public String getAdmin_couponNumber() {
 		return admin_couponNumber;

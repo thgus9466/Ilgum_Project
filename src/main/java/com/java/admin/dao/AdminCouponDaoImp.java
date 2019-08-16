@@ -1,20 +1,17 @@
 package com.java.admin.dao;
 
 import java.util.HashMap;
-import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.java.admin.dto.AdminCouponDto;
 
 
 /**
  * @author 최선권
- * @date 2019.08.09
+ * @date 2019.08.14
  * @description 관리자 회원관리 시스템 DAO implement
  */ 
 

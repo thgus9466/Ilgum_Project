@@ -148,7 +148,6 @@ public class AdminQuestionServiceImp implements AdminQuestionService {
 	public void QuestionReplyOk(ModelAndView mav) {
 		Map<String,Object> map = mav.getModel();
 		AdminQuestionDto questionDto =  (AdminQuestionDto)map.get("questionDto");
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
 		questionDto.setA_date(new Date());
 		questionDto.setQ_state("답변완료");		

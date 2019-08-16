@@ -1,0 +1,21 @@
+작성자: 최선권
+일시   : 2019-08-16
+내용   : 회원 상담관리 테이블
+
+create table QnA(
+q_number 				 number(20)  not null primary key,
+member_id 				 varchar2(50),
+q_title 				 varchar2(100),
+Q_CONTENT                VARCHAR2(1000), 
+Q_THEME                  VARCHAR2(100),
+Q_STATE                  VARCHAR2(100),
+Q_DATE                   DATE,
+GROUP_NUMBER             NUMBER(10),
+SEQUENCE_NUMBER          NUMBER(10),
+SEQUENCE_LEVEL           NUMBER(10),
+A_MEMBER_ID              VARCHAR2(20),
+A_TITLE                  VARCHAR2(200),
+A_CONTENT                VARCHAR2(500),
+A_DATE                   DATE,
+constraint member_id_fk FOREIGN KEY (member_id) REFERENCES member(member_id)
+)

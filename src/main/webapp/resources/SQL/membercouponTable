@@ -1,0 +1,11 @@
+작성자: 최선권
+일시   : 2019-08-16
+내용   : 회원쿠폰 테이블
+
+create table memberCoupon(
+member_couponNumber varchar2(50) primary key,
+member_id varchar2(50),
+admin_couponNumber varchar2(50),
+constraint member_id_fk FOREIGN KEY (member_id) REFERENCES member(member_id),
+constraint admin_couponNumber_fk FOREIGN KEY (admin_couponNumber) REFERENCES adminCoupon(admin_couponNumber)
+);

@@ -27,9 +27,6 @@ public class AdminQuestionController {
 	@Autowired
 	private AdminQuestionService questionService; 
 
-	@Autowired
-	private AdminCouponService couponService; 
-
 	//상담글페이지목록
 	@RequestMapping(value="/admin/AdminQuestionList.do", method=RequestMethod.GET)
 	public ModelAndView QuestionList(HttpServletRequest request, HttpServletResponse response, AdminQuestionDto questionDto) { 
