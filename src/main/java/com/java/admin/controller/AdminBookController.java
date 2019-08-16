@@ -13,7 +13,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.admin.dto.AdminBookDto;
+import com.java.admin.dto.AdminCouponDto;
 import com.java.admin.service.AdminBookService;
+import com.java.admin.service.AdminCouponService;
 import com.java.aop.IlgumAspect;
 
 
@@ -28,6 +30,9 @@ import com.java.aop.IlgumAspect;
 public class AdminBookController {
 	@Autowired
 	private AdminBookService bookService; 
+
+	@Autowired
+	private AdminCouponService couponService;
 
 	//도서추가페이지
 	@RequestMapping(value="/admin/AdminBookInsert.do", method=RequestMethod.GET)
@@ -109,4 +114,5 @@ public class AdminBookController {
 		
 		return mav;
 	}
+	
 }

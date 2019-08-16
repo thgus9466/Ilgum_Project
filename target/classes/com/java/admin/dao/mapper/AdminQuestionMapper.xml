@@ -28,7 +28,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<![CDATA[
 	 	 		select * from 
 		 			(select rownum rnum, a.* from 
-	 	 				(select * from qna order by q_number asc)a) 
+	 	 				(select * from qna order by q_number desc)a) 
 	 	 		where rnum>=#{startRow} and rnum <=#{endRow}
  	 	]]> 
 	</select>

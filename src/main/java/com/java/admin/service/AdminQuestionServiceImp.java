@@ -1,6 +1,9 @@
 package com.java.admin.service;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -64,11 +67,10 @@ public class AdminQuestionServiceImp implements AdminQuestionService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg +  "count: " + count);
 
 		//새글알림 기능 구현예정
-//		LocalDateTime now = LocalDateTime.now();
-//		LocalDateTime newContent = now.minusHours(12); // 12시간 전
-//		System.out.println(newContent);
-//
-//		mav.addObject("newContent", newContent);
+		String newContent = "답변대기";
+		System.out.println(newContent);
+
+		mav.addObject("newContent", newContent);
 		mav.addObject("QuestionList", QuestionList);
 		mav.addObject("count", count);	// count값이 0일경우 조회목록이 없을경우는 jsp페이지에서 처리
 		mav.addObject("searchType", searchType);
@@ -178,5 +180,15 @@ public class AdminQuestionServiceImp implements AdminQuestionService {
 		
 		mav.setViewName("admin/AdminQuestionWriteReply.empty");
 	}
-	 
+
+	public String date() {
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTime(new Date());
+	    cal.add(Calendar.DATE, -1);
+
+	    // 특정 형태의 날짜로 값을 뽑기 
+	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	    String strDate = df.format(cal.getTime());
+	    return strDate.toString(); 
+	}
 }

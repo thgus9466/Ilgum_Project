@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.admin.dto.AdminQuestionDto;
+import com.java.admin.service.AdminCouponService;
 import com.java.admin.service.AdminQuestionService;
 import com.java.aop.IlgumAspect;
 
@@ -26,6 +27,9 @@ public class AdminQuestionController {
 	@Autowired
 	private AdminQuestionService questionService; 
 
+	@Autowired
+	private AdminCouponService couponService; 
+
 	//상담글페이지목록
 	@RequestMapping(value="/admin/AdminQuestionList.do", method=RequestMethod.GET)
 	public ModelAndView QuestionList(HttpServletRequest request, HttpServletResponse response, AdminQuestionDto questionDto) { 
@@ -35,7 +39,6 @@ public class AdminQuestionController {
 		mav.addObject("questionDto", questionDto);
 		
 		questionService.QuestionList(mav); 
-		
 		return mav;
 	}
 

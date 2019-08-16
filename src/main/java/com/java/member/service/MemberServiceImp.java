@@ -62,6 +62,8 @@ public class MemberServiceImp implements MemberService {
 		memberDto.setMember_level("AA");
 		
 		int check = memberDao.memberInsert(memberDto);
+
+
 		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
 		
 		mav.addObject("check", check);

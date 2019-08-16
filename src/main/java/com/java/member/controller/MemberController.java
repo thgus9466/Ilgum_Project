@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.admin.service.AdminCouponService;
 import com.java.member.dto.MemberDto;
 import com.java.member.service.MemberService;
 
@@ -20,6 +21,10 @@ import com.java.member.service.MemberService;
 public class MemberController {
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private AdminCouponService couponService;
+	
 	
 	@RequestMapping(value="/member/memberJoin.do", method=RequestMethod.GET)
 	public ModelAndView memberJoin(HttpServletRequest request, HttpServletResponse response) {
@@ -48,9 +53,9 @@ public class MemberController {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
 		mav.addObject("memberDto", memberDto);
-
+		
 		memberService.memberJoinOk(mav);
-
+		couponService.couponAuto(mav);
 		return mav;
 	}
 	
