@@ -8,7 +8,9 @@
 	
 	<select id="monthBook" resultType="com.java.book.dto.BookDto">
 		<![CDATA[
-			select * from (select * from book) where rownum <= 5
+		select rownum num, data.* from
+		(select * from book WHERE book_publish_date >= TO_DATE('20190701','YYYYMMDD')
+   		AND  book_publish_date <  TO_DATE('20190731','YYYYMMDD'))data where rownum <= 5
 		]]>
 	</select>
 	
