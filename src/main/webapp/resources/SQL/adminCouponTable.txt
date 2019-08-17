@@ -1,0 +1,11 @@
+작성자: 최선권
+일시   : 2019-08-16
+내용   : 관리자 쿠폰 테이블
+
+create table adminCoupon(
+admin_couponNumber varchar2(50) primary key,
+admin_couponName varchar2(50),
+admin_couponUseday varchar2(50),
+admin_content varchar2(1000),
+admin_sale number(20,2)
+);

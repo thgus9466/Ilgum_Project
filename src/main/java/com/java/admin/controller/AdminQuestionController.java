@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.admin.dto.AdminQuestionDto;
+import com.java.admin.service.AdminCouponService;
 import com.java.admin.service.AdminQuestionService;
 import com.java.aop.IlgumAspect;
 
@@ -35,7 +36,6 @@ public class AdminQuestionController {
 		mav.addObject("questionDto", questionDto);
 		
 		questionService.QuestionList(mav); 
-		
 		return mav;
 	}
 

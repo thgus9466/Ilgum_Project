@@ -28,7 +28,7 @@
 					<input type="hidden" name="boardSize" value="${boardSize}"/>
 					<input type="hidden" name="currentPage" value="${currentPage}"/>
 
-					<!-- Member  Select Search구현-->													
+					<!-- Question&Answer  Select Search구현-->													
 					<div class="row"> 
 						<select id="searchType" name="searchType">
 							<option value="q_number">QnA번호</option>	
@@ -59,8 +59,8 @@
 							<tr	>
 								<th class="col-xs-1" style="text-align: center">QnA번호</th>
 								<th class="col-xs-1" style="text-align: center">아이디</th>
-								<th class="col-xs-1" style="text-align: center">제목</th>
-								<th class="col-xs-3" style="text-align: center">분야</th>
+								<th class="col-xs-3" style="text-align: center">제목</th>
+								<th class="col-xs-1" style="text-align: center">분야</th>
 								<th class="col-xs-2" style="text-align: center">날짜</th>
 								<th class="col-xs-1" style="text-align: center">처리</th>
 							</tr>
@@ -79,14 +79,17 @@
 										</td>
 										<td style="text-align: center; cursor: pointer; " >
 											<a style="text"href="${root}/admin/AdminQuestionRead.do?q_number=${QuestionDto.q_number}&pageNumber=${currentPage}&member_id=${QuestionDto.member_id}">
-												<c:out value="${QuestionDto.q_title}"/>
+												<c:out value="${QuestionDto.q_title}"/>&nbsp;&nbsp;
+												<c:if test="${QuestionDto.q_state == newContent}">
+												<span style="color: red;">new</span>
+												</c:if>
 											</a>
 										</td>
 										<td style="text-align: center">
 											<c:out value="${QuestionDto.q_theme}"/>
 										</td>
 										<td style="text-align: center;  cursor: pointer;">
-											<fmt:formatDate value="${QuestionDto.q_date}" pattern="yyyy년 MM월 dd일"/>									
+											<fmt:formatDate value="${QuestionDto.q_date}" pattern="yyyy-MM-dd HH:mm:ss"/>									
 										</td>
 										<td style="text-align: center;">
 											<c:out value="${QuestionDto.q_state}"/>

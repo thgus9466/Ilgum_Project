@@ -168,6 +168,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+
 		
 		
 		String member_id = (String) request.getSession().getAttribute("login");

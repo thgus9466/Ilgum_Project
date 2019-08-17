@@ -101,6 +101,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 							#{book_index})
  	 	]]> 
 	</insert>
+
 	<!-- 도서수량 -->
 	<select id="adminBookCount" resultType="int">
 		<![CDATA[select count(*) from book]]>

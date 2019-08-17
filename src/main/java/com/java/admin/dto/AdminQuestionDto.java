@@ -20,7 +20,7 @@ public class AdminQuestionDto {
 
 	private String a_member_id;		//관리자 아이디등록
 	private String a_title;			//관리자 답글제목
-	private String a_content;			//관리자 답글내용
+	private String a_content;		//관리자 답글내용
 	private Date a_date;			//관리자 답글시간
 	
 	private int board_number;    	//

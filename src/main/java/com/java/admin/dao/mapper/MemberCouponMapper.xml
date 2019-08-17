@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- Mapper: 도서 -->
+<mapper namespace="dao.MemberCouponMapper">
+	<insert id="couponAndMemberInsert" parameterType="com.java.admin.dto.MemberCouponDto">
+		<![CDATA[
+			insert into memberCoupon
+				values(#{member_couponNumber},
+						#{member_id},
+						#{admin_couponNumber})
+ 	 	]]> 
+	</insert>
+
+</mapper>
