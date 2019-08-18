@@ -64,6 +64,10 @@
 	float: left;
 	overflow: hidden;
 }
+.bestImg img{
+	width: 160px;
+	height: 230px;
+}
 
 .bestContent{
 	width: 162px;

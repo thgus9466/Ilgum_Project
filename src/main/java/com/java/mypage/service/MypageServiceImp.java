@@ -32,6 +32,7 @@ public class MypageServiceImp implements MypageService {
 
 	@Override
 	public void readMypage(ModelAndView mav) {
+<<<<<<< HEAD
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
@@ -43,6 +44,40 @@ public class MypageServiceImp implements MypageService {
 
 		mav.addObject("memberDto", memberDto);
 		mav.setViewName("mypage/main.tiles");
+=======
+		Map<String,Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
+		
+		String member_id = memberDto.getMember_id();
+		String pageNumber = request.getParameter("pageNumber");
+		
+		
+		if(pageNumber==null || pageNumber.trim().length() == 0 ) pageNumber = "1";
+		
+		int boardSize = 5;
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow=(currentPage-1)*boardSize + 1;
+		int endRow = currentPage*boardSize;
+		int count = mypageDao.delivercount(member_id);
+		count = 5;
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
+
+		List<UserOrderDto> userOrderDtoList = null;
+		
+		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
+		
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg +memberDto.toString());
+		String[] interest = memberDto.getMember_interest().split(",");
+		
+		mav.addObject("userOrderDtoList",userOrderDtoList);		
+		mav.addObject("memberDto", memberDto);
+		mav.addObject("interest",interest);
+		
+		mav.setViewName("mypage/main.tiles");	
+>>>>>>> 0fd7f1faf64499749c3f082927f38512fa242291
 	}
 
 	@Override
@@ -147,7 +182,9 @@ public class MypageServiceImp implements MypageService {
 		int startRow = (currentPage - 1) * boardSize + 1;
 		int endRow = currentPage * boardSize;
 		int count = mypageDao.delivercount(member_id);
-		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
+		count = 5;
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
 		List<UserOrderDto> userOrderDtoList = null;
 

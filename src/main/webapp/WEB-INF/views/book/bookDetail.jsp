@@ -15,11 +15,11 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 	var session = "${login}";
-
-		if(session != null){
+	
+		if(session != ""){
 			$(function(){
 			$(".noreview").css("display","none");
-			$(".review").css("display","block");
+			$("#review").css("display","block");
 		});
 	}
 </script>
@@ -135,8 +135,8 @@
 						</div>	
 						
 						<div class="reviewButton">
-							<span><input type="reset" value="취소" style=" float: right; margin-right:20px;"/></span>
-							<span><input type="submit" value="확인" style=" float: right; margin-right:30px;"/></span>
+							<span><input type="reset" value="취소" style=" float: right; margin-right:35px;"/></span>
+							<span><input type="submit" value="확인" style=" float: right; margin-right:20px;"/></span>
 						</div>	
 							
 					</form>

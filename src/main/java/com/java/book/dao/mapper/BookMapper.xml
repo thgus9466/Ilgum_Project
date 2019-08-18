@@ -119,4 +119,11 @@
 			delete from userbookstar where member_id = #{member_id} and order_bunho = #{order_bunho} and book_num = #{book_num}
 		]]>
 	</delete>
+	
+	<update id="updateReview" parameterType="com.java.book.dto.UserBookStar">
+		<![CDATA[
+			update userbookstar set book_review = #{book_review}, userbookstar_star = #{userbookstar_star}
+			where member_id = #{member_id} and order_bunho = #{order_bunho} and book_num = #{book_num}
+		]]>
+	</update>
 </mapper>

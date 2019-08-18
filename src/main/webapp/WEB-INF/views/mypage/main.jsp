@@ -50,10 +50,37 @@
 				
 				<div class ="info_dail" style="border-bottom: 0px;">
 					<div style="margin : 30px 0px 30px 10px;">
-						<span style="font-size: 16px;font-weight: bold;">최근 주문 내역</span>
+						<span style="font-size: 16px;font-weight: bold;">최근 1주일 간 주문 내역</span>
 					</div>
-					<div>
-						<span style="margin-left: 30px;display: block;height: 40px;line-height: 40px;width: fit-content;padding-left: 10px;">서울특별시 장문로6길 76 103동 1303호(용산푸르지오파크타운)</span>					
+					<div style="text-align: center; width: fit-content; margin: 0px auto;">
+						<table>
+						<tr>
+							<th>주문번호</th>
+							<th>주문일자</th>
+							<th>주문내역</th>
+							<th>주문금액/수량</th>
+						</tr>				
+						
+						<c:forEach var="userOrderDto" items="${userOrderDtoList}">
+							<tr>
+								<td>${userOrderDto.order_bunho}</td>
+								<td>
+		<%-- 						<fmt:parseDate var="order_date" value="${userOrderDto.order_date}" pattern="yyyy-MM-dd HH:mm:ss"/> --%>
+		<%-- 						${order_date} --%>
+								${userOrderDto.order_date}
+								</td>
+								<td>${userOrderDto.book_name}</td>
+								<td>${userOrderDto.order_total_price}원/${userOrderDto.order_book_count}개</td>
+							</tr>
+						</c:forEach>
+						
+						
+					</table>
+					<c:if test="${count == 0 ||userOrderDtoList.size() == 0}">
+						<div style="background: #e6e6e6; text-align: center; height: 60px;line-height: 60px;">
+							<h4>최근 1주일간 주문한 내역이 없습니다</h4>
+						</div>
+					</c:if>					
 					</div>
 				</div>
 			</div>
@@ -66,11 +93,14 @@
 				
 				<div class ="info_dail" style="border-bottom: 0px;">
 					<div style="margin : 30px 0px 30px 10px;">
-						<span style="font-size: 16px;font-weight: bold;">최근 배송지</span>
+						<span style="font-size: 16px;font-weight: bold;">직업 : </span>
+						<span style="margin-left: 30px;display: inline-block; height: 40px; line-height: 40px;width: fit-content;padding-left: 10px;">${memberDto.member_job}</span>
 					</div>
-					<div>
-						<span style="margin-left: 30px;border: 1px solid #cccccc;display: block;height: 40px;
-	    line-height: 40px;width: fit-content;padding-left: 10px;">서울특별시 장문로6길 76 103동 1303호(용산푸르지오파크타운)</span>					
+					<div style="margin : 30px 0px 30px 10px;">
+						<span style="font-size: 16px;font-weight: bold;">관심사 : </span>
+						<c:forEach var="interest" items="${interest}" >
+						<span style="margin-left: 30px;display: inline-block; height: 40px; line-height: 40px; width: fit-content; padding-left: 10px;">${interest}</span>
+	    				</c:forEach>					
 					</div>
 				</div>
 			</div>

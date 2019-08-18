@@ -20,6 +20,15 @@
 		]]>
 	</select>
 	
+	<select id="deliverList_week" parameterType="java.util.HashMap" resultType="com.java.order.dto.UserOrderDto">		
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select userorder.*,book.book_name from userorder join book on userorder.book_isbn = book.book_isbn where sysdate-7 < userorder.order_date and userorder.order_date < sysdate order by order_date desc) a) b
+				where member_id = #{member_id}) c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
 	<select id="boardGroupNumberMax" resultType="int">
 		select nvl(max(group_number),0) from qna
 	</select>

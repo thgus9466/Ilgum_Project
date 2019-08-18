@@ -31,7 +31,7 @@
 	           dateFormat: "yy-mm-dd", // 텍스트 필드에 입력되는 날짜 형식.
 	           showAnim: "slide", //애니메이션을 적용한다.  
 	           showMonthAfterYear: true , // 월, 년순의 셀렉트 박스를 년,월 순으로 바꿔준다. 
-	           dayNamesMin: ['월', '화', '수', '목', '금', '토', '일'], // 요일의 한글 형식.
+	           dayNamesMin: ['일','월', '화', '수', '목', '금', '토'], // 요일의 한글 형식.
 	           monthNamesShort: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] // 월의 한글 형식.
 	     });
 	    
@@ -246,13 +246,13 @@
 				<div>
 					<select style="width: 100px;" name="member_job" id="member_job">
 						<option id="job">선택안함</option>
-						<option value="none">무직</option>
-						<option value="programmer">개발자</option>
-						<option value="teacher">강사</option>
-						<option value="student">학생</option>
-						<option value="official">공무원</option>
-						<option value="office workers">직장인</option>
-						<option value="etc">기타</option>
+						<option value="무직">무직</option>
+						<option value="개발자">개발자</option>
+						<option value="강사">강사</option>
+						<option value="학생">학생</option>
+						<option value="공무원">공무원</option>
+						<option value="직장인">직장인</option>
+						<option value="기타">기타</option>
 					</select>
 				</div>									
 			</div>

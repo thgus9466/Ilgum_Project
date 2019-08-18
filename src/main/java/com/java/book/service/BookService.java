@@ -22,4 +22,6 @@ public interface BookService {
 	public void memberWriteOk(ModelAndView mav);
 
 	public void memberDelete(ModelAndView mav);
+	
+	public void memberUpdate(ModelAndView mav);
 }

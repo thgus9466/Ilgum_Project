@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <c:set var="root" value="${pageContext.request.contextPath}"/>
-<title>Insert title here</title>
+<title>읽움에 오신걸 환영합니다.</title>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/index/slide.js"></script>
@@ -40,14 +41,12 @@
 		<header>
 			<div class="first">
 				<div class="logo">
-					<a href="${root}/index"><img src="${root}/resources/img/index/logo2.png"/></a>
+					<a href="#"><img src="${root}/resources/img/index/logo2.png"/></a>
 				</div>  <!-- 로고 -->
 				<div class="search">
 					<div class="searchDiv">
-						<form action="${root}/book/search_list.do" method="get">
-							<input class="tec" id="tec" type="text" placeholder="검색어를 입력하세요" name="book_name">
-							<input type="submit" class="btn" id="btn" value="검색"> <!-- 버튼 -->
-						</form>
+						<input class="tec" id="tec" type="text" placeholder="검색어를 입력하세요"/>
+						<button class="btn" id="btn">검색</button> <!-- 버튼 -->
 					</div>
 				</div>  <!-- 검색 -->
 			</div>
@@ -66,8 +65,13 @@
 							</div>
 							<div>
 								<ul id="logout">
+<<<<<<< HEAD
 									<li><a href="${root}/cartList.do">장바구니</a></li>
 									<li><a href="${root}/member/storeInfo.do">지점안내</a></li>
+=======
+									<li><a href="#">장바구니</a></li>
+									<li><a href="#">고객센터</a></li>
+>>>>>>> 0fd7f1faf64499749c3f082927f38512fa242291
 									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 									<li><a href="${root}/member/memberLogin.do">로그인</a></li>
 								</ul>
@@ -130,18 +134,18 @@
 			<div class="best">
 			<div>
 				<span>이달의 도서</span>
-				<span class="plus"><a href="${root}/book/monthBook.do" style="color:#edac2b;">+더보기</a></span>
+				<span class="plus"><a href="#" style="color:#edac2b;">+더보기</a></span>
 			</div>
 			<!-- 이달의 도서 이미지 -->
 			
 			<div>
-			<c:forEach var="book" items="${bookList}">
-				<a href="javascript:void(0);" onclick="goBookDetail('${root}', ${book.book_isbn})">
-					<div class="bestImg">
-						<img src="${book.book_img_url}"/>
-					</div>
-				</a>
-			</c:forEach>
+				<c:forEach var="book" items="${bookList}">
+						<div class="bestImg">
+							<a href="javascript:void(0);" onclick="goBookDetail('${root}', ${book.book_isbn})">
+							<img src="${book.book_img_url}"/>
+							</a>
+						</div>
+				</c:forEach>
 			</div>
 			
 			 <!-- 이달의 도서 내용 -->
@@ -150,7 +154,7 @@
 				<div class="bestContent">
 					<div class="bookName">${book.book_name}</div>  <!-- 책제목 -->
 					<div class="bookWriter">${book.book_writer}</div>  <!-- 작가 -->
-					<div class="bookPrice">가격 ${book.book_price}</div>  <!-- 가격 -->
+					<div class="bookPrice">가격  : <fmt:formatNumber value="${book.book_price}" pattern="#,###,###"/>원</div>  <!-- 가격 -->
 				</div>
 			</c:forEach>	
 			</div>
@@ -166,19 +170,21 @@
 							</span>
 						</div>
 						<div class="bottom">
-						<c:forEach var="novel" items="${novelList}">
-							<div style="margin-top:10px;">
-								<div class="bunho" id="bunho1">1</div>
-								<div class="img"><img src="${novel.book_img_url}"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="color:black; font-size: 14px;">${novel.book_name}</span>
-										</br><span>${novel.book_writer}</span>
+							<c:forEach var="novel" items="${novelList}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${novel.book_isbn}">
+									<div class="bunho" id="bunho1">${novel.num}</div>
+									<div class="img"><img src="${novel.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span style="width:150px; display:block; color:black; font-size: 14px;text-overflow: ellipsis;">${novel.book_name}</span>
+											<span>${novel.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${novel.book_price}" pattern="#,###,###"/>원</div>
 									</div>
-									<div class="price">가격 ${novel.book_price}원</div>
+									</a>
 								</div>
-							</div>
-						</c:forEach>
+							</c:forEach>
 						</div>
 					</div>
 					<div>
@@ -192,14 +198,14 @@
 						<div class="bottom">
 						<c:forEach var="economy" items="${economyList}">
 							<div style="margin-top:10px;">
-								<div class="bunho" id="bunho6">1</div>
+								<div class="bunho" id="bunho6">${economy.num}</div>
 								<div class="img"><img src="${economy.book_img_url}"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">${economy.book_name}</span>
-										</br><span>${economy.book_writer}</span>
+										<span style="width:150px; display:inline-block; color:black; font-size: 14px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${economy.book_name}</span>
+										<span style="width:150px;height:20px; display:inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${economy.book_writer}</span>
 									</div>
-									<div class="price">가격 ${economy.book_price}원</div>
+									<div class="price">가격  : <fmt:formatNumber value="${economy.book_price}" pattern="#,###,###"/>원</div>
 								</div>
 							</div>
 						</c:forEach>
@@ -207,7 +213,7 @@
 					</div>
 					<div style="margin-right: 0px;">
 						<div class="top">
-							<span>수험서</span>
+							<span>IT</span>
 							<span>
 								<input type="button" value="6위-10위" class="btn2" id="btn6"/>
 								<input type="button" value="1위-5위" class="btn3" id="btn7"/>
@@ -402,13 +408,9 @@
 					
 					<div style="margin-right:0px;">
 						<ul>
-							<li>RECRUIT</li>
-							<br/><li>채용 소개</li>
-							<li>채용 지원하기</li>
-							<c:if test='${login=="admin"}'>
-								<li><a href="${root}/admin/AdminBook.do">관리자</a></li>
-							</c:if>
-						
+				   		  <li>RECRUIT</li>
+				          <br/><li>채용 소개</li>
+				          <li>채용 지원하기</li>
 				        </ul>
 	     			 </div>
 	   
