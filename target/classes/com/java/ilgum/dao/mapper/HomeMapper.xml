@@ -35,6 +35,6 @@
 	</select>
 	
 	<select id="itList" resultType="com.java.book.dto.BookDto">
-		select rownum num, data.* from (select * from book)data where book_category like <![CDATA['%${'경제 경영'}%' and rownum <= 5]]>
+		select rownum num, data.* from (select * from book)data where book_category like <![CDATA['%${'IT'}%' and rownum <= 5]]>
 	</select>
 </mapper>

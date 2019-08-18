@@ -45,8 +45,10 @@
 				</div>  <!-- 로고 -->
 				<div class="search">
 					<div class="searchDiv">
-						<input class="tec" id="tec" type="text" placeholder="검색어를 입력하세요"/>
-						<button class="btn" id="btn">검색</button> <!-- 버튼 -->
+						<form action="${root}/book/search_list.do" method="get">
+							<input class="tec" id="tec" type="text" placeholder="검색어를 입력하세요" name="book_name">
+							<input type="submit" class="btn" id="btn" value="검색"> <!-- 버튼 -->
+						</form>
 					</div>
 				</div>  <!-- 검색 -->
 			</div>
