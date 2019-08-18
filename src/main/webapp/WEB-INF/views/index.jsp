@@ -76,34 +76,34 @@
 					<div id="snb" class="snb">
 						<div class="snb_s">
 							<div style="margin-left: 30px;">
-								<span><a href="#">소설/시/희곡</a></span>
-								<span><a href="#">경제경영</a></span>
-								<span><a href="#">자기계발</a></span>
+								<span><a href="${root}/book/category1.do?book_category=소설/시/희곡">소설/시/희곡</a></span>
+								<span><a href="${root}/book/category1.do?book_category=경제 경영">경제경영</a></span>
+								<span><a href="${root}/book/category1.do?book_category=자기계발">자기계발</a></span>
 							</div>
 							<div>
-								<span><a href="#">인물</a></span>
-								<span><a href="#">인문</a></span>
-								<span><a href="#">국어/외국어/사전</a></span>
+								<span><a href="${root}/book/category1.do?book_category=인물">인물</a></span>
+								<span><a href="${root}/book/category1.do?book_category=인문">인문</a></span>
+								<span><a href="${root}/book/category1.do?book_category=국어 외국어 사전">국어/외국어/사전</a></span>
 							</div>
 							<div>
-								<span><a href="#">역사</a></span>
-								<span><a href="#">사회/정치</a></span>
-								<span><a href="#">가정살림</a></span>
+								<span><a href="${root}/book/category1.do?book_category=역사">역사</a></span>
+								<span><a href="${root}/book/category1.do?book_category=사회 정치">사회/정치</a></span>
+								<span><a href="${root}/book/category1.do?book_category=가정 살림">가정살림</a></span>
 							</div>
 							<div>
-								<span><a href="#">건강/취미</a></span>
-								<span><a href="#">여행</a></span>
-								<span><a href="#">종교</a></span>
+								<span><a href="${root}/book/category1.do?book_category=건강 취미">건강/취미</a></span>
+								<span><a href="${root}/book/category1.do?book_category=여행">여행</a></span>
+								<span><a href="${root}/book/category1.do?book_category=종교">종교</a></span>
 							</div>
 							<div>
-								<span><a href="#">유아</a></span>
-								<span><a href="#">어린이</a></span>
-								<span><a href="#">청소년</a></span>
+								<span><a href="${root}/book/category1.do?book_category=유아">유아</a></span>
+								<span><a href="${root}/book/category1.do?book_category=어린이">어린이</a></span>
+								<span><a href="${root}/book/category1.do?book_category=청소년">청소년</a></span>
 							</div>
 							<div>
-								<span><a href="#">자연과학</a></span>
-								<span><a href="#">IT모바일</a></span>
-								<span><a href="#">잡지</a></span>
+								<span><a href="${root}/book/category1.do?book_category=자연과학">자연과학</a></span>
+								<span><a href="${root}/book/category1.do?book_category=IT 모바일">IT모바일</a></span>
+								<span><a href="${root}/book/category1.do?book_category=정치">잡지</a></span>
 							</div>
 						</div>
 					</div>
