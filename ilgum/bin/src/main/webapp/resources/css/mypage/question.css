@@ -1,0 +1,27 @@
+@charset "UTF-8";
+
+.ttitle {
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: thick double black;
+	margin-bottom: 15px;
+}
+
+.question {
+	width: 680px;
+	margin: 100px 10px 0px 250px;
+}
+
+.consult{
+	margin-top: 30px;
+}
+
+.list a:hover{
+	color: red;
+	text-decoration: underline;
+}
+
+.thead, .thead td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}

@@ -1,0 +1,117 @@
+@charset "UTF-8";
+	ul{
+		margin: 0;
+		padding: 0;
+		list-style: none;
+	}
+	li{
+		margin: 0;
+		padding: 0;				
+	}
+	a{
+		text-decoration : none;
+		color: #10488d;
+	}
+	
+	
+	.fixedtop{
+		width: 100%;
+		height : 60px;
+		position: fixed;
+		margin-bottom : 15px;
+		background-color: #fff;
+		top: 0px;
+		left: 0px;	
+		border-bottom: 2px solid #dfdfdf;	
+	}	
+	.fixedtopbar{
+		max-width : 1200px;
+		height : 100%;
+		margin: 0px auto;
+	}	
+	.fixedtopbar div{
+		float: left;
+	}
+	
+	
+	#logo{
+		width: 200px;
+		height : 100%;		
+	}	
+	#logo a{
+		display : block;
+		width: 150px;
+		height: 40px;
+		line-height: 40px;
+		padding: 10px 0px;
+	}	
+	#logo img{
+		width: 150px;
+		height: 40px;
+	}
+	
+	#menubar{
+		height : 100%;		
+	}	
+	#menubar ul{
+		margin: 10px 0px;
+		height: 40px;
+		line-height: 40px;
+/* 		border: 1px solid black; */
+	}	
+	#menubar li{
+		margin-left : 10px;
+		float: left;
+		height: 40px;		
+	}
+	
+	#infobar{
+		height : 100%;
+		float: right;		
+	}
+	
+	#infobar ul{
+		margin: 10px 0px;
+		height: 40px;
+		line-height: 40px;
+	}	
+		
+	#infobar li{
+		margin-left : 10px;
+		float: left;
+	}
+	
+	.wrap{
+	min-width: 1080px;
+	margin: 0px auto;
+	border: 1px solid black;
+	}
+	
+	.container{
+		margin : 0px auto;
+		padding-top : 60px;
+		width: 950px;
+		height: 2000px;
+		border: 1px solid black; 
+	}
+	
+	.searchbar{
+		margin-left : 10px;
+		width: 250px;
+		height: 100%;
+		line-height: 60px;
+		display: none;		
+	}
+	.search_input{
+		width: 200px;
+		height: 20px;
+	}
+	.search_button{
+		margin-top:5px;
+		width: 16px;
+		height: 16px;
+	}
+	
+	
+	
+	

@@ -217,6 +217,7 @@ a {
 .info_bar2 {
   width: 100%;
   height: 40px;
+  margin-top: 250px;
 }
 
 .info_bar2 > a:first-child {

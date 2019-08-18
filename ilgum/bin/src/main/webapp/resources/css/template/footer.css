@@ -1,0 +1,129 @@
+@charset "UTF-8";
+body{
+	margin: 0px;
+	padding: 0px;
+}
+
+.wrap{
+	min-width: 1080px;
+	margin: 0px auto;
+	border: 0px solid black;
+}
+
+li{
+	list-style: none;
+}
+
+footer{
+	width: 100%;
+	height: 450px;
+	border: 0px solid black;
+	margin: 0px auto;
+	margin-top: 50px;
+}
+
+.list{
+	width: 100%;
+	height: 200px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+	background-color: #dfdfdf;
+}
+
+.list >div{
+	width: 950px;
+	height: 200px;
+	border: 0px solid black;
+	margin: 0px auto;
+	margin-top: 30px;
+	overflow: hidden;
+}
+
+.list >div >div{
+	width: 180px;
+	height: 200px;
+	border: 0px solid black;
+	float: left;
+	margin: 0px auto;
+	margin-right: 10px;
+	text-align:center;
+	font-size: 14px;
+}
+
+.list >div >div >ul >li{
+	font-size: 12px;
+}
+
+.list >div >div >ul >li:first-child{
+	font-weight: bold;
+}
+
+.href{
+	width: 100%;
+	height: 40px;
+	border: 1px solid #dfdfdf;
+	margin: 0px auto;
+	background-color: #838383;
+}
+
+.href > div{
+	width: 950px;
+	height: 40px;
+	border: 0px solid black;
+	margin: 0px auto;
+	line-height: 40px;
+	text-align: center;
+	font-size: 12px;
+	overflow: hidden;
+}
+
+.href ul{
+	width: 950px;
+	height:40px;
+	margin: 0px auto;
+	padding: 0px;
+	text-align: center;
+	overflow: hidden;
+}
+
+.href ul li{
+	display: inline-block;
+	float: left;
+	text-align: center;
+	margin: 0px 38px;
+}
+
+.introduce{
+	width: 950px;
+	height: 200px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+.introduce > div{
+	width: 473px;
+	height: 200px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+	float: left;
+}
+
+.introduce > div >div:first-child{
+	width: 473px;
+	height: 70px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+.introduce > div >div:last-child{
+	width: 473px;
+	height: 128px;
+	border: 0px solid black;
+	margin: 0px auto;
+	overflow: hidden;
+}
+

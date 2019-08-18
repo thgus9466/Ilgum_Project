@@ -43,4 +43,5 @@ public interface BookDao {
 
 	public int deleteReview(HashMap<String, Object> hMap);
 
+	public int memberUpdateOk(UserBookStar userBookStar);
 }
