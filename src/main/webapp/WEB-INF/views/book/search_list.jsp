@@ -56,8 +56,8 @@
 				<div id="sub3">
 					<ul>
 						<li><span style="font-size:0.7em;">수량</span><input type="number" min="0" value="1" id="num" name="cart_quantity"></li>
-						<li><input type="submit" value="장바구니" id="btn" onclick="insert('${root}', '${bookDto.book_isbn}')"></li>
-						<li><input type="submit" value="바로구매" id="buy"></li>
+						<li><input type="button" value="장바구니" id="btn" onclick="insert('${root}', '${bookDto.book_isbn}')"></li>
+						<li><input type="button" value="바로구매" id="buy"></li>
 					</ul>
 				</div>
 			</div>

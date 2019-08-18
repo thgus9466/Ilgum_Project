@@ -189,7 +189,7 @@ function updateToServer(root1,currentPage,bunho,id,book,login){
 		};
 		input7.value="취소";
 		input7.style.float="right";
-		input7.style.marginRight="20px";
+		input7.style.marginRight="35px";
 		span4.appendChild(input7);
 		
 		var span5 = document.createElement("span");
@@ -199,7 +199,7 @@ function updateToServer(root1,currentPage,bunho,id,book,login){
 		input8.type="submit";
 		input8.value="완료";
 		input8.style.float="right";
-		input8.style.marginRight="30px";
+		input8.style.marginRight="20px";
 		span5.appendChild(input8);
 		
 		
