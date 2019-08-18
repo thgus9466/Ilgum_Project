@@ -167,7 +167,8 @@
 						<div class="bottom">
 							<c:forEach var="novel" items="${novelList}">
 								<div style="margin-top:10px;">
-									<div class="bunho" id="bunho1"><a href="${root}/book/bookDetail.do?book_isbn=${novel.book_isbn}">${novel.num}</a></div>
+									<a href="${root}/book/bookDetail.do?book_isbn=${novel.book_isbn}">
+									<div class="bunho" id="bunho1">${novel.num}</div>
 									<div class="img"><img src="${novel.book_img_url}"/></div>
 									<div class="content">
 										<div class="book">
@@ -176,6 +177,7 @@
 										</div>
 										<div class="price">가격  : <fmt:formatNumber value="${novel.book_price}" pattern="#,###,###"/>원</div>
 									</div>
+									</a>
 								</div>
 							</c:forEach>
 						</div>

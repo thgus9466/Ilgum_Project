@@ -66,7 +66,7 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
 		
 		mav.addObject("check", check);
-		mav.setViewName("member/joinOk");
+		mav.setViewName("member/joinOk.tiles");
 	}
 	
 	@Override

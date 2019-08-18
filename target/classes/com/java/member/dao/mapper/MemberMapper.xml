@@ -8,11 +8,10 @@
  	</select>
  	
  	<insert id="memberInsert" parameterType="com.java.member.dto.MemberDto">
- 		insert into member values(
- 			#{member_id}, #{member_password}, #{member_name}, #{member_gender}, 
+ 		insert into member(member_id,member_password,member_name,member_gender,member_zipcode,member_address1,member_address2,member_phone1,member_phone2,member_interest,member_job,member_birth,member_email,member_point,member_level) 
+ 		values(#{member_id}, #{member_password}, #{member_name}, #{member_gender}, 
  			#{member_zipcode}, #{member_address1}, #{member_address2}, #{member_phone1}, #{member_phone2},
- 			#{member_interest}, #{member_job}, #{member_birth}, #{member_email}, #{member_point}, #{member_level}
- 		)
+ 			#{member_interest}, #{member_job}, #{member_birth}, #{member_email}, #{member_point}, #{member_level})
  	</insert>
  	
  	<select id="memberLoginOk" parameterType="java.util.HashMap" resultType="String">
