@@ -59,10 +59,7 @@
 
 						<li><input type="submit" value="장바구니" id="btn" onclick= "javascript: form.action='${root}/cartInsert.do?book_isbn=+${book_isbn}';"></li>
 						<li><input type="submit" value="바로구매" id="buy"></li>
-
-						<li><input type="button" value="장바구니" id="btn" onclick="insert('${root}', '${bookDto.book_isbn}')"></li>
-						<li><input type="button" value="바로구매" id="buy"></li>
-
+						
 					</ul>
 				</div>
 			</div>
