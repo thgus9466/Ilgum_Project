@@ -17,6 +17,8 @@ public interface MypageDao {
 
 	public List<UserOrderDto> DeliverList(String member_id,int startRow, int endRow);
 	
+	public List<UserOrderDto> DeliverList_week(String member_id, int startRow, int endRow);
+	
 	public int boardGroupNumberMax();
 
 	public int boardWrite(QuestionDto questionDto);

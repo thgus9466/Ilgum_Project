@@ -55,6 +55,16 @@ public class MyPageDaoImp implements MypageDao {
 		return sqlSessionTemplate.selectList("dao.MypageMapper.deliverList",hMap);
 	}
 	
+	@Override
+	public List<UserOrderDto> DeliverList_week(String member_id, int startRow, int endRow) {
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		hMap.put("startRow", startRow);
+		hMap.put("endRow", endRow);
+		hMap.put("member_id", member_id);
+		
+		return sqlSessionTemplate.selectList("dao.MypageMapper.deliverList_week",hMap);
+	}
+	
 	public List<QuestionDto> qList(String member_id, int startRow, int endRow) {
 		HashMap<String, Object> hMap = new HashMap<String, Object>();
 

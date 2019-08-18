@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.java.aop.IlgumAspect;
 import com.java.member.dao.MemberDao;
 import com.java.member.dto.MemberDto;
+import com.java.mypage.dao.MypageDao;
 
 @Component
 public class MemberServiceImp implements MemberService {
@@ -26,6 +27,9 @@ public class MemberServiceImp implements MemberService {
 	
 	@Autowired
 	private MemberDao memberDao;
+	
+	@Autowired
+	private MypageDao mypageDao;
 
 	@Override
 	public void idCheck(ModelAndView mav) {
@@ -53,21 +57,16 @@ public class MemberServiceImp implements MemberService {
 
 		memberDto.setMember_email(request.getParameter("member_email1")+"@"+request.getParameter("member_email2"));
 		memberDto.setMember_phone1(request.getParameter("phone1_1")+request.getParameter("phone1_2")+request.getParameter("phone1_3"));
-		
-		if(request.getParameter("phone2_1") != null) {
-			memberDto.setMember_phone2(request.getParameter("phone2_1")+request.getParameter("phone2_2")+request.getParameter("phone2_3"));
-		}
-		
+		memberDto.setMember_phone2(request.getParameter("phone2_1")+request.getParameter("phone2_2")+request.getParameter("phone2_3"));
+
 		memberDto.setMember_point(0);
 		memberDto.setMember_level("AA");
 		
 		int check = memberDao.memberInsert(memberDto);
-
-
 		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
 		
 		mav.addObject("check", check);
-		mav.setViewName("member/joinOk.tiles");
+		mav.setViewName("member/joinOk");
 	}
 	
 	@Override
@@ -93,10 +92,14 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + member_id + member_level);
 		
 		if(member_id != null && !member_level.equals("withdrawal")) {
+			MemberDto memberDto = mypageDao.readMypage(member_id);
 			session.setAttribute("login", member_id);
 			session.setAttribute("member_level", member_level);
+			session.setAttribute("memberDto", memberDto);
 			
 			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login") + "member_level : "+ session.getAttribute("member_level"));
+			IlgumAspect.logger.info(IlgumAspect.logMsg + ((MemberDto)session.getAttribute("memberDto")).toString());
+			
 			mav.setViewName("redirect:/index.empty");
 			
 		}else if(member_id == null) {
@@ -121,8 +124,12 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
 		
 		request.getSession().removeAttribute("login");
+		request.getSession().removeAttribute("member_level");
+		request.getSession().removeAttribute("memberDto");
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_level"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("memberDto"));
 		
 		mav.setViewName("redirect:/index.empty");
 	}

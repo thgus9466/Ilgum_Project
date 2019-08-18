@@ -19,14 +19,14 @@
 	</select>
 	
 	<select id="novelList" resultType="com.java.book.dto.BookDto">
-		select * from (select * from book) where book_category like <![CDATA['%${'소설'}%' and rownum <= 5]]>
+		select rownum num, data.* from (select * from book)data where book_category like <![CDATA['%${'소설'}%' and rownum <= 5]]>
 	</select>
 	
 	<select id="economyCount" resultType="int">
-		select count(*) from book where book_category like <![CDATA['%${'경제'}%']]>
+		select count(*) from book where book_category like <![CDATA['%${'경제 경영'}%']]>
 	</select>
 	
 	<select id="economyList" resultType="com.java.book.dto.BookDto">
-		select * from (select * from book) where book_category like <![CDATA['%${'경제'}%' and rownum <= 5]]>
+		select rownum num, data.* from (select * from book)data where book_category like <![CDATA['%${'경제 경영'}%' and rownum <= 5]]>
 	</select>
 </mapper>
