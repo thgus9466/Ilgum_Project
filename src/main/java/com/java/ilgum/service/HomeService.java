@@ -8,6 +8,10 @@ import com.java.book.dto.BookDto;
 
 public interface HomeService {
 	public List<BookDto> monthBook();
+	
 	public List<BookDto> novelBook();
+	
 	public List<BookDto> economyBook();
+	
+	public List<BookDto> itBook();
 }

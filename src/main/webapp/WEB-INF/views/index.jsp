@@ -194,6 +194,7 @@
 						<div class="bottom">
 						<c:forEach var="economy" items="${economyList}">
 							<div style="margin-top:10px;">
+								<a href="${root}/book/bookDetail.do?book_isbn=${economy.book_isbn}">
 								<div class="bunho" id="bunho6">${economy.num}</div>
 								<div class="img"><img src="${economy.book_img_url}"/></div>
 								<div class="content">
@@ -203,6 +204,7 @@
 									</div>
 									<div class="price">가격  : <fmt:formatNumber value="${economy.book_price}" pattern="#,###,###"/>원</div>
 								</div>
+								</a>
 							</div>
 						</c:forEach>
 						</div>
@@ -216,61 +218,21 @@
 							</span>
 						</div>
 						<div class="bottom">
+							<c:forEach var="IT" items="${ItList}">
 							<div style="margin-top:10px;">
-								<div class="bunho" id="bunho11">1</div>
-								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
+								<a href="${root}/book/bookDetail.do?book_isbn=${IT.book_isbn}">
+								<div class="bunho" id="bunho6">${IT.num}</div>
+								<div class="img"><img src="${IT.book_img_url}"/></div>
 								<div class="content">
 									<div class="book">
-										<span style="color:black; font-size: 14px;">대도시의 사랑법</span>
-										</br><span>박상영</span>
+										<span style="width:150px; display:inline-block; color:black; font-size: 14px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${IT.book_name}</span>
+										<span style="width:150px;height:20px; display:inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${IT.book_writer}</span>
 									</div>
-									<div class="price">가격 8,820원</div>
+									<div class="price">가격  : <fmt:formatNumber value="${IT.book_price}" pattern="#,###,###"/>원</div>
 								</div>
+								</a>
 							</div>
-							<div>
-								<div class="bunho" id="bunho12">2</div>
-								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="color:black; font-size: 14px;">대도시의 사랑법</span>
-										</br><span>박상영</span>
-									</div>
-									<div class="price">가격 8,820원</div>
-								</div>
-							</div>
-							<div>
-								<div class="bunho" id="bunho13">3</div>
-								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="color:black; font-size: 14px;">대도시의 사랑법</span>
-										</br><span>박상영</span>
-									</div>
-									<div class="price">가격 8,820원</div>
-								</div>
-							</div>
-							<div>
-								<div class="bunho" id="bunho14">4</div>
-								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="color:black; font-size: 14px;">대도시의 사랑법</span>
-										</br><span>박상영</span>
-									</div>
-									<div class="price">가격 8,820원</div>
-								</div>
-							</div>
-							<div>
-								<div class="bunho" id="bunho15">5</div>
-								<div class="img"><img src="http://image.kyobobook.co.kr/images/book/large/978/l9788936437978.jpg"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="color:black; font-size: 14px;">대도시의 사랑법</span>
-										</br><span>박상영</span>
-									</div>
-									<div class="price">가격 8,820원</div>
-								</div>
-							</div>
+						</c:forEach>
 						</div>
 					</div>
 				</div>

@@ -53,10 +53,12 @@ public class HomeController {
 		List<BookDto> bookList = homeService.monthBook();
 		List<BookDto> novelList = homeService.novelBook();
 		List<BookDto> economyList = homeService.economyBook();
+		List<BookDto> ItList = homeService.itBook();
 		
 		model.addAttribute("bookList", bookList);
 		model.addAttribute("novelList", novelList);
 		model.addAttribute("economyList", economyList);
+		model.addAttribute("ItList", ItList);
 		
 		return "/index.empty";
 	}

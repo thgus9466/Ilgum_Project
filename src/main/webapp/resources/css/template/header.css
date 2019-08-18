@@ -23,7 +23,7 @@
 		top: 0px;
 		left: 0px;	
 		border-bottom: 2px solid #dfdfdf;
-		z-index: 1;	
+		z-index: 100;	
 	}	
 	.fixedtopbar{
 		max-width : 1200px;
