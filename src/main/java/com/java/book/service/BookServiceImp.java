@@ -371,5 +371,48 @@ public class BookServiceImp implements BookService {
 		}
 		}
 	}
+	
+	@Override
+	public void memberUpdate(ModelAndView mav) {
+		
+		Map<String, Object>map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		if(request.getParameter("userbookstar_star")==null) {
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_num"));
+			mav.setViewName("book/updateOk.empty");
+		}
+		
+		UserBookStar userBookStar = new UserBookStar();
+		userBookStar.setOrder_bunho(Integer.parseInt(request.getParameter("order_bunho")));
+		userBookStar.setMember_id(request.getParameter("member_id"));
+		userBookStar.setBook_num(request.getParameter("book_num"));
+		userBookStar.setBook_review(request.getParameter("book_review"));
+		int star = Integer.parseInt(request.getParameter("userbookstar_star"));
+		userBookStar.setUserbookstar_star(star);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + star);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + userBookStar.toString());
+		
+		if(userBookStar.getBook_review().equals("")){
+			int check = 0;
+			mav.addObject("check",check);
+			mav.addObject("book_isbn",request.getParameter("book_num"));
+			mav.setViewName("book/updateOk.empty");
+		}else {
+		
+		int check = bookDao.memberUpdateOk(userBookStar);
+		
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+		
+		mav.addObject("check",check);
+		mav.addObject("book_isbn",request.getParameter("book_num"));
+		
+		mav.setViewName("book/updateOk.empty");
+		}
+	}
 
 }

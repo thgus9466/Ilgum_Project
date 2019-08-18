@@ -1,0 +1,30 @@
+@charset "UTF-8";
+	
+	a{color: black;}
+	
+	.myMenu{
+		float: left;
+		margin: 100px 30px 0px 55px;
+	}
+	
+	.menu1, .menu2, .menu3{
+		border: 1px solid black;
+		margin-bottom: 20px;
+	}
+
+	.menu1 li, .menu2 li, .menu3 li{
+		margin: 10px 15px;
+	}
+
+	.menu1 li:nth-child(1){
+		padding-bottom: 10px;
+		border-bottom: 1px dotted black;
+	}
+		
+	.menu4 li:nth-child(1){
+		font-size: 1.5em;
+	}
+	
+	.menu4 li:nth-child(2){
+		font-size: 2em;
+	}

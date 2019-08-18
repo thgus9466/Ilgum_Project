@@ -130,6 +130,10 @@ public class BookDaoImp implements BookDao {
 		return sqlSessionTemplate.delete("dao.BookMapper.deleteReview", hMap);
 	}
 
-	
+	@Override
+	public int memberUpdateOk(UserBookStar userBookStar) {
+		
+		return sqlSessionTemplate.update("dao.BookMapper.updateReview", userBookStar);
+	}
 
 }

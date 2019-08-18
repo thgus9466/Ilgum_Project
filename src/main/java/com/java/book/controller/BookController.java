@@ -130,4 +130,16 @@ public class BookController {
 		
 		return mav;
 	}
+	
+	@RequestMapping(value="/member/upDate.do", method= RequestMethod.POST)
+	public ModelAndView memberupDate(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
+		
+		ModelAndView mav = new ModelAndView();
+		
+		mav.addObject("request", request);
+		mav.addObject("session", session);
+		bookService.memberUpdate(mav);
+		
+		return mav;
+	}
 }
