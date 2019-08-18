@@ -104,6 +104,12 @@ input[type=button] {
 	margin-top: 15px;
 }
 
+input[type=submit] {
+	width: 100px;
+	height: 40px;
+	margin-top: 15px;
+}
+
 #sub1-1, #sub1-2, #sub2, #sub3 {
 	float: left;
 }
