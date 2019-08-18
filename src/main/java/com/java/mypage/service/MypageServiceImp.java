@@ -32,19 +32,7 @@ public class MypageServiceImp implements MypageService {
 
 	@Override
 	public void readMypage(ModelAndView mav) {
-<<<<<<< HEAD
-		Map<String, Object> map = mav.getModelMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
-		String id = (String) request.getSession().getAttribute("login");
-		IlgumAspect.logger.info(IlgumAspect.logMsg + id);
-
-		MemberDto memberDto = mypageDao.readMypage(id);
-		IlgumAspect.logger.info(IlgumAspect.logMsg + memberDto.toString());
-
-		mav.addObject("memberDto", memberDto);
-		mav.setViewName("mypage/main.tiles");
-=======
 		Map<String,Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
@@ -77,7 +65,7 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("interest",interest);
 		
 		mav.setViewName("mypage/main.tiles");	
->>>>>>> 0fd7f1faf64499749c3f082927f38512fa242291
+
 	}
 
 	@Override
