@@ -33,14 +33,35 @@ public class MypageServiceImp implements MypageService {
 	public void readMypage(ModelAndView mav) {
 		Map<String,Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
 		
-		String id = (String) request.getSession().getAttribute("login");
-		IlgumAspect.logger.info(IlgumAspect.logMsg + id);
+		String member_id = memberDto.getMember_id();
+		String pageNumber = request.getParameter("pageNumber");
 		
-		MemberDto memberDto = mypageDao.readMypage(id);
+		
+		if(pageNumber==null || pageNumber.trim().length() == 0 ) pageNumber = "1";
+		
+		int boardSize = 5;
+		int currentPage = Integer.parseInt(pageNumber);
+		int startRow=(currentPage-1)*boardSize + 1;
+		int endRow = currentPage*boardSize;
+		int count = mypageDao.delivercount(member_id);
+		count = 5;
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
+
+		List<UserOrderDto> userOrderDtoList = null;
+		
+		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
+		
+		
 		IlgumAspect.logger.info(IlgumAspect.logMsg +memberDto.toString());
+		String[] interest = memberDto.getMember_interest().split(",");
 		
+		mav.addObject("userOrderDtoList",userOrderDtoList);		
 		mav.addObject("memberDto", memberDto);
+		mav.addObject("interest",interest);
+		
 		mav.setViewName("mypage/main.tiles");	
 	}
 
@@ -145,7 +166,9 @@ public class MypageServiceImp implements MypageService {
 		int startRow=(currentPage-1)*boardSize + 1;
 		int endRow = currentPage*boardSize;
 		int count = mypageDao.delivercount(member_id);
-		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
+		count = 5;
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
 		List<UserOrderDto> userOrderDtoList = null;
 		
