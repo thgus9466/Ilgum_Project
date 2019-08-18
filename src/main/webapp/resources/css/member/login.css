@@ -93,7 +93,29 @@ section{
 	padding: 7px 10px;
     border: 1px solid #cccccc;
     margin-right: 88px;
-    
+}
+
+#left_infos{
+	display: none;
+}
+
+ .hana_left{
+	font-family: "Open Sans", sans-serif;
+    font-weight: 300;
+    font-size: 24px;
+    line-height: 1.1;
+    padding-top: 5px;
+    color: #111111;
+}
+
+#left_infos .dul_left{
+    margin-top: 20px;
+    color: #666;
+    line-height: 20px;
+}
+
+#left_infos .dul_left label{
+    font-size: 12px;
 }
 
 .left_inner > div > input{

@@ -21,6 +21,8 @@
 			
 			$("#hana").css("display","none");
 			$("#dul").css("display","none");
+			$("#left_inputs").css("display","none");
+			$("#left_infos").css("display","block");
 			
 			$("#bimemberlogin").css("display","block");
 		});
@@ -34,6 +36,8 @@
 			
 			$("#hana").css("display","block");
 			$("#dul").css("display","block");
+			$("#left_inputs").css("display","block");
+			$("#left_infos").css("display","none");
 			
 			$("#bimemberlogin").css("display","none");
 		});
@@ -51,7 +55,7 @@
 					<li><a href="#" id="bimember">비회원</a></li>
 				</ul>
 				<div class="left">
-					<div>
+					<div id = "left_inputs">
 						<form action="${root}/member/memberLoginOk.do" method="post">
 							<div class="left_inner">
 								<div class="id"><input type="text" name="member_id" placeholder="아이디"/></div>
@@ -68,11 +72,27 @@
 										<span style="color:#cccccc;">｜</span>
 										<span><a href="${root}/member/idSearch.do">아이디 찾기 </a></span>
 									</div>
-							</div>
+							</div>							
 						</form>
 						<div class="form_bottom">
 							<span>간편 가입</span>
 							<span><img src="${root}/resources/img/login/spr_sns.png"/></span>
+						</div>
+					</div>
+					<div id="left_infos">
+						<div class="hana_left" id="hana_left">
+							<label>NOTICE<br/>
+							<b>FOR NONMEMBER</b>
+							</label>
+						</div>
+						<div class="dul_left" id="dul_left">
+							<label>
+							비회원은 주문조회만 가능하며<br/>
+							주문배송완료시 지급받은 주문번호를 통해서<br/>
+							배송 정보들을 확인 하시기 바랍니다.<br/>
+							비밀번호는 처음에 설정한 번호 입니다. <br/>
+							분실시 이메일을 통해서 조회 하시기 바랍니다.
+							</label>
 						</div>
 					</div>
 				</div>
