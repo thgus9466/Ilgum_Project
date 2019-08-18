@@ -12,7 +12,7 @@
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
 		<property name="url"
-			value="jdbc:oracle:thin:@192.168.12.27:1521:xe" />
+			value="jdbc:oracle:thin:@192.168.10.56:1521:xe" />
 		<property name="username" value="ilgum" />
 		<property name="password" value="1234" />
 
@@ -31,11 +31,12 @@
 				<value>classpath:com/java/admin/dao/mapper/AdminBookMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/AdminMemberMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/AdminQuestionMapper.xml</value>
-				<value>classpath:com/java/mypage/dao/mapper/MyPageMapper.xml</value>
+				<value>classpath:com/java/mypage/dao/mapper/MypageMapper.xml</value>
 				<value>classpath:com/java/ilgum/dao/mapper/HomeMapper.xml</value>
 				<value>classpath:com/java/order/dao/mapper/OrderMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/AdminCouponMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/MemberCouponMapper.xml</value>
+				<value>classpath:com/java/admin/dao/mapper/UserOrderMapper.xml</value>
 			</list>
 		</property>
 	</bean>

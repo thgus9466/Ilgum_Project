@@ -5,6 +5,7 @@ import java.util.List;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
 import com.java.order.dto.UserOrderDto;
+import com.java.mypage.dto.BuserDto;
 import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
 
@@ -46,4 +47,6 @@ public interface MypageDao {
 	public List<CartDto> cartList(String member_id);
 	
 	public int cartDel(String delList);
+	
+	public BuserDto bcartList(String book_isbn);
 }

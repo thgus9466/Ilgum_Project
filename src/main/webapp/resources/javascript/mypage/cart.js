@@ -49,5 +49,5 @@ function cartDel(root) {
 		if (delChk[i].checked)
 			delList = delList + delChk[i].value + ",";
 
-	location.href = root + "/mypage/cartDel.do?delList=" + delList;
+	location.href = root + "/cartDel.do?delList=" + delList;
 }

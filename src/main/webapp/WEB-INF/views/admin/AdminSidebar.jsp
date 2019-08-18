@@ -26,10 +26,17 @@ pageEncoding="UTF-8"%>
 		<nav class="navbar navbar-inverse navbar-fixed-top" id="sidebar-wrapper" role="navigation">
 		<ul class="nav sidebar-nav">
 			<li class="sidebar-brand"><a href="#">사이트관리시스템</a></li>
-			<li><a href="${root}/admin/AdminInsert2.do">관리자</a></li>
 			<li><a href="${root}/admin/AdminBook.do">도서관리</a></li>
 			<li><a href="${root}/admin/AdminMemberList.do">회원관리</a></li>
 			<li><a href="${root}/admin/AdminQuestionList.do">상담문의관리</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">주문결제관리 <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li class="dropdown-header">주문결제관리</li>
+                    <li><a href="${root}/admin/AdminUserOrderList.do">회원 주문관리</a></li>
+                    <li><a href="${root}/admin/AdminBuserOrderList.do">비회원 주문관리</a></li>
+                  </ul>
+                </li>
 			<li><a href="${root}/index.do">메인페이지</a></li>
 		</ul>
 		</nav>

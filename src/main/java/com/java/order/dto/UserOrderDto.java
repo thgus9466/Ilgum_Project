@@ -1,10 +1,10 @@
 package com.java.order.dto;
 
 public class UserOrderDto {
-	private int order_bunho;
-	private String member_id;
-	private String book_isbn;
-	private int order_book_count;
+	private int order_bunho;						//주문번호
+	private String member_id;						//아이디
+	private String book_isbn;						//도서번호
+	private int order_book_count;					//주문수량
 	private String order_zipcode;
 	private String order_book_user_address1;
 	private String order_book_user_address2;

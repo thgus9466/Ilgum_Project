@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
 import com.java.order.dto.UserOrderDto;
+import com.java.mypage.dto.BuserDto;
 import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
 
@@ -124,4 +125,9 @@ public class MyPageDaoImp implements MypageDao {
 	public int cartDel(String cart_num) {
 		return sqlSessionTemplate.delete("dao.MypageMapper.cartDel", cart_num);
 	}
+	
+	@Override
+	   public BuserDto bcartList(String book_isbn) {
+	      return sqlSessionTemplate.selectOne("dao.MypageMapper.bcartList", book_isbn);
+	   }
 }

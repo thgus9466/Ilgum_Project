@@ -12,14 +12,14 @@
 	<c:if test="${check>0}">
 		<script type="text/javascript">
 			alert("삭제되었습니다.");
-			location.href="${root}/mypage/cartList.do";
+			location.href="${root}/cartList.do";
 		</script>
 	</c:if>
 	
 	<c:if test="${check==0}">
 		<script type="text/javascript">
 			alert("삭제에 실패하였습니다.");
-			location.href="${root}/mypage/cartList.do";
+			location.href="${root}/cartList.do";
 		</script>
 	</c:if>
 </body>

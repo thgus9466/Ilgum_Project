@@ -107,4 +107,8 @@
 	<delete id="cartDel" parameterType="String">
 		delete from cart where cart_num = #{cart_num}
 	</delete>
+	
+	<select id="bcartList" parameterType="String" resultType="com.java.mypage.dto.BuserDto">
+      <![CDATA[select * from book where book_isbn = #{book_isbn}]]>
+   </select>
 </mapper>
