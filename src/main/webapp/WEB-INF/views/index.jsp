@@ -164,18 +164,18 @@
 							<span>소설</span>
 							<span>
 								<input type="button" value="6위-10위" id="btn2" class="btn2"/>
-								<input type="button" value="1위-5위" id="btn3" class="btn3"/>
+								<input type="button" value="1위-5위" id="btn3" class="btn3"/>								
 							</span>
 						</div>
-						<div class="bottom">
-							<c:forEach var="novel" items="${novelList}">
+						<div class="bottom" id="first_novel">
+							<c:forEach var="novel" items="${novelList_first}">
 								<div style="margin-top:10px;">
 									<a href="${root}/book/bookDetail.do?book_isbn=${novel.book_isbn}">
 									<div class="bunho" id="bunho1">${novel.num}</div>
 									<div class="img"><img src="${novel.book_img_url}"/></div>
 									<div class="content">
 										<div class="book">
-											<span style="width:150px; display:block; color:black; font-size: 14px;text-overflow: ellipsis;">${novel.book_name}</span>
+											<span>${novel.book_name}</span>
 											<span>${novel.book_writer}</span>
 										</div>
 										<div class="price">가격  : <fmt:formatNumber value="${novel.book_price}" pattern="#,###,###"/>원</div>
@@ -184,6 +184,23 @@
 								</div>
 							</c:forEach>
 						</div>
+						<div class="bottom" id="second_novel">
+							<c:forEach var="novel" items="${novelList_second}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${novel.book_isbn}">
+									<div class="bunho" id="bunho1">${novel.num}</div>
+									<div class="img"><img src="${novel.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span>${novel.book_name}</span>
+											<span>${novel.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${novel.book_price}" pattern="#,###,###"/>원</div>
+									</div>
+									</a>
+								</div>
+							</c:forEach>
+						</div>						
 					</div>
 					<div>
 						<div class="top">
@@ -193,22 +210,39 @@
 								<input type="button" value="1위-5위" class="btn3" id="btn5"/>
 							</span>
 						</div>
-						<div class="bottom">
-						<c:forEach var="economy" items="${economyList}">
-							<div style="margin-top:10px;">
-								<a href="${root}/book/bookDetail.do?book_isbn=${economy.book_isbn}">
-								<div class="bunho" id="bunho6">${economy.num}</div>
-								<div class="img"><img src="${economy.book_img_url}"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="width:150px; display:inline-block; color:black; font-size: 14px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${economy.book_name}</span>
-										<span style="width:150px;height:20px; display:inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${economy.book_writer}</span>
+						<div class="bottom" id="first_economy">
+							<c:forEach var="economy" items="${economyList_first}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${economy.book_isbn}">
+									<div class="bunho" id="bunho1">${economy.num}</div>
+									<div class="img"><img src="${economy.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span>${economy.book_name}</span>
+											<span>${economy.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${economy.book_price}" pattern="#,###,###"/>원</div>
 									</div>
-									<div class="price">가격  : <fmt:formatNumber value="${economy.book_price}" pattern="#,###,###"/>원</div>
+									</a>
 								</div>
-								</a>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
+						<div class="bottom" id="second_economy">
+							<c:forEach var="economy" items="${economyList_second}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${economy.book_isbn}">
+									<div class="bunho" id="bunho1">${economy.num}</div>
+									<div class="img"><img src="${economy.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span>${economy.book_name}</span>
+											<span>${economy.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${economy.book_price}" pattern="#,###,###"/>원</div>
+									</div>
+									</a>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 					<div style="margin-right: 0px;">
@@ -219,22 +253,39 @@
 								<input type="button" value="1위-5위" class="btn3" id="btn7"/>
 							</span>
 						</div>
-						<div class="bottom">
-							<c:forEach var="IT" items="${ItList}">
-							<div style="margin-top:10px;">
-								<a href="${root}/book/bookDetail.do?book_isbn=${IT.book_isbn}">
-								<div class="bunho" id="bunho6">${IT.num}</div>
-								<div class="img"><img src="${IT.book_img_url}"/></div>
-								<div class="content">
-									<div class="book">
-										<span style="width:150px; display:inline-block; color:black; font-size: 14px;overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${IT.book_name}</span>
-										<span style="width:150px;height:20px; display:inline-block;  overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">${IT.book_writer}</span>
+						<div class="bottom" id="ItList_first">
+							<c:forEach var="IT" items="${ItList_first}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${IT.book_isbn}">
+									<div class="bunho" id="bunho1">${IT.num}</div>
+									<div class="img"><img src="${IT.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span>${IT.book_name}</span>
+											<span>${IT.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${IT.book_price}" pattern="#,###,###"/>원</div>
 									</div>
-									<div class="price">가격  : <fmt:formatNumber value="${IT.book_price}" pattern="#,###,###"/>원</div>
+									</a>
 								</div>
-								</a>
-							</div>
-						</c:forEach>
+							</c:forEach>
+						</div>
+						<div class="bottom" id="ItList_second">
+							<c:forEach var="IT" items="${ItList_second}">
+								<div style="margin-top:10px;">
+									<a href="${root}/book/bookDetail.do?book_isbn=${IT.book_isbn}">
+									<div class="bunho" id="bunho1">${IT.num}</div>
+									<div class="img"><img src="${IT.book_img_url}"/></div>
+									<div class="content">
+										<div class="book">
+											<span>${IT.book_name}</span>
+											<span>${IT.book_writer}</span>
+										</div>
+										<div class="price">가격  : <fmt:formatNumber value="${IT.book_price}" pattern="#,###,###"/>원</div>
+									</div>
+									</a>
+								</div>
+							</c:forEach>
 						</div>
 					</div>
 				</div>

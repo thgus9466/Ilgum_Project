@@ -30,11 +30,8 @@
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
 			
-			$("#bunho1").html("6");
-			$("#bunho2").html("7");
-			$("#bunho3").html("8");
-			$("#bunho4").html("9");
-			$("#bunho5").html("10");
+			$("#second_novel").css("display","block");
+			$("#first_novel").css("display","none");
 		});
 		
 		$("#btn3").click(function(){
@@ -48,13 +45,9 @@
 			$("#btn2").css("color","#FFFFFF")
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
-		
 			
-			$("#bunho1").html("1");
-			$("#bunho2").html("2");
-			$("#bunho3").html("3");
-			$("#bunho4").html("4");
-			$("#bunho5").html("5");
+			$("#first_novel").css("display","block");
+			$("#second_novel").css("display","none");
 		});
 		
 		$("#btn4").click(function(){
@@ -69,11 +62,8 @@
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
 			
-			$("#bunho6").html("6");
-			$("#bunho7").html("7");
-			$("#bunho8").html("8");
-			$("#bunho9").html("9");
-			$("#bunho10").html("10");
+			$("#second_economy").css("display","block");
+			$("#first_economy").css("display","none");
 		});
 		
 		$("#btn5").click(function(){
@@ -87,13 +77,9 @@
 			$("#btn4").css("color","#FFFFFF")
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
-		
 			
-			$("#bunho6").html("1");
-			$("#bunho7").html("2");
-			$("#bunho8").html("3");
-			$("#bunho9").html("4");
-			$("#bunho10").html("5");
+			$("#first_economy").css("display","block");
+			$("#second_economy").css("display","none");
 		});
 		
 		$("#btn6").click(function(){
@@ -108,11 +94,8 @@
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
 			
-			$("#bunho11").html("6");
-			$("#bunho12").html("7");
-			$("#bunho13").html("8");
-			$("#bunho14").html("9");
-			$("#bunho15").html("10");
+			$("#ItList_second").css("display","block");
+			$("#ItList_first").css("display","none");
 		});
 		
 		$("#btn7").click(function(){
@@ -126,13 +109,9 @@
 			$("#btn6").css("color","#FFFFFF")
 			.css("background-color","#edac2b")
 			.css("line-height","20px");
-		
 			
-			$("#bunho11").html("1");
-			$("#bunho12").html("2");
-			$("#bunho13").html("3");
-			$("#bunho14").html("4");
-			$("#bunho15").html("5");
+			$("#ItList_first").css("display","block");
+			$("#ItList_second").css("display","none");
 		});
 		
 		$("#gnb").mouseover(function(){

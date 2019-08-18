@@ -60,4 +60,6 @@ public class HomeDaoImp implements HomeDao {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("dao.HomeMapper.itList");
 	}
+
+	
 }

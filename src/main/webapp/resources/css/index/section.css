@@ -214,8 +214,8 @@
 }
 
 .img > img{
-	width:100%;
-	height:100%;
+	width: 99.9%;
+    height: 99.4%;
 }
 
 .content{
@@ -233,6 +233,26 @@
 	line-height: 20px;
 	color: #9a9898;
 }
+
+.book > span:first-child{
+	width:150px; 
+	display:block; 
+	color:black; 
+	font-size: 14px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+
+.book > span:last-child{
+	width:150px;
+	height:20px; 
+	display:inline-block;  
+	overflow: hidden;
+	white-space: nowrap; 
+	text-overflow: ellipsis;	
+}
+
 
 .price{
 	height: 50px;
@@ -305,4 +325,16 @@
 	width: 100%;
 	font-size: 13px;
 	text-align: center;
+}
+
+#second_novel{
+	display: none;
+}
+
+#second_economy{
+	display: none;
+}
+
+#ItList_second{
+	display: none;
 }

@@ -28,7 +28,7 @@ public class HomeServiceImp implements HomeService {
 	}
 
 	@Override
-	public List<BookDto> novelBook() {
+	public List<BookDto> novelList() {
 		int count = homeDao.novelCount();
 		IlgumAspect.logger.info(IlgumAspect.logMsg + count);
 		
@@ -66,5 +66,7 @@ public class HomeServiceImp implements HomeService {
 		
 		return list;
 	}
+
+	
 
 }
