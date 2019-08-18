@@ -30,8 +30,8 @@
 	var login = "${login}";
 	if(login != ""){
 		$(function(){
-			$("#logout > li:nth-child(3)").replaceWith("<li><a href='${root}/mypage/main.do'>마이페이지</a></li>");
-			$("#logout > li:nth-child(4)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");
+			$("#logout > li:nth-child(4)").replaceWith("<li><a href='${root}/mypage/main.do'>마이페이지</a></li>");
+			$("#logout > li:nth-child(5)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");
 		});
 	};
 </script>
@@ -65,13 +65,9 @@
 							</div>
 							<div>
 								<ul id="logout">
-<<<<<<< HEAD
 									<li><a href="${root}/cartList.do">장바구니</a></li>
 									<li><a href="${root}/member/storeInfo.do">지점안내</a></li>
-=======
-									<li><a href="#">장바구니</a></li>
 									<li><a href="#">고객센터</a></li>
->>>>>>> 0fd7f1faf64499749c3f082927f38512fa242291
 									<li><a href="${root}/member/memberJoin.do">회원가입</a></li>
 									<li><a href="${root}/member/memberLogin.do">로그인</a></li>
 								</ul>
@@ -411,6 +407,9 @@
 				   		  <li>RECRUIT</li>
 				          <br/><li>채용 소개</li>
 				          <li>채용 지원하기</li>
+				          <c:if test="${login=='admin'}">
+					          <li><a href="${root}/admin/AdminBook.do">관리자페이지</a></li>
+				          </c:if>				          
 				        </ul>
 	     			 </div>
 	   
