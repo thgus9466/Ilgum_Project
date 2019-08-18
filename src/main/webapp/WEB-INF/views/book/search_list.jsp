@@ -56,13 +56,13 @@
 				<div id="sub3">
 					<ul>
 						<li><span style="font-size:0.7em;">수량</span><input type="number" min="0" value="1" id="num" name="cart_quantity"></li>
-<<<<<<< HEAD
+
 						<li><input type="submit" value="장바구니" id="btn" onclick= "javascript: form.action='${root}/cartInsert.do?book_isbn=+${book_isbn}';"></li>
 						<li><input type="submit" value="바로구매" id="buy"></li>
-=======
+
 						<li><input type="button" value="장바구니" id="btn" onclick="insert('${root}', '${bookDto.book_isbn}')"></li>
 						<li><input type="button" value="바로구매" id="buy"></li>
->>>>>>> 0fd7f1faf64499749c3f082927f38512fa242291
+
 					</ul>
 				</div>
 			</div>
