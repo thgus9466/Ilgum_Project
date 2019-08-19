@@ -13,7 +13,6 @@ public class BuserOrderDto {
 	private int order_user_coupon_discount;
 	private int order_total_price;
 
-	private String member_id;						//아이디
 	private String book_isbn;						//도서번호
 	private String book_name;
 	private String order_zipcode;
@@ -24,6 +23,8 @@ public class BuserOrderDto {
 	private String order_book_state;
 	private String order_book_charge;
 	private String order_date;
+	
+	public BuserOrderDto() {}
 	
 	public int getOrder_bunho() {
 		return order_bunho;
@@ -54,12 +55,6 @@ public class BuserOrderDto {
 	}
 	public void setOrder_total_price(int order_total_price) {
 		this.order_total_price = order_total_price;
-	}
-	public String getMember_id() {
-		return member_id;
-	}
-	public void setMember_id(String member_id) {
-		this.member_id = member_id;
 	}
 	public String getBook_isbn() {
 		return book_isbn;
@@ -126,12 +121,12 @@ public class BuserOrderDto {
 	public String toString() {
 		return "BuserOrderDto [order_bunho=" + order_bunho + ", order_book_count=" + order_book_count
 				+ ", order_book_point=" + order_book_point + ", order_user_coupon_discount="
-				+ order_user_coupon_discount + ", order_total_price=" + order_total_price + ", member_id=" + member_id
-				+ ", book_isbn=" + book_isbn + ", book_name=" + book_name + ", order_zipcode=" + order_zipcode
-				+ ", order_book_user_address1=" + order_book_user_address1 + ", order_book_user_address2="
-				+ order_book_user_address2 + ", order_book_user_phone=" + order_book_user_phone
-				+ ", order_user_coupon_name=" + order_user_coupon_name + ", order_book_state=" + order_book_state
-				+ ", order_book_charge=" + order_book_charge + ", order_date=" + order_date + "]";
+				+ order_user_coupon_discount + ", order_total_price=" + order_total_price + ", book_isbn=" + book_isbn
+				+ ", book_name=" + book_name + ", order_zipcode=" + order_zipcode + ", order_book_user_address1="
+				+ order_book_user_address1 + ", order_book_user_address2=" + order_book_user_address2
+				+ ", order_book_user_phone=" + order_book_user_phone + ", order_user_coupon_name="
+				+ order_user_coupon_name + ", order_book_state=" + order_book_state + ", order_book_charge="
+				+ order_book_charge + ", order_date=" + order_date + "]";
 	}	
 
 }

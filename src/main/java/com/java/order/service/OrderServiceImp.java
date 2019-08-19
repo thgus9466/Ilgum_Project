@@ -1,5 +1,6 @@
 package com.java.order.service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -15,6 +16,7 @@ import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 import com.java.order.dao.OrderDao;
 import com.java.order.dto.BuserOrderDto;
+import com.java.order.dto.NonUserOrderDto;
 import com.java.order.dto.OrderDto;
 
 @Component
@@ -28,37 +30,38 @@ public class OrderServiceImp implements OrderService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		
 		String book_isbn = request.getParameter("book_isbn");
+		String order_book_count = request.getParameter("book_quantity");
 		
 		mav.addObject("book_isbn", book_isbn);
+		mav.addObject("book_quantity", order_book_count);
+		
 		mav.setViewName("order/orderLogin.tiles");
 	}
 
 	@Override
-	public void nonMemberOrder(ModelAndView mav) {
-		Map<String, Object> map = mav.getModelMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		List<BookDto> bookList = null;
-		int total_price = 0;
-		int book_cost = 0;
-		
-		String book_isbn = request.getParameter("book_isbn");
-		int book_quantity = Integer.parseInt(request.getParameter("book_quantity"));
-		IlgumAspect.logger.info(IlgumAspect.logMsg + book_quantity);
-		bookList = orderDao.nonMemberOrder(book_isbn);
-		
-		for (int i = 0; i < bookList.size(); i++) {
-			int cost = bookList.get(i).getBook_cost();
-			int price = bookList.get(i).getBook_price();
-			book_cost += cost;
-			total_price += price;
-		}
-		
-		mav.addObject("bookList", bookList);
-		mav.addObject("book_cost", book_cost);
-		mav.addObject("total_price", total_price);
-		mav.addObject("book_quantity", book_quantity);
-		mav.setViewName("order/nonMemOrder.tiles");
-	}
+	   public void nonMemberOrder(ModelAndView mav) {
+	      Map<String, Object> map = mav.getModelMap();
+	      HttpServletRequest request = (HttpServletRequest) map.get("request");
+	      NonUserOrderDto nonUserOrderDto = (NonUserOrderDto) map.get("nonUserOrderDto");
+	      List<NonUserOrderDto> bookList = new ArrayList<NonUserOrderDto>();
+
+	      String book_isbn[] = request.getParameter("book_isbn").split(",");
+	      String book_quantity[] = request.getParameter("book_quantity").split(",");
+
+	      for (int i = 0; i < book_isbn.length; i++) {
+	         System.out.println("book_isbn: " + book_isbn[i]);
+	         System.out.println("quantity: " + book_quantity[i]);
+	         nonUserOrderDto = orderDao.nonMemberOrder(book_isbn[i]);
+	         nonUserOrderDto.setOrder_book_count(Integer.parseInt(book_quantity[i]));
+	         
+	         bookList.add(nonUserOrderDto);
+	      }
+	      System.out.println(bookList.toString());
+	      mav.addObject("book_quantity", book_quantity);
+	      mav.addObject("bookList", bookList);
+
+	      mav.setViewName("order/nonMemOrder.tiles");
+	   }
 
 	@Override
 	public void memberPay(ModelAndView mav) {
@@ -117,15 +120,33 @@ public class OrderServiceImp implements OrderService {
 	}
 
 	@Override
-	public void nonMemberPay(ModelAndView mav) {
+	public void oneBookOrder(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		BuserOrderDto BuserOrderDto = (BuserOrderDto) map.get("BuserOrderDto");
+		BuserOrderDto buserOrderDto = (BuserOrderDto) map.get("buserOrderDto");
+		List<BookDto> bookList	= null;
+		int total_cost = 0;
+		int total_price = 0;
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + BuserOrderDto.toString());
+		String book_isbn = request.getParameter("book_isbn");
+		String order_book_count = request.getParameter("book_quantity");
+		System.out.println(order_book_count);
 		
-		int count = orderDao.nonMemberPay(BuserOrderDto);
+		bookList = orderDao.oneBookOrder(book_isbn);
 		
-		if (count > 0) mav.setViewName("order/NonMemOrderOk.tiles");
+		for (int i = 0; i < bookList.size(); i++) {
+			int cost = bookList.get(i).getBook_cost();
+			int price = bookList.get(i).getBook_price();
+			
+			total_cost += cost;
+			total_price += price;
+		}
+			
+		IlgumAspect.logger.info(IlgumAspect.logMsg + bookList.toString());
+		
+		mav.addObject("bookList", bookList);
+		mav.addObject("total_cost", total_cost);
+		mav.addObject("total_price", total_price);
+		mav.setViewName("order/oneBookOrder.tiles");
 	}
 }

@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.BuserOrderDto;
+import com.java.order.dto.NonUserOrderDto;
 
 @Component
 public class OrderDaoImp implements OrderDao {
@@ -17,15 +18,15 @@ public class OrderDaoImp implements OrderDao {
 	private SqlSessionTemplate sqlSessionTemplate;
 	
 	@Override
-	public List<BookDto> nonMemberOrder(String book_isbn) {
+	public NonUserOrderDto nonMemberOrder(String book_isbn) {
 		// TODO Auto-generated method stub
-		return sqlSessionTemplate.selectList("dao.OrderMapper.nonMemberOrder", book_isbn);
+		return sqlSessionTemplate.selectOne("dao.OrderMapper.nonMemberOrder", book_isbn);
 	}
 
 	@Override
-	public int nonMemberPay(BuserOrderDto BUserList) {
+	public List<BookDto> oneBookOrder(String book_isbn) {
 		
-		return sqlSessionTemplate.insert("dao.OrderMapper.nonMemberPay");
+		return sqlSessionTemplate.selectList("dao.OrderMapper.nonMemberOrder", book_isbn);
 	}
 
 	@Override
