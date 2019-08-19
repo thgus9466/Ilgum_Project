@@ -72,7 +72,7 @@
 
 					<div class="book_quantity">
 						<span>구매수량</span>
-						<span><input type="text" value="1"size="1"></span>
+						<span><input type="text" name="amount" value="1"size="1"></span>
 						<span>+</span>
 						<span>-</span>
 					</div>
