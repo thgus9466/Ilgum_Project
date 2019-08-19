@@ -333,11 +333,19 @@ public class MypageServiceImp implements MypageService {
 	@Override
 	public void interestUpdate(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
-		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ memberDto.toString());
 		
-		mav.addObject("memberDto", memberDto);
+		HttpServletRequest request = (HttpServletRequest)map.get("request");
+		String id = (String) request.getSession().getAttribute("login");
+		MemberDto memberDto = (MemberDto)map.get("memberDto");
+		
+		memberDto.setMember_id(id);
+		memberDto.setMember_job(request.getParameter("member_job"));
+		memberDto.setMember_job(request.getParameter("member_interest"));
+		
+		int check = mypageDao.updateInterest(memberDto);
+		
+		mav.addObject("check", check);
+		mav.setViewName("maypage/updateInterestOk.tiles");
 	}
 
 	@Override

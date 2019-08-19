@@ -133,11 +133,12 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/mypage/interestUpdateOk.do", method = RequestMethod.GET)
-	public ModelAndView interestUpdate(HttpServletRequest request, HttpServletResponse response) {
+	@RequestMapping(value = "/mypage/interestUpdateOk.do", method = RequestMethod.POST)
+	public ModelAndView interestUpdate(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
-
+		mav.addObject("memberDto",memberDto);
+		
 		mypageService.interestUpdate(mav);
 
 		return mav;

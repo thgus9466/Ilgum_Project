@@ -51,4 +51,6 @@ public interface MypageDao {
 	public int cartDel(String delList);
 	
 	public BuserDto bcartList(String book_isbn);
+
+	public int updateInterest(MemberDto memberDto);
 }
