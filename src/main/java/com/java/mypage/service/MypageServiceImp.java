@@ -337,11 +337,13 @@ public class MypageServiceImp implements MypageService {
 		
 		memberDto.setMember_id(id);
 		memberDto.setMember_job(request.getParameter("member_job"));
-		memberDto.setMember_job(request.getParameter("member_interest"));
+		memberDto.setMember_interest(request.getParameter("member_interest"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: " + request.getParameter("member_interest"));
 		
 		int check = mypageDao.updateInterest(memberDto);
 		
 		mav.addObject("check", check);
+		mav.addObject("memberDto", memberDto);
 		mav.setViewName("mypage/updateInterestOk.tiles");
 	}
 

@@ -139,6 +139,7 @@ public class OrderServiceImp implements OrderService {
 		mav.addObject("bookList", bookList);
 		mav.addObject("total_cost", total_cost);
 		mav.addObject("total_price", total_price);
+		mav.addObject("book_quantity", order_book_count);
 		mav.setViewName("order/oneBookOrder.tiles");
 	}
 }
