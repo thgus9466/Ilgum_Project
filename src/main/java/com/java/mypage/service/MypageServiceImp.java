@@ -321,10 +321,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
-		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ memberDto.toString());
-		
-		
-		
+			
 		mav.addObject("memberDto", memberDto);
 		
 		mav.setViewName("mypage/interest.tiles");
@@ -345,7 +342,7 @@ public class MypageServiceImp implements MypageService {
 		int check = mypageDao.updateInterest(memberDto);
 		
 		mav.addObject("check", check);
-		mav.setViewName("maypage/updateInterestOk.tiles");
+		mav.setViewName("mypage/updateInterestOk.tiles");
 	}
 
 	@Override
