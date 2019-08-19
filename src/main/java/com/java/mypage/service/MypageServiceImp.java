@@ -320,13 +320,24 @@ public class MypageServiceImp implements MypageService {
 	public void interest(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String member_id = (String) request.getSession().getAttribute("login");
-
-		MemberDto memberDto = mypageDao.readMypage(member_id);
-		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: " + memberDto.toString());
-
+		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ memberDto.toString());
+		
+		
+		
 		mav.addObject("memberDto", memberDto);
+		
 		mav.setViewName("mypage/interest.tiles");
+	}
+	
+	@Override
+	public void interestUpdate(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: "+ memberDto.toString());
+		
+		mav.addObject("memberDto", memberDto);
 	}
 
 	@Override
@@ -349,6 +360,8 @@ public class MypageServiceImp implements MypageService {
 	public void cartList(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
+		
 
 		String member_id = (String) request.getSession().getAttribute("login");
 
@@ -386,7 +399,8 @@ public class MypageServiceImp implements MypageService {
 					}
 				}
 			}
-
+			
+			mav.addObject("memberDto",memberDto);
 			mav.addObject("count", cookies.length);
 			mav.addObject("cartList", bcartList);
 

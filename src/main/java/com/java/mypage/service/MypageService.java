@@ -25,6 +25,8 @@ public interface MypageService {
 	public void qDelete(ModelAndView mav);
 	
 	public void interest(ModelAndView mav);
+	
+	public void interestUpdate(ModelAndView mav);
 
 	public void withdrawal(ModelAndView mav);
 	
@@ -33,4 +35,6 @@ public interface MypageService {
 	public void cartDel(ModelAndView mav);
 	
 	public void cartList(ModelAndView mav);
+
+	
 }

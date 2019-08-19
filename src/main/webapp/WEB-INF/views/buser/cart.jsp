@@ -8,13 +8,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" type="text/css" href="${root}/resources/css/mypage/cart.css">
+<link rel="stylesheet" type="text/css" href="${root}/resources/css/buser/cart.css">
 <script src="//code.jquery.com/jquery-3.3.1.min.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/mypage/cart.js"></script>
 </head>
 <body>
    <div class="container">
-   <jsp:include page="../template/myMenu.jsp"/>
+	<c:set var="memberDto" value = "${memberDto}"/>
+	<c:if test="${memberDto != null}">
+	<jsp:include page="../template/myMenu.jsp"/>
+	</c:if>
       <div class="basket">
          <div class="ttitle">장바구니</div>
          <div align="center" class="blist">

@@ -146,3 +146,24 @@
 	   	float: left;
 	   	margin-bottom: 10px;
 	}
+	
+	.buttons{
+		width: 800px;
+		height: 75px;
+		margin: 50px auto;
+		text-align: center;
+	}	
+	.button{
+		display: inline-block;				
+	}	
+	.button input{
+		border:3px solid #10488D;
+		width: 250px;
+		height: 70px;
+		font-size: 20px;
+		font-weight : bold;
+		color : #10488D;
+		background-color: white;	
+	}
+	
+	

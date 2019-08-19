@@ -1,0 +1,29 @@
+@charset "UTF-8";
+
+.basket {
+	width: 800px;
+	height: 1400px;
+	margin: 90px auto;
+}
+
+.ttitle {
+	font-weight: bold;
+	padding-bottom: 10px;
+	border-bottom: thick double black;
+	margin-bottom: 15px;
+}
+
+.tfirst, .tfirst td, .tsecond, .tsecond td{
+	border: 1px solid black;
+	border-collapse: collapse;
+}
+
+.tsecond{
+	margin-bottom: 50px;
+}
+
+#btnDel, #btnBuy{
+	width:100px;
+	height: 25px;
+	margin: 20px 0px 15px 550px;	
+}

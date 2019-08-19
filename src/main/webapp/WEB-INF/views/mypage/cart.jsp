@@ -14,7 +14,10 @@
 </head>
 <body>
 	<div class="container">
+	<c:set var="memberDto" value = "${memberDto}"/>
+	<c:if test="${memberDto != null}">
 	<jsp:include page="../template/myMenu.jsp"/>
+	</c:if>
 		<div class="basket">
 			<div class="ttitle">장바구니</div>
 			<div align="center" class="blist">

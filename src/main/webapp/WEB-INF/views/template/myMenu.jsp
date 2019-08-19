@@ -41,7 +41,9 @@
 		<div class="menu1">
 			<ul>
 				<li><span id="member_name">${memberDto.member_name} </span>회원님</li>
-				<li>등급 : <span>${memberDto.member_level}</span></li>
+				<li>등급 : <span><c:if test="${memberDto.member_level == 'AA'}">일반회원</c:if>
+				<c:if test="${memberDto.member_level == 'admin'}">관리자</c:if>
+				<c:if test="${memberDto.member_level == 'SS'}">골드회원</c:if></span></li>
 				<li>적립금 : <a href ="#" >${memberDto.member_point}원</a></li>
 				<li>교환권/쿠폰 : <a href ="#" >0장</a></li>
 			</ul>
@@ -52,7 +54,7 @@
 				<li><a href="${root}/mypage/update.do">내 정보 수정</a></li>
 				<li><a href="${root}/mypage/interest.do">내 관심분야</a></li>
 				<li><a href="${root}/mypage/deliver.do">주문/배송 조회</a></li>
-				<li><a href="#">장바구니</a></li>
+				<li><a href="${root}/cartList.do">장바구니</a></li>
 				<li><a href="${root}/mypage/question.do">1:1 상담내역</a></li>
 			</ul>
 		</div>

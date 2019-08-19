@@ -76,7 +76,7 @@
 						<a href="${root}/member/memberLogin.do">로그인</a>
 					</li>
 					<li>
-						<a href="#">장바구니</a>
+						<a href="${root}/cartList.do">장바구니</a>
 					</li>
 					<li>
 						<a href="${root}/mypage/deliver.do">주문배송조회</a>
