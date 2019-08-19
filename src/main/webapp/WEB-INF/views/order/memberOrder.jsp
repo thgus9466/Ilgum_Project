@@ -1,20 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
 <meta charset="UTF-8">
-<link rel="stylesheet" href="${root}/resources/css/book/bookPay.css"/>
+<script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
+<link rel="stylesheet" href="${root}/resources/css/order/memberOrder.css"/>
 <title>Insert title here</title>
+<script type="text/javascript">
+	$(function() {
+		var member_id = $("input[name='session_id']").val();
+		alert(member_id);
+		
+		$(".selectDeliver > input[value='basic']").click(function() {
+			$.ajax({
+				url: "${root}/order/selectAddress.do",
+				type: "post",
+				data: {member_id : member_id},
+				dataType: "json",
+				contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+				async: true,
+				success: function(data) {
+					alert(data);
+				}
+			});
+		});
+	});
+</script>
 </head>
 <body>
-<form action="${root}/order/nonMemberPay.do" method="post">
-<c:forEach var="i" begin="0" end="${bookList.size()}">
-	<input type="hidden" name="order_book_count" value="${book_quantity}"/>
+<form action="${root}/order/memberPay.do" method="post">
+	<input type="hidden" name="member_id" value="${memberDto.member_id}"/>
+	<input type="hidden" name="order_book_count" value="${order_book_count}"/>
 	<input type="hidden" name="order_total_price" value="${total_price}"/>
-</c:forEach>
+	<input type="hidden" name="book_isbn" value="${memberBook.book_isbn}"/>
 	<div class="container">
 		<div style="background: #F2F2F2;">결제정보</div>
 
@@ -29,31 +51,32 @@
 						<th>포인트</th>
 						<th>배송비</th>
 					</tr>
-					<c:forEach var="bookList" items="${bookList}">
-					<input type="hidden" name="order_book_isbn" value="${bookList.book_isbn}"/>
 					<tr>
+					<c:forEach var="bookList" items="${memberBook}">
 						<td>
-						<img src="${bookList.book_img_url}" alt="" style="width: 100px; height: 100px; float: left">
+						<img src="${bookList.book_img_url}" alt="">
 							<div class="prod_info">
 								<div class="prod_info1">
 									<ul>
-										<li>${bookList.book_name}</li>
-										<li>수량 : ${book_quantity}</li>
+										<li>${bookList.book_name}   수량:${book_quantity}</li>
 									</ul>
 								</div>
 							</div>
 						</td>
 						<td>${bookList.book_price}</td>
-						<td>-</td>
+						<td>${bookList.book_price*0.05}</td>
 						<td>무료배송</td>
-					</tr>
 					</c:forEach>
+					</tr>
 				</table>
 			</div>
 
 			<div style="margin-top: 20px;">배송지 정보</div>
 
 			<div class="address">
+				<div class="selectDeliver">
+					<input type="radio" name="shipTo" value="basic"/>기본배송지
+				</div>
 				<div class="addr_title">
 					<ul>
 						<li>받으실 분</li>
@@ -66,7 +89,7 @@
 
 				<div class="addr_content">
 					<div>
-						<input type="text" name="order_name">
+						<input type="text" name="member_name" value="${memberDto.member_name}"/>
 					</div>
 					<div>
 						<input type="text" name="order_book_user_number" value="010">
@@ -74,16 +97,16 @@
 						<input type="text" name="phone3">
 					</div>
 					<div>
-						<input type="text" name="order_zipcode">
+						<input type="text" name="order_zipcode" value="${memberDto.member_zipcode}"/>
 						<a href="">
 							<span>배송지 조회</span>
 						</a><br/>
 					</div>
 					<div>
-						<input type="text" name="order_book_user_address1"/>
+						<input type="text" name="order_book_user_address1" value="${memberDto.member_address1}"/>
 					</div>
 					<div>
-						<input type="text" name="order_book_user_address2"/>
+						<input type="text" name="order_book_user_address2" value="${memberDto.member_address2}"/>
 					</div>
 					<div>
 						<input type="text" name="requests">
@@ -165,11 +188,11 @@
 				
 				<div>
 					<ul>
-						<li>${book_cost}</li>
-						<li>${book_cost*0.1}</li>
-						<li><b> </b></li>
-						<li><b> </b></li>
-						<li>${total_price}</li>
+						<li><fmt:formatNumber value="${book_cost}" type="number"/></li>
+						<li><fmt:formatNumber value="${book_cost*0.1}" type="number"/></li>
+						<li>무료배송</li>
+						<li><fmt:formatNumber value="${(book_cost*0.9)*0.05}" type="number"/></li>
+						<li><fmt:formatNumber value="${total_price}" type="number"/></li>
 					</ul>
 				</div>
 

@@ -53,10 +53,12 @@
 				</ul>
 				<div class="left">
 					<div>
-						<form name="nonlogin" action="${root}/member/memberPay.do" method="post">
+						<form name="memLogin" action="${root}/order/memberOrder.do" method="post">
+							<input type="hidden" name="book_isbn" value="${book_isbn}"/>
+							<input type="hidden" name="book_quantity" value="${book_quantity}"/>
 							<div class="left_inner">
 								<div class="id"><input type="text" name="member_id" placeholder="아이디"/></div>
-								<div class="pwd"><input type="password" name="member_password"  placeholder="비밀번호"/></div>
+								<div class="pwd"><input type="password" name="member_password" placeholder="비밀번호"/></div>
 								<div class="idsave">
 									<span>
 										<input type="checkbox"/>
@@ -94,13 +96,13 @@
 						<form action="">
 						<div id="bimemberlogin" class="bimemberlogin" style="display:none; z-index:20; border:0px solid black;">
 							<div class="id"><input type="text" name="id" placeholder="주문번호"/></div>
-								<div class="pwd"><input type="password" name="pwd"  placeholder="비밀번호"/></div>
+								<div class="pwd"><input type="password" name="pwd" placeholder="비밀번호"/></div>
 								<div class="check"><button type="button">확인</button></div>
 						</div>
 						</form>
 						<div class="set">
 							<a href="${root}/member/memberJoin.do">회원가입</a>
-							<a href="javascript:void(0);" onclick="nonMemberBuy('${root}', ${book_isbn})">비회원 구매</a>
+							<a href="javascript:void(0);" onclick="nonMemberBuy('${root}', ${book_isbn}, ${book_quantity})">비회원 구매</a>
 						</div>
 					</div>
 				</div>
