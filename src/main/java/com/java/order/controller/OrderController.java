@@ -65,17 +65,6 @@ public class OrderController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/order/nonMemberOrder.do", method=RequestMethod.GET)
-	public ModelAndView nonMemberOrder(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
-		ModelAndView mav = new ModelAndView();
-		
-		mav.addObject("request", request);
-		mav.addObject("session", session);
-		orderService.nonMemberOrder(mav);
-		
-		return mav;
-	}
-	
 	@ResponseBody
 	@RequestMapping(value="/order/selectAddress.do", method=RequestMethod.POST)
 	public Map<String, Object> selectAddress(HttpServletRequest request, HttpServletResponse response) {
