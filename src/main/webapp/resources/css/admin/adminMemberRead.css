@@ -33,7 +33,7 @@ select{
 .vital_info {
 	margin:50px auto;
 	width:650px;
-	height: 450px;
+	height: 220px;
 	border: 1px solid #cccccc;
 	border-top: 0px; 		
 }	
@@ -103,7 +103,7 @@ select{
 .vital_info_deliver {
 	margin:50px auto;
 	width:650px;
-	height: 300px;
+	height: 210px;
 	border: 1px solid #cccccc;
 	border-top: 0px; 		
 }	
@@ -137,7 +137,7 @@ select{
 .choice_info {
 	margin:0px auto;
 	width:650px;
-	height: 250px;
+	height: 350px;
 	border-top: 0px; 		
 }	
 .choice_info .header{

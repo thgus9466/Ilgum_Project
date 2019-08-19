@@ -133,6 +133,17 @@ public class MypageController {
 		return mav;
 	}
 	
+	@RequestMapping(value = "/mypage/interestUpdateOk.do", method = RequestMethod.POST)
+	public ModelAndView interestUpdate(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("memberDto",memberDto);
+		
+		mypageService.interestUpdate(mav);
+
+		return mav;
+	}
+	
 	@RequestMapping(value = "/mypage/withdrawal.do", method = RequestMethod.GET)
 	public ModelAndView withdrawal(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();

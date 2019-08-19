@@ -140,4 +140,9 @@ public class MyPageDaoImp implements MypageDao {
 	   public BuserDto bcartList(String book_isbn) {
 	      return sqlSessionTemplate.selectOne("dao.MypageMapper.bcartList", book_isbn);
 	   }
+
+	@Override
+	public int updateInterest(MemberDto memberDto) {
+		return sqlSessionTemplate.update("dao.MypageMapper.updateInterest",memberDto);
+	}
 }

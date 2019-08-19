@@ -1,8 +1,5 @@
 package com.java.order.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -11,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
 
 import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
@@ -34,7 +31,7 @@ public class OrderController {
 		
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/order/memberOrder.do", method=RequestMethod.POST)
 	public ModelAndView memberOrder(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
 		ModelAndView mav = new ModelAndView();
@@ -58,7 +55,7 @@ public class OrderController {
 		
 		return mav;
 	}
-	
+
 	@RequestMapping(value="/order/memberPay.do", method=RequestMethod.POST)
 	public ModelAndView memberPay(HttpServletRequest request, HttpServletResponse response, HttpSession session) {
 		ModelAndView mav = new ModelAndView();
@@ -80,16 +77,5 @@ public class OrderController {
 		orderService.oneBookOrder(mav);
 		
 		return mav;
-	}
-	
-	@ResponseBody
-	@RequestMapping(value="/order/selectAddress.do", method=RequestMethod.POST)
-	public Map<String, Object> selectAddress(HttpServletRequest request, HttpServletResponse response) {
-		String member_id = request.getParameter("member_id");
-		
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("member_id", member_id);
-		
-		return map;
 	}
 }

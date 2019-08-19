@@ -5,21 +5,4 @@
 	<select id="nonMemberOrder" parameterType="String" resultType="com.java.book.dto.BookDto">
 		select * from book where book_isbn = #{book_isbn}
 	</select>
-	
-	<insert id="nonMemberPay" parameterType="java.util.HashMap">
-		insert into nonuserorder(order_bunho, order_book_count, order_zipcode, order_book_user_address1, order_book_user_address2, order_book_user_number, order_book_state, order_date, order_total_price, order_book_isbn, order_name)
-		values(seq_order_bunho_num.nextval, #{order_book_count}, #{order_zipcode}, #{order_book_user_address1}, #{order_book_user_address2}, #{order_book_user_number}, #{order_book_state}, sysdate, #{order_total_price}, #{order_book_isbn}, #{order_name})
-	</insert>
-	
-	<select id="memOrderLogin" parameterType="java.util.Map" resultType="int">
-		select count(*) from member where member_id = #{member_id} and member_password = #{member_password}
-	</select>
-	
-	<select id="memberBook" parameterType="String" resultType="com.java.book.dto.BookDto">
-		select * from book where book_isbn = #{book_isbn}
-	</select>
-	
-	<select id="selectMember" parameterType="String" resultType="com.java.member.dto.MemberDto">
-		select * from member where member_id = #{member_id}
-	</select>
 </mapper>

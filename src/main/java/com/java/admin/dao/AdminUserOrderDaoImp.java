@@ -7,6 +7,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.java.admin.dto.AdminBookDto;
+import com.java.admin.dto.AdminMemberDto;
 import com.java.admin.dto.AdminQuestionDto;
 import com.java.order.dto.UserOrderDto;
 
@@ -56,5 +58,26 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 		return sqlSessionTemplate.selectList("dao.AdminUserOrderMapper.OrderSearchList", hMap);
 	}
 
+	@Override
+	public UserOrderDto userOrderRead(int order_bunho) {
+		return sqlSessionTemplate.selectOne("dao.AdminUserOrderMapper.userOrderRead", order_bunho);
+		}
 
+	@Override //회원정보를 가져올거라 회원정보가 담겨져있는 맵퍼에서 셀렉트 함.
+	public AdminMemberDto userInfo(String member_id) {
+		return sqlSessionTemplate.selectOne("dao.AdminMemberMapper.MemberRead", member_id);
+		}
+
+	@Override
+	public AdminBookDto bookInfo(String book_isbn) {
+		return sqlSessionTemplate.selectOne("dao.AdminBookMapper.bookReadNumber", book_isbn);
+		}
+	public int userOrderUpdateOk(UserOrderDto userOrderDto) {
+		return sqlSessionTemplate.update("dao.AdminUserOrderMapper.userOrderUpdateOk", userOrderDto);
+	}
+
+	@Override
+	public int userOrderDelete(int order_bunho) {
+		return sqlSessionTemplate.delete("dao.AdminUserOrderMapper.userOrderDelete", order_bunho);
+	}
 }

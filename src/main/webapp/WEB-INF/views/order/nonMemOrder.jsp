@@ -10,11 +10,6 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="${root}/order/nonMemberPay.do" method="post">
-<c:forEach var="i" begin="0" end="${bookList.size()}">
-	<input type="hidden" name="order_book_count" value="${book_quantity}"/>
-	<input type="hidden" name="order_total_price" value="${total_price}"/>
-</c:forEach>
 	<div class="container">
 		<div style="background: #F2F2F2;">결제정보</div>
 
@@ -29,16 +24,14 @@
 						<th>포인트</th>
 						<th>배송비</th>
 					</tr>
-					<c:forEach var="bookList" items="${bookList}">
-					<input type="hidden" name="order_book_isbn" value="${bookList.book_isbn}"/>
 					<tr>
+					<c:forEach var="bookList" items="${bookList}">
 						<td>
-						<img src="${bookList.book_img_url}" alt="" style="width: 100px; height: 100px; float: left">
+						<img src="${bookList.book_img_url}" alt="">
 							<div class="prod_info">
 								<div class="prod_info1">
 									<ul>
 										<li>${bookList.book_name}</li>
-										<li>수량 : ${book_quantity}</li>
 									</ul>
 								</div>
 							</div>
@@ -46,8 +39,8 @@
 						<td>${bookList.book_price}</td>
 						<td>-</td>
 						<td>무료배송</td>
-					</tr>
 					</c:forEach>
+					</tr>
 				</table>
 			</div>
 
@@ -57,36 +50,33 @@
 				<div class="addr_title">
 					<ul>
 						<li>받으실 분</li>
-						<li>연락처</li>
+						<li>연락처1</li>
+						<li>연락처2</li>
 						<li>배송지</li>
-						<li>상세주소</li>
 						<li>배송 요청사항</li>
 					</ul>
 				</div>
 
 				<div class="addr_content">
 					<div>
-						<input type="text" name="order_name">
+						<input type="text">
 					</div>
 					<div>
-						<input type="text" name="order_book_user_number" value="010">
-						<input type="text" name="phone2">
-						<input type="text" name="phone3">
+						<input type="text" value="010"> <input type="text">
+						<input type="text">
 					</div>
 					<div>
-						<input type="text" name="order_zipcode">
+						<input type="text" value="010"> <input type="text">
+						<input type="text">
+					</div>
+					<div>
+						<input type="text">
 						<a href="">
 							<span>배송지 조회</span>
-						</a><br/>
+						</a>
 					</div>
 					<div>
-						<input type="text" name="order_book_user_address1"/>
-					</div>
-					<div>
-						<input type="text" name="order_book_user_address2"/>
-					</div>
-					<div>
-						<input type="text" name="requests">
+						<input type="text">
 					</div>
 				</div>
 			</div>
@@ -153,32 +143,21 @@
 
 		<div class="pay_wrapper">
 			<div class="pay">
-				<div>
-					<ul>
-						<li>총 상품금액</li>
-						<li>총 할인금액</li>
-						<li>배송비</li>
-						<li>적립 포인트</li>
-						<li>총 결제금액</li>
-					</ul>
-				</div>
-				
-				<div>
-					<ul>
-						<li>${book_cost}</li>
-						<li>${book_cost*0.1}</li>
-						<li><b> </b></li>
-						<li><b> </b></li>
-						<li>${total_price}</li>
-					</ul>
-				</div>
+				<div>총 상품금액</div>
+
+				<div>총 할인금액</div>
+
+				<div>배송비</div>
+
+				<div>포인트 적립</div>
+
+				<div>총 결제금액</div>
 
 				<div>
-					<button type="submit" value="Submit">결제하기</button>
+					<a href=""><div>결 제 하 기</div></a>
 				</div>
 			</div>
 		</div>
 	</div>
-</form>
 </body>
 </html>

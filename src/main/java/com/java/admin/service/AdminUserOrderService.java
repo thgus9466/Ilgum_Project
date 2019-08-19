@@ -13,5 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 public interface AdminUserOrderService {
 
 	public void UserOrderList(ModelAndView mav);
-	
+	public void UserOrderRead(ModelAndView mav);
+	public void UserOrderUpdateOk(ModelAndView mav);
+	public void UserOrderDeleteOk(ModelAndView mav);
 }

@@ -112,14 +112,6 @@ public class OrderServiceImp implements OrderService {
 	}
 
 	@Override
-	public void memberOrderOk(ModelAndView mav) {
-		Map<String, Object> map = mav.getModelMap();
-		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		OrderDto orderDto = (OrderDto) map.get("orderDto");
-		
-	}
-
-	@Override
 	public void oneBookOrder(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");

@@ -139,9 +139,9 @@
 								<option>yahoo.com</option>
 							</select>
 						</div>
-						<div style="float: left;">
-							<input class = "infos_button" type="button" value="이메일 인증">
-						</div>	
+<!-- 						<div style="float: left;"> -->
+<!-- 							<input class = "infos_button" type="button" value="이메일 인증"> -->
+<!-- 						</div>	 -->
 					</div>				
 				</div>
 				

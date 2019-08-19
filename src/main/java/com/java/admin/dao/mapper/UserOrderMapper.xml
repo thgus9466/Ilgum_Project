@@ -76,4 +76,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
 		</if>
 	</select>
+	
+	<!-- 주문정보 상세보기 -->
+		<select id="userOrderRead" parameterType="int" resultType="com.java.order.dto.UserOrderDto">
+		<![CDATA[
+			select * from userorder where order_bunho = #{order_bunho}
+		]]>
+	</select>
+	
+		<!-- 회원주문정보 수정 -->
+	<update id="userOrderUpdateOk" parameterType="com.java.order.dto.UserOrderDto">
+		<![CDATA[
+			UPDATE userorder SET order_zipcode=#{order_zipcode}, order_book_user_address1=#{order_book_user_address1}, order_book_user_address2=#{order_book_user_address2}, order_book_user_phone=#{order_book_user_phone},order_book_count=#{order_book_count} WHERE order_bunho=#{order_bunho}
+		]]>
+	</update>
+	
+	<delete id="userOrderDelete" parameterType="int">
+		<![CDATA[Delete FROM userOrder WHERE order_bunho = #{order_bunho}	
+		]]>
+	</delete>
 </mapper>

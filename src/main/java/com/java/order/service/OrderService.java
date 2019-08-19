@@ -8,5 +8,4 @@ public interface OrderService {
 	public void oneBookOrder(ModelAndView mav);
 	public void memberOrder(ModelAndView mav);
 	public void memberPay(ModelAndView mav);
-	public void memberOrderOk(ModelAndView mav);
 }

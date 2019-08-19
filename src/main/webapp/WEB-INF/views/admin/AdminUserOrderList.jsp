@@ -21,7 +21,7 @@
 	</div>
 	<div class="main" style="width: 90%; background-color:#EAEAEA;">
 		<div class="board_div">
-			<h2 class="page-header">주문관리시스템</h2>
+			<h2 class="page-header">회원주문관리시스템</h2>
 			<div class="search_div">
 				<form class="form_style" method="get" action="${root}/admin/AdminUserOrderList.do" >
 						<input type="hidden" name="count" value="${count}"/>
@@ -80,7 +80,9 @@
 											<c:out value="${userOrderList.member_id}"/>
 										</td>
 										<td style="text-align: center; cursor: pointer; " >
+											<a href="${root}/admin/AdminUserOrderRead.do?order_bunho=${userOrderList.order_bunho}&pageNumber=${currentPage}&member_id=${userOrderList.member_id}">
 												<c:out value="${userOrderList.book_isbn}"/>
+											</a>
 										</td>
 										<td style="text-align: center">
 											<c:out value="${userOrderList.order_book_count}"/>
