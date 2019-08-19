@@ -28,14 +28,21 @@ function updateCheck(root,currentPage,num,id,book){
 	
 }
 //방명록 삭제
-function deleteCheck(root,currentPage,num,id,book){
+function deleteCheck(root1,currentPage,num,id,book,login){
+	root = root1
 	var url = root +"/member/delete.do?order_bunho="+num+"&pageNumber="+currentPage+"&member_id="+id+"&book_isbn="+book;
-	//alert(url);
+	alert(url);
 	
-	var value=confirm("정말로 삭제 하시겠습니까?");
-	
-	if(value==true){
-		//alert("ok");
-		location.href=url;
+	if(login==""){
+		alert("로그인해주세요");
+	}else if(login != id){
+		alert("권한이 없습니다.");
+	}else{
+		var value=confirm("정말로 삭제 하시겠습니까?");
+		
+		if(value==true){
+			//alert("ok");
+			location.href=url;
+		}
 	}
 }
