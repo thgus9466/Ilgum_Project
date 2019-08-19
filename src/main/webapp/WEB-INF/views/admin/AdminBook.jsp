@@ -9,7 +9,11 @@
 <head>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <meta charset="UTF-8">
+<script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
+<script type="text/javascript" src="${root}/resources/jquery/jquery-ui.js"></script>
+<script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/admin/admin.css"> 
+<script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
 
 <title>관리자시스템</title>

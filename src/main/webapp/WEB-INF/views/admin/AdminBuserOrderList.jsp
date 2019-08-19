@@ -23,7 +23,7 @@
 		<div class="board_div">
 			<h2 class="page-header">회원주문관리시스템</h2>
 			<div class="search_div">
-				<form class="form_style" method="get" action="${root}/admin/AdminUserOrderList.do" >
+				<form class="form_style" method="get" action="${root}/admin/AdminBuserOrderList.do" >
 						<input type="hidden" name="count" value="${count}"/>
 					<input type="hidden" name="boardSize" value="${boardSize}"/>
 					<input type="hidden" name="currentPage" value="${currentPage}"/>
@@ -32,7 +32,6 @@
 					<div class="row"> 
 						<select id="searchType" name="searchType">
 							<option value="order_bunho">주문번호</option>	
-							<option value="member_id">아이디</option>
 							<option value="book_isbn">도서번호</option>
 							<option value="order_book_state">주문상태</option>
 						</select>
@@ -58,7 +57,6 @@
 						<thead>
 							<tr	>
 								<th class="col-xs-1" style="text-align: center">주문번호</th>
-								<th class="col-xs-1" style="text-align: center">아이디</th>
 								<th class="col-xs-3" style="text-align: center">도서번호</th>
 								<th class="col-xs-1" style="text-align: center">수량</th>
 								<th class="col-xs-2" style="text-align: center">휴대전화</th>
@@ -70,34 +68,30 @@
 
 						<tbody>
 							<c:if test="${count > 0 }">
-								<c:forEach items="${userOrderList}" var="userOrderList">
+								<c:forEach items="${buserOrderList}" var="buserOrderList">
 									<tr>
 										<td style="text-align: center">
-											<c:out value="${userOrderList.order_bunho}"/>
-										</td>
-										<td style="text-align: center">
-
-											<c:out value="${userOrderList.member_id}"/>
+											<c:out value="${buserOrderList.order_bunho}"/>
 										</td>
 										<td style="text-align: center; cursor: pointer; " >
-											<a href="${root}/admin/AdminUserOrderRead.do?order_bunho=${userOrderList.order_bunho}&pageNumber=${currentPage}&member_id=${userOrderList.member_id}">
-												<c:out value="${userOrderList.book_isbn}"/>
+											<a href="${root}/admin/AdminBuserOrderRead.do?order_bunho=${buserOrderList.order_bunho}&pageNumber=${currentPage}">
+												<c:out value="${buserOrderList.book_isbn}"/>
 											</a>
 										</td>
 										<td style="text-align: center">
-											<c:out value="${userOrderList.order_book_count}"/>
+											<c:out value="${buserOrderList.order_book_count}"/>
 										</td>
 										<td style="text-align: center">
-											<c:out value="${userOrderList.order_book_user_phone}"/>
+											<c:out value="${buserOrderList.order_book_user_number}"/>
 										</td>
 										<td style="text-align: center">
-											<c:out value="${userOrderList.order_book_state}"/>
+											<c:out value="${buserOrderList.order_book_state}"/>
 										</td>
 										<td style="text-align: center;  cursor: pointer;">
-											${userOrderList.order_date}
+											${buserOrderList.order_date}
 										</td>
 										<td style="text-align: center">
-										<fmt:formatNumber value="${userOrderList.order_total_price}"/>원
+										<fmt:formatNumber value="${buserOrderList.order_total_price}"/>원
 										</td>
 									</tr>
 								</c:forEach>

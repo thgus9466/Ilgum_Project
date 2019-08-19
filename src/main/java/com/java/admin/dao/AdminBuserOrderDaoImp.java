@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import com.java.admin.dto.AdminBookDto;
 import com.java.admin.dto.AdminMemberDto;
 import com.java.admin.dto.AdminQuestionDto;
+import com.java.order.dto.BuserOrderDto;
 import com.java.order.dto.UserOrderDto;
 
 
@@ -20,7 +21,7 @@ import com.java.order.dto.UserOrderDto;
  */ 
 
 @Component
-public class AdminUserOrderDaoImp implements AdminUserOrderDao {
+public class AdminBuserOrderDaoImp implements AdminBuserOrderDao {
 
 	
 	@Autowired
@@ -28,7 +29,7 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 
 	@Override
 	public int OrderCount() {
-		return sqlSessionTemplate.selectOne("dao.AdminUserOrderMapper.OrderCount");
+		return sqlSessionTemplate.selectOne("dao.AdminBuserOrderMapper.OrderCount");
 	}
 
 	@Override
@@ -36,48 +37,46 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 		HashMap<String, String> hMap=new HashMap<String, String>();
 		hMap.put("searchType", searchType);
 		hMap.put("keyword", keyword);
-		return sqlSessionTemplate.selectOne("dao.AdminUserOrderMapper.OrderSearchCount", hMap);
+		return sqlSessionTemplate.selectOne("dao.AdminBuserOrderMapper.OrderSearchCount", hMap);
 	}
 
 	@Override
-	public List<UserOrderDto> OrderList(int startRow, int endRow) {
+	public List<BuserOrderDto> OrderList(int startRow, int endRow) {
 		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
 		
-		return sqlSessionTemplate.selectList("dao.AdminUserOrderMapper.OrderList", hMap);
+		return sqlSessionTemplate.selectList("dao.AdminBuserOrderMapper.OrderList", hMap);
 	}
 
 	@Override
-	public List<UserOrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow) {
+	public List<BuserOrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow) {
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("searchType", searchType);
 		hMap.put("keyword", keyword);
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
-		return sqlSessionTemplate.selectList("dao.AdminUserOrderMapper.OrderSearchList", hMap);
+		return sqlSessionTemplate.selectList("dao.AdminBuserOrderMapper.OrderSearchList", hMap);
 	}
 
 	@Override
-	public UserOrderDto userOrderRead(int order_bunho) {
-		return sqlSessionTemplate.selectOne("dao.AdminUserOrderMapper.userOrderRead", order_bunho);
+	public BuserOrderDto userOrderRead(int order_bunho) {
+		return sqlSessionTemplate.selectOne("dao.AdminBuserOrderMapper.userOrderRead", order_bunho);
 		}
 
-	@Override //회원정보를 가져올거라 회원정보가 담겨져있는 맵퍼에서 셀렉트 함.
-	public AdminMemberDto userInfo(String member_id) {
-		return sqlSessionTemplate.selectOne("dao.AdminMemberMapper.MemberRead", member_id);
-		}
 
 	@Override
 	public AdminBookDto bookInfo(String book_isbn) {
 		return sqlSessionTemplate.selectOne("dao.AdminBookMapper.bookReadNumber", book_isbn);
 		}
-	public int userOrderUpdateOk(UserOrderDto userOrderDto) {
-		return sqlSessionTemplate.update("dao.AdminUserOrderMapper.userOrderUpdateOk", userOrderDto);
-	}
 
 	@Override
 	public int userOrderDelete(int order_bunho) {
-		return sqlSessionTemplate.delete("dao.AdminUserOrderMapper.userOrderDelete", order_bunho);
+		return sqlSessionTemplate.delete("dao.AdminBuserOrderMapper.userOrderDelete", order_bunho);
 	}
+
+	@Override
+	public int userOrderUpdateOk(BuserOrderDto buserOrderDto) {
+		return sqlSessionTemplate.update("dao.AdminBuserOrderMapper.userOrderUpdateOk", buserOrderDto);
+		}
 }

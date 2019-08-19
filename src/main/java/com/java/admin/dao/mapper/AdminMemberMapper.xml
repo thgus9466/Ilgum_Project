@@ -95,7 +95,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         </if>
 	</select>
 	
-	<!-- 도서상세페이지 불러오기-->
+	<!-- 회원정보 불러오기-->
 	<select id="MemberRead" parameterType="String" resultMap="MemberDto">
 		<![CDATA[
 			select * from member where member_id = #{member_id}

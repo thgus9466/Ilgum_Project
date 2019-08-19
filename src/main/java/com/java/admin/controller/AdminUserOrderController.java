@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.admin.service.AdminBuserOrderService;
 import com.java.admin.service.AdminUserOrderService;
 import com.java.aop.IlgumAspect;
+import com.java.order.dto.BuserOrderDto;
 import com.java.order.dto.UserOrderDto;
 
 
@@ -26,9 +28,16 @@ public class AdminUserOrderController {
 	@Autowired
 	private AdminUserOrderService userOrderService; 
 
-	//주문관리페이지목록
+	@Autowired
+	private AdminBuserOrderService buserOrderService; 
+
+	/********************************/
+	/*       회원 주문관리페이지                        */ 
+	/********************************/
+
+	//회원주문관리페이지목록
 	@RequestMapping(value="/admin/AdminUserOrderList.do", method=RequestMethod.GET)
-	public ModelAndView QuestionList(HttpServletRequest request, HttpServletResponse response, UserOrderDto userOrderDto) { 
+	public ModelAndView AdminUserList(HttpServletRequest request, HttpServletResponse response, UserOrderDto userOrderDto) { 
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request); 
@@ -38,62 +47,89 @@ public class AdminUserOrderController {
 		return mav;
 	}
 
-//	//상담글 상세보기
-//	@RequestMapping(value="/admin/AdminQuestionRead.do", method=RequestMethod.GET)
-//	public ModelAndView QuestionRead(HttpServletRequest request,HttpServletResponse response) { 
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("request",request);
-//	
-//		userOrderService.QuestionRead(mav);
-//	
-//		return mav; 
-//	
-//	}
-//	
-//	//상담글 상세보기
-//	@RequestMapping(value="/admin/AdminQuestionReadReply.do", method=RequestMethod.GET)
-//	public ModelAndView QuestionReadReply(HttpServletRequest request,
-//			HttpServletResponse response) { ModelAndView mav = new ModelAndView();
-//			mav.addObject("request",request);
-//			
-//			questionService.QuestionReadReply(mav);
-//			
-//			return mav; 
-//			
-//	}
-//	
-//	//상담글 답변달기
-//	@RequestMapping(value="/admin/AdminQuestionWrite.do", method=RequestMethod.GET)
-//	public ModelAndView QuestionWrite(HttpServletRequest request, HttpServletResponse response) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("request",request);
-//		
-//		questionService.QuestionWrite(mav);
-//		
-//		return mav;
-//	}
-//	
-//	//상담글 수정하기
-//	@RequestMapping(value="/admin/AdminQuestionWriteReply.do", method=RequestMethod.GET)
-//	public ModelAndView QuestionUpdate(HttpServletRequest request, HttpServletResponse response) {
-//		ModelAndView mav = new ModelAndView();
-//		mav.addObject("request",request);
-//		
-//		questionService.QuestionUpdate(mav);
-//		
-//		return mav;
-//	}
-//	
-//	//상담글 답변등록 확인
-//	@RequestMapping(value="/admin/AdminQuestionWriteOk.do", method=RequestMethod.POST)
-//	public ModelAndView QuestionWriteOk(HttpServletRequest request, HttpServletResponse response,AdminQuestionDto questionDto) {
-//		ModelAndView mav = new ModelAndView();
-//		System.out.println("컨트롤러로 이동");
-//		mav.addObject("questionDto",questionDto);
-//		
-//		questionService.QuestionReplyOk(mav);
-//		
-//		return mav;
-//	}
+	//주문관리 상세보기
+	@RequestMapping(value="/admin/AdminUserOrderRead.do", method=RequestMethod.GET)
+	public ModelAndView userOrderRead(HttpServletRequest request,HttpServletResponse response) { 
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request",request);
+	
+		userOrderService.UserOrderRead(mav);
+	
+		return mav; 
+	
+	}
+
+	//회원 주문내역 수정하기
+	@RequestMapping(value="/admin/AdminUserOrderUpdateOk.do", method=RequestMethod.POST)
+	public ModelAndView UserOrderUpdateOk(HttpServletRequest request, HttpServletResponse response,UserOrderDto userOrderDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("userOrderDto",userOrderDto);
+		mav.addObject("request",request);
+		
+		userOrderService.UserOrderUpdateOk(mav);
+		
+		return mav;
+	}
+	
+	//회원 주문정내역 삭제
+	@RequestMapping(value="/admin/AdminUserOrderDeleteOk.do", method=RequestMethod.GET)
+	public ModelAndView UserOrderDeleteOk(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request",request);
+		
+		userOrderService.UserOrderDeleteOk(mav);
+		
+		return mav;
+	}
+	
+	/********************************/
+	/*       비회원 주문관리페이지                     */ 
+	/********************************/
+
+	//비회원주문관리페이지목록
+	@RequestMapping(value="/admin/AdminBuserOrderList.do", method=RequestMethod.GET)
+	public ModelAndView AdminBuserList(HttpServletRequest request, HttpServletResponse response, BuserOrderDto buserOrderDto) { 
+		
+		ModelAndView mav=new ModelAndView();
+		mav.addObject("request", request); 
+		mav.addObject("buserOrderDto", buserOrderDto);
+		
+		buserOrderService.UserOrderList(mav); 
+		return mav;
+	}
+	//비회원주문관리 상세보기
+	@RequestMapping(value="/admin/AdminBuserOrderRead.do", method=RequestMethod.GET)
+	public ModelAndView BuserOrderRead(HttpServletRequest request,HttpServletResponse response) { 
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request",request);
+	
+		buserOrderService.UserOrderRead(mav);
+	
+		return mav; 
+	
+	}
+
+	//비회원 주문내역 수정하기
+	@RequestMapping(value="/admin/AdminBuserOrderUpdateOk.do", method=RequestMethod.POST)
+	public ModelAndView BuerOrderUpdateOk(HttpServletRequest request, HttpServletResponse response,BuserOrderDto buserOrderDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("buserOrderDto",buserOrderDto);
+		mav.addObject("request",request);
+		
+		buserOrderService.UserOrderUpdateOk(mav);
+		
+		return mav;
+	}
+	
+	//비회원 주문정내역 삭제
+	@RequestMapping(value="/admin/AdminBuserOrderDeleteOk.do", method=RequestMethod.GET)
+	public ModelAndView BuserOrderDeleteOk(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request",request);
+		
+		buserOrderService.UserOrderDeleteOk(mav);
+		
+		return mav;
+	}
 }
 

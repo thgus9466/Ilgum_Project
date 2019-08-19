@@ -5,12 +5,12 @@ import org.springframework.web.servlet.ModelAndView;
 
 /**
  * @author 최선권
- * @date 2019.08.09
- * @description 관리자 도서관리 시스템 서비스
+ * @date 2019.08.19
+ * @description 비회원주문관리
  */ 
 
 @Component
-public interface AdminUserOrderService {
+public interface AdminBuserOrderService {
 
 	public void UserOrderList(ModelAndView mav);
 	public void UserOrderRead(ModelAndView mav);

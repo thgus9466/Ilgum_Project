@@ -11,7 +11,7 @@
 		class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver" />
-		<property name="url" value="jdbc:oracle:thin:@192.168.10.56:1521:xe" />
+		<property name="url" value="jdbc:oracle:thin:@192.168.12.11:1521:xe" />
 		<property name="username" value="ilgum" />
 		<property name="password" value="1234" />
 
@@ -36,6 +36,7 @@
 				<value>classpath:com/java/admin/dao/mapper/AdminCouponMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/MemberCouponMapper.xml</value>
 				<value>classpath:com/java/admin/dao/mapper/UserOrderMapper.xml</value>
+				<value>classpath:com/java/admin/dao/mapper/BuserOrderMapper.xml</value>
 			</list>
 		</property>
 	</bean>

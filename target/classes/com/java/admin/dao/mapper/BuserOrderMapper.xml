@@ -4,19 +4,19 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <!-- Mapper: 도서 -->
-<mapper namespace="dao.AdminUserOrderMapper">
+<mapper namespace="dao.AdminBuserOrderMapper">
 
 	<!-- 전체조회 카운트-->
 	<select id="OrderCount" resultType="int">
-		<![CDATA[select count(*) from userorder]]>
+		<![CDATA[select count(*) from buserorder]]>
 	</select>
 
 	<!-- 전체조회 목록 / 페이징-->
-	<select id="OrderList" resultType="com.java.order.dto.UserOrderDto" parameterType="java.util.HashMap">
+	<select id="OrderList" resultType="com.java.order.dto.BuserOrderDto" parameterType="java.util.HashMap">
 		<![CDATA[
 	 	 		select * from 
 		 			(select rownum rnum, a.* from 
-	 	 				(select * from userorder order by order_bunho desc)a) 
+	 	 				(select * from buserorder order by order_bunho desc)a) 
 	 	 		where rnum>=#{startRow} and rnum <=#{endRow}
  	 	]]> 
 	</select>
@@ -24,12 +24,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 		<!-- 상담문의글 상세조회수-->
 	<select id="OrderSearchCount" resultType="int" parameterType="java.util.HashMap">
 		select count(*)
-		from userorder
+		from buserorder
 		<if test='searchType=="order_bunho"'>
 			where order_bunho like '%'||#{keyword}||'%'
-        </if>
-		<if test="searchType == 'member_id'">
-            where member_id like '%'||#{keyword}||'%'
         </if>
 		<if test="searchType == 'book_isbn'">
             where book_isbn like '%'||#{keyword}||'%'
@@ -40,59 +37,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	</select>
 	
 		<!-- 상세조회 -->
-	<select id="OrderSearchList" resultType="com.java.order.dto.UserOrderDto" parameterType="java.util.HashMap">
+	<select id="OrderSearchList" resultType="com.java.order.dto.BuserOrderDto" parameterType="java.util.HashMap">
 		<if test='searchType=="order_bunho"'>
 			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select * from userorder order by order_bunho asc) a) b
+			(select * from buserorder order by order_bunho asc) a) b
 			where order_bunho like '%'||#{keyword}||'%')c
-			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
-		</if>
-		
-		<if test='searchType=="member_id"'>
-			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select * from userorder order by order_bunho asc) a) b
-			where member_id like '%'||#{keyword}||'%')c
 			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
 		</if>
 		
 		<if test='searchType=="book_isbn"'>
 			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select * from userorder order by order_bunho asc) a) b
+			(select * from buserorder order by order_bunho asc) a) b
 			where book_isbn like '%'||#{keyword}||'%')c
 			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
 		</if>
 		
 		<if test='searchType=="order_book_state"'>
 			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select * from userorder order by order_bunho asc) a) b
+			(select * from buserorder order by order_bunho asc) a) b
 			where order_book_state like '%'||#{keyword}||'%')c
 			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
 		</if>
 		
 		<if test='searchType==""'>
 			<![CDATA[select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select * from userorder order by order_bunho asc) a) b
+			(select * from buserorder order by order_bunho asc) a) b
 			where order_book_state like '%'||#{keyword}||'%')c
 			where c.brnum >= #{startRow} and c.brnum <= #{endRow}]]> 
 		</if>
 	</select>
 	
 	<!-- 주문정보 상세보기 -->
-		<select id="userOrderRead" parameterType="int" resultType="com.java.order.dto.UserOrderDto">
+		<select id="userOrderRead" parameterType="int" resultType="com.java.order.dto.BuserOrderDto">
 		<![CDATA[
-			select * from userorder where order_bunho = #{order_bunho}
+			select * from buserorder where order_bunho = #{order_bunho}
 		]]>
 	</select>
 	
 		<!-- 회원주문정보 수정 -->
-	<update id="userOrderUpdateOk" parameterType="com.java.order.dto.UserOrderDto">
+	<update id="userOrderUpdateOk" parameterType="com.java.order.dto.BuserOrderDto">
 		<![CDATA[
-			UPDATE userorder SET order_zipcode=#{order_zipcode}, order_book_user_address1=#{order_book_user_address1}, order_book_user_address2=#{order_book_user_address2}, order_book_user_phone=#{order_book_user_phone},order_book_count=#{order_book_count} WHERE order_bunho=#{order_bunho}
+			UPDATE buserorder SET order_zipcode=#{order_zipcode}, order_book_user_address1=#{order_book_user_address1}, order_book_user_address2=#{order_book_user_address2}, order_book_user_number=#{order_book_user_number},order_book_count=#{order_book_count} WHERE order_bunho=#{order_bunho}
 		]]>
 	</update>
 	
 	<delete id="userOrderDelete" parameterType="int">
-		<![CDATA[Delete FROM userOrder WHERE order_bunho = #{order_bunho}	
+		<![CDATA[Delete FROM buserorder WHERE order_bunho = #{order_bunho}	
 		]]>
 	</delete>
 </mapper>
