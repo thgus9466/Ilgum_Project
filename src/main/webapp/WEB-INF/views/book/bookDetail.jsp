@@ -189,7 +189,7 @@
 						</div>	
 						
 						<div class="reviewButton" id="reviewButton">
-							<a href="javascript:updateToServer('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}','${login}')" style="font-size:18px;">수정</a>&nbsp;&nbsp;
+							<a href="javascript:updateToServer('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}','${login}')" style="font-size:18px; margin-left:30px;">수정</a>&nbsp;&nbsp;
 							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}')" style="font-size:18px;">삭제</a>
 						</div>	
 				</div>
