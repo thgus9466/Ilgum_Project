@@ -16,6 +16,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.admin.dao.AdminQuestionDao;
 import com.java.admin.dao.AdminUserOrderDao;
+import com.java.admin.dto.AdminBookDto;
+import com.java.admin.dto.AdminMemberDto;
 import com.java.admin.dto.AdminQuestionDto;
 import com.java.aop.IlgumAspect;
 import com.java.order.dto.UserOrderDto;
@@ -79,23 +81,34 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 	}
 
 	
-//	//상담글상세보기 	  
-//	@Override 
-//	public void QuestionRead(ModelAndView mav) {
-//		Map<String, Object> map= mav.getModelMap();
-//		HttpServletRequest request = (HttpServletRequest) map.get("request");
-//		 
-//		int q_number = Integer.parseInt(request.getParameter("q_number"));
-//		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
-//		
-//		AdminQuestionDto questionDto = questionDao.QuestionRead(q_number);
-//		IlgumAspect.logger.info(IlgumAspect.logMsg + questionDto.toString());
-//
-//		mav.addObject("questionDto",questionDto); 
-//		mav.addObject("pageNumber",pageNumber);
-//		mav.setViewName("admin/AdminQuestionRead.empty");	
-//	}
-//	
+	//상담글상세보기 	  
+	@Override 
+	public void UserOrderRead(ModelAndView mav) {
+		Map<String, Object> map= mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		 
+		int order_bunho = Integer.parseInt(request.getParameter("order_bunho"));
+		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
+		String member_id = request.getParameter("member_id");
+		
+		UserOrderDto userOrderDto = userOrderDao.userOrderRead(order_bunho);
+		AdminMemberDto memberDto = userOrderDao.userInfo(member_id);
+
+		String book_isbn = userOrderDto.getBook_isbn();
+		
+		AdminBookDto bookDto = userOrderDao.bookInfo(book_isbn);
+
+		IlgumAspect.logger.info(IlgumAspect.logMsg + userOrderDto.toString());
+		IlgumAspect.logger.info(IlgumAspect.logMsg + memberDto.toString());
+
+
+		mav.addObject("userOrderDto", userOrderDto); 
+		mav.addObject("bookDto", bookDto); 
+		mav.addObject("memberDto", memberDto); 
+		mav.addObject("pageNumber", pageNumber);
+		mav.setViewName("admin/AdminUserOrderRead.empty");	
+	}
+	
 //	//관리자글상세보기
 //	@Override 
 //	public void QuestionReadReply(ModelAndView mav) {
@@ -142,22 +155,19 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 //	}
 //
 //
-//	@Override
-//	public void QuestionReplyOk(ModelAndView mav) {
-//		Map<String,Object> map = mav.getModel();
-//		AdminQuestionDto questionDto =  (AdminQuestionDto)map.get("questionDto");
-//
-//		questionDto.setA_date(new Date());
-//		questionDto.setQ_state("답변완료");		
-//		questionDto.setA_title(questionDto.getA_title().replace("\r\n", "<br/>"));
-//
-//		int check = questionDao.QuestionReply(questionDto);
-//		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
-//		
-//		mav.addObject("check", check);
-//		mav.setViewName("admin/AdminQuestionWriteOk.empty");	
-//
-//	}
+	@Override
+	public void UserOrderUpdateOk(ModelAndView mav) {
+		Map<String,Object> map = mav.getModel();
+		UserOrderDto userOrderDto =  (UserOrderDto)map.get("userOrderDto");
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+
+		System.out.println(userOrderDto.toString());
+		int check = userOrderDao.userOrderUpdateOk(userOrderDto);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+		
+		mav.addObject("check", check);
+		mav.setViewName("admin/AdminUserOrderUpdateOk.empty");	
+	}
 //
 //
 //	@Override
@@ -178,14 +188,17 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 //		mav.setViewName("admin/AdminQuestionWriteReply.empty");
 //	}
 //
-//	public String date() {
-//	    Calendar cal = Calendar.getInstance();
-//	    cal.setTime(new Date());
-//	    cal.add(Calendar.DATE, -1);
-//
-//	    // 특정 형태의 날짜로 값을 뽑기 
-//	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
-//	    String strDate = df.format(cal.getTime());
-//	    return strDate.toString(); 
-//	}
+	public void  UserOrderDeleteOk(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		int order_bunho = Integer.parseInt(request.getParameter("order_bunho"));
+		
+		int check = userOrderDao.userOrderDelete(order_bunho);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+		
+		mav.addObject("check",check);
+		
+		mav.setViewName("admin/AdminUserOrderDeleteOk.empty");	
+	}
 }

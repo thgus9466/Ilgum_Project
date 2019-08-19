@@ -16,9 +16,9 @@
 <script src="http://code.jquery.com/jquery-1.10.2.js"></script> 
 <script type="text/javascript">
 	$(function() {
-		$("#member_zipcode").val("${userOrderDto.order_zipcode}");
-		$("#order_book_user_address1").val("${userOrderDto.order_book_user_address1}");
-		$("#order_book_user_address2").val("${userOrderDto.order_book_user_address2}");
+		$("#member_zipcode").val("${buserOrderDto.order_zipcode}");
+		$("#order_book_user_address1").val("${buserOrderDto.order_book_user_address1}");
+		$("#order_book_user_address2").val("${buserOrderDto.order_book_user_address2}");
 	});
 </script>
 <title>관리자시스템</title>
@@ -27,7 +27,7 @@
 	<div class="header"></div>
 	<div class="main">
 		<div class="board_div">
-			<form name="userOrderUpdate"  action="${root}/admin/AdminUserOrderUpdateOk.do?pageNumber=${pageNumber}" method="post" onsubmit="return UserOrder(this)">
+			<form name="userOrderUpdate"  action="${root}/admin/AdminBuserOrderUpdateOk.do?pageNumber=${pageNumber}" method="post" onsubmit="return UserOrder(this)">
 				<h2 class="page-header">회원주문정보보기</h2>
 				
 				<div class="search_div">
@@ -43,32 +43,12 @@
 					<div class="infos">
 						<div class = "infos_sub">
 							<span style="color: red; width: 20%; margin: 0px;">*</span>
-							<span>아이디</span>
-						</div>
-						<div  class="infos_detail">
-							<input class="infos_input" type="text" name="member_id" value="${userOrderDto.member_id}" readOnly>
-						</div>									
-					</div>
-					
-					<div class="infos">
-						<div class = "infos_sub">
-							<span style="color: red; width: 20%; margin: 0px;">*</span>
 							<span>주문번호</span>
 						</div>
 						<div  class="infos_detail">
-							<input class="infos_input" type="text" name="order_bunho" value="${userOrderDto.order_bunho}" readOnly>
+							<input class="infos_input" type="text" name="order_bunho" value="${buserOrderDto.order_bunho}" readOnly>
 						</div>
 					</div>
-					
-					<div class="infos">
-						<div class = "infos_sub">
-							<span style="color: red; width: 20%; margin: 0px;">*</span>
-							<span>이름</span>
-						</div>
-						<div class="infos_detail">
-							<input class="infos_input" type="text" name="member_name" value="${memberDto.member_name}" readOnly><!-- MemberDto -->
-						</div>
-					</div>			
 				</div>
 					
 				<div class="vital_info_deliver">
@@ -83,13 +63,13 @@
 						<div  class="infos_detail">
 							<input style="width: 100px; float: left;" class = "infos_input" type="text" name="order_zipcode" id="member_zipcode" readOnly/>
 							<div style="float:left;">
-								<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn" name= "order_zipcode" value="${UserOrderDto.order_zipcode}" onclick="execPostCode()">
+								<input class = "infos_button" type="button" value="우편번호 찾기" id="zipcodeBtn" name= "order_zipcode" value="${buserOrderDto.order_zipcode}" onclick="execPostCode()">
 							</div>
 							<div>
-								<input style="width:400px;" class = "infos_input" type="text" name="order_book_user_address1" id="order_book_user_address1" value="${UserOrderDto.order_book_user_address1}" readOnly/>
+								<input style="width:400px;" class = "infos_input" type="text" name="order_book_user_address1" id="order_book_user_address1" value="${buserOrderDto.order_book_user_address1}" readOnly/>
 							</div>
 							<div>
-								<input type="text" name="order_book_user_address2" id="order_book_user_address2" value="${UserOrderDto.order_book_user_address2}"/>
+								<input type="text" name="order_book_user_address2" id="order_book_user_address2" value="${buserOrderDto.order_book_user_address2}"/>
 							</div>
 						</div>									
 					</div>
@@ -100,7 +80,7 @@
 							<span>휴대폰 번호</span>
 						</div>
 						<div>
-							<input name="order_book_user_phone" value="${userOrderDto.order_book_user_phone}">
+							<input name="order_book_user_number" value="${buserOrderDto.order_book_user_number}">
 						</div>
 					</div>
 				</div>
@@ -126,7 +106,7 @@
 								<span style="padding-left: 17px; margin-bottom: 20px;">수량</span><br/>
 							</div>
 							<div>
-								<input type="number" min="0" max="100" name="order_book_count"value="${userOrderDto.order_book_count}">권
+								<input type="number" min="0" max="100" name="order_book_count"value="${buserOrderDto.order_book_count}">권
 							</div>
 						</div>
 						<div class="infos" style="height:50px;">
@@ -135,7 +115,7 @@
 								<span style="padding-left: 17px; margin-bottom: 20px;">도서번호</span><br/>
 							</div>
 							<div>
-						<input class="infos_input" type="text" name="book_isbn" value="${userOrderDto.book_isbn}" readOnly>
+						<input class="infos_input" type="text" name="book_isbn" value="${buserOrderDto.book_isbn}" readOnly>
 							</div>
 						</div>
 					</div>
@@ -143,8 +123,8 @@
 					<div class = "buttons" id="buttons">
 						<div class = "button1" style="margin: 0px auto; text-align: center;">
 							<input type="submit" class="btn btn-primary btn-success" value="수정">
-							<input type="button" class="btn btn-primary btn-success" value="삭제" onclick="DelFun('${root}','${userOrderDto.order_bunho}')">
-							<input type="button" class="btn btn-primary btn-success" value="목록보기" onclick="location.href='${root}/admin/AdminUserOrderList.do?pageNumber=${pageNumber}'">
+							<input type="button" class="btn btn-primary btn-success" value="삭제" onclick="BuserDelFun('${root}','${buserOrderDto.order_bunho}')">
+							<input type="button" class="btn btn-primary btn-success" value="목록보기" onclick="location.href='${root}/admin/AdminBuserOrderList.do?pageNumber=${pageNumber}'">
 						</div>
 					</div>
 				</div>
