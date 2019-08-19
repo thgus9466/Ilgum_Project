@@ -1,11 +1,10 @@
 package com.java.ilgum.controller;
 
 import java.text.DateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -51,12 +50,49 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		
 		List<BookDto> bookList = homeService.monthBook();
-		List<BookDto> novelList = homeService.novelBook();
-		List<BookDto> economyList = homeService.economyBook();
+		
+		ArrayList<BookDto> novelList = (ArrayList<BookDto>) homeService.novelList();
+		ArrayList<BookDto> novelList_first = new ArrayList<BookDto>();
+		for(int i=0 ;i<novelList.size()-5;i++) {
+			novelList_first.add(novelList.get(i));
+		}
+		ArrayList<BookDto> novelList_second = new ArrayList<BookDto>();
+		for(int i=5 ;i<novelList.size();i++) {
+			novelList_second.add(novelList.get(i));
+		}
+		
+		
+		ArrayList<BookDto> economyList = (ArrayList<BookDto>) homeService.economyBook();
+		ArrayList<BookDto> economyList_first = new ArrayList<BookDto>();
+		for(int i=0 ;i<economyList.size()-5;i++) {
+			economyList_first.add(economyList.get(i));
+		}		
+		ArrayList<BookDto> economyList_second = new ArrayList<BookDto>();
+		for(int i=5 ;i<economyList.size();i++) {
+			economyList_second.add(economyList.get(i));
+		}
+		
+		
+		ArrayList<BookDto> ItList = (ArrayList<BookDto>) homeService.itBook();
+		ArrayList<BookDto> ItList_first = new ArrayList<BookDto>();
+		for(int i=0 ;i<ItList.size()-5;i++) {
+			ItList_first.add(ItList.get(i));
+		}		
+		ArrayList<BookDto> ItList_second = new ArrayList<BookDto>();
+		for(int i=5 ;i<ItList.size();i++) {
+			ItList_second.add(ItList.get(i));
+		}
 		
 		model.addAttribute("bookList", bookList);
-		model.addAttribute("novelList", novelList);
-		model.addAttribute("economyList", economyList);
+		
+		model.addAttribute("novelList_first", novelList_first);
+		model.addAttribute("novelList_second", novelList_second);
+		
+		model.addAttribute("economyList_first", economyList_first);
+		model.addAttribute("economyList_second", economyList_second);
+		
+		model.addAttribute("ItList_first", ItList_first);
+		model.addAttribute("ItList_second", ItList_second);
 		
 		return "/index.empty";
 	}

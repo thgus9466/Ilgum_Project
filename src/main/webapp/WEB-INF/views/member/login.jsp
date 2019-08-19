@@ -9,6 +9,7 @@
 <title>Insert title here</title>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/member/login.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/member/login.css"/>
 <script type="text/javascript">
 	$(function(){
@@ -21,6 +22,8 @@
 			
 			$("#hana").css("display","none");
 			$("#dul").css("display","none");
+			$("#left_inputs").css("display","none");
+			$("#left_infos").css("display","block");
 			
 			$("#bimemberlogin").css("display","block");
 		});
@@ -34,9 +37,34 @@
 			
 			$("#hana").css("display","block");
 			$("#dul").css("display","block");
+			$("#left_inputs").css("display","block");
+			$("#left_infos").css("display","none");
 			
 			$("#bimemberlogin").css("display","none");
 		});
+		
+		 // 저장된 쿠키값을 가져와서 ID 칸에 넣어준다. 없으면 공백으로 들어감.
+	    var key = getCookie("key");
+	    $("#userId").val(key); 
+	     
+	    if($("#userId").val() != ""){ // 그 전에 ID를 저장해서 처음 페이지 로딩 시, 입력 칸에 저장된 ID가 표시된 상태라면,
+	        $("#idSaveCheck").attr("checked", true); // ID 저장하기를 체크 상태로 두기.
+	    }
+	     
+	    $("#idSaveCheck").change(function(){ // 체크박스에 변화가 있다면,
+	        if($("#idSaveCheck").is(":checked")){ // ID 저장하기 체크했을 때,
+	            setCookie("key", $("#userId").val(), 7); // 7일 동안 쿠키 보관
+	        }else{ // ID 저장하기 체크 해제 시,
+	            deleteCookie("key");
+	        }
+	    });
+	     
+	    // ID 저장하기를 체크한 상태에서 ID를 입력하는 경우, 이럴 때도 쿠키 저장.
+	    $("#userId").keyup(function(){ // ID 입력 칸에 ID를 입력할 때,
+	        if($("#idSaveCheck").is(":checked")){ // ID 저장하기를 체크한 상태라면,
+	            setCookie("key", $("#userId").val(), 7); // 7일 동안 쿠키 보관
+	        }
+	    });
 		
 	});
 </script>
@@ -51,14 +79,14 @@
 					<li><a href="#" id="bimember">비회원</a></li>
 				</ul>
 				<div class="left">
-					<div>
+					<div id = "left_inputs">
 						<form action="${root}/member/memberLoginOk.do" method="post">
 							<div class="left_inner">
-								<div class="id"><input type="text" name="member_id" placeholder="아이디"/></div>
+								<div class="id"><input type="text" name="member_id"  id="userId"  placeholder="아이디"/></div>
 								<div class="pwd"><input type="password" name="member_password"  placeholder="비밀번호"/></div>
 								<div class="idsave">
 									<span>
-										<input type="checkbox"/>
+										<input type="checkbox" id= "idSaveCheck"/>
 										<label>아이디저장</label>
 									</span>
 								</div>
@@ -68,11 +96,27 @@
 										<span style="color:#cccccc;">｜</span>
 										<span><a href="${root}/member/idSearch.do">아이디 찾기 </a></span>
 									</div>
-							</div>
+							</div>							
 						</form>
 						<div class="form_bottom">
 							<span>간편 가입</span>
 							<span><img src="${root}/resources/img/login/spr_sns.png"/></span>
+						</div>
+					</div>
+					<div id="left_infos">
+						<div class="hana_left" id="hana_left">
+							<label>NOTICE<br/>
+							<b>FOR NONMEMBER</b>
+							</label>
+						</div>
+						<div class="dul_left" id="dul_left">
+							<label>
+							비회원은 주문조회만 가능하며<br/>
+							주문배송완료시 지급받은 주문번호를 통해서<br/>
+							배송 정보들을 확인 하시기 바랍니다.<br/>
+							비밀번호는 처음에 설정한 번호 입니다. <br/>
+							분실시 이메일을 통해서 조회 하시기 바랍니다.
+							</label>
 						</div>
 					</div>
 				</div>

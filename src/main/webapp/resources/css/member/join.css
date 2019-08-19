@@ -81,7 +81,7 @@ p{
 	.infos_input{
 		width: 250px;
 		height: 25px;
-		background: #d9d9d9;;
+		background: #e6e6e6;;
 		padding-left: 5px;
 		
 	}	
@@ -99,7 +99,7 @@ p{
 	#birthdaypicker{
 		width: 250px;
 		height: 25px;
-		background: #d9d9d9;
+		background: #e6e6e6;
 	}
 	.ui-datepicker-trigger{
 		margin :0px;

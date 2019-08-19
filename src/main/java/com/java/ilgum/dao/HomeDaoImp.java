@@ -48,4 +48,18 @@ public class HomeDaoImp implements HomeDao {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.selectList("dao.HomeMapper.economyList");
 	}
+
+	@Override
+	public int itCount() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectOne("dao.HomeMapper.itCount");
+	}
+
+	@Override
+	public List<BookDto> itList() {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.selectList("dao.HomeMapper.itList");
+	}
+
+	
 }
