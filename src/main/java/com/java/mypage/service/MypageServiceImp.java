@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -35,9 +36,9 @@ public class MypageServiceImp implements MypageService {
 
 		Map<String,Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
+		String member_id = (String)request.getSession().getAttribute("login");
+		MemberDto memberDto = mypageDao.readMypage(member_id);
 		
-		String member_id = memberDto.getMember_id();
 		String pageNumber = request.getParameter("pageNumber");
 		
 		
@@ -56,9 +57,9 @@ public class MypageServiceImp implements MypageService {
 		
 		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
 		
-		
+		String[] interest = null;
 		IlgumAspect.logger.info(IlgumAspect.logMsg +memberDto.toString());
-		String[] interest = memberDto.getMember_interest().split(",");
+		if(memberDto.getMember_interest() != null)interest = memberDto.getMember_interest().split(",");
 		
 		mav.addObject("userOrderDtoList",userOrderDtoList);		
 		mav.addObject("memberDto", memberDto);
@@ -320,7 +321,8 @@ public class MypageServiceImp implements MypageService {
 	public void interest(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
+		String member_id = (String)request.getSession().getAttribute("login");
+		MemberDto memberDto = mypageDao.readMypage(member_id);
 			
 		mav.addObject("memberDto", memberDto);
 		
@@ -333,17 +335,17 @@ public class MypageServiceImp implements MypageService {
 		
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		String id = (String) request.getSession().getAttribute("login");
-		MemberDto memberDto = (MemberDto)map.get("memberDto");
 		
-		memberDto.setMember_id(id);
-		memberDto.setMember_job(request.getParameter("member_job"));
-		memberDto.setMember_interest(request.getParameter("member_interest"));
-		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: " + request.getParameter("member_interest"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "interest: " + request.getParameter("interest")+ "job: " + request.getParameter("member_job"));
+		HashMap<String,String> hmap = new HashMap<String, String>();
 		
-		int check = mypageDao.updateInterest(memberDto);
+		hmap.put("member_id", id);
+		hmap.put("member_interest", request.getParameter("interests"));
+		hmap.put("member_job", request.getParameter("member_job"));
+		
+		int check = mypageDao.updateInterest(hmap);
 		
 		mav.addObject("check", check);
-		mav.addObject("memberDto", memberDto);
 		mav.setViewName("mypage/updateInterestOk.tiles");
 	}
 

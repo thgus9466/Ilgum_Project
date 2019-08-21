@@ -154,37 +154,48 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/cartList.do", method = RequestMethod.GET)
-	   public ModelAndView cartList(HttpServletRequest request, HttpServletResponse response, BuserDto buserDto) {
-	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("request", request);
-	      mav.addObject("buserDto", buserDto);
-
-	      mypageService.cartList(mav);
-
-	      return mav;
-	   }
+	@RequestMapping(value = "/BusercartList.do", method = RequestMethod.GET)
+	public ModelAndView BusercartList(HttpServletRequest request, HttpServletResponse response, BuserDto buserDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("buserDto", buserDto);
+		
+		mypageService.cartList(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/UsercartList.do", method = RequestMethod.GET)
+	public ModelAndView UsercartList(HttpServletRequest request, HttpServletResponse response, BuserDto buserDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("buserDto", buserDto);
+		
+		mypageService.cartList(mav);
+		
+		return mav;
+	}
 	   
-	   @RequestMapping(value = "/cartInsert.do", method = RequestMethod.GET)
-	   public ModelAndView cartInsert(HttpServletRequest request, HttpServletResponse response, CartDto cartDto) {
-	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("request", request);
-	      mav.addObject("response", response);
-	      mav.addObject("cartDto", cartDto);
-
-	      mypageService.cartInsert(mav);
-
-	      return mav;
-	   }
-	   
-	   @RequestMapping(value = "/cartDel.do", method = RequestMethod.GET)
-	   public ModelAndView cartDel(HttpServletRequest request, HttpServletResponse response) {
-	      ModelAndView mav = new ModelAndView();
-	      mav.addObject("request", request);
-	      mav.addObject("response", response);
-
-	      mypageService.cartDel(mav);
-
-	      return mav;
-	   }
+	@RequestMapping(value = "/cartInsert.do", method = RequestMethod.GET)
+	public ModelAndView cartInsert(HttpServletRequest request, HttpServletResponse response, CartDto cartDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		mav.addObject("cartDto", cartDto);
+		
+		mypageService.cartInsert(mav);
+		
+		return mav;
+	}
+	
+	@RequestMapping(value = "/cartDel.do", method = RequestMethod.GET)
+	public ModelAndView cartDel(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("response", response);
+		
+		mypageService.cartDel(mav);
+		
+		return mav;
+	}
 }

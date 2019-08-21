@@ -1,5 +1,6 @@
 package com.java.mypage.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.java.member.dto.MemberDto;
@@ -52,5 +53,5 @@ public interface MypageDao {
 	
 	public BuserDto bcartList(String book_isbn);
 
-	public int updateInterest(MemberDto memberDto);
+	public int updateInterest(HashMap<String, String> hmap);
 }
