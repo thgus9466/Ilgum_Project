@@ -27,7 +27,7 @@
 		<form class="form_style"  action="${root}/mypage/writeOk.do" 
 			  method="get" onsubmit="return boardForm(this)">
 			  
-		<input type="hidden" name="member_id" value="${login}"/>	  
+		<input type="hidden" name="member_id" value="${member_id}"/>	  
 		<table>
 	         <tr>
 	            <td width="444px" align="right" bgcolor="76CE53">
