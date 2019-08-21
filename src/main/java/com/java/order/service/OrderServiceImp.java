@@ -87,8 +87,8 @@ public class OrderServiceImp implements OrderService {
 		int total_price = 0;
 		
 		if (count > 0) {
-			request.getSession().setAttribute("login", member_id);
-			IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
+			request.getSession().setAttribute("member_id", member_id);
+			IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_id"));
 			memberBook = orderDao.memberBook(book_isbn);
 			memberDto = orderDao.selectMember(member_id);
 			
@@ -102,7 +102,7 @@ public class OrderServiceImp implements OrderService {
 			mav.addObject("book_quantity", book_quantity);
 			mav.addObject("memberBook", memberBook);
 			mav.addObject("memberDto", memberDto);
-			mav.addObject("member_id", request.getSession().getAttribute("login"));
+			mav.addObject("member_id", request.getSession().getAttribute("member_id"));
 			mav.addObject("book_cost", book_cost);
 			mav.addObject("total_price", total_price);
 			mav.setViewName("order/memberOrder.tiles");
