@@ -41,7 +41,7 @@ function execPostCode() {
 			}
 			// 우편번호와 주소 정보를 해당 필드에 넣는다.
 			document.getElementById('member_zipcode').value = data.zonecode; // 5자리
-			document.getElementById('member_address1').value = fullRoadAddr;
+			document.getElementById('order_book_user_address1').value = fullRoadAddr;
 		}
 	}).open();
 }
