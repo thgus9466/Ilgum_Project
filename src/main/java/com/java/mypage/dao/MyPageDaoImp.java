@@ -139,5 +139,11 @@ public class MyPageDaoImp implements MypageDao {
 	@Override
 	   public BuserDto bcartList(String book_isbn) {
 	      return sqlSessionTemplate.selectOne("dao.MypageMapper.bcartList", book_isbn);
-	   }
+	}
+
+	@Override
+	public int updateInterest(HashMap<String, String> hmap) {
+		// TODO Auto-generated method stub
+		return sqlSessionTemplate.update("dao.MypageMapper.updateInterest",hmap);
+	}
 }

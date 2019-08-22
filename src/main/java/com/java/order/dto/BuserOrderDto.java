@@ -21,6 +21,8 @@ public class BuserOrderDto {
 	private String order_date;						//주문날짜
 	
 	
+	public BuserOrderDto() {}
+	
 	public int getOrder_bunho() {
 		return order_bunho;
 	}
@@ -87,8 +89,7 @@ public class BuserOrderDto {
 	public void setOrder_date(String order_date) {
 		this.order_date = order_date;
 	}
-	
-	
+
 	@Override
 	public String toString() {
 		return "BuserOrderDto [order_bunho=" + order_bunho + ", order_book_count=" + order_book_count
@@ -96,7 +97,14 @@ public class BuserOrderDto {
 				+ ", order_zipcode=" + order_zipcode + ", order_book_user_address1=" + order_book_user_address1
 				+ ", order_book_user_address2=" + order_book_user_address2 + ", order_book_user_number="
 				+ order_book_user_number + ", order_book_state=" + order_book_state + ", order_date=" + order_date
-				+ "]";
+				+ ", getOrder_bunho()=" + getOrder_bunho() + ", getOrder_book_count()=" + getOrder_book_count()
+				+ ", getOrder_total_price()=" + getOrder_total_price() + ", getBook_isbn()=" + getBook_isbn()
+				+ ", getBook_name()=" + getBook_name() + ", getOrder_zipcode()=" + getOrder_zipcode()
+				+ ", getOrder_book_user_address1()=" + getOrder_book_user_address1()
+				+ ", getOrder_book_user_address2()=" + getOrder_book_user_address2() + ", getOrder_book_user_number()="
+				+ getOrder_book_user_number() + ", getOrder_book_state()=" + getOrder_book_state()
+				+ ", getOrder_date()=" + getOrder_date() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode()
+				+ ", toString()=" + super.toString() + "]";
 	}
-	
+
 }

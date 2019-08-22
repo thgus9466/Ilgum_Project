@@ -76,10 +76,10 @@ public class MemberServiceImp implements MemberService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		HttpSession session = (HttpSession) map.get("session");
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("member_id"));
 		
-		if(session.getAttribute("login") != null) {
-			session.removeAttribute("login");
+		if(session.getAttribute("member_id") != null) {
+			session.removeAttribute("member_id");
 		}		
 		
 		HashMap<String, Object> hMap = new HashMap<String, Object>();
@@ -92,22 +92,18 @@ public class MemberServiceImp implements MemberService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + member_id + member_level);
 		
 		if(member_id != null && !member_level.equals("withdrawal")) {
-			MemberDto memberDto = mypageDao.readMypage(member_id);
-			session.setAttribute("login", member_id);
+			session.setAttribute("member_id", member_id);
 			session.setAttribute("member_level", member_level);
-			session.setAttribute("memberDto", memberDto);
 			
-			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("login") + "member_level : "+ session.getAttribute("member_level"));
-			IlgumAspect.logger.info(IlgumAspect.logMsg + ((MemberDto)session.getAttribute("memberDto")).toString());
-			
+			IlgumAspect.logger.info(IlgumAspect.logMsg + session.getAttribute("member_id") + "member_level : "+ session.getAttribute("member_level"));
 			mav.setViewName("redirect:/index.empty");
 			
 		}else if(member_id == null) {
-			session.removeAttribute("login");
+			session.removeAttribute("member_id");
 			IlgumAspect.logger.info(IlgumAspect.logMsg + "비회원일때"+member_id +member_level);
 			mav.setViewName("member/notlogin.tiles");
 		}else if(member_level.equals("withdrawal")) {
-			session.removeAttribute("login");
+			session.removeAttribute("member_id");
 			IlgumAspect.logger.info(IlgumAspect.logMsg + "탈퇴한 회원일때"+member_id +member_level);
 			mav.setViewName("member/withdrawal.tiles");
 		}
@@ -119,15 +115,15 @@ public class MemberServiceImp implements MemberService {
 		
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		request.getSession().getAttribute("login");
+		request.getSession().getAttribute("member_id");
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_id"));
 		
-		request.getSession().removeAttribute("login");
+		request.getSession().removeAttribute("member_id");
 		request.getSession().removeAttribute("member_level");
 		request.getSession().removeAttribute("memberDto");
 		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_id"));
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_level"));
 		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("memberDto"));
 		

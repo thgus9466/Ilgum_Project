@@ -2,6 +2,6 @@
  * 
  */
 
-function nonMemberBuy(root, book_isbn) {
-	location.href=root+"/order/nonMemberOrder.do?book_isbn="+book_isbn;
+function nonMemberBuy(root, book_isbn, book_quantity) {
+	location.href=root+"/order/oneBookOrder.do?book_isbn="+book_isbn+"&book_quantity="+book_quantity;
 }

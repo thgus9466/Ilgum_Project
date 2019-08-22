@@ -155,6 +155,17 @@
 								</script>
 							</c:forTokens>
 						</div>
+						<input type="hidden" name = "interests"/>
+						<div class = "buttons" id="buttons">
+							<div class = "button">
+								<input type="submit" value="수정완료">
+							</div>	
+								
+							<div class = "button">
+								<input type="button" value="수정취소" onclick ="cancel('${root}')"/>
+							</div>
+						</div>
+						
 						<div class = "buttons" id="buttons">
 							<div class = "button">
 								<input type="submit" value="수정완료">

@@ -1,19 +1,19 @@
 @charset "UTF-8";
 
 body {
-  margin-left: 0px;
-  margin-top: 0px;
-  margin-right: 0px;
+	margin-left: 0px;
+	margin-top: 0px;
+	margin-right: 0px;
 }
 
 ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
+	list-style: none;
+	margin: 0px;
+	padding: 0px;
 }
 
 a {
-  text-decoration: none;
+	text-decoration: none;
 }
 
 .container {
@@ -24,232 +24,245 @@ a {
 	border: 1px solid black;
 }
 
-.container > div:first-child {
-  border: solid 0px black;
-  height: 40px;
-  font-size: 18px;
-  font-weight: bold;
-  line-height: 40px;
+.container>div:first-child {
+	border: solid 0px black;
+	height: 40px;
+	font-size: 18px;
+	font-weight: bold;
+	line-height: 40px;
 }
 
 .pay_content {
-  border: solid 0px black;
-  width: 700px;
-  height: 1000px;
-  float: left;
+	border: solid 0px black;
+	width: 640px;
+	height: 1000px;
+	float: left;
 }
 
 .payment_info {
-  border: solid 1px black;
-  width: 700px;
+	border: solid 1px black;
+	width: 100%;
 }
 
-.payment_info tr > th:first-child {
-  border-right: solid 1px black;
-  width: 420px;
+.payment_info tr>th:first-child {
+	border-right: solid 1px black;
+	width: 400px;
 }
 
-.payment_info tr > th:nth-child(2) {
-  border-right: solid 1px black;
-  width: 100px;
+.payment_info tr>th:nth-child(2) {
+	border-right: solid 1px black;
+	width: 100px;
 }
 
-.payment_info tr > th:nth-child(3) {
-  border-right: solid 1px black;
-  width: 80px;
+.payment_info tr>th:nth-child(3) {
+	border-right: solid 1px black;
+	width: 80px;
 }
 
-.payment_info tr > th:nth-child(4) {
-  width: 80px;
+.payment_info tr>th:nth-child(4) {
+	width: 80px;
 }
 
-.payment_info tr:nth-child(2) img{
-  width: 100px;
-  height: 100px;
-  float: left;
+.payment_info tr:nth-child(2) img {
+	width: 100px;
+	height: 100px;
+	float: left;
 }
 
 .prod_info {
-  border: solid 0px black;
-  float: left;
+	border: solid 0px black;
+	float: left;
 }
 
 .prod_info1 {
-  border: solid 0px black;
-  width: 300px;
-  height: 100px;
-  margin-left: 10px;
-  line-height: 100px;
-  font-size: 13px;
-  float: left;
+	border: solid 0px black;
+	width: 270px;
+	height: 100px;
+	margin-left: 10px;
+	font-size: 13px;
+	float: left;
+}
+
+.prod_info1 li:not(:first-child) {
+	margin-top: 10px;
 }
 
 .address {
-  border: solid 1px black;
-  width: 100%;
-  margin-bottom: 15px;
-  float: left;
+	border: solid 1px black;
+	width: 100%;
+	margin-bottom: 15px;
+	float: left;
 }
 
 .addr_title {
-  float: left;
+	float: left;
 }
 
 .addr_content {
-  float: left;
-  margin-left: 20px;
+	float: left;
+	margin-left: 20px;
 }
 
-.addr_title li {
-  margin-top: 10px;
+.addr_title li:not(:last-child) {
+	margin-top: 10px;
 }
 
-.addr_content > div {
-  margin-top: 6px;
+.addr_title li:last-child {
+	margin-top: 40px;
 }
 
-.addr_content > div:first-child > input {
-  width: 80px;
-  height: 20px;
+.addr_content>div {
+	margin-top: 6px;
 }
 
-.addr_content > div:nth-child(2) > input {
-  width: 50px;
-  height: 20px;
+.addr_content>div:first-child>input {
+	width: 80px;
+	height: 20px;
 }
 
-.addr_content > div:nth-child(3) > input {
-  width: 50px;
-  height: 20px;
+.addr_content>div:nth-child(2)>input {
+	width: 50px;
+	height: 20px;
 }
 
-.addr_content > div:nth-child(4) > input {
-  width: 400px;
-  height: 20px;
+.addr_content>div:nth-child(3)>input:first-child {
+	width: 80px;
+	height: 20px;
 }
 
-.addr_content > div:nth-child(4) span {
-  border: solid 1px black;
-  background-color: #10488D;
-  font-size: 14px;
-  color: #FFFFFF;
+.addr_content>div:nth-child(3) span {
+	border: solid 1px black;
+	background-color: #10488D;
+	font-size: 14px;
+	color: #FFFFFF;
 }
 
-.addr_content > div:last-child > input {
-  width: 550px;
-  height: 20px;
+.addr_content>div:nth-child(4)>input:first-child {
+	width: 400px;
+	height: 20px;
+}
+
+.addr_content>div:nth-child(5)>input {
+	width: 400px;
+	height: 20px;
+}
+
+.addr_content>div:last-child>input {
+	width: 400px;
+	height: 20px;
 }
 
 .pay_wrapper {
-  border: solid 0px black;
-  width: 280px;
-  height: 400px;
-  margin-top: 40px;
-  margin-left: 25px;
-  float: left;
+	border: solid 0px black;
+	width: 280px;
+	height: 400px;
+	margin-top: 40px;
+	margin-left: 25px;
+	float: left;
 }
 
 .pay {
-  border: solid 1px black;
-  width: 275px;
-  position: fixed;
+	border: solid 1px black;
+	width: 275px;
+	position: fixed;
 }
 
-.pay > div:not(:first-child) {
-  margin-top: 15px;
+.pay>div:first-child {
+	float: left;
 }
 
-.pay > div:last-child {
-  border: solid 2px #F2F2F2;
-  border-radius: 3px;
-  width: 200px;
-  height: 50px;
-  margin-left: 70px;
-  text-align: center;
-  line-height: 50px;
-  background-color: #10488D;
+.pay>div:nth-child(2) {
+	float: left;
 }
 
-.pay > div:last-child div {
-  width: 200px;
-  height: 50px;
-  font-size: 20px;
-  color: #FFFFFF;
+.pay ul>li:not(:first-child) {
+	margin-top: 15px;
+}
+
+.pay>div:last-child>button {
+	border: solid 2px #F2F2F2;
+	border-radius: 3px;
+	width: 200px;
+	height: 50px;
+	margin-left: 70px;
+	text-align: center;
+	line-height: 50px;
+	background-color: #10488D;
 }
 
 .option_wrapper {
-  border: solid 0px black;
-  width: 100%;
-  clear: both;
+	border: solid 0px black;
+	width: 100%;
+	clear: both;
 }
 
 .pay_option {
-  border: solid 1px black;
-  width: 100%;
+	border: solid 1px black;
+	width: 100%;
 }
 
 .option_content {
-  border: solid 1px black;
-  border-top: solid 0px black;
-  width: 100%;
-  float: left;
-  display: none;
+	border: solid 1px black;
+	border-top: solid 0px black;
+	width: 100%;
+	float: left;
+	display: none;
 }
 
-.option_content > div:first-child {
-  border: solid 0px black;
-  width: 100px;
-  float: left;
+.option_content>div:first-child {
+	border: solid 0px black;
+	width: 100px;
+	float: left;
 }
 
-.option_content > div:first-child li {
-  margin-top: 10px;
+.option_content>div:first-child li {
+	margin-top: 10px;
 }
 
-.option_content > div:nth-child(2) {
-  border: solid 0px black;
-  float: left;
+.option_content>div:nth-child(2) {
+	border: solid 0px black;
+	float: left;
 }
 
-.option_content > div:nth-child(2) li {
-  margin-top: 10px;
+.option_content>div:nth-child(2) li {
+	margin-top: 10px;
 }
 
 .payment_phone {
-  border: solid 1px black;
-  border-top: solid 0px black;
-  width: 100%;
-  float: left;
-  display: none;
+	border: solid 1px black;
+	border-top: solid 0px black;
+	width: 100%;
+	float: left;
+	display: none;
 }
 
-.payment_phone > div:first-child {
-  border: solid 0px black;
-  width: 100px;
-  float: left;
+.payment_phone>div:first-child {
+	border: solid 0px black;
+	width: 100px;
+	float: left;
 }
 
-.payment_phone > div:first-child li {
-  margin-top: 14px;
+.payment_phone>div:first-child li {
+	margin-top: 14px;
 }
 
-.payment_phone > div:nth-child(2) {
-  border: solid 0px black;
-  float: left;
+.payment_phone>div:nth-child(2) {
+	border: solid 0px black;
+	float: left;
 }
 
-.payment_phone > div:nth-child(2) li {
-  margin-top: 9px;
+.payment_phone>div:nth-child(2) li {
+	margin-top: 9px;
 }
 
-.phone_content li:first-child > input {
-  width: 80px;
-  height: 20px;
+.phone_content li:first-child>input {
+	width: 80px;
+	height: 20px;
 }
 
-.phone_content li:nth-child(2) > input {
-  width: 50px;
-  height: 20px;
-  text-align: center;
-  line-height: 20px;
+.phone_content li:nth-child(2)>input {
+	width: 50px;
+	height: 20px;
+	text-align: center;
+	line-height: 20px;
 }

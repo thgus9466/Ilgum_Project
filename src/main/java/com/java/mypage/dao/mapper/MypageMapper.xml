@@ -120,4 +120,8 @@
 	<select id="bcartList" parameterType="String" resultType="com.java.mypage.dto.BuserDto">
       <![CDATA[select * from book where book_isbn = #{book_isbn}]]>
    </select>
+   
+   <update id="updateInterest" parameterType="java.util.HashMap" >
+		update member set member_job = #{member_job}, member_interest = #{member_interest} where member_id = #{member_id}
+	</update>
 </mapper>
