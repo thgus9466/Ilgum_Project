@@ -154,17 +154,16 @@ a {
 
 .pay_wrapper {
 	border: solid 0px black;
-	width: 280px;
+	width: 100px;
 	height: 400px;
 	margin-top: 40px;
-	margin-left: 25px;
+	margin-left: 50px;
 	float: left;
 }
 
 .pay {
 	border: solid 1px black;
-	width: 275px;
-	position: fixed;
+	width: 200px;
 }
 
 .pay>div:first-child {
@@ -182,9 +181,9 @@ a {
 .pay>div:last-child>button {
 	border: solid 2px #F2F2F2;
 	border-radius: 3px;
-	width: 200px;
+	width: 100px;
 	height: 50px;
-	margin-left: 70px;
+	margin-left: 50px;
 	text-align: center;
 	line-height: 50px;
 	background-color: #10488D;

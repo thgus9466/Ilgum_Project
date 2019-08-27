@@ -20,6 +20,8 @@
 		<div class="ttitle">결제 정보</div>
 		<form action="${root}/order/buserOrderOk.do" method="get">
 		
+		<input type="hidden" name="book_isbn" value="${book_isbn}">
+		<input type="hidden" name="cart_quantity" value="${cart_quantity}">
 		<input type="hidden" name="total_price" value="${total_price}">
 		
 			<div align="center" class="blist" style="float: left;">
@@ -38,8 +40,6 @@
 
 					<table>
 						<c:forEach var="orderList" items="${orderList}">
-						<input type="hidden" name="book_isbn" value="${orderList.book_isbn}">
-						<input type="hidden" name="cart_quantity" value="${orderList.cart_quantity}">
 							<tr id="tcontent">
 								<td align="center" width="400"><img alt="이미지 준비중"
 									src="${orderList.book_img_url}" height="90"
