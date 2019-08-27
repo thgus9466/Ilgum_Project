@@ -198,4 +198,19 @@ public class MypageController {
 		
 		return mav;
 	}
+	
+	/******************/
+	/*      추천도서        */
+	/******************/
+
+	@RequestMapping(value = "/mypage/recommand.do", method = RequestMethod.GET)
+	public ModelAndView Recommand(HttpServletRequest request, HttpServletResponse response, MemberDto memberDto) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		mav.addObject("memberDto", memberDto);
+		
+		mypageService.recommand(mav);
+		
+		return mav;
+	}
 }

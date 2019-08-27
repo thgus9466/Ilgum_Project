@@ -9,6 +9,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
 import com.java.order.dto.UserOrderDto;
@@ -145,5 +146,37 @@ public class MyPageDaoImp implements MypageDao {
 	public int updateInterest(HashMap<String, String> hmap) {
 		// TODO Auto-generated method stub
 		return sqlSessionTemplate.update("dao.MypageMapper.updateInterest",hmap);
+	}
+
+	//해당 관심사에 해당하는 도서 개수 가져오기
+	@Override
+	public int firstcount(String interest) {
+		return sqlSessionTemplate.selectOne("dao.MypageMapper.firstCount",interest);	
+	}
+	
+	@Override
+	public int secondcount(String interest) {
+		return sqlSessionTemplate.selectOne("dao.MypageMapper.secondCount",interest);	
+	}
+	
+	@Override
+	public int thirdcount(String interest) {
+		return sqlSessionTemplate.selectOne("dao.MypageMapper.thirdCount",interest);	
+	}
+	
+	//해당 관심사에 해당하는 도서 리스트 가져오기
+	@Override
+	public List<BookDto> firstRecommand(String interest) {
+		List<BookDto> bookdto = sqlSessionTemplate.selectList("dao.MypageMapper.firstRecommand",interest);
+		System.out.println(bookdto.size());
+		return sqlSessionTemplate.selectList("dao.MypageMapper.firstRecommand",interest);	
+	}
+	@Override
+	public List<BookDto> secondRecommand(String interest) {
+		return sqlSessionTemplate.selectList("dao.MypageMapper.secondRecommand",interest);	
+	}
+	@Override
+	public List<BookDto> thirdRecommand(String interest) {
+		return sqlSessionTemplate.selectList("dao.MypageMapper.thirdRecommand",interest);	
 	}
 }
