@@ -17,11 +17,11 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.IlgumAspect;
+import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 
 import com.java.mypage.dao.MypageDao;
 import com.java.order.dto.OrderDto;
-import com.java.order.dto.UserOrderDto;
 import com.java.mypage.dto.BuserDto;
 import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
@@ -53,7 +53,7 @@ public class MypageServiceImp implements MypageService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
-		List<UserOrderDto> userOrderDtoList = null;
+		List<OrderDto> userOrderDtoList = null;
 		
 		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
 		
@@ -175,7 +175,7 @@ public class MypageServiceImp implements MypageService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
-		List<UserOrderDto> userOrderDtoList = null;
+		List<OrderDto> userOrderDtoList = null;
 
 		if (count > 0)
 			userOrderDtoList = mypageDao.DeliverList(member_id, startRow, endRow);
@@ -515,5 +515,60 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("check", check);
 
 		mav.setViewName("mypage/cartDelOk.empty");
+	}
+
+	
+	//추천도서
+	@Override
+	public void recommand(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("member_id");//세션에서 넘어온 회원 아이디를 저장한다.
+		
+		MemberDto memberDto = new MemberDto();
+		memberDto = mypageDao.readMypage(member_id);//셀렉트문으로 회원정보를 가져온다.
+
+		String interests = memberDto.getMember_interest();//select문으로 가져온 회원정보의 interest를 변수에 담는다.
+		String firstInterest = interests.split(",")[0];
+		String secondInterest = interests.split(",")[1];
+		String thirdInterest = interests.split(",")[2];
+
+		//,으로 값을 나누어 저장한다.
+		
+		int firstcount=0;		
+		int secondcount=0;		
+		int thirdcount=0;
+		//데이터값 유효확인을 위한 카운트값 변수
+		
+		if(firstInterest !="") {//값이 있다면
+			firstcount = mypageDao.firstcount(firstInterest);//갯수 구하기
+			System.out.println(firstcount);
+			if(firstcount>0) {
+				List<BookDto> firstBookList= mypageDao.firstRecommand(firstInterest);//List로 인기순위 20개 가져오기	
+				mav.addObject("firstBookList", firstBookList);
+			}
+		}
+
+		if(secondInterest !="") {
+			secondcount = mypageDao.secondcount(secondInterest);
+			if(secondcount>0) {
+				List<BookDto> secondBookList= mypageDao.secondRecommand(secondInterest);
+				mav.addObject("secondBookList", secondBookList);
+			}
+			
+		}
+		if(secondInterest !="") {
+			thirdcount = mypageDao.thirdcount(secondInterest);
+			if(thirdcount>0) {
+				List<BookDto> thirdBookList= mypageDao.thirdRecommand(thirdInterest);
+				mav.addObject("thirdBookList", thirdBookList);
+			}			
+		}
+		
+		mav.addObject("firstcount", firstcount);
+		mav.addObject("secondcount", secondcount);
+		mav.addObject("thirdcount", thirdcount);
+		mav.setViewName("mypage/recommand.empty");
+		
 	}
 }

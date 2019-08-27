@@ -13,7 +13,7 @@ import com.java.admin.service.AdminBuserOrderService;
 import com.java.admin.service.AdminUserOrderService;
 import com.java.aop.IlgumAspect;
 import com.java.order.dto.BuserOrderDto;
-import com.java.order.dto.UserOrderDto;
+import com.java.order.dto.OrderDto;
 
 
 
@@ -32,12 +32,12 @@ public class AdminUserOrderController {
 	private AdminBuserOrderService buserOrderService; 
 
 	/********************************/
-	/*       회원 주문관리페이지                        */ 
+	/*       회원 주문관리페이지                  */
 	/********************************/
 
 	//회원주문관리페이지목록
 	@RequestMapping(value="/admin/AdminUserOrderList.do", method=RequestMethod.GET)
-	public ModelAndView AdminUserList(HttpServletRequest request, HttpServletResponse response, UserOrderDto userOrderDto) { 
+	public ModelAndView AdminUserList(HttpServletRequest request, HttpServletResponse response, OrderDto userOrderDto) { 
 		
 		ModelAndView mav=new ModelAndView();
 		mav.addObject("request", request); 
@@ -61,7 +61,7 @@ public class AdminUserOrderController {
 
 	//회원 주문내역 수정하기
 	@RequestMapping(value="/admin/AdminUserOrderUpdateOk.do", method=RequestMethod.POST)
-	public ModelAndView UserOrderUpdateOk(HttpServletRequest request, HttpServletResponse response,UserOrderDto userOrderDto) {
+	public ModelAndView UserOrderUpdateOk(HttpServletRequest request, HttpServletResponse response,OrderDto userOrderDto) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("userOrderDto",userOrderDto);
 		mav.addObject("request",request);
@@ -83,7 +83,7 @@ public class AdminUserOrderController {
 	}
 	
 	/********************************/
-	/*       비회원 주문관리페이지                     */ 
+	/*       비회원 주문관리페이지               */
 	/********************************/
 
 	//비회원주문관리페이지목록
@@ -131,5 +131,8 @@ public class AdminUserOrderController {
 		
 		return mav;
 	}
+
 }
+
+
 

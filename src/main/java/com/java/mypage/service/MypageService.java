@@ -35,6 +35,8 @@ public interface MypageService {
 	public void cartDel(ModelAndView mav);
 	
 	public void cartList(ModelAndView mav);
+	
+	public void recommand(ModelAndView mav);
 
 	
 }

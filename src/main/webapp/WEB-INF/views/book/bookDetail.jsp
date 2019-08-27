@@ -63,9 +63,10 @@
 
 						<div class="price_info">
 							<ul>
-								<li>${bookDto.book_cost}</li>
-								<li><strong>${bookDto.book_price}</strong></li>
-								<li>720포인트 [5% 적립]</li>
+								<li><fmt:formatNumber value="${bookDto.book_cost}" maxFractionDigits="0"/>원</li>
+								<li><strong><fmt:formatNumber value="${bookDto.book_price}" maxFractionDigits="0"/></strong>원</li>
+								<li><fmt:formatNumber value="${bookDto.book_price*0.05}" maxFractionDigits="0"/> 포인트 [5% 적립]</li>
+								<li style="color: blue;">무료배송</li>
 							</ul>
 						</div>
 					</div>
@@ -78,7 +79,7 @@
 					</div>
 
 					<div class="book_buy_btn">
-						<a href="javascript:void(0);" onclick="bookPay('${root}', ${bookDto.book_isbn}, ${getSessionId})" style="margin-right: 10px; background: #14488d; color: white;">구매하기</a>
+						<a href="javascript:void(0);" onclick="bookPay('${root}', '${bookDto.book_isbn}', '${login}')" style="margin-right: 10px; background: #14488d; color: white;">구매하기</a>
 						<a href="" style="margin-right: 10px;background: #fff; color: #14488d; border: 1px solid #14488d;">장바구니 담기</a>
 						<a href="" style="background: #F2F2F2; border: solid 1px #D9D9D9;">내 서재 담기</a>
 					</div>

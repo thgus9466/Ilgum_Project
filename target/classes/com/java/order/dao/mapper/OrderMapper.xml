@@ -2,7 +2,12 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="dao.OrderMapper">
-	<select id="nonMemberOrder" parameterType="String" resultType="com.java.book.dto.BookDto">
+	<select id="oneBookOrder" parameterType="String" resultType="com.java.order.dto.OrderDto">
 		select * from book where book_isbn = #{book_isbn}
 	</select>
+	
+	<insert id="buserOrder" parameterType="com.java.order.dto.OrderDto">
+		insert into bookorder(order_num, member_id, cart_quantity, member_zipcode, member_address1, member_address2, member_phone, order_date, total_price, book_isbn, receiver, request)
+		values(seq_order_num.nextval, sysdate, #{cart_quantity}, #{member_zipcode}, #{member_address1}, #{member_address2}, #{member_phone}, sysdate, #{total_price}, #{book_isbn}, #{receiver}, #{request})
+	</insert>
 </mapper>

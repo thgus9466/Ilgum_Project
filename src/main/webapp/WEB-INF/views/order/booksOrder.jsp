@@ -20,6 +20,8 @@
 		<div class="ttitle">결제 정보</div>
 		<form action="${root}/order/buserOrderOk.do" method="get">
 		
+		<input type="hidden" name="book_isbn" value="${book_isbn}">
+		<input type="hidden" name="cart_quantity" value="${cart_quantity}">
 		<input type="hidden" name="total_price" value="${total_price}">
 		
 			<div align="center" class="blist" style="float: left;">
@@ -29,6 +31,9 @@
 						<tr>
 							<td align="center" width="400">상품정보</td>
 							<td align="center" width="150">상품금액</td>
+							<c:if test="${login != null}">
+								<td align="center" width="150">포인트</td>
+							</c:if>
 							<td align="center" width="90">배송비</td>
 						</tr>
 					</thead>
@@ -38,8 +43,6 @@
 
 					<table>
 						<c:forEach var="orderList" items="${orderList}">
-						<input type="hidden" name="book_isbn" value="${orderList.book_isbn}">
-						<input type="hidden" name="cart_quantity" value="${orderList.cart_quantity}">
 							<tr id="tcontent">
 								<td align="center" width="400"><img alt="이미지 준비중"
 									src="${orderList.book_img_url}" height="90"
@@ -51,6 +54,9 @@
 									</ul></td>
 								<td align="center" width="130"><fmt:formatNumber
 										value="${orderList.book_price*orderList.cart_quantity}" />원</td>
+								<c:if test="${login != null}">
+								<td align="center" width="130"><fmt:formatNumber value="${orderList.book_price*0.05}" maxFractionDigits="0"/>원</td>
+								</c:if>
 								<td align="center" width="100">무료배송</td>
 							</tr>
 						</c:forEach>
@@ -132,6 +138,9 @@
 							<li>총 상품금액</li>
 							<li>총 할인금액</li>
 							<li>배송비</li>
+							<c:if test="${login != null}">
+								<li>적립 포인트</li>
+							</c:if>
 							<li>총 결제금액</li>
 						</ul>
 					</div>
@@ -141,6 +150,9 @@
 							<li><fmt:formatNumber value="${total_cost}" />원</li>
 							<li><fmt:formatNumber value="${total_cost-total_price}" />원</li>
 							<li>무료배송</li>
+							<c:if test="${login != null}">
+								<li><fmt:formatNumber value="${member_point}"/>원</li>
+							</c:if>
 							<li><fmt:formatNumber value="${total_price}" />원</li>
 						</ul>
 					</div>

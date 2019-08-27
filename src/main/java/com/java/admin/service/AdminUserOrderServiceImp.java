@@ -1,10 +1,5 @@
 package com.java.admin.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -14,13 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.java.admin.dao.AdminQuestionDao;
 import com.java.admin.dao.AdminUserOrderDao;
 import com.java.admin.dto.AdminBookDto;
 import com.java.admin.dto.AdminMemberDto;
-import com.java.admin.dto.AdminQuestionDto;
 import com.java.aop.IlgumAspect;
-import com.java.order.dto.UserOrderDto;
+import com.java.order.dto.OrderDto;
 
 /**
  * @author 최선권
@@ -49,7 +42,7 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 		int endRow=currentPage*boardSize;
 	
 		int count = 0;
-		List<UserOrderDto> userOrderList=null;
+		List<OrderDto> userOrderList=null;
 
 		
 		//검색기능 구현으로인한 조회목록 뿌리기 구문 정리
@@ -91,7 +84,7 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		String member_id = request.getParameter("member_id");
 		
-		UserOrderDto userOrderDto = userOrderDao.userOrderRead(order_bunho);
+		OrderDto userOrderDto = userOrderDao.userOrderRead(order_bunho);
 		AdminMemberDto memberDto = userOrderDao.userInfo(member_id);
 
 		String book_isbn = userOrderDto.getBook_isbn();
@@ -158,7 +151,7 @@ public class AdminUserOrderServiceImp implements AdminUserOrderService {
 	@Override
 	public void UserOrderUpdateOk(ModelAndView mav) {
 		Map<String,Object> map = mav.getModel();
-		UserOrderDto userOrderDto =  (UserOrderDto)map.get("userOrderDto");
+		OrderDto userOrderDto =  (OrderDto)map.get("userOrderDto");
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
 		System.out.println(userOrderDto.toString());

@@ -56,6 +56,7 @@
 				<li><a href="${root}/mypage/deliver.do">주문/배송 조회</a></li>
 				<li><a href="${root}/cartList.do">장바구니</a></li>
 				<li><a href="${root}/mypage/question.do">1:1 상담내역</a></li>
+				<li><a href="${root}/mypage/recommand.do">추천도서</a></li>
 			</ul>
 		</div>
 		

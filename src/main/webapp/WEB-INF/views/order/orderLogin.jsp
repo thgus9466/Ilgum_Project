@@ -100,7 +100,7 @@
 						</form>
 						<div class="set">
 							<a href="${root}/member/memberJoin.do">회원가입</a>
-							<a href="javascript:void(0);" onclick="nonMemberBuy('${root}', '${book_isbn}', '${book_quantity}')">비회원 구매</a>
+							<a href="javascript:void(0);" onclick="nonMemberBuy('${root}', '${book_isbn}', '${cart_quantity}')">비회원 구매</a>
 						</div>
 					</div>
 				</div>
