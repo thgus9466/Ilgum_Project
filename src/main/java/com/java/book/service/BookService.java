@@ -1,5 +1,7 @@
 package com.java.book.service;
 
+import java.util.List;
+
 import org.springframework.web.servlet.ModelAndView;
 
 public interface BookService {
@@ -24,4 +26,6 @@ public interface BookService {
 	public void memberDelete(ModelAndView mav);
 	
 	public void memberUpdate(ModelAndView mav);
+
+	public List<String> autocomplete(String book_name);
 }

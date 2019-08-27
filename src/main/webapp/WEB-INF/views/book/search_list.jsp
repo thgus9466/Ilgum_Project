@@ -20,16 +20,14 @@
 
 		<c:if test="${count >0}">
 			<div id="result">
-				V <span id="book_name"><b>${text}</b></span>에 대한 <span style="color:red">text</span> 결과 총 
+				<span id="book_name"><b>${text}</b></span>에 대한 <span style="color:red">text</span> 결과 총 
 				<span style="color:green" id="book_quantity">${count}</span>권의 도서가 검색되었습니다.
 			</div>
-		
-			<c:forEach var="bookDto" items="${bookList}">
 			<form name="form" method="get">
+			<c:forEach var="bookDto" items="${bookList}">
 			<div id="content1">
 			<input type="hidden" name="book_isbn" value="${bookDto.book_isbn}">
 				<div id="sub1-1"><input type="checkbox" id="check"/></div>
-				
 				<div id="sub1-2">
 					<a href="javascript:void(0);" onclick="goBookDetail('${root}', '${bookDto.book_isbn}')"><img src="${bookDto.book_img_url}" id="book1"></a>
 				</div>
@@ -63,10 +61,9 @@
 					</ul>
 				</div>
 			</div>
-			</form>
 			</c:forEach>
-		</c:if>
-		
+			</form>			
+		</c:if>		
 		<div align = "center" style="margin: 30px 0px;;">
 	      <c:if test="${count > 0}">
 	         <c:set var="pageBlock" value="${10}"/>
