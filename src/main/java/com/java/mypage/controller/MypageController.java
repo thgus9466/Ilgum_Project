@@ -202,4 +202,15 @@ public class MypageController {
 		
 		return mav;
 	}
+	
+	//쿠폰조회
+	@RequestMapping(value = "/mypage/coupon.do", method = RequestMethod.GET)
+	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		mypageService.couponList(mav);
+		
+		return mav;
+	}
 }

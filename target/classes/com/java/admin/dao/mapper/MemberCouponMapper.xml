@@ -14,4 +14,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  	 	]]> 
 	</insert>
 
+	<!-- 도서수량 -->
+	<select id="couponCount" resultType="int">
+		<![CDATA[select count(*) from membercoupon where member_id = #{member_id}]]>
+	</select>
+
 </mapper>

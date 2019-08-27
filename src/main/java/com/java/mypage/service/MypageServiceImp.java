@@ -16,6 +16,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.java.admin.dao.AdminCouponDao;
+import com.java.admin.dto.AdminCouponDto;
 import com.java.aop.IlgumAspect;
 import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
@@ -31,6 +33,9 @@ public class MypageServiceImp implements MypageService {
 	@Autowired
 	private MypageDao mypageDao;
 
+	@Autowired
+	private AdminCouponDao couponDao;
+	
 	@Override
 	public void readMypage(ModelAndView mav) {
 
@@ -38,9 +43,9 @@ public class MypageServiceImp implements MypageService {
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
 		String member_id = (String)request.getSession().getAttribute("member_id");
 		MemberDto memberDto = mypageDao.readMypage(member_id);
+		int couponCount = couponDao.couponCount(member_id);
 		
 		String pageNumber = request.getParameter("pageNumber");
-		
 		
 		if(pageNumber==null || pageNumber.trim().length() == 0 ) pageNumber = "1";
 		
@@ -64,6 +69,7 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("userOrderDtoList",userOrderDtoList);		
 		mav.addObject("memberDto", memberDto);
 		mav.addObject("interest",interest);
+		mav.addObject("couponCount",couponCount);
 		
 		mav.setViewName("mypage/main.tiles");	
 
@@ -569,6 +575,22 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("secondcount", secondcount);
 		mav.addObject("thirdcount", thirdcount);
 		mav.setViewName("mypage/recommand.empty");
+		
+	}
+
+	@Override
+	public void couponList(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("member_id");//세션에서 넘어온 회원 아이디를 저장한다.
+		int couponCount = couponDao.couponCount(member_id);
+		System.out.println("couponCount:" + couponCount);
+		List<AdminCouponDto> couponList = couponDao.CouponList(member_id);
+		System.out.println("CouponeList:" + couponList	);
+		mav.addObject("couponCount", couponCount);
+		mav.addObject("couponList", couponList);
+		
+		mav.setViewName("mypage/coupon.tiles");
 		
 	}
 }

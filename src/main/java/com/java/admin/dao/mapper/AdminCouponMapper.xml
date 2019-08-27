@@ -15,5 +15,12 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 						#{admin_sale})
  	 	]]> 
 	</insert>
-
+	
+	<select id="CouponList" resultType="com.java.admin.dto.AdminCouponDto" parameterType="String">
+		<![CDATA[
+			select a.*,b.member_id, b.member_couponnumber
+			from admincoupon a, membercoupon b
+			where a.admin_couponNumber = b.admin_couponNumber and member_id = #{member_id}
+ 	 	]]>
+	</select>
 </mapper>

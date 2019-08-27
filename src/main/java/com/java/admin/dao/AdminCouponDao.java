@@ -1,5 +1,7 @@
 package com.java.admin.dao;
 
+import java.util.List;
+
 import com.java.admin.dto.AdminCouponDto;
 
 
@@ -18,6 +20,7 @@ public interface AdminCouponDao {
 	//생성된 쿠폰을 새로가입한 회원에게 자동등록
 	public int couponAndMemberInsert(String admin_couponNumber, String member_id, String member_couponNumber);
 
+	public int couponCount(String member_id);
 
-
+	public List<AdminCouponDto> CouponList(String member_id);
 }

@@ -45,7 +45,7 @@
 				<c:if test="${memberDto.member_level == 'admin'}">관리자</c:if>
 				<c:if test="${memberDto.member_level == 'SS'}">골드회원</c:if></span></li>
 				<li>적립금 : <a href ="#" >${memberDto.member_point}원</a></li>
-				<li>교환권/쿠폰 : <a href ="#" >0장</a></li>
+				<li>교환권/쿠폰 : <a href ="${root}/mypage/coupon.do" >${couponCount}장</a></li>
 			</ul>
 		</div>
 		
