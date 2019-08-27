@@ -5,7 +5,7 @@
 	
 	var zoomx = 100;
 	
-	$(function(){ //$(document).ready(function(){
+	$(function(){
 		$("#btn").hover(function(){
 			$(this).css("cursor","pointer");
 		});
@@ -124,7 +124,6 @@
 
 		$('#snb').mouseleave(function() { 
 		     $(this).animate({opacity: 'hide'}, 'fast'); 
-		    }); 
-		
+		    });
 	});
 

@@ -9,12 +9,12 @@
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <title>읽움에 오신걸 환영합니다.</title>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="${root}/resources/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/resources/jquery/jquery-ui.css"/>
+
 <script type="text/javascript" src="${root}/resources/javascript/index/slide.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/book/bookDetail.js"></script>
 <script type="text/javascript"src="${root}/resources/javascript/index/index.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/index.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/slide.css"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/index/section.css"/>
@@ -25,6 +25,9 @@
 		if(talk != ""){
 			alert("임시 비밀번호가 이메일로 발송되었습니다.");
 		}
+		$("#tec").autocomplete({
+			source : "${root}/book/autocomplete.do"
+		});		
 	});
 
 	var member_id = "${member_id}";

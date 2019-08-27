@@ -1,5 +1,6 @@
 package com.java.book.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -132,8 +133,12 @@ public class BookDaoImp implements BookDao {
 
 	@Override
 	public int memberUpdateOk(UserBookStar userBookStar) {
-		
 		return sqlSessionTemplate.update("dao.BookMapper.updateReview", userBookStar);
+	}
+
+	@Override
+	public List<String> nameList(String book_name) {
+		return sqlSessionTemplate.selectList("dao.BookMapper.nameList", book_name);
 	}
 
 }

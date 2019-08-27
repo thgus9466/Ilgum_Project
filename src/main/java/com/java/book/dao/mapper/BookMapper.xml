@@ -126,4 +126,10 @@
 			where member_id = #{member_id} and order_bunho = #{order_bunho} and book_num = #{book_num}
 		]]>
 	</update>
+	
+	<select id="nameList" parameterType = "String" resultType="String">
+		<![CDATA[
+			select data.book_name from (select * from book order by book_amount asc)data where book_name like '%'||#{book_name}||'%' and rownum <= 10
+		]]>
+	</select>
 </mapper>

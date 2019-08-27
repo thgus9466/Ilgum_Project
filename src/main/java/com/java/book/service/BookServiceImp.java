@@ -1,6 +1,9 @@
 package com.java.book.service;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
@@ -414,5 +419,11 @@ public class BookServiceImp implements BookService {
 		mav.setViewName("book/updateOk.empty");
 		}
 	}
-
+	
+	@Override
+	public List<String> autocomplete(String book_name) {
+		IlgumAspect.logger.info(IlgumAspect.logMsg + book_name);
+		IlgumAspect.logger.info(IlgumAspect.logMsg + bookDao.nameList(book_name));
+		return bookDao.nameList(book_name);
+	}
 }
