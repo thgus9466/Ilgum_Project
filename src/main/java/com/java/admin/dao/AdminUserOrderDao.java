@@ -5,7 +5,7 @@ import java.util.List;
 import com.java.admin.dto.AdminBookDto;
 import com.java.admin.dto.AdminMemberDto;
 import com.java.admin.dto.AdminQuestionDto;
-import com.java.order.dto.UserOrderDto;
+import com.java.order.dto.OrderDto;
 
 
 
@@ -23,17 +23,17 @@ public interface AdminUserOrderDao {
 	public int OrderCount();
 	
 	//상담조회 목록
-	public List<UserOrderDto> OrderList(int startRow, int endRow);
-	public List<UserOrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow);
+	public List<OrderDto> OrderList(int startRow, int endRow);
+	public List<OrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow);
 	
 	
-	public UserOrderDto userOrderRead(int order_bunho);
+	public OrderDto userOrderRead(int order_bunho);
 
 	public AdminMemberDto userInfo(String member_id);
 
 	public AdminBookDto bookInfo(String book_isbn);
 	
-	public int userOrderUpdateOk(UserOrderDto userOrderDto);
+	public int userOrderUpdateOk(OrderDto userOrderDto);
 	public int userOrderDelete(int order_bunho);
 	
 }

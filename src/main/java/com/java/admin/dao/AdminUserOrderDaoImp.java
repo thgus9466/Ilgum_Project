@@ -9,8 +9,7 @@ import org.springframework.stereotype.Component;
 
 import com.java.admin.dto.AdminBookDto;
 import com.java.admin.dto.AdminMemberDto;
-import com.java.admin.dto.AdminQuestionDto;
-import com.java.order.dto.UserOrderDto;
+import com.java.order.dto.OrderDto;
 
 
 /**
@@ -40,7 +39,7 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 	}
 
 	@Override
-	public List<UserOrderDto> OrderList(int startRow, int endRow) {
+	public List<OrderDto> OrderList(int startRow, int endRow) {
 		HashMap<String, Integer> hMap=new HashMap<String, Integer>();
 		hMap.put("startRow", startRow);
 		hMap.put("endRow", endRow);
@@ -49,7 +48,7 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 	}
 
 	@Override
-	public List<UserOrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow) {
+	public List<OrderDto> OrderSearchList(String searchType, String keyword, int startRow, int endRow) {
 		HashMap<String, Object> hMap=new HashMap<String, Object>();
 		hMap.put("searchType", searchType);
 		hMap.put("keyword", keyword);
@@ -59,7 +58,7 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 	}
 
 	@Override
-	public UserOrderDto userOrderRead(int order_bunho) {
+	public OrderDto userOrderRead(int order_bunho) {
 		return sqlSessionTemplate.selectOne("dao.AdminUserOrderMapper.userOrderRead", order_bunho);
 		}
 
@@ -72,7 +71,7 @@ public class AdminUserOrderDaoImp implements AdminUserOrderDao {
 	public AdminBookDto bookInfo(String book_isbn) {
 		return sqlSessionTemplate.selectOne("dao.AdminBookMapper.bookReadNumber", book_isbn);
 		}
-	public int userOrderUpdateOk(UserOrderDto userOrderDto) {
+	public int userOrderUpdateOk(OrderDto userOrderDto) {
 		return sqlSessionTemplate.update("dao.AdminUserOrderMapper.userOrderUpdateOk", userOrderDto);
 	}
 

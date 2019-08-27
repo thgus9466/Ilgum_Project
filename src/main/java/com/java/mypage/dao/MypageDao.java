@@ -6,7 +6,6 @@ import java.util.List;
 import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 import com.java.order.dto.OrderDto;
-import com.java.order.dto.UserOrderDto;
 import com.java.mypage.dto.BuserDto;
 import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
@@ -18,9 +17,9 @@ public interface MypageDao {
 	
 	public int update(MemberDto memberDto);
 
-	public List<UserOrderDto> DeliverList(String member_id,int startRow, int endRow);
+	public List<OrderDto> DeliverList(String member_id,int startRow, int endRow);
 	
-	public List<UserOrderDto> DeliverList_week(String member_id, int startRow, int endRow);
+	public List<OrderDto> DeliverList_week(String member_id, int startRow, int endRow);
 	
 	public int boardGroupNumberMax();
 

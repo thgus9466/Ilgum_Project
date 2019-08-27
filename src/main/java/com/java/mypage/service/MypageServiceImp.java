@@ -22,7 +22,6 @@ import com.java.member.dto.MemberDto;
 
 import com.java.mypage.dao.MypageDao;
 import com.java.order.dto.OrderDto;
-import com.java.order.dto.UserOrderDto;
 import com.java.mypage.dto.BuserDto;
 import com.java.mypage.dto.CartDto;
 import com.java.mypage.dto.QuestionDto;
@@ -54,7 +53,7 @@ public class MypageServiceImp implements MypageService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
-		List<UserOrderDto> userOrderDtoList = null;
+		List<OrderDto> userOrderDtoList = null;
 		
 		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
 		
@@ -176,7 +175,7 @@ public class MypageServiceImp implements MypageService {
 		
 		IlgumAspect.logger.info(IlgumAspect.logMsg + "count : " + count);
 
-		List<UserOrderDto> userOrderDtoList = null;
+		List<OrderDto> userOrderDtoList = null;
 
 		if (count > 0)
 			userOrderDtoList = mypageDao.DeliverList(member_id, startRow, endRow);
