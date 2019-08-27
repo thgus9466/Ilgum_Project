@@ -154,19 +154,8 @@ public class MypageController {
 		return mav;
 	}
 	
-	@RequestMapping(value = "/BusercartList.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/cartList.do", method = RequestMethod.GET)
 	public ModelAndView BusercartList(HttpServletRequest request, HttpServletResponse response, BuserDto buserDto) {
-		ModelAndView mav = new ModelAndView();
-		mav.addObject("request", request);
-		mav.addObject("buserDto", buserDto);
-		
-		mypageService.cartList(mav);
-		
-		return mav;
-	}
-	
-	@RequestMapping(value = "/UsercartList.do", method = RequestMethod.GET)
-	public ModelAndView UsercartList(HttpServletRequest request, HttpServletResponse response, BuserDto buserDto) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
 		mav.addObject("buserDto", buserDto);
