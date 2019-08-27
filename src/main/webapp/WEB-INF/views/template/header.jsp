@@ -23,8 +23,8 @@
 			$(this).css('background-color','#e6e6e6')
 		});		
 	});
-	var login = "${login}";
-	if(login != ""){
+	var member_id = "${member_id}";
+	if(member_id != ""){
 		$(function(){
 			$("#logout > li:nth-child(1)").replaceWith("<li><a href='${root}/mypage/main.do'>마이페이지</a></li>");
 			$("#logout > li:nth-child(2)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");

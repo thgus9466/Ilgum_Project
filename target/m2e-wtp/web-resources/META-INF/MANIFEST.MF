@@ -1,5 +1,9 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Built-By: KITRI
+=======
+Built-By: Changjo
+>>>>>>> 5a159d63d04240db4160409037fcde5f6baf12f6
 Build-Jdk: 1.8.0_201
 Created-By: Maven Integration for Eclipse
 

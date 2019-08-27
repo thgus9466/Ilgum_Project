@@ -3,6 +3,7 @@ package com.java.order.dto;
 import java.util.Date;
 
 public class OrderDto {
+	
 	private int order_num;						// 주문번호
 	private String member_id;					// 아이디
 	private String cart_quantity;				// 주문수량[]
@@ -204,5 +205,5 @@ public class OrderDto {
 				+ ", book_isbn=" + book_isbn + ", request=" + request + ", book_name=" + book_name + ", book_img_url="
 				+ book_img_url + ", book_price=" + book_price + "]";
 	}
-		
+	
 }

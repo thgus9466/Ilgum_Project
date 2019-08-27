@@ -4,6 +4,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.java.aop.IlgumAspect;
+import com.java.book.dto.BookDto;
 import com.java.member.dto.MemberDto;
 
 import com.java.mypage.dao.MypageDao;
@@ -35,9 +37,9 @@ public class MypageServiceImp implements MypageService {
 
 		Map<String,Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
+		String member_id = (String)request.getSession().getAttribute("member_id");
+		MemberDto memberDto = mypageDao.readMypage(member_id);
 		
-		String member_id = memberDto.getMember_id();
 		String pageNumber = request.getParameter("pageNumber");
 		
 		
@@ -56,9 +58,9 @@ public class MypageServiceImp implements MypageService {
 		
 		if(count > 0)userOrderDtoList = mypageDao.DeliverList_week(member_id,startRow,endRow);
 		
-		
+		String[] interest = null;
 		IlgumAspect.logger.info(IlgumAspect.logMsg +memberDto.toString());
-		String[] interest = memberDto.getMember_interest().split(",");
+		if(memberDto.getMember_interest() != null)interest = memberDto.getMember_interest().split(",");
 		
 		mav.addObject("userOrderDtoList",userOrderDtoList);		
 		mav.addObject("memberDto", memberDto);
@@ -73,7 +75,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
-		String id = (String) request.getSession().getAttribute("login");
+		String id = (String) request.getSession().getAttribute("member_id");
 
 		MemberDto memberDto = mypageDao.readMypage(id);
 
@@ -136,7 +138,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String id = (String) request.getSession().getAttribute("login");
+		String id = (String) request.getSession().getAttribute("member_id");
 		MemberDto memberDto = (MemberDto) map.get("memberDto");
 
 		memberDto.setMember_id(id);
@@ -159,7 +161,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		String pageNumber = request.getParameter("pageNumber");
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		MemberDto memberDto = mypageDao.readMypage(member_id);
 
 		if (pageNumber == null || pageNumber.trim().length() == 0)
@@ -197,7 +199,7 @@ public class MypageServiceImp implements MypageService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		String member_name = mypageDao.getName(member_id);
 		MemberDto memberDto = mypageDao.readMypage(member_id);
 
@@ -228,7 +230,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		String pageNumber = request.getParameter("pageNumber");
 
 		if (pageNumber == null)
@@ -264,7 +266,7 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		int q_number = Integer.parseInt(request.getParameter("q_number"));
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 
@@ -320,7 +322,8 @@ public class MypageServiceImp implements MypageService {
 	public void interest(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		MemberDto memberDto =(MemberDto)request.getSession().getAttribute("memberDto");
+		String member_id = (String)request.getSession().getAttribute("member_id");
+		MemberDto memberDto = mypageDao.readMypage(member_id);
 			
 		mav.addObject("memberDto", memberDto);
 		
@@ -332,18 +335,18 @@ public class MypageServiceImp implements MypageService {
 		Map<String, Object> map = mav.getModelMap();
 		
 		HttpServletRequest request = (HttpServletRequest)map.get("request");
-		String id = (String) request.getSession().getAttribute("login");
-		MemberDto memberDto = (MemberDto)map.get("memberDto");
+		String id = (String) request.getSession().getAttribute("member_id");
 		
-		memberDto.setMember_id(id);
-		memberDto.setMember_job(request.getParameter("member_job"));
-		memberDto.setMember_interest(request.getParameter("member_interest"));
-		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: " + request.getParameter("member_interest"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + "interest: " + request.getParameter("interest")+ "job: " + request.getParameter("member_job"));
+		HashMap<String,String> hmap = new HashMap<String, String>();
 		
-		int check = mypageDao.updateInterest(memberDto);
+		hmap.put("member_id", id);
+		hmap.put("member_interest", request.getParameter("interests"));
+		hmap.put("member_job", request.getParameter("member_job"));
+		
+		int check = mypageDao.updateInterest(hmap);
 		
 		mav.addObject("check", check);
-		mav.addObject("memberDto", memberDto);
 		mav.setViewName("mypage/updateInterestOk.tiles");
 	}
 
@@ -351,13 +354,13 @@ public class MypageServiceImp implements MypageService {
 	public void withdrawal(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 
 		int check = mypageDao.updateLevel(member_id);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + "check: " + check);
 
 		if (member_id != null) {
-			request.getSession().removeAttribute("login");
+			request.getSession().removeAttribute("member_id");
 		}
 
 		mav.setViewName("redirect:/index.empty");
@@ -370,7 +373,7 @@ public class MypageServiceImp implements MypageService {
 		MemberDto memberDto = (MemberDto)request.getSession().getAttribute("memberDto");
 		
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 
 		if (member_id != null) {
 			int count = mypageDao.cartCount(member_id);
@@ -422,7 +425,7 @@ public class MypageServiceImp implements MypageService {
 		HttpServletResponse response = (HttpServletResponse) map.get("response");
 		CartDto cartDto = (CartDto) map.get("cartDto");
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		String book_isbn = request.getParameter("book_isbn");
 
 		if (member_id != null) {
@@ -489,7 +492,7 @@ public class MypageServiceImp implements MypageService {
 		int check = 0;
 		String delList[] = request.getParameter("delList").split(",");
 
-		if (request.getSession().getAttribute("login") != null) {
+		if (request.getSession().getAttribute("member_id") != null) {
 			for (int i = 0; i < delList.length; i++)
 				check = mypageDao.cartDel(delList[i]);
 
@@ -513,5 +516,60 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("check", check);
 
 		mav.setViewName("mypage/cartDelOk.empty");
+	}
+
+	
+	//추천도서
+	@Override
+	public void recommand(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("member_id");//세션에서 넘어온 회원 아이디를 저장한다.
+		
+		MemberDto memberDto = new MemberDto();
+		memberDto = mypageDao.readMypage(member_id);//셀렉트문으로 회원정보를 가져온다.
+
+		String interests = memberDto.getMember_interest();//select문으로 가져온 회원정보의 interest를 변수에 담는다.
+		String firstInterest = interests.split(",")[0];
+		String secondInterest = interests.split(",")[1];
+		String thirdInterest = interests.split(",")[2];
+
+		//,으로 값을 나누어 저장한다.
+		
+		int firstcount=0;		
+		int secondcount=0;		
+		int thirdcount=0;
+		//데이터값 유효확인을 위한 카운트값 변수
+		
+		if(firstInterest !="") {//값이 있다면
+			firstcount = mypageDao.firstcount(firstInterest);//갯수 구하기
+			System.out.println(firstcount);
+			if(firstcount>0) {
+				List<BookDto> firstBookList= mypageDao.firstRecommand(firstInterest);//List로 인기순위 20개 가져오기	
+				mav.addObject("firstBookList", firstBookList);
+			}
+		}
+
+		if(secondInterest !="") {
+			secondcount = mypageDao.secondcount(secondInterest);
+			if(secondcount>0) {
+				List<BookDto> secondBookList= mypageDao.secondRecommand(secondInterest);
+				mav.addObject("secondBookList", secondBookList);
+			}
+			
+		}
+		if(secondInterest !="") {
+			thirdcount = mypageDao.thirdcount(secondInterest);
+			if(thirdcount>0) {
+				List<BookDto> thirdBookList= mypageDao.thirdRecommand(thirdInterest);
+				mav.addObject("thirdBookList", thirdBookList);
+			}			
+		}
+		
+		mav.addObject("firstcount", firstcount);
+		mav.addObject("secondcount", secondcount);
+		mav.addObject("thirdcount", thirdcount);
+		mav.setViewName("mypage/recommand.empty");
+		
 	}
 }

@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="${root}/resources/css/book/bookDetail.css"/>
 <title>Insert title here</title>
 <script type="text/javascript">
-	var session = "${login}";
+	var session = "${member_id}";
 	
 		if(session != ""){
 			$(function(){
@@ -120,7 +120,7 @@
 						<div class="reviewTop">
 							<span style="font-size:15px; margin-left: 30px;">아이디 : </span>
 							
-							<span><input type="text" value="${login}" readonly="readonly" name="member_id" style="text-align:center; width:150px; height:20px; font-size:15px;"/></span>
+							<span><input type="text" value="${member_id}" readonly="readonly" name="member_id" style="text-align:center; width:150px; height:20px; font-size:15px;"/></span>
 							
 							<span style="margin-left: 20px;">
 								<label><input type="radio" name="userbookstar_star" value="1"/>★</label>
@@ -190,8 +190,8 @@
 						</div>	
 						
 						<div class="reviewButton" id="reviewButton">
-							<a href="javascript:updateToServer('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}','${login}')" style="font-size:18px; margin-left:30px;">수정</a>&nbsp;&nbsp;
-							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}', '${login}')" style="font-size:18px;">삭제</a>
+							<a href="javascript:updateToServer('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}','${member_id}')" style="font-size:18px; margin-left:30px;">수정</a>&nbsp;&nbsp;
+							<a href="javascript:deleteCheck('${root}','${currentPage}','${userBookStar.order_bunho}','${userBookStar.member_id}','${bookDto.book_isbn}', '${member_id}')" style="font-size:18px;">삭제</a>
 						</div>	
 				</div>
 			</div>	

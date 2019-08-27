@@ -13,9 +13,9 @@ public class AuthenticationInterceptor extends HandlerInterceptorAdapter{
 	    public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 	            throws Exception {
 	        // session 객체를 가져옴
-		 IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("login"));
+		 IlgumAspect.logger.info(IlgumAspect.logMsg + request.getSession().getAttribute("member_id"));
 		 
-		 Object obj = request.getSession().getAttribute("login");
+		 Object obj = request.getSession().getAttribute("member_id");
 		 
 		 if(obj == null) {
 			 response.sendRedirect(request.getContextPath()+"/member/memberLogin.do");

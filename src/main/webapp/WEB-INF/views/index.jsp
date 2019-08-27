@@ -27,8 +27,8 @@
 		}
 	});
 
-	var login = "${login}";
-	if(login != ""){
+	var member_id = "${member_id}";
+	if(member_id != ""){
 		$(function(){
 			$("#logout > li:nth-child(4)").replaceWith("<li><a href='${root}/mypage/main.do'>마이페이지</a></li>");
 			$("#logout > li:nth-child(5)").replaceWith("<li><a href='${root}/index.do'>로그아웃</a></li>");
@@ -421,7 +421,7 @@
 				   		  <li>RECRUIT</li>
 				          <br/><li>채용 소개</li>
 				          <li>채용 지원하기</li>
-				          <c:if test="${login=='admin'}">
+				          <c:if test="${member_id=='admin'}">
 					          <li><a href="${root}/admin/AdminBook.do">관리자페이지</a></li>
 				          </c:if>				          
 				        </ul>

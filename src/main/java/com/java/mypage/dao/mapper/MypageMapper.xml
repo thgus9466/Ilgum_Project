@@ -11,19 +11,19 @@
 		member_address1=#{member_address1},member_address2=#{member_address2}, member_phone1 = #{member_phone1}, member_phone2=#{member_phone2} where member_id = #{member_id}
 	</update>
 	
-	<select id="deliverList" parameterType="java.util.HashMap" resultType="com.java.order.dto.UserOrderDto">
+	<select id="deliverList" parameterType="java.util.HashMap" resultType="com.java.order.dto.OrderDto">
 		<![CDATA[
 		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select userorder.*,book.book_name from userorder join book on userorder.book_isbn = book.book_isbn order by order_date desc) a) b
+			(select BookOrder.*,book.book_name from BookOrder join book on BookOrder.book_isbn = book.book_isbn order by order_date desc) a) b
 				where member_id = #{member_id}) c
                 	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
 		]]>
 	</select>
 	
-	<select id="deliverList_week" parameterType="java.util.HashMap" resultType="com.java.order.dto.UserOrderDto">		
+	<select id="deliverList_week" parameterType="java.util.HashMap" resultType="com.java.order.dto.OrderDto">		
 		<![CDATA[
 		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
-			(select userorder.*,book.book_name from userorder join book on userorder.book_isbn = book.book_isbn where sysdate-7 < userorder.order_date and userorder.order_date < sysdate order by order_date desc) a) b
+			(select BookOrder.*,book.book_name from BookOrder join book on BookOrder.book_isbn = book.book_isbn where sysdate-7 < BookOrder.order_date and BookOrder.order_date < sysdate order by order_date desc) a) b
 				where member_id = #{member_id}) c
                 	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
 		]]>
@@ -80,7 +80,7 @@
 	
 	<select id="delivercount" resultType="int" parameterType="String">
 		<![CDATA[
-			select count(*) from userorder where member_id = #{member_id}
+			select count(*) from BookOrder where member_id = #{member_id}
 		]]>
 	</select>
 	
@@ -121,7 +121,56 @@
       <![CDATA[select * from book where book_isbn = #{book_isbn}]]>
    </select>
    
-   <update id="updateInterest" parameterType="com.java.member.dto.MemberDto" >
+   <update id="updateInterest" parameterType="java.util.HashMap" >
 		update member set member_job = #{member_job}, member_interest = #{member_interest} where member_id = #{member_id}
 	</update>
+	
+	<select id="firstCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book 
+		where BOOK_CATEGORY like '%'||#{interest}||'%']]>
+	</select>
+	<select id="secondCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book 
+		where BOOK_CATEGORY like '%'||#{interest}||'%']]>
+	</select>
+	<select id="thirdCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book 
+		where BOOK_CATEGORY like '%'||#{interest}||'%']]>
+	</select>
+	
+	<select id="firstRecommand" parameterType="String" resultType="com.java.book.dto.BookDto">
+		<![CDATA[SELECT * FROM(
+					SELECT * FROM(
+						select * FROM (
+							SELECT ROW_NUMBER() OVER (ORDER BY book_cost desc) as Rank,BOOK_COST,BOOK_ISBN,BOOK_INDEX,BOOK_INTRO,BOOK_PUBLISH_DATE,BOOK_NAME,BOOK_WRITER,BOOK_CATEGORY,BOOK_PUBLISHER,BOOK_PRICE,BOOK_IMG_URL,BOOK_IMGXL_URL,BOOK_STAR,BOOK_BUY_ACCEPT,BOOK_AMOUNT
+							FROM book 
+							where BOOK_CATEGORY like '%'||#{interest}||'%')
+						WHERE rank between 1 and 20)
+					ORDER BY dbms_random.VALUE)
+				WHERE ROWNUM <=3]]>
+	</select>
+	
+	<select id="secondRecommand" parameterType="String" resultType="com.java.book.dto.BookDto">
+		<![CDATA[SELECT * FROM(
+					SELECT * FROM(
+						select * FROM (
+							SELECT ROW_NUMBER() OVER (ORDER BY book_cost desc) as Rank,BOOK_COST,BOOK_ISBN,BOOK_INDEX,BOOK_INTRO,BOOK_PUBLISH_DATE,BOOK_NAME,BOOK_WRITER,BOOK_CATEGORY,BOOK_PUBLISHER,BOOK_PRICE,BOOK_IMG_URL,BOOK_IMGXL_URL,BOOK_STAR,BOOK_BUY_ACCEPT,BOOK_AMOUNT
+							FROM book 
+							where BOOK_CATEGORY like '%'||#{interest}||'%')
+						WHERE rank between 1 and 20)
+					ORDER BY dbms_random.VALUE)
+				WHERE ROWNUM <=3]]>
+	</select>
+	
+	<select id="thirdRecommand" parameterType="String" resultType="com.java.book.dto.BookDto">
+		<![CDATA[SELECT * FROM(
+					SELECT * FROM(
+						select * FROM (
+							SELECT ROW_NUMBER() OVER (ORDER BY book_cost desc) as Rank,BOOK_COST,BOOK_ISBN,BOOK_INDEX,BOOK_INTRO,BOOK_PUBLISH_DATE,BOOK_NAME,BOOK_WRITER,BOOK_CATEGORY,BOOK_PUBLISHER,BOOK_PRICE,BOOK_IMG_URL,BOOK_IMGXL_URL,BOOK_STAR,BOOK_BUY_ACCEPT,BOOK_AMOUNT
+							FROM book 
+							where BOOK_CATEGORY like '%'||#{interest}||'%')
+						WHERE rank between 1 and 20)
+					ORDER BY dbms_random.VALUE)
+				WHERE ROWNUM <=3]]>
+	</select>
 </mapper>

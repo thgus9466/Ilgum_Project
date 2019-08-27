@@ -32,7 +32,7 @@ public class AdminUserOrderController {
 	private AdminBuserOrderService buserOrderService; 
 
 	/********************************/
-	/*       회원 주문관리페이지                        */ 
+	/*       회원 주문관리페이지                  */
 	/********************************/
 
 	//회원주문관리페이지목록
@@ -83,7 +83,7 @@ public class AdminUserOrderController {
 	}
 	
 	/********************************/
-	/*       비회원 주문관리페이지                     */ 
+	/*       비회원 주문관리페이지               */
 	/********************************/
 
 	//비회원주문관리페이지목록
@@ -131,5 +131,8 @@ public class AdminUserOrderController {
 		
 		return mav;
 	}
+
 }
+
+
 

@@ -49,7 +49,7 @@ public class BookServiceImp implements BookService {
 		HttpSession session = (HttpSession) map.get("session");
 		MemberDto memberDto = (MemberDto) map.get("memberDto");
 		
-		String member_id = (String) session.getAttribute("login");
+		String member_id = (String) session.getAttribute("member_id");
 		String book_isbn = request.getParameter("book_isbn");
 		List<BookDto> payList = bookDao.payList(book_isbn);
 		
@@ -332,7 +332,7 @@ public class BookServiceImp implements BookService {
 		
 		int pageNumber = Integer.parseInt(request.getParameter("pageNumber"));
 		
-		if(session.getAttribute("login")==null) {
+		if(session.getAttribute("member_id")==null) {
 			int check = 0;
 			mav.addObject("check",check);
 			mav.addObject("book_isbn",request.getParameter("book_isbn"));
@@ -340,7 +340,7 @@ public class BookServiceImp implements BookService {
 			
 			mav.setViewName("book/delete.empty");
 			
-		}else if(!request.getParameter("member_id").equals(session.getAttribute("login"))) {
+		}else if(!request.getParameter("member_id").equals(session.getAttribute("member_id"))) {
 			int check = 0;
 			mav.addObject("check",check);
 			mav.addObject("book_isbn",request.getParameter("book_isbn"));

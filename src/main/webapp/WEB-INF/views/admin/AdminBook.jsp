@@ -101,7 +101,7 @@
 					</div>
 				</c:if>
 
-				<div align="center">
+				<div align="center" class="list_number">
 						<c:if test="${count > 0 }">
 							 <fmt:parseNumber 
 							 		var="pageCount" 
