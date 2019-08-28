@@ -8,6 +8,9 @@
 <title>Insert title here</title>
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/template/header.css">
+<script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
+<script type="text/javascript" src="${root}/resources/jquery/jquery-ui.js"></script>
+<link rel="stylesheet" type="text/css" href="${root}/resources/jquery/jquery-ui.css"/>
 <script type="text/javascript" src="${root}/resources/javascript/book/bookDetail.js"></script>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script type="text/javascript">
@@ -21,7 +24,12 @@
 		});
 		$(".search_input").focusout(function() {
 			$(this).css('background-color','#e6e6e6')
-		});		
+		});
+		
+		$("#search_input").autocomplete({
+			source : "${root}/book/autocomplete.do"
+		});
+		
 	});
 	var member_id = "${member_id}";
 	if(member_id != ""){
@@ -59,7 +67,7 @@
 			<div class="searchbar">
 				<div>
 					<form action="${root}/book/search_list.do" method="get">
-						<input class="search_input" type="text" placeholder="검색어를 입력하세요" name="book_name">
+						<input class="search_input" id="search_input" type="text" placeholder="검색어를 입력하세요" name="book_name">
 						<div style="padding-top: 10px; padding-left: 10px;float : right;">
 							<input class="search_button" type="image" src="${root}/resources/img/header/search.png" alt="검색">
 						</div>

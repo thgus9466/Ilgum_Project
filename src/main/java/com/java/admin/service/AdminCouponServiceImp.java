@@ -40,14 +40,14 @@ public class AdminCouponServiceImp implements AdminCouponService {
 		
 		String couponNumber = RandomCouponNumber(10);
 		String admin_couponName = "오픈축하기념할인쿠폰";
-		String admin_couponeUseday = date();
+		String admin_couponUseday = date();
 		String admin_content = "홈페이지 오픈축하 도서할인쿠폰입니다. 회원님의 가입을 진심으로 환영합니다.";
 
 		double admin_sale = 0.2;
 
 		couponDto.setAdmin_couponNumber(couponNumber);
 		couponDto.setAdmin_couponName(admin_couponName);
-		couponDto.setAdmin_couponeUseday(admin_couponeUseday);
+		couponDto.setAdmin_couponUseday(admin_couponUseday);
 		couponDto.setAdmin_content(admin_content);
 		couponDto.setAdmin_sale(admin_sale);
 		

@@ -1,5 +1,6 @@
 package com.java.book.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -44,4 +45,6 @@ public interface BookDao {
 	public int deleteReview(HashMap<String, Object> hMap);
 
 	public int memberUpdateOk(UserBookStar userBookStar);
+
+	public List<String> nameList(String book_name);
 }

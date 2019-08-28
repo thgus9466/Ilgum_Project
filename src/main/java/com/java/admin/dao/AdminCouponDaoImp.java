@@ -1,6 +1,7 @@
 package com.java.admin.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,15 @@ public class AdminCouponDaoImp implements AdminCouponDao {
 		hMap.put("member_couponNumber", member_couponNumber);
 		return sqlSessionTemplate.insert("dao.MemberCouponMapper.couponAndMemberInsert", hMap);
 		
+	}
+
+	@Override
+	public int couponCount(String member_id) {
+		return sqlSessionTemplate.selectOne("dao.MemberCouponMapper.couponCount", member_id);
+	}
+
+	@Override
+	public List<AdminCouponDto> CouponList(String member_id) {
+		return sqlSessionTemplate.selectList("dao.AdminCouponMapper.CouponList", member_id);
 	}
 }
