@@ -568,7 +568,7 @@ public class MypageServiceImp implements MypageService {
 		mav.addObject("firstcount", firstcount);
 		mav.addObject("secondcount", secondcount);
 		mav.addObject("thirdcount", thirdcount);
-		mav.setViewName("mypage/recommand.empty");
+		mav.setViewName("mypage/recommand.tiles");
 		
 	}
 }
