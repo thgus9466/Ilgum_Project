@@ -39,6 +39,4 @@ public interface MypageService {
 	public void recommand(ModelAndView mav);
 	
 	public void couponList(ModelAndView mav);
-
-	
 }

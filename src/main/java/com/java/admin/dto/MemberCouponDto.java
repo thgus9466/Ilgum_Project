@@ -13,9 +13,21 @@ public class MemberCouponDto {
 	String member_couponNumber;			//쿠폰번호 PK
 	String member_id;					//아이디 member table member_id FK (FK ID: member_id_fk)
 	String admin_couponNumber;			//관리자쿠폰번호  admincoupon table admin_couponNumber FK (FK ID: admin_couponNumber_fk)
+	String couponState;					//쿠폰 사용유무
+	
+	
+	public String getCouponState() {
+		return couponState;
+	}
 
-	
-	
+
+
+	public void setCouponState(String couponState) {
+		this.couponState = couponState;
+	}
+
+
+
 	public String getMember_couponNumber() {
 		return member_couponNumber;
 	}
@@ -55,8 +67,7 @@ public class MemberCouponDto {
 	@Override
 	public String toString() {
 		return "MemberCouponDto [member_couponNumber=" + member_couponNumber + ", member_id=" + member_id
-				+ ", admin_couponNumber=" + admin_couponNumber + "]";
+				+ ", admin_couponNumber=" + admin_couponNumber + ", couponState=" + couponState + "]";
 	}
-	
 	
 }

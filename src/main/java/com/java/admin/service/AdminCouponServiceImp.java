@@ -37,36 +37,28 @@ public class AdminCouponServiceImp implements AdminCouponService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 
 		AdminCouponDto couponDto = new AdminCouponDto();
-		
-		String couponNumber = RandomCouponNumber(10);
-		String admin_couponName = "오픈축하기념할인쿠폰";
-		String admin_couponUseday = date();
-		String admin_content = "홈페이지 오픈축하 도서할인쿠폰입니다. 회원님의 가입을 진심으로 환영합니다.";
 
-		double admin_sale = 0.2;
-
-		couponDto.setAdmin_couponNumber(couponNumber);
-		couponDto.setAdmin_couponName(admin_couponName);
-		couponDto.setAdmin_couponUseday(admin_couponUseday);
-		couponDto.setAdmin_content(admin_content);
-		couponDto.setAdmin_sale(admin_sale);
-		
-		//관리자쿠폰 생성
-		int check = couponDao.couponAutoCreate(couponDto);
-	
-		IlgumAspect.logger.info(IlgumAspect.logMsg + check);		
-		IlgumAspect.logger.info(IlgumAspect.logMsg + couponDto.toString());			
-
-		
-		//관리자 쿠폰을 회원에게 등록
-		String admin_couponNumber = couponDto.getAdmin_couponNumber();
+		//가입축하 쿠폰을 회원에게 등록
+		String admin_couponNumber = "congratulation";
 		String member_id = request.getParameter("member_id");
 		String member_couponNumber = RandomCouponNumber(12);
-		
-		int check2 = couponDao.couponAndMemberInsert(admin_couponNumber, member_id, member_couponNumber);
+		String couponState = "0";
+		int check2 = couponDao.couponAndMemberInsert(admin_couponNumber, member_id, member_couponNumber, couponState);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + check2);
 		IlgumAspect.logger.info(IlgumAspect.logMsg + couponDto.toString());
 	}
+	
+	@Override
+	public void couponUpdate(ModelAndView mav) {
+		Map<String, Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		String member_id = (String) request.getSession().getAttribute("member_id");
+		String couponUseday = sysdate();
+		int check=couponDao.updateCouponCount(member_id, couponUseday);		
+		System.out.println("check:" + check);
+	}
+
+
 	
 	//쿠폰번호 생성기
 	public String RandomCouponNumber(int length){
@@ -87,7 +79,17 @@ public class AdminCouponServiceImp implements AdminCouponService {
 	    cal.add(Calendar.MONTH, 1);
 
 	    // 특정 형태의 날짜로 값을 뽑기 
-	    DateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+	    String strDate = df.format(cal.getTime());
+	    return strDate.toString(); 
+	}
+	
+	public String sysdate() {
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTime(new Date());
+
+	    // 특정 형태의 날짜로 값을 뽑기 
+	    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 	    String strDate = df.format(cal.getTime());
 	    return strDate.toString(); 
 	}
