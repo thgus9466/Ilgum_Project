@@ -74,6 +74,7 @@ public class MemberController {
 		mav.addObject("session",session);
 		
 		memberService.memberLoginOk(mav);
+		couponService.couponUpdate(mav);
 		
 		return mav;
 	}

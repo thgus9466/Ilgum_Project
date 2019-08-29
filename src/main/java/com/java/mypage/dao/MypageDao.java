@@ -62,4 +62,5 @@ public interface MypageDao {
 	public List<BookDto> firstRecommand(String firstInterest);
 	public List<BookDto> secondRecommand(String secondInterest);
 	public List<BookDto> thirdRecommand(String thirdInterest);
+	
 }

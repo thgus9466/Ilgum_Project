@@ -208,7 +208,8 @@ public class MypageController {
 	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) {
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("request", request);
-		
+
+		//유효기간이 지나지않은 쿠폰들만 보여줌
 		mypageService.couponList(mav);
 		
 		return mav;

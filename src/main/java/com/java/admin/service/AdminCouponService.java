@@ -16,4 +16,6 @@ public interface AdminCouponService {
 
 	//쿠폰번호 랜덤생성기
 	public String RandomCouponNumber(int length);
+
+	public void couponUpdate(ModelAndView mav);
 }
