@@ -20,4 +20,9 @@ public class OrderDaoImp implements OrderDao {
 	public int buserOrderOk(OrderDto orderDto) {
 		return sqlSessionTemplate.insert("dao.OrderMapper.buserOrder", orderDto);
 	}
+	
+	@Override
+	public int getPoint(String member_id) {
+		return sqlSessionTemplate.selectOne("dao.OrderMapper.getPoint", member_id);
+	}
 }

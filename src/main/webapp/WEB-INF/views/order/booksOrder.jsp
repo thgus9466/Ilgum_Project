@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <c:set var="root" value="${pageContext.request.contextPath}" />
 <html>
@@ -12,6 +11,7 @@
 <link rel="stylesheet" href="${root}/resources/css/book/bookPay.css" />
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/buser/cart.css">
 <script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
+<script type="text/javascript" src="${root}/resources/javascript/order/order.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <title>결제</title>
 </head>
@@ -139,7 +139,9 @@
 							<li>총 할인금액</li>
 							<li>배송비</li>
 							<c:if test="${member_id != null}">
-								<li>적립 포인트</li>
+								<li>포인트 사용</li>
+								<li>가용 포인트</li>
+								<li>쿠폰</li>
 							</c:if>
 							<li>총 결제금액</li>
 						</ul>
@@ -151,7 +153,16 @@
 							<li><fmt:formatNumber value="${total_cost-total_price}" />원</li>
 							<li>무료배송</li>
 							<c:if test="${member_id != null}">
+								<li><input type="text" name="point" value="0" style="width: 60px; text-align: right;" oninput="pointChk('${member_point}')"/>원</li>
 								<li><fmt:formatNumber value="${member_point}"/>원</li>
+								<li>
+									<select>
+										<option value="">선택안함</option>
+										<c:forEach var="couponList" items="${couponList}">
+											<option value="${couponList.admin_couponName}">${couponList.admin_couponName}</option>
+										</c:forEach>
+									</select>
+								</li>
 							</c:if>
 							<li><fmt:formatNumber value="${total_price}" />원</li>
 						</ul>

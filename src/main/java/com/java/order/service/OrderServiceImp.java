@@ -48,26 +48,25 @@ public class OrderServiceImp implements OrderService {
 		int total_price = 0;
 		int member_point = 0;
 
-		if (member_id == null) {
-			orderDto = orderDao.oneBookOrder(book_isbn);
-			orderDto.setCart_quantity(cart_quantity);
-			total_price = orderDto.getBook_price();
-			total_cost = (int) (total_price * 1.1);
-			orderDto.setTotal_price(total_price);
-			
-			orderList.add(orderDto);
+		orderDto = orderDao.oneBookOrder(book_isbn);
+		orderDto.setCart_quantity(cart_quantity);
+		total_price = orderDto.getBook_price();
+		total_cost = (int) (total_price * 1.1);
+		orderDto.setTotal_price(total_price);
 
-			mav.addObject("total_cost", total_cost);
-			mav.addObject("total_price", total_price);
-			mav.addObject("orderList", orderList);
+		orderList.add(orderDto);
+		
+		if (member_id != null)
+			member_point = orderDao.getPoint(member_id);
 
-			mav.setViewName("order/oneBookOrder.tiles");
-			
-		} else {
+		mav.addObject("total_cost", total_cost);
+		mav.addObject("total_price", total_price);
+		mav.addObject("member_point", member_point);
+		mav.addObject("orderList", orderList);
 
-		}
+		mav.setViewName("order/oneBookOrder.tiles");
 	}
-	
+
 	@Override
 	public void booksOrder(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
@@ -87,15 +86,21 @@ public class OrderServiceImp implements OrderService {
 			orderDto = orderDao.oneBookOrder(book_isbn[i]);
 			orderDto.setCart_quantity(cart_quantity[i]);
 			total_price = total_price + (orderDto.getBook_price() * Integer.parseInt(cart_quantity[i]));
-			total_cost =+ (int) (total_price * 1.1);
+			total_cost = +(int) (total_price * 1.1);
 
 			orderList.add(orderDto);
 		}
+
+		String member_id = (String) request.getSession().getAttribute("member_id");
+		int member_point = 0;
+		if (member_id != null)
+			member_point = orderDao.getPoint(member_id);
 
 		mav.addObject("book_isbn", request.getParameter("book_isbn"));
 		mav.addObject("cart_quantity", request.getParameter("cart_quantity"));
 		mav.addObject("total_cost", total_cost);
 		mav.addObject("total_price", total_price);
+		mav.addObject("member_point", member_point);
 		mav.addObject("orderList", orderList);
 
 		mav.setViewName("order/booksOrder.tiles");
@@ -107,19 +112,20 @@ public class OrderServiceImp implements OrderService {
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		OrderDto orderDto = (OrderDto) map.get("orderDto");
 		String member_id = (String) request.getSession().getAttribute("member_id");
-		
-		orderDto.setMember_phone(request.getParameter("phone1_1")+"-"+request.getParameter("phone1_2")+"-"+request.getParameter("phone1_3"));
-		
+
+		orderDto.setMember_phone(request.getParameter("phone1_1") + "-" + request.getParameter("phone1_2") + "-"
+				+ request.getParameter("phone1_3"));
+
 		int check = 0;
-		if(member_id==null) {
+		if (member_id == null) {
 			check = orderDao.buserOrderOk(orderDto);
-			
+
 		} else {
-			
+
 		}
-		
+
 		mav.addObject("check", check);
-		
+
 		mav.setViewName("order/orderOk.empty");
 	}
 }

@@ -10,4 +10,8 @@
 		insert into bookorder(order_num, member_id, cart_quantity, member_zipcode, member_address1, member_address2, member_phone, order_date, total_price, book_isbn, receiver, request)
 		values(seq_order_num.nextval, sysdate, #{cart_quantity}, #{member_zipcode}, #{member_address1}, #{member_address2}, #{member_phone}, sysdate, #{total_price}, #{book_isbn}, #{receiver}, #{request})
 	</insert>
+	
+	<select id="getPoint" parameterType="String" resultType="int">
+		select member_point from member where member_id = #{member_id}
+	</select>
 </mapper>
