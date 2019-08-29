@@ -42,7 +42,7 @@ public class OrderServiceImp implements OrderService {
 
 		List<OrderDto> orderList = new ArrayList<OrderDto>();
 
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		String book_isbn = request.getParameter("book_isbn");
 		String cart_quantity = request.getParameter("cart_quantity");
 		int total_cost = 0;
@@ -108,7 +108,7 @@ public class OrderServiceImp implements OrderService {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
 		OrderDto orderDto = (OrderDto) map.get("orderDto");
-		String member_id = (String) request.getSession().getAttribute("login");
+		String member_id = (String) request.getSession().getAttribute("member_id");
 		
 		orderDto.setMember_phone(request.getParameter("phone1_1")+"-"+request.getParameter("phone1_2")+"-"+request.getParameter("phone1_3"));
 		

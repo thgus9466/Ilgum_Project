@@ -18,6 +18,7 @@ public class OrderDto {
 	private Date order_date;					// 주문일
 	private int total_price;					// 총 금액
 	private String book_isbn;					// 책 번호[]
+	private String receiver;					// 수령자
 	private String request;						// 배송요청사항
 	
 	private String book_name;					// 책 이름
@@ -29,7 +30,7 @@ public class OrderDto {
 	public OrderDto(int order_num, String member_id, String cart_quantity, String member_zipcode,
 			String member_address1, String member_address2, String member_phone, int member_point,
 			String member_user__couponnumber, char order_state, char order_charge, Date order_date, int total_price,
-			String book_isbn, String request, String book_name, String book_img_url, int book_price) {
+			String book_isbn, String receiver, String request, String book_name, String book_img_url, int book_price) {
 		super();
 		this.order_num = order_num;
 		this.member_id = member_id;
@@ -45,6 +46,7 @@ public class OrderDto {
 		this.order_date = order_date;
 		this.total_price = total_price;
 		this.book_isbn = book_isbn;
+		this.receiver = receiver;
 		this.request = request;
 		this.book_name = book_name;
 		this.book_img_url = book_img_url;
@@ -163,6 +165,14 @@ public class OrderDto {
 		this.book_isbn = book_isbn;
 	}
 
+	public String getReceiver() {
+		return receiver;
+	}
+
+	public void setReceiver(String receiver) {
+		this.receiver = receiver;
+	}
+
 	public String getRequest() {
 		return request;
 	}
@@ -202,8 +212,8 @@ public class OrderDto {
 				+ member_address2 + ", member_phone=" + member_phone + ", member_point=" + member_point
 				+ ", member_user__couponnumber=" + member_user__couponnumber + ", order_state=" + order_state
 				+ ", order_charge=" + order_charge + ", order_date=" + order_date + ", total_price=" + total_price
-				+ ", book_isbn=" + book_isbn + ", request=" + request + ", book_name=" + book_name + ", book_img_url="
-				+ book_img_url + ", book_price=" + book_price + "]";
+				+ ", book_isbn=" + book_isbn + ", receiver=" + receiver + ", request=" + request + ", book_name="
+				+ book_name + ", book_img_url=" + book_img_url + ", book_price=" + book_price + "]";
 	}
 	
 }

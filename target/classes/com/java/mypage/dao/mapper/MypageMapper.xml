@@ -114,7 +114,7 @@
 	</select>
 	
 	<delete id="cartDel" parameterType="String">
-		delete from cart where cart_num = #{cart_num}
+		delete from cart where book_isbn = #{book_isbn}
 	</delete>
 	
 	<select id="bcartList" parameterType="String" resultType="com.java.mypage.dto.BuserDto">
