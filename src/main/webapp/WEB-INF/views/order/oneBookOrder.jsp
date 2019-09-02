@@ -8,18 +8,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/member/join.css">
 <link rel="stylesheet" href="${root}/resources/css/book/bookPay.css" />
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/buser/cart.css">
 <script type="text/javascript" src="${root}/resources/javascript/member/join.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
+<script type="text/javascript" src="${root}/resources/javascript/order/order.js" ></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script><!-- Import 결제 -->
 <title>결제</title>
 </head>
 <body>
 	<div class="container">
 		<div class="ttitle">결제 정보</div>
-		<form action="${root}/order/buserOrderOk.do" method="get">
+		<form action ="${root}/order/buserOrderOk.do" method="get" >
 		
+		<input type="hidden" name="total_price" value="${total_price}">
 		<input type="hidden" name="total_price" value="${total_price}">
 		
 			<div align="center" class="blist" style="float: left;">
@@ -66,11 +71,18 @@
 						<input class="infos_input" type="text" name="receiver" />
 					</div>
 				</div>
-
+				
 				<div class="infos">
 					<div class="infos_sub">
-						<span style="color: red; width: 20%; margin: 0px;">*</span> <span>휴대폰
-							번호</span>
+						<span style="color: red; width: 20%; margin: 0px;">*</span> <span>이메일</span>
+					</div>
+					<div class="infos_detail">
+						<input class="infos_input" type="text" name="member_email" />
+					</div>
+				</div>
+				<div class="infos">
+					<div class="infos_sub">
+						<span style="color: red; width: 20%; margin: 0px;">*</span> <span>휴대폰 번호</span>
 					</div>
 					<div>
 						<select name="phone1_1">
@@ -105,7 +117,7 @@
 						</div>
 						<div>
 							<input class="infos_input" type="text" name="member_address1"
-								id="member_address1" readOnly />
+								id="member_address1"readOnly />
 						</div>
 						<div>
 							<input class="infos_input" type="text" name="member_address2"

@@ -13,6 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.java.order.dao.OrderDao;
 import com.java.order.dto.OrderDto;
+import com.java.order.dto.PayDto;
 
 @Component
 public class OrderServiceImp implements OrderService {
@@ -107,6 +108,7 @@ public class OrderServiceImp implements OrderService {
 	public void buserOrderOk(ModelAndView mav) {
 		Map<String, Object> map = mav.getModelMap();
 		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
 		OrderDto orderDto = (OrderDto) map.get("orderDto");
 		String member_id = (String) request.getSession().getAttribute("member_id");
 		
@@ -121,9 +123,10 @@ public class OrderServiceImp implements OrderService {
 		} else {
 			
 		}
-		
+		System.out.println("orderDto:" + orderDto.toString());
+		System.out.println("check:" + check);
 		mav.addObject("check", check);
-		
+		mav.addObject("member_phone", orderDto.getMember_phone());
 		mav.setViewName("order/orderOk.empty");
 	}
 	
@@ -139,7 +142,6 @@ public class OrderServiceImp implements OrderService {
 	    return sb.toString();
 
 	}
-
 }
 
 
