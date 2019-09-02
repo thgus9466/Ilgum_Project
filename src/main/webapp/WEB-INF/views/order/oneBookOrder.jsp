@@ -150,18 +150,26 @@
 					<div>
 						<ul>
 							<li><fmt:formatNumber value="${total_cost}" />원</li>
-							<li><fmt:formatNumber value="${total_cost-total_price}" />원</li>
+							<li id="discount">${total_cost-total_price}원</li>
+							<li><input type="hidden" value="${total_cost-total_price}" id="after"/></li>
+							<li><input type="hidden" value="${total_cost}" id="before"/></li>
+							<li><input type="hidden" value="${total_cost-total_price}" id="origin"/></li>
 							<li>무료배송</li>
 							<c:if test="${member_id != null}">
-								<li><input type="text" name="point" value="0" style="width: 60px; text-align: right;" oninput="pointChk('${member_point}')"/>원</li>
-								<li><fmt:formatNumber value="${member_point}"/>원</li>
 								<li>
-									<select>
+									<select id="coupon" onchange="selectCoupon('${root}')" name="admin_couponnumber">
 										<option value="">선택안함</option>
+										<c:forEach var="couponList" items="${couponList}">
+											<option value="${couponList.admin_couponNumber}">${couponList.admin_couponName}</option>
+										</c:forEach>
 									</select>
 								</li>
+								<li><fmt:formatNumber value="${member_point}"/>원</li>
+								<li><input type="text" name="point" value="0" style="width: 60px; text-align: right;" oninput="pointChk('${member_point}')"/>원</li>
+								<li><input type="hidden" name="used_point" id="used_price" value="0"/></li>
 							</c:if>
-							<li><fmt:formatNumber value="${total_price}" />원</li>
+							<li id="total_price">${total_price}원</li>
+							<li><input type="hidden" name="total_price" id="tprice" value="${total_price}"/></li>
 						</ul>
 					</div>
 

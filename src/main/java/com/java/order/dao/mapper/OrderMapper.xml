@@ -14,4 +14,32 @@
 	<select id="getPoint" parameterType="String" resultType="int">
 		select member_point from member where member_id = #{member_id}
 	</select>
+	
+	<select id="getCoupon" parameterType="String" resultType="com.java.admin.dto.AdminCouponDto">
+		<![CDATA[select * from admincoupon a ,membercoupon b 
+				    where a.admin_couponNumber = b.admin_couponNumber
+				    	and b.member_id = #{member_id} and couponstate='0'
+    	]]>
+	</select>
+	
+	<select id="couponRate" parameterType="String" resultType="String">
+		select admin_sale from admincoupon where admin_couponnumber = #{admin_couponnumber}
+	</select>
+	
+	<select id="getMember_couponNumber" parameterType="String" resultType="String">
+		select member_couponnumber from membercoupon where admin_couponnumber = #{admin_couponnumber} and member_id = #{member_id}
+	</select>
+	
+	<update id="updateCouponState" parameterType="java.util.HashMap">
+		update membercoupon set couponstate = '1' where member_id = #{member_id} and member_couponnumber = #{member_couponnumber}
+	</update>
+	
+	<update id="setMember_point" parameterType="java.util.HashMap">
+		update member set member_point = #{member_point} where member_id = #{member_id}
+	</update>
+	
+	<insert id="userOrderOk" parameterType="com.java.order.dto.OrderDto">
+		insert into bookorder(order_num, member_id, cart_quantity, member_zipcode, member_address1, member_address2, member_phone, member_point, member_couponnumber, order_date, total_price, book_isbn, receiver, request, used_point)
+		 values(seq_order_num.nextval, #{member_id}, #{cart_quantity}, #{member_zipcode}, #{member_address1}, #{member_address2}, #{member_phone}, #{member_point}, #{member_couponnumber}, sysdate, #{total_price}, #{book_isbn}, #{receiver}, #{request}, #{used_point})
+	</insert>
 </mapper>

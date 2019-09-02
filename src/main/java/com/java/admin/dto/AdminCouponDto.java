@@ -1,7 +1,5 @@
 package com.java.admin.dto;
 
-
-
 /**
  * @author 최선권
  * @date 2019.08.14
@@ -17,6 +15,23 @@ public class AdminCouponDto {
 	private String 	member_couponNumber;			//회원쿠폰번호
 	private String 	member_id;						//회원아이디
 	private double 	admin_sale;						//관리자쿠폰 할인율
+	private String couponState;						//쿠폰 사용유무
+	
+	public AdminCouponDto() { }
+	
+	public AdminCouponDto(String admin_couponNumber, String admin_couponName, String admin_couponUseday,
+			String admin_content, String member_couponNumber, String member_id, double admin_sale, String couponState) {
+		super();
+		this.admin_couponNumber = admin_couponNumber;
+		this.admin_couponName = admin_couponName;
+		this.admin_couponUseday = admin_couponUseday;
+		this.admin_content = admin_content;
+		this.member_couponNumber = member_couponNumber;
+		this.member_id = member_id;
+		this.admin_sale = admin_sale;
+		this.couponState = couponState;
+	}
+
 	public String getAdmin_couponNumber() {
 		return admin_couponNumber;
 	}
@@ -59,18 +74,19 @@ public class AdminCouponDto {
 	public void setAdmin_sale(double admin_sale) {
 		this.admin_sale = admin_sale;
 	}
+	public String getCouponState() {
+		return couponState;
+	}
+	public void setCouponState(String couponState) {
+		this.couponState = couponState;
+	}
+
 	@Override
 	public String toString() {
 		return "AdminCouponDto [admin_couponNumber=" + admin_couponNumber + ", admin_couponName=" + admin_couponName
 				+ ", admin_couponUseday=" + admin_couponUseday + ", admin_content=" + admin_content
 				+ ", member_couponNumber=" + member_couponNumber + ", member_id=" + member_id + ", admin_sale="
-				+ admin_sale + ", getAdmin_couponNumber()=" + getAdmin_couponNumber() + ", getAdmin_couponName()="
-				+ getAdmin_couponName() + ", getAdmin_couponUseday()=" + getAdmin_couponUseday()
-				+ ", getAdmin_content()=" + getAdmin_content() + ", getMember_couponNumber()="
-				+ getMember_couponNumber() + ", getMember_id()=" + getMember_id() + ", getAdmin_sale()="
-				+ getAdmin_sale() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
-				+ super.toString() + "]";
+				+ admin_sale + ", couponState=" + couponState + "]";
 	}
-
 
 }
