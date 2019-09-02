@@ -60,11 +60,12 @@ public class OrderServiceImp implements OrderService {
 
 		orderList.add(orderDto);
 
-		if (member_id != null)
+		if (member_id != null) {
 			member_point = orderDao.getPoint(member_id);
 
 		couponList = orderDao.getCoupon(member_id);
-
+		}
+		
 		mav.addObject("total_cost", total_cost);
 		mav.addObject("total_price", total_price);
 		mav.addObject("member_point", member_point);
