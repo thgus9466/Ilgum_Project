@@ -49,7 +49,7 @@ public interface MypageDao {
 	
 	public List<CartDto> cartList(String member_id);
 	
-	public int cartDel(String delList);
+	public int cartDel(String book_isbn);
 	
 	public BuserDto bcartList(String book_isbn);
 
@@ -62,4 +62,5 @@ public interface MypageDao {
 	public List<BookDto> firstRecommand(String firstInterest);
 	public List<BookDto> secondRecommand(String secondInterest);
 	public List<BookDto> thirdRecommand(String thirdInterest);
+	
 }

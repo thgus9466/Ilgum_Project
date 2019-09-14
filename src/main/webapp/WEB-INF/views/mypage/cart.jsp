@@ -48,8 +48,8 @@
 				
 				<table>
 		         <c:forEach var="cartDto" items="${cartList}">
-		         <tr id="tcontent">
-		         	<td align="center"width="30"><input type="checkbox" name="checkRow" id="${cartDto.book_isbn}" value="${cartDto.cart_num}"
+		         <tr class="tcontent" id="${cartDto.book_isbn}">
+		         	<td align="center"width="30"><input type="checkbox" name="checkRow" id="${cartDto.book_isbn}" value="${cartDto.book_isbn}"
 		         		onclick="checkSum('${cartDto.book_isbn}', '${cartDto.book_price*cartDto.cart_quantity}', '${cartDto.cart_quantity}', '${cartDto.book_price*0.05}')"></td>
 		            <td align="center"width="190">
 		         		<img alt="이미지 준비중" src="${cartDto.book_img_url}" height="90">
@@ -84,7 +84,7 @@
 		         </tr>
 		         </tbody>
 		      	</table>
-		      	<input type="button" value="구매하기" id="btnBuy"/>
+		      	<input type="button" value="구매하기" id="btnBuy" onclick="nonMemberBuy('${root}')"/>
 		      	</form>
    			</div>
    			

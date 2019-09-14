@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.BookMapper">
+	<select id="bookDetail" parameterType="String" resultType="com.java.book.dto.BookDto">
+		select * from book where book_isbn = #{book_isbn}
+	</select>
+	
+	<select id="bookCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book where book_name like '%'||#{book_name}||'%']]>
+	</select>
+	
+	<select id="bookList" parameterType="java.util.HashMap" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from book order by book_name asc) a) b
+				where book_name like '%'||#{book_name}||'%') c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="bookPay" parameterType="String" resultType="com.java.book.dto.BookDto">
+		select * from book where book_isbn = #{book_isbn}
+	</select>
+	
+	<select id="payMember" parameterType="String" resultType="com.java.member.dto.MemberDto">
+		select * from member where member_id = #{member_id}
+	</select>
+	
+	<select id="bestSeller" resultType="com.java.book.dto.BestSellerDto">
+		select * from bestseller
+	</select>
+	
+	<select id="bookFirstList" resultType="com.java.book.dto.BookDto">
+	 	<![CDATA[
+		select rownum num, data.*
+		from
+	 	(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_imgxl_url, book_isbn
+	 	from book 
+	 	where book_isbn = 9788970873268 or book_isbn = 9788965135586 or book_isbn = 9791188874385)data
+	 	]]>
+	</select>
+	
+	<select id="bookLastList" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select rownum num, data.*
+		from
+		(select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro, book_isbn
+	 	from book 
+	 	where book_amount >= 110
+	 	order by book_amount DESC)data
+	 	]]>
+	</select>
+	
+	<select id="monthBook" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select rownum num, data.*
+		from
+		(select book_name, book_writer, book_publisher, book_publish_date, book_cost, book_price, book_isbn
+		, book_imgxl_url, book_intro
+	 	from book 
+	 	WHERE book_publish_date >= TO_DATE('20190701','YYYYMMDD')
+   		AND  book_publish_date <  TO_DATE('20190731','YYYYMMDD'))data
+   		where rownum <= 10
+   		]]>
+	</select>
+	
+	<select id="newBook" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select rownum num, data.* 
+		from (select book_name, book_writer, book_publisher, book_publish_date, book_imgxl_url, book_intro, book_isbn
+		      from book 
+		      WHERE book_publish_date >= TO_DATE('20190801','YYYYMMDD') AND book_publish_date <  TO_DATE('20190813','YYYYMMDD') 
+		      order by book_publish_date desc)data
+	    where rownum <= 10
+   		]]>
+	</select>
+	
+	<select id="bookCountCategory" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from book where book_category = #{book_category}]]>
+	</select>
+	
+	<select id="bookListCategory" parameterType="java.util.HashMap" resultType="com.java.book.dto.BookDto">
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from book order by book_category asc) a) b
+				where book_category = #{book_category}) c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
+	<select id="reviewCount" parameterType="String" resultType="int">
+		<![CDATA[select count(*) from userbookstar where book_num = #{book_num}]]>
+	</select>
+	
+	<select id="reviewList" parameterType="java.util.HashMap" resultType="com.java.book.dto.UserBookStar">
+		<![CDATA[
+		select c.* from(select rownum brnum, b.* from (select rownum arnum, a.* from
+			(select * from userbookstar order by order_bunho desc) a) b
+				where book_num = #{book_num}) c
+                	where c.brnum >= #{startRow} and c.brnum <= #{endRow}
+		]]>
+	</select>
+	
+	<insert id="writeOk" parameterType="com.java.book.dto.UserBookStar">
+		<![CDATA[
+			insert into userbookstar values(seq_userBookStar.nextval,#{member_id},#{book_num},#{book_review},#{userbookstar_star})
+		]]>
+	</insert>
+	
+	<select id="deleteCheck" parameterType="java.util.HashMap" resultType="String">
+		<![CDATA[
+			select member_id from userbookstar where order_bunho = #{order_bunho} and book_num = #{book_num}
+		]]>
+	</select>
+	
+	<delete id="deleteReview" parameterType="java.util.HashMap">
+		<![CDATA[
+			delete from userbookstar where member_id = #{member_id} and order_bunho = #{order_bunho} and book_num = #{book_num}
+		]]>
+	</delete>
+	
+	<update id="updateReview" parameterType="com.java.book.dto.UserBookStar">
+		<![CDATA[
+			update userbookstar set book_review = #{book_review}, userbookstar_star = #{userbookstar_star}
+			where member_id = #{member_id} and order_bunho = #{order_bunho} and book_num = #{book_num}
+		]]>
+	</update>
+	
+	<select id="nameList" parameterType = "String" resultType="String">
+		<![CDATA[
+			select data.book_name from (select * from book order by book_amount asc)data where book_name like '%'||#{book_name}||'%' and rownum <= 10
+		]]>
+	</select>
+</mapper>

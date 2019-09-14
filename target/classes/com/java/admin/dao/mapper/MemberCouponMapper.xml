@@ -10,8 +10,23 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 			insert into memberCoupon
 				values(#{member_couponNumber},
 						#{member_id},
-						#{admin_couponNumber})
+						#{admin_couponNumber},
+						#{couponState})						
  	 	]]> 
 	</insert>
 
+	<!-- 도서수량 -->
+	<select id="couponCount" resultType="int">
+		<![CDATA[select count(*) from membercoupon where member_id = #{member_id}]]>
+	</select>
+	<update id="updateCoupon" parameterType="java.util.HashMap">
+		<![CDATA[
+		update (
+		select * 
+		from admincoupon a ,membercoupon b 
+		where  a.admin_couponNumber = b.admin_couponNumber
+		and b.member_id = #{member_id} and to_char(to_date(a.ADMIN_COUPONUSEDAY,'yyyy-MM-dd')
+		,'yyyy-MM-dd')<#{couponUseday} and couponstate='0')
+	set couponstate = '1']]>
+	</update>
 </mapper>

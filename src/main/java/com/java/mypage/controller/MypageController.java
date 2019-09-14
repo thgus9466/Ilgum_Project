@@ -202,4 +202,16 @@ public class MypageController {
 		
 		return mav;
 	}
+	
+	//쿠폰조회
+	@RequestMapping(value = "/mypage/coupon.do", method = RequestMethod.GET)
+	public ModelAndView coupon(HttpServletRequest request, HttpServletResponse response) {
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+
+		//유효기간이 지나지않은 쿠폰들만 보여줌
+		mypageService.couponList(mav);
+		
+		return mav;
+	}
 }

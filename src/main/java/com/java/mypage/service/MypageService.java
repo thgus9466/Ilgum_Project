@@ -37,6 +37,6 @@ public interface MypageService {
 	public void cartList(ModelAndView mav);
 	
 	public void recommand(ModelAndView mav);
-
 	
+	public void couponList(ModelAndView mav);
 }

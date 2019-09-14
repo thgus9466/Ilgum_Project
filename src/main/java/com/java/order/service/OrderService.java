@@ -10,4 +10,6 @@ public interface OrderService {
 	public void booksOrder(ModelAndView mav);
 	
 	public void buserOrderOk(ModelAndView mav);
+	
+	public double couponRate(ModelAndView mav);
 }

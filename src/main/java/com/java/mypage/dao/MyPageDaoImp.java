@@ -132,8 +132,8 @@ public class MyPageDaoImp implements MypageDao {
 	}
 
 	@Override
-	public int cartDel(String cart_num) {
-		return sqlSessionTemplate.delete("dao.MypageMapper.cartDel", cart_num);
+	public int cartDel(String book_isbn) {
+		return sqlSessionTemplate.delete("dao.MypageMapper.cartDel", book_isbn);
 	}
 	
 	@Override
