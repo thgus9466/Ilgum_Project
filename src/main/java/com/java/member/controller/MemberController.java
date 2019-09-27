@@ -137,4 +137,15 @@ public class MemberController {
 		
 	}
 	
+	@RequestMapping(value="/member/googleJoin.do", method=RequestMethod.GET)
+	public ModelAndView googleJoin(HttpServletRequest request, HttpServletResponse response) {
+		
+		ModelAndView mav = new ModelAndView();
+		mav.addObject("request", request);
+		
+		memberService.googleJoin(mav);
+		
+		return mav;
+		
+	}
 }

@@ -51,4 +51,9 @@ public class MemberDaoImp implements MemberDao {
 	public String memberLevel(String member_id) {
 		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberLevel",member_id);
 	}
+	
+	@Override
+	public int memberGoogleCheck(HashMap<String, Object> hMap) {
+		return sqlSessionTemplate.selectOne("dao.MemberMapper.memberGoogleCheck", hMap);
+	}
 }

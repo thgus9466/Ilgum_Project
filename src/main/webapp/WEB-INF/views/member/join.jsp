@@ -14,7 +14,14 @@
 <link rel="stylesheet" type = "text/css" href="${root}/resources/jquery/jquery-ui.css">
 <link rel="stylesheet" type = "text/css" href="${root}/resources/css/member/join.css">
 <script type="text/javascript">
+	var check = "${check}"
 	$(function() {
+		if(check==0){
+			$("#member_id").val("${member_id}");
+			$("#member_name").val("${member_name}");
+			$("#member_email1").val("${member_id}");
+			$("#member_email2").find("option:eq(2)").prop("selected", true);
+		}
 	    $("#birthdaypicker").datepicker({				  
 	           showOn: "both", // 버튼과 텍스트 필드 모두 캘린더를 보여준다.
 	           changeMonth: true, // 월을 바꿀수 있는 셀렉트 박스를 표시한다.
@@ -107,7 +114,7 @@
 					<span>이름</span>
 				</div>
 				<div class="infos_detail">
-					<input class = "infos_input" type="text" name="member_name"/>
+					<input class = "infos_input" type="text" name="member_name" id="member_name"/>
 				</div>
 			</div>
 			
@@ -138,9 +145,9 @@
 					<span>이메일 주소</span>
 				</div>
 				<div class="infos_detail">
-					<input style="float: left;" class = "infos_input" type="text" name="member_email1"/>
+					<input style="float: left;" class = "infos_input" type="text" name="member_email1" id="member_email1"/>
 					<span style="float: left;">@</span>
-					<select style="width:100px;" name="member_email2">
+					<select style="width:100px;" name="member_email2" id="member_email2">
 						<option>naver.com</option>
 						<option>daum.net</option>
 						<option>gmail.com</option>

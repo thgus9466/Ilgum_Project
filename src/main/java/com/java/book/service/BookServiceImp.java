@@ -126,7 +126,7 @@ public class BookServiceImp implements BookService {
 		IlgumAspect.logger.info(IlgumAspect.logMsg + bookDto.size());
 		
 		String str = "[";
-		str += "['달','반일 민족 주의','유럽 문화 기행1','설민석의 한국사 대모험 11'],";
+		str += "['달','내 몸에 이로운 식사를 하고 있습니까?','유럽 문화 기행1','설민석의 한국사 대모험 11'],";
 		int num = 0;
 		for(int i=0; i<bookDto.size(); i++) {
 			

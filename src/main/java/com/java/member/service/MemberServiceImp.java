@@ -214,5 +214,43 @@ public class MemberServiceImp implements MemberService {
 		}
 
 	}
+	
+	@Override
+	public void googleJoin(ModelAndView mav) {
+		Map<String,Object> map = mav.getModelMap();
+		HttpServletRequest request = (HttpServletRequest) map.get("request");
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("id"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("name"));
+		IlgumAspect.logger.info(IlgumAspect.logMsg + request.getParameter("email"));
+		
+		HashMap<String, Object> hMap = new HashMap<String, Object>();
+		
+		hMap.put("id", request.getParameter("id"));
+		hMap.put("email", request.getParameter("email"));
+		
+		int check = memberDao.memberGoogleCheck(hMap);
+		
+		IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+		
+		if(check == 0) {
+			IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+			
+			mav.addObject("member_id", request.getParameter("id"));
+			mav.addObject("member_name", request.getParameter("name"));
+			mav.addObject("member_email", request.getParameter("email"));
+			mav.addObject("check", 0);
+			
+			mav.setViewName("member/join.tiles");
+		}else {
+			
+			mav.addObject("message", "이미 가입이 되어있습니다. 아이디 찾기를 해주세요");
+			
+			IlgumAspect.logger.info(IlgumAspect.logMsg + check);
+			
+			mav.setViewName("member/login.tiles");
+		}
+		
+	}
 
 }

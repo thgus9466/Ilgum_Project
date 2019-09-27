@@ -33,4 +33,9 @@
  	<select id="memberLevel" parameterType="String" resultType="String">
  		select member_level from member where member_id = #{member_id}
  	</select>
+ 	
+ 	<select id="memberGoogleCheck" parameterType="java.util.HashMap" resultType="int">
+ 		select count(*) from member where member_id = #{id} and member_email = #{email}
+ 	</select>
+ 	
 </mapper>

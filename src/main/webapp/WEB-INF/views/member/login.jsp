@@ -5,14 +5,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="google-signin-scope" content="profile email">
+<meta name="google-signin-client_id" content="632388340079-bqt5vmjcoo8spm7iabjbporqvgv37ua1.apps.googleusercontent.com">
 <c:set var="root" value="${pageContext.request.contextPath}"/>
 <title>Insert title here</title>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
 <script type="text/javascript" src="${root}/resources/jquery/jquery.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="${root}/resources/javascript/member/login.js"></script>
 <link rel="stylesheet" type="text/css" href="${root}/resources/css/member/login.css"/>
 <script type="text/javascript">
 	$(function(){
+		var message = "${message}";
+		
+		if(message!= ""){
+			alert(message);
+		}
+		
 		$("#bimember").click(function(){
 			$(this).css("color","#111111")
 			.css("border-color","#111111");
@@ -68,6 +77,30 @@
 		
 	});
 </script>
+<script type="text/javascript">
+	
+function onSignIn(googleUser) {
+
+	  var profile = googleUser.getBasicProfile();
+	  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+	  console.log('Name: ' + profile.getName());
+	  console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.
+	  
+	  var name = profile.getName();
+	  var email = profile.getEmail();
+	  var idCheck = email.split('@');
+	  var id = idCheck[0];
+	  var root = '<c:out value="${root}"/>';
+	 
+	  var params = 'id='+ id +'&name='+ name +'&email='+ email;
+	  var url = '${root}/member/googleJoin.do?'+params; 
+	
+	  $(".g-signin2").click(function(){
+		  location.href=url
+  
+}); 
+};
+</script>
 </head>
 <body>
 <section>
@@ -100,7 +133,7 @@
 						</form>
 						<div class="form_bottom">
 							<span>간편 가입</span>
-							<span><img src="${root}/resources/img/login/spr_sns.png"/></span>
+							<div class="g-signin2" data-onsuccess="onSignIn" id="login"></div>
 						</div>
 					</div>
 					<div id="left_infos">

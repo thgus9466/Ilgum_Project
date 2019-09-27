@@ -14,4 +14,6 @@ public interface MemberService {
 	public void memberIdSearchOk(ModelAndView mav);
 
 	public void memberPasswordSearchOk(ModelAndView mav);
+
+	public void googleJoin(ModelAndView mav);
 }
